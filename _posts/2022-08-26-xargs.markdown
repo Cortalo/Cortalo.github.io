@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "Xargs"
+date:   2022-08-26 12:40:00 +0200
+categories: linux
+tags: shell
+---
+
+new line
+
+try
+
+{% include_relative 2022-08-26-xargs/test.svg.cl %}
+
+try
+
+{% include_relative 2022-08-26-xargs/circuit.svg.cl %}
+
+
+{% highlight shell %}
+ # put the output to the end of echo
+ls *str* | xargs echo
+ # put the output between echo and hello
+ls *str* | xargs -I {} echo {} hello
+{% endhighlight %}

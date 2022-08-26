@@ -1,0 +1,62 @@
+---
+title:  "Residual Theorem"
+date:   2022-08-25 19:40:00 +0200
+categories: math
+tags: calculus
+math: true
+---
+
+$$
+\begin{aligned}
+\int_{C} f(s)ds = 2\pi j\sum_{k=1}^{m}d_k
+\end{aligned}
+$$
+
+where $$C$$ is a positive contour(anti-clockwise), and there are $$m$$ poles inside the contour.
+Each $$d_k$$ is the residual of each pole.
+
+### Residual
+
+For a $$n$$-th order pole at $$s_0$$, its residual
+
+$$
+d = \frac{1}{(n-1)!} \frac{d^{n-1}}{ds^{n-1}}(s-s_0)^n f(s)\Bigg|_{s=s_0}
+$$
+
+for example, for a first order pole
+
+$$
+d = (s-s_0)f(s)\Big|_{s=s_0}
+$$
+
+### Example 01
+
+$$
+\begin{aligned}
+\int_{C} \frac{ds}{a^2 - s^2}
+\end{aligned}
+$$
+
+where $$C$$ is a positive contour around $$s_0 = a$$. Since it is a first order pole
+
+$$
+\begin{aligned}
+d = \frac{s - a}{a^2 - s^2} \Bigg|_{s=a} = -\frac{1}{a+s}\Bigg|_{s=a} = -\frac{1}{2a}
+\end{aligned}
+$$
+
+thus
+
+$$
+\begin{aligned}
+\int_{C} \frac{ds}{a^2 - s^2} = 2\pi j \Big(-\frac{1}{2a}\Big) = -j\frac{\pi}{a}
+\end{aligned}
+$$
+
+**side note**
+
+using Jordan's Lemma, we can calculate the below real integral, using the above result
+
+$$
+    \int_{-\infty}^{\infty}\frac{dy}{a^2 + y^2} = -j (2 \pi j) (-\frac{1}{2a}) (-1) = \frac{\pi}{a}
+$$
