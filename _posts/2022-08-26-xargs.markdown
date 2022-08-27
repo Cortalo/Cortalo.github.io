@@ -1,19 +1,9 @@
 ---
 title:  "Xargs"
 date:   2022-08-26 12:40:00 +0200
-categories: linux
+categories: cs shell
 tags: shell
 ---
-
-new line
-
-try
-
-{% include_relative 2022-08-26-xargs/test.svg.cl %}
-
-try
-
-{% include_relative 2022-08-26-xargs/circuit.svg.cl %}
 
 
 {% highlight shell %}
