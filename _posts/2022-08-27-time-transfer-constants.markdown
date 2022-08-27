@@ -1,5 +1,5 @@
 ---
-title:  "Time ans Transfer Constants in Circuits"
+title:  "Time and Transfer Constants in Circuits"
 date:   2022-08-27 08:00:00 +0200
 categories: analog-circuit
 tags: analog
@@ -46,3 +46,31 @@ H(s) = \frac{H^{0} + \tau H^{1}s}{1 + \tau s}
 $$
 
 <p style="text-align: right"> $\square$ </p>
+
+## General Systems
+
+For a $$n$$-th order system
+
+$$
+H(s) = \frac{a_0 + a_1 s + a_2 s^2 + \dots + a_m s^m}{1 + b_1 s + b_2 s^2 + \dots + b_n s^n}
+$$
+
+## $$b_1$$ Coefficient
+
+If there are $$N$$ energy storage elements ($$L$$ or $$C$$)
+
+$$
+\begin{align}
+b_1 &= \sum_{i=1}^{N} \tau_{i}^{0}
+\end{align}
+$$
+
+- $$\tau_{i}^{0}$$ is the time constant for energy storage element $$i$$, when all the other elements are zero valued.
+  - zero $$C$$ is equivalent to open circuit.
+  - zero $$L$$ is equivalent to short circuit.
+- the value of $$b_1$$ may or may not reflect the bandwidth of $$H(s)$$. I will use another post to explain bandwidth estimation techniques.
+
+### Example 02
+
+
+{% include_relative 2022-08-27-time-transfer-constants/example-02.svg.cl %}
