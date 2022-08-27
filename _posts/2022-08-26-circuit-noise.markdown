@@ -45,12 +45,3 @@ $$
 the additional factor $$\frac{\pi}{2}$$ for equivalent noise bandwidth.
 
 <p style="text-align: right"> $\square$ </p>
-
-
-
-
-
-
-
-
-{% include_relative 2022-08-26-xargs/circuit.svg.cl %}
