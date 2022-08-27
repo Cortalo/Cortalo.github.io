@@ -77,3 +77,22 @@ $$
 
 ![example-02](/assets/img/2022-08-27-time-transfer-constants/example-02.png)
 _Example 02_
+
+Ignore $$r_o$$ of the transistor and let
+
+$$
+\begin{align}
+C_{\pi} &= 100 fF \quad \quad \quad r_{\pi} = 2.5 k\Omega \\
+C_{\mu} &= 20 fF \quad \quad \quad \,\, g_{m} = 40 mS\\
+C_{L} &= 200 fF \quad \quad \quad \beta = 100
+\end{align}
+$$
+
+the time constants
+
+$$
+\begin{align}
+\tau_{\pi}^{0} &= (R_1 \Vert r_{\pi}) C_{\pi} = (1k\Omega \Vert 2.5k\Omega) \cdot 100 fF = 70 ps\\
+\tau_{\mu}^{0} &= (R_{left} + R_{right} + G_m R_{left} R_{right}) C_{\mu} =
+\end{align}
+$$
