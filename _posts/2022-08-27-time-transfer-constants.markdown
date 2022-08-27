@@ -27,7 +27,10 @@ $$
 
 ### Example 01
 
-{% include_relative 2022-08-27-time-transfer-constants/example-01.svg.cl %}
+
+
+![example-01](/assets/img/2022-08-27-time-transfer-constants/example-01.png)
+_Example 01_
 
 $$
 \begin{align}
@@ -72,5 +75,5 @@ $$
 
 ### Example 02
 
-
-{% include_relative 2022-08-27-time-transfer-constants/example-02.svg.cl %}
+![example-02](/assets/img/2022-08-27-time-transfer-constants/example-02.png)
+_Example 02_
