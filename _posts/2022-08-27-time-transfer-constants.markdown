@@ -68,7 +68,7 @@ b_1 &= \sum_{i=1}^{N} \tau_{i}^{0}
 \end{align}
 $$
 
-- $$\tau_{i}^{0}$$ is the time constant for energy storage element $$i$$, when all the other elements are zero valued.
+- $$\tau_{i}^{0}$$ is zero-valued time constant (ZVT) for energy storage element $$i$$, when all the other elements are zero valued.
   - zero $$C$$ is equivalent to open circuit.
   - zero $$L$$ is equivalent to short circuit.
 - the value of $$b_1$$ may or may not reflect the bandwidth of $$H(s)$$. I will use another post to explain bandwidth estimation techniques.
@@ -93,6 +93,15 @@ the time constants
 $$
 \begin{align}
 \tau_{\pi}^{0} &= (R_1 \Vert r_{\pi}) C_{\pi} = (1k\Omega \Vert 2.5k\Omega) \cdot 100 fF = 70 ps\\
-\tau_{\mu}^{0} &= (R_{left} + R_{right} + G_m R_{left} R_{right}) C_{\mu} =
+\tau_{\mu}^{0} &= (R_{left} + R_{right} + G_m R_{left} R_{right}) C_{\mu} = 1200 ps\\
+\tau_{L}^{0} &= R_2 C_L = 400 ps
 \end{align}
 $$
+
+thus
+
+$$
+b_1 = \tau_{\pi}^{0} + \tau_{\mu}^{0} + \tau_{L}^{0}  = 1670 ps
+$$
+
+<p style="text-align: right"> $\square$ </p>
