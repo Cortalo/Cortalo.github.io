@@ -29,3 +29,11 @@ _MOSFET $$\pi$$ model_
 _MOSFET $$T$$ model_
 
 ## BJT
+
+$$
+\begin{align}
+r_{\pi} &= \beta r_m\\
+\alpha &= \frac{\beta}{\beta+1}\\
+\beta &= \frac{\alpha}{1-\alpha}
+\end{align}
+$$
