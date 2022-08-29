@@ -13,6 +13,7 @@ From [Lectures](https://www.youtube.com/watch?v=I9A9BeGJsEM&t=10s) by Prof. Ali 
 
 ## MOSFET
 
+### $$\pi$$ Model
 
 ![mosfet-pi-model](/assets/img/2022-08-29-transistor-small-signal-model/example-01.png)
 _MOSFET $$\pi$$ model_
@@ -21,3 +22,10 @@ _MOSFET $$\pi$$ model_
 - pmos has the same small signal model as nmos.
   - However pmos has source at the top.
   - The small signal model is flipped.
+
+### $$T$$ Model
+
+![mosfet-t-model](/assets/img/2022-08-29-transistor-small-signal-model/example-02.png)
+_MOSFET $$T$$ model_
+
+## BJT
