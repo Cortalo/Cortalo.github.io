@@ -6,8 +6,17 @@ tags: analog
 math: true
 ---
 
+
+For a $$n$$-th order system
+
+$$
+H(s) = \frac{a_0 + a_1 s + a_2 s^2 + \dots + a_m s^m}{1 + b_1 s + b_2 s^2 + \dots + b_n s^n}
+$$
+
 A typical circuit will have transfer function with $$\omega_{l}$$ and $$\omega_{h}$$.
 And between the two frequencies, the gain is flat $$a_{mid}$$
+
+
 
 
 ## Bandwidth Estimation Using $$b_1$$ Coefficient
@@ -102,3 +111,46 @@ $$
 
 
 ## Taking Zeros Into Account
+
+
+From [Lecture](https://www.youtube.com/watch?v=et_Un-IGr7o&list=PLc7Gz02Znph-c2-ssFpRrzYwbzplXfXUT&index=47) and [Paper](https://chic.caltech.edu/wp-content/uploads/2014/02/Final-Paper.pdf) by Prof. Ali Hajimiri.
+
+$$
+\omega_h \approx \frac{1}{\sum_{i=1}^{N} \tau_i^{0} (1 - |\frac{H^i}{H^0}|)}
+$$
+
+Not very sure about the proof of this approximation (modified time constant)!
+
+### Example 03
+
+
+![example-03](/assets/img/2022-08-29-bandwidth-estimation/example-03.png)
+_Example 03_
+
+$$
+\begin{align}
+C_1 &= 4.3 pF \quad \quad \, \, r_{\pi} = 2.5 k\Omega\\
+C_L &= 200 fF \quad \quad g_m = 40 mS\\
+C_{\pi} &= 100 fF \quad \quad R_1 = 1 k\Omega\\
+C_{\mu} &= 20fF \quad \quad \, \, R_2 = 2 k\Omega
+\end{align}
+$$
+
+If using bandpass model, and let $$C_1$$ being coupling capacitor.
+
+$$
+\begin{align}
+b_1 &= R_2 (C_{\mu} + C_{L}) = 440 ps\\
+\omega_{h} &= \frac{1}{b_1} = 2\pi \times 362 MHz\\
+\tau_{1}^{\infty} &= (R_1 \Vert r_{\pi}) C_1 = 3ns\\
+\omega_{l} &= \frac{1}{\tau_{1}^{\infty}} = 2\pi \times 53 MHz
+\end{align}
+$$
+
+If using modified time constant
+
+$$
+\begin{align}
+H^{\pi} &= 0
+\end{align}
+$$
