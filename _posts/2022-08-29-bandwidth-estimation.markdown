@@ -127,6 +127,8 @@ Not very sure about the proof of this approximation (modified time constant)!
 ![example-03](/assets/img/2022-08-29-bandwidth-estimation/example-03.png)
 _Example 03_
 
+Try to make $$C_1$$ smaller!
+
 $$
 \begin{align}
 C_1 &= 4.3 pF \quad \quad \, \, r_{\pi} = 2.5 k\Omega\\
@@ -151,6 +153,44 @@ If using modified time constant
 
 $$
 \begin{align}
-H^{\pi} &= 0
+H^{0} &= -\frac{r_{\pi}}{R_1 + r_{\pi}} \cdot g_m R_2 = -57 \\
+H^{\pi} &= 0\\
+H^{\mu} &= + \frac{r_m \Vert R_2}{R_1 + r_m \Vert R_2} = 24 m\\
+H^{L} &= 0\\
+H^{1} &= -g_m R_2 = -80
 \end{align}
 $$
+
+with
+
+$$
+\begin{align}
+\tau_{\pi}^{0} &= (R_1 \Vert r_{\pi}) C_{\pi} = (1k\Omega \Vert 2.5k\Omega) \cdot 100 fF = 70 ps\\
+\tau_{\mu}^{0} &= (R_{left} + R_{right} + G_m R_{left} R_{right}) C_{\mu} = 1200 ps\\
+\tau_{L}^{0} &= R_2 C_L = 400 ps\\
+\tau_{1}^{0} &= (R_1 \Vert r_{\pi}) C_1 = 3070 ps
+\end{align}
+$$
+
+modified time conetant
+
+$$
+\begin{align}
+\tau_{\pi}' &= 70ps\\
+\tau_{\mu}' &= 1200ps\\
+\tau_{L}' &= 400ps\\
+\tau_{1}' &= -1200ps
+\end{align}
+$$
+
+then
+
+$$
+\begin{align}
+\omega_h = 2\pi \times 339 MHz
+\end{align}
+$$
+
+<p style="text-align: right"> $\square$ </p>
+
+## Second Order System Model

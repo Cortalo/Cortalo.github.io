@@ -54,8 +54,26 @@ $$
 
 For a $$n$$-th order system
 
+
+
 $$
-H(s) = \frac{a_0 + a_1 s + a_2 s^2 + \dots + a_m s^m}{1 + b_1 s + b_2 s^2 + \dots + b_n s^n}
+\begin{equation*}
+    H(s) = \frac{a_0 + a_1 s + a_2 s^2 + \dots}{1 + b_1 s + b_2 s^2 + \dots}
+\end{equation*}
+$$
+
+$$
+\begin{align*}
+    b_1 &= -\sum_{i=1}^{N'}\frac{1}{p_i} = \sum_{i=1}^{N}\tau_{i}^{0}\\
+    b_2 &= \sum_{i}\sum_{j}^{1 \le i<j \le N} \tau_i^{0}\tau_{j}^{i}\\
+    b_3 &= \sum_{i}\sum_{j}\sum_{k} \tau_{i}^{0}\tau_{j}^{i}\tau_{k}^{ij} \\
+    &\dots \\
+    a_0 &= H^{0}\\
+    a_1 &= \sum_{i=1}^{N}H^{i}\tau_{i}^{0}\\
+    a_2 &= \sum_{i}\sum_{j}\tau_{i}^{0}\tau_{j}^{i}H^{ij}\\
+    a_3 &= \sum_{i}\sum_{j}\sum_{k}\tau_{i}^{0}\tau_{j}^{i}\tau_{k}^{ij}H^{ijk}\\
+    &\dots
+\end{align*}
 $$
 
 ## $$b_1$$ Coefficient
