@@ -1,0 +1,29 @@
+---
+title:  "SICP Lecture 01"
+date:   2022-08-31 13:30:00 +0200
+categories: cs scheme
+tags: sicp scheme
+---
+
+A simple example to show essential scheme syntax.
+
+{% highlight scheme %}
+
+(define (abs x)
+  (if (< x 0)
+      (- x)
+      x))
+
+(define (square x) (* x x))
+
+(define (average x y) (/ (+ x y) 2))
+
+(define (sqrt x)
+  (define (improve guess) (average guess (/ x guess)))
+  (define (good-enough? guess) (< (abs (- (square guess) x)) 0.001))
+  (define (try guess)
+    (if (good-enough? guess)
+        guess
+        (try (improve guess))))
+  (try 1))
+{% endhighlight %}

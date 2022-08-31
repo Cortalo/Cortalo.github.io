@@ -1,0 +1,88 @@
+---
+title:  "SICP Lecture 02"
+date:   2022-08-31 14:00:00 +0200
+categories: cs scheme
+tags: sicp scheme
+math: true
+---
+
+## Write Good Code
+
+Last time we have the codes for calculating square root.
+
+{% highlight scheme %}
+
+(define (abs x)
+  (if (< x 0)
+      (- x)
+      x))
+
+(define (square x) (* x x))
+
+(define (average x y) (/ (+ x y) 2))
+
+(define (sqrt x)
+  (define (improve guess) (average guess (/ x guess)))
+  (define (good-enough? guess) (< (abs (- (square guess) x)) 0.001))
+  (define (try guess)
+    (if (good-enough? guess)
+        guess
+        (try (improve guess))))
+  (try 1))
+{% endhighlight %}
+
+The program works.
+However it doesn't really make sense for the body of the `sqrt` function.
+It is a lot of mess inside, and no one can understand what is going on inside within a short time.
+The problem can be solved by understanding what `sqrt` function is really doing.
+
+For a function
+
+$$
+f(y) = \frac{y + \frac{x}{y}}{2}
+$$
+
+$$\sqrt{x}$$ is the fixed-point of $$f(y)$$, e.g., $$f(\sqrt{x}) = \sqrt{x}$$
+
+{% highlight scheme %}
+(define (sqrt x)
+  (fixed-point (lambda(y) (average (/ x y) y)) 1))
+{% endhighlight %}
+
+we can already written down the code for `sqrt` function, without worring about the implementation of `fixed-point`
+
+{% highlight scheme %}
+(define (fixed-point f start)
+  (define tolerance 0.0001)
+  (define (close-enuf? u v)
+    (< (abs (- u v)) tolerance))
+  (define (iter old new)
+    (if (close-enuf? old new)
+        new
+        (iter new (f new))))
+  (iter start (f start)))
+{% endhighlight %}
+
+You may say it's just moving the complexity from `sqrt` function to `fixed-point` function. I have some arguments about this
+
+- `sqrt` is a very concrete function. In fact the meaning of `sqrt` has nothing to do with our recursive implementation. There are potentially many ways to perform square root.
+- `fixed-point` however is much more abstract than `sqrt`. And we can easily see the relationship between the meaning of `fixed-point` and its recursive implementation.
+- To sum up, whenever you have a very complicate implemtation for a rather concrete function, it is usually a potential signal of a deeper abstraction. Think hard what the concrete function is really doing.
+- The key observation here is, you can already written down the code for `sqrt` function using `fixed-point` abstration, even before you have such `fixed-point` function implementation.
+
+Now that using the fixed-point of $$f(y)= \frac{y + \frac{x}{y}}{2}$$ is much better than the original `sqrt` implementation. We can further improve it.
+
+The function we used for fixed-point is not very natural for square root.
+The natural function in the mind should be $$f(y) = x/y$$, since $$\sqrt{x}$$ is also its fixed-point.
+However $$f(y) = x/y$$ wouldn't work (try $$\sqrt{2}$$ start from 1), it will oscillate.
+The idea of $$f(y)= \frac{y + \frac{x}{y}}{2}$$ is just average damp, and it is not particular for square root.
+
+{% highlight scheme %}
+(define (sqrt x)
+  (fixed-point (average-damp (lambda(y) (/ x y))) 1))
+
+(define average-damp
+  (lambda (f) (lambda (x) (average (f x) x))))
+{% endhighlight %}
+
+where `average-damp` is a higher-order function.
