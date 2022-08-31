@@ -1,5 +1,5 @@
 ---
-title:  "SICP Lecture 02"
+title:  "SICP Lecture 02A"
 date:   2022-08-31 14:00:00 +0200
 categories: cs scheme
 tags: sicp scheme
@@ -69,6 +69,7 @@ You may say it's just moving the complexity from `sqrt` function to `fixed-point
 - `fixed-point` however is much more abstract than `sqrt`. And we can easily see the relationship between the meaning of `fixed-point` and its recursive implementation.
 - To sum up, whenever you have a very complicate implemtation for a rather concrete function, it is usually a potential signal of a deeper abstraction. Think hard what the concrete function is really doing.
 - The key observation here is, you can already written down the code for `sqrt` function using `fixed-point` abstration, even before you have such `fixed-point` function implementation.
+- Btw, people says MIT doesn't teach SICP anymore. One reason is nowadays, people already have almost every possible abstraction avaliable as a Python package or library. Thus learning to find and use these library can be much more efficient than making wheels.
 
 Now that using the fixed-point of $$f(y)= \frac{y + \frac{x}{y}}{2}$$ is much better than the original `sqrt` implementation. We can further improve it.
 
@@ -86,3 +87,10 @@ The idea of $$f(y)= \frac{y + \frac{x}{y}}{2}$$ is just average damp, and it is 
 {% endhighlight %}
 
 where `average-damp` is a higher-order function.
+
+It is equivalent to use
+
+{% highlight scheme %}
+(define (average-damp f)
+  (lambda (x) (average (f x) x)))
+{% endhighlight %}
