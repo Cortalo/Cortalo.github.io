@@ -1,0 +1,34 @@
+---
+title:  "SICP Lecture 03A"
+date:   2022-09-01 10:00:00 +0200
+categories: cs scheme
+tags: sicp scheme
+math: true
+---
+
+## Write Good Code
+
+The idea of extracting functions needs practice.
+Here is another example.
+It multiply each elements in the list by n.
+
+```scheme
+(define (scale-list n l)
+  (if (null? l)
+      nil
+      (cons (* (car l) n)
+            (scale-list n (cdr l)))
+      )
+ )
+```
+
+We should write such function using map.
+```scheme
+(define (scale-list n l)
+  (map (lambda(x) (* n x)) l)
+)
+```
+
+
+> When you write your code in this way, you stop to thinking about the control procedure of the program.
+{: .prompt-tip }

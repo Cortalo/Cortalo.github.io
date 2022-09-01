@@ -44,12 +44,14 @@ $$
 
 $$\sqrt{x}$$ is the fixed-point of $$f(y)$$, e.g., $$f(\sqrt{x}) = \sqrt{x}$$
 
+
+we can already written down the code for `sqrt` function, without worring about the implementation of `fixed-point`
+
 {% highlight scheme %}
 (define (sqrt x)
   (fixed-point (lambda(y) (average (/ x y) y)) 1))
 {% endhighlight %}
 
-we can already written down the code for `sqrt` function, without worring about the implementation of `fixed-point`
 
 {% highlight scheme %}
 (define (fixed-point f start)
