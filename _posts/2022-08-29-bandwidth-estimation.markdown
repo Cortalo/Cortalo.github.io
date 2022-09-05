@@ -75,7 +75,7 @@ $$\omega_{l}$$ is not shown in the model.
 
 The reactive elements can be divided into two (non-overlap) groups:
 - one is responsible for $$\omega_l$$
-- another on is responsible for $$\omega_h$$
+- another one is responsible for $$\omega_h$$
 - so we got two different circuits to calculate $$\omega_{l}$$ and $$\omega_{h}$$
 
 For $$\omega_{h}$$ we use zero value time constant (ZVT), meaning all the other elements are at zero value.
