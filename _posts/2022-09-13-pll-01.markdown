@@ -1,0 +1,13 @@
+---
+title:  "PLL 01"
+date:   2022-09-13 19:00:00 +0200
+categories: analog-circuit
+tags: analog pll
+math: true
+---
+
+## PLL Typical Architecture
+
+
+![pll-arche](/assets/img/2022-09-13-pll-01/pll-arche.png)
+_PLL Typical Architecture_
