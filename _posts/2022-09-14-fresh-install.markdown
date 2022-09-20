@@ -31,3 +31,5 @@ Use [this-link](https://superuser.com/questions/1370361/blurry-fonts-on-using-wi
 - I don't need to change the variables like `GDK_SCALE` etc.
 
 To [launch the server at start](https://superuser.com/questions/1372854/do-i-launch-the-app-xlaunch-for-every-login-to-use-gui-in-ubuntu-wsl-in-windows), put `config.xlaunch` in `Startup` folder.
+
+test
