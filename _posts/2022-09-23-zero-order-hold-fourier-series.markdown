@@ -84,5 +84,22 @@ $$
 and
 
 $$
-a_k = \frac{1}{2j} \cdot \frac{1}{-1+qN} \cdot \frac{\sin(\pi/N)}{\pi/N} \cdot e^{-j\pi/N} \quad \text{when} \quad k = -1+qN
+a_k = \frac{1}{2j} \cdot \frac{1}{-1+qN} \cdot \frac{\sin(\pi/N)}{\pi/N} \cdot e^{j\pi/N} \quad \text{when} \quad k = -1+qN
+$$
+
+If subtract the sampling signal from the original signal, the remaining parts has fourier series as (approximately)
+
+$$
+\begin{equation*}
+            a_k =
+            \left\{
+            \begin{aligned}
+            &j \frac{\pi}{N}, \quad \quad \quad \quad \quad \quad \quad k=1 \\
+            &-j \frac{\pi}{N}, \quad \quad \quad \quad \quad \quad k=-1\\
+            & \frac{1}{2j} \cdot \frac{1}{1+qN}, \quad \quad \quad k = 1 + qN\\
+            & \frac{1}{2j} \cdot \frac{1}{-1+qN},  \quad \quad k = -1 + qN\\
+            & 0, \quad \quad \quad \quad \quad \quad \quad \quad \text{otherwise}
+            \end{aligned}
+            \right.
+\end{equation*}
 $$
