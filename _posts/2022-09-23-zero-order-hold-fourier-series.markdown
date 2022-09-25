@@ -94,8 +94,8 @@ $$
             a_k =
             \left\{
             \begin{aligned}
-            &j \frac{\pi}{N}, \quad \quad \quad \quad \quad \quad \quad k=1 \\
-            &-j \frac{\pi}{N}, \quad \quad \quad \quad \quad \quad k=-1\\
+            & -\frac{\pi}{2N}, \quad \quad \quad \quad \quad \quad \quad k=1 \\
+            &- \frac{\pi}{2N}, \quad \quad \quad \quad \quad \quad k=-1\\
             & \frac{1}{2j} \cdot \frac{1}{1+qN}, \quad \quad \quad k = 1 + qN\\
             & \frac{1}{2j} \cdot \frac{1}{-1+qN},  \quad \quad k = -1 + qN\\
             & 0, \quad \quad \quad \quad \quad \quad \quad \quad \text{otherwise}
