@@ -76,16 +76,15 @@ $$
 
 
 ```matlab
-N = 1024;             % number of samples.
-
-S = some_func(N);     % signal index from 0 to N-1.
-                      % but in MATLAB index are from 1 to N.
-
-spectrum = fft(S)/N;  % spectrum gives each coefficients in DT Fourier Series.
-                      % from frequency 0, Fs/N, ..., to Fs*(N-1)/N
-
-% using Parsevel's Theorem of DT FS to calculate poewr spectrum
-% average of S^2 will be equal to sum(power_spec)
-
-power_sepc = abs(spectrum).^2
+function psd = power_spectrum(signal, Fs)
+    N = length(signal);
+    spectrum = fft(signal)/N;
+    psd = abs(spectrum).^2;
+    psd = psd(1:N/2+1);
+    psd(2:N/2) = 2*psd(2:N/2);
+    f = (0:N/2)*Fs/N;
+    semilogy(f, psd);
+    title("SSB Power Spectrum Density");
+    xlabel("f (Hz)");
+end
 ```
