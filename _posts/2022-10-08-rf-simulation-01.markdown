@@ -75,3 +75,7 @@ There are different techniques to deal with such distributed components.
 
 
 ## Basic RF Building Blocks
+
+RF systems are constructed primarily using four basic building blocks: amplifiers, filters, mixers, and oscillators.
+
+### Mixers
