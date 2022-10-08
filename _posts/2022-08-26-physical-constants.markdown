@@ -5,6 +5,11 @@ categories: physics
 math: true
 ---
 
+| 1e3  | 1e6  | 1e9  | 1e12  | 1e15  | 1e18  | 1e21  | 1e24  |
+| k    | M    | G    | T     | P     | E     | Z     | Y     |
+| 1e-3 | 1e-6 | 1e-9 | 1e-12 | 1e-15 | 1e-18 | 1e-21 | 1e-24 |
+| m    | u    | n    | p     | f     | a     | z     | y     |
+
 $$
 \begin{align*}
     e &= 1.602 \times 10^{-19} C\\
