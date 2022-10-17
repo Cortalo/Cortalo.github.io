@@ -69,3 +69,13 @@ the additional factor $$\frac{\pi}{2}$$ for equivalent noise bandwidth.
 <p style="text-align: right"> $\square$ </p>
 
 ### Example 02
+
+
+![example-01](/assets/img/2022-08-26-circuit-noise/example-02.png)
+_Example 02_
+
+Use T model for the nmos, we can find the transfer function
+
+$$
+\frac{v_{out}}{i_{n}} = \frac{R}{2}
+$$
