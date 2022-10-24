@@ -1,0 +1,39 @@
+---
+title:  "High-Frequency Design Techniques 03"
+date:   2022-10-21 18:00:00 +0200
+categories: analog-circuit
+tags: rf
+math: true
+---
+
+## Quality Factors
+
+The Q of an inductor or capacitor is the ratio of its reactance to its resistance.
+
+### Example 01
+
+A inductor and a resistor in series
+
+$$
+Q = \frac{\omega L}{R}
+$$
+
+### Example 02
+
+A capacitor and a resistor in series
+
+$$
+Q = \frac{1}{\omega CR}
+$$
+
+
+> In general $$Q$$ will depend on frequency $$\omega$$
+{: .prompt-tip}
+
+### Example 03
+
+Four elements $$L, R_L, C, R_C$$ in series, at the resonant frequency $$\omega_0$$
+
+$$
+Q = \frac{\omega_0 L}{R_L + R_C} = \frac{1}{\omega_0 C (R_L + R_C)}
+$$
