@@ -42,7 +42,7 @@ However, it turned out that the conditions on $$f$$ could not be relaxed indefin
 
 ### Example 1.2
 
-*There exists a continuous function $$f$$ such that $$\lim \sup_{n \to \infty} S_n (f,0) \infty$$.*
+*There exists a continuous function $$f$$ such that $$\lim \sup_{n \to \infty} S_n (f,0) =  \infty$$.*
 
 (Theorem 1.1 will be proved in Chapter 15 in the case $$f$$ everywhere continuous and in Chapter 16 in the general case, whilst Example 1.2 will be constructed in Chpater 18.)
 
@@ -58,9 +58,66 @@ This has, of course, been known since the time of Euler, but the first person to
 
 ### Lemma 1.4
 
-(i)*If $s_n \to s$ then $(n+1)^{-1}\sum_{j=0}^{n}s_j \to s*.
+(i)*If $s_n \to s$ then $(n+1)^{-1}\sum_{j=0}^{n}s_j \to s$*.
 
 (ii)*There exist sequences $s_n$ such that $s_n$ does not tend to a limit but $(n+1)^{-1}\sum_{j=0}^{n}s_j$ does.*
 
+(Thus the 'Cesaro limit' exists, and is equal to the usual limit, whenever the usual limit exists and may exist even if the usual limit does not.)
+
+*Proof.*
+
+
+(i) Let $$\varepsilon > 0$$ be given.
+Since $$s_n \to s$$ we can find an $$N(\varepsilon)$$ such that $$|s_n-s| \le \varepsilon/2$$ for $$ n \ge N(\varepsilon)$$.
+Set $$A = \sum_{j=0}^{N(\varepsilon)} |s_j - s| $$ and choose $$M(\varepsilon)$$ such that $$M(\varepsilon) \ge 2A \varepsilon^{-1}$$.
+Then if $$n \ge M(\varepsilon)$$, we have $$A \le M(\varepsilon)\varepsilon/2 \le n\varepsilon/2$$
+
+$$
+\begin{align}
+&|(n+1)^{-1} \sum_{j=0}^{n} s_j - s|\\
+=& (n+1)^{-1}|\sum_{j=0}^{n} (s_j - s)|\\
+\le & (n+1)^{-1} \sum_{j=0}^{n} |s_j - s|\\
+= & (n+1)^{-1}(\sum_{j=0}^{N(\varepsilon)} |s_j - s| + \sum_{j=N(\varepsilon)+1}^{n} |s_j - s| )\\
+\le & (n+1)^{-1} (A + n \varepsilon/2)\\
+\le & (n+1)^{-1} ((n+1)\varepsilon/2 + (n+1)\varepsilon/2)\\
+= & \varepsilon
+\end{align}
+$$
+
+(ii) Let $$s_n = (-1)^n $$
+
 
 <p style="text-align: right"> $\square$ </p>
+
+Fejer saw that although partial sums $$S_n(f,t)=\sum_{r=-n}^{n} \hat{f}(t)\exp irt $$ could fail to converge their averages
+
+$$
+\begin{align}
+\sigma_{n}(f,t) &= \frac{1}{n+1}\sum_{j=0}^{n} S_j(f,t)\\
+&= \frac{1}{n+1} \sum_{j=0}^{n} \sum_{r=-j}^{j} \hat{f}(r)\exp irt\\
+&= \sum_{r=-n}^{n} \frac{n+1-|r|}{n+1} \hat{f}(r) \exp irt
+\end{align}
+$$
+
+might behave rather better and that a Casaro limit could take the place of the usual limit.
+
+
+### Theorem 1.5
+
+(i)
+*If $$f: \mathbb{T} \to \mathbb{C}$$ is Riemann integrable then, if $$f$$ is continuous at $$t$$,*
+
+$$
+\sigma_{n}(f,t) = \sum_{r=-n}^{n} \frac{n+1-|r|}{n+1} \hat{f}(r) \exp irt \to f(t)
+$$
+
+(ii)
+*If $$f:\mathbb{T} \to \mathbb{C}$$ is continuous then*
+
+$$
+\sigma_{n}(f,t) = \sum_{r=-n}^{n} \frac{n+1-|r|}{n+1} \hat{f}(r) \exp irt \to f(t)
+$$
+
+*uniformly on $$\mathbb{T}$$.*
+
+(Any reader discouraged by Fejer's precocity should note that a few years earlier his school considered him so weak in mathematics as to require extra tuition.)

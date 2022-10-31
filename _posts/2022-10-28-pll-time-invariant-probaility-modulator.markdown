@@ -6,6 +6,8 @@ tags: pll
 math: true
 ---
 
+ISSCC 2020 17.3
+
 
 From [Jaehyouk Choi's Paper](https://ieeexplore.ieee.org/document/9062948)
 
@@ -14,3 +16,6 @@ This leads to the idea that, if we can modulate $$D_{DCW}$$ such that its probab
 
 > Why PSD of $$X$$ shows no spurious tones, if $$E[X](t)$$ is constant over time?
 {: .prompt-warning }
+
+> If PSD of $X$ shows spur, it must have a long term sinusoidal at certain frequency. It causes $$E[X](t)$$ varys with time.
+{: .prompt-tip }
