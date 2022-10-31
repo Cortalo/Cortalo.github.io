@@ -59,3 +59,31 @@ $$
 &= \frac{1}{2\pi}\int_{\mathbb{T}}f(t-y)K_n(y)dy
 \end{align}
 $$
+
+We are therefore led to examine the structure of $$K_n$$ in some detail.
+
+### Lemma 2.1.
+
+
+$$
+\begin{align}
+K_n(s) &= \frac{1}{n+1} \Bigg( \frac{\sin \frac{(n+1)s}{2}}{\sin \frac{s}{2}} \Bigg)^2 \quad \quad [s \ne 0]\\
+K_n(0) &= n+1
+\end{align}
+$$
+
+
+*Proof.*
+
+If $$s \ne 0 $$ then
+
+$$
+\begin{align}
+&\sum_{r=-n}^{n} (n+1-|r|) \exp irs\\
+=& \bigg(\sum_{k=0}^{n} \exp i (k - \frac{n}{2})s\bigg)^2
+\end{align}
+$$
+
+
+> Considering the number of situations of drawing two cards individually from two decks, the sum of two number gives $$x$$.
+{: .prompt-tip }
