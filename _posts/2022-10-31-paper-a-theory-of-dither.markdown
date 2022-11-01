@@ -43,3 +43,9 @@ $$
 $$
 
 It has been shown by Schuchman that
+
+## Nonsubtractive Dither Theory
+
+### A. Total Error PDF's
+
+The input to the quantizer is $$w=x+\nu$$, which is the sum of the

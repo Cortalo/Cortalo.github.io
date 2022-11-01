@@ -87,3 +87,16 @@ $$
 
 > Considering the number of situations of drawing two cards individually from two decks, the sum of two number gives $$x$$.
 {: .prompt-tip }
+
+$$
+\begin{align}
+&= \bigg( \exp - \dfrac{ins}{2} \sum_{k=0}^{n}\exp iks \bigg)^2\\
+&= \bigg( \exp \bigg( -\dfrac{ins}{2} \bigg) \dfrac{1-\exp i(n+1)s}{1 - \exp is} \bigg)^2\\
+&= \Bigg(\dfrac{\exp \bigg( - \dfrac{i(n+1)s}{2} \bigg) - \exp\bigg( \dfrac{i(n+1)s}{2} \bigg)}{\exp -\dfrac{is}{2} - \exp\dfrac{is}{2}} \Bigg)^2\\
+&= \Bigg( \dfrac{\sin \dfrac{(n+1)s}{2}}{\sin \dfrac{s}{2}} \Bigg)^2
+\end{align}
+$$
+
+If $$s = 0$$ then $$K_n(0) = n+1 $$ by direct computation.
+
+<p style="text-align: right"> $\square$ </p>
