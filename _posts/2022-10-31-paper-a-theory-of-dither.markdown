@@ -48,4 +48,32 @@ It has been shown by Schuchman that
 
 ### A. Total Error PDF's
 
-The input to the quantizer is $$w=x+\nu$$, which is the sum of the
+The input to the quantizer is $$w=x+\nu$$, which is the sum of the system input and the statistically independent dither process.
+This sum has a cpdf $$p_{w|x}(w,x) = p_{\nu}(w-x)$$.
+If the quantizer outputs $$k\Delta$$, the total error is $$k\Delta - x$$
+
+$$
+p_{\varepsilon|x}(\varepsilon,x) = \sum_{k=-\infty}^{\infty} \delta(\varepsilon  + x - k\Delta) \int_{-\frac{\Delta}{2} + k\Delta}^{\frac{\Delta}{2} + k\Delta} p_{\nu}(w-x)dw
+$$
+
+given $$\varepsilon$$ and $$x$$, there is at most one $$k$$ such that $$\delta(\varepsilon + x - k \Delta)$$ is not zero.
+Writing the integral in the last equation as a convolution (which is denoted by $$*$$) of $$p_{\nu}$$ with a rectangular window function $$\Delta \Pi_{\Delta}$$ reduces it to
+
+$$
+p_{\varepsilon|x}(\varepsilon,x) = [\Delta \Pi_{\Delta} * p_{\nu}](\varepsilon)W_{\Delta}(\varepsilon + x)
+$$
+
+where
+
+$$
+W_{\Gamma}(\varepsilon) \overset{\triangle}{=} \sum_{k=-\infty}^{\infty} \delta(\varepsilon - k\Gamma)
+$$
+
+Thus, the pdf of $$\varepsilon$$ is given by (since $$W_{\Delta}(\varepsilon)$$ is even function)
+
+$$
+\begin{align}
+p_{\varepsilon}(\varepsilon) &= \int_{-\infty}^{\infty} p_{\varepsilon|x}(\varepsilon,x) p_x(x)dx\\
+&= [\Delta\Pi_{\Delta} * p_{\nu}](\varepsilon) [W_{\Delta} * p_x](-\varepsilon)
+\end{align}
+$$

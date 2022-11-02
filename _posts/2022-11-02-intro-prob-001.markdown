@@ -1,0 +1,34 @@
+---
+title:  "Introduction to Probability 001"
+date:   2022-11-02 16:00:00 +0200
+categories: math
+tags: probability
+math: true
+---
+
+## Probability Models And Axioms
+
+[Lecture 01.1 Youtube](https://www.youtube.com/watch?v=1uW3qMFA9Ho&list=PLUl4u3cNGP60hI9ATjSFgLZpbNJ7myAg6&index=2)
+
+[Lecture 01.2 Youtube](https://www.youtube.com/watch?v=iQ2edOqEQAs&list=PLUl4u3cNGP60hI9ATjSFgLZpbNJ7myAg6&index=2)
+
+### Sample Space
+
+- Sample space is a list (set) of possible outcomes, $$\Omega$$
+- Event: a subset of the sample space. Probability is assigned to events.
+
+
+### Probability Axioms
+
+
+[Lecture 01.4 Youtube](https://www.youtube.com/watch?v=pA83XtLeVig&list=PLUl4u3cNGP60hI9ATjSFgLZpbNJ7myAg6&index=5)
+
+- Nonnegativity: $$P(A) \ge 0$$
+- Normalization: $$P(\Omega) = 1$$
+- (Finite) additivity: (to be strengthened later)
+
+If $$A \cap B = \varnothing$$, then $$P(A \cup B) = P(A) + P(B)$$
+
+
+> $$A \cap B$$ read as $$A$$ intersects $$B$$, $$A \cup B$$ read as $$A$$ unions $$B$$
+{: .prompt-tip }
