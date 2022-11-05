@@ -77,3 +77,31 @@ p_{\varepsilon}(\varepsilon) &= \int_{-\infty}^{\infty} p_{\varepsilon|x}(\varep
 &= [\Delta\Pi_{\Delta} * p_{\nu}](\varepsilon) [W_{\Delta} * p_x](-\varepsilon)
 \end{align}
 $$
+
+
+![Nonsubtractively dither](/assets/img/2022-10-31-paper-a-theory-of-dither/01.png)
+_Nonsubtractively dither_
+
+define total error
+
+$$
+\varepsilon \overset{\triangle}{=} output - input = D_{OUT} - D_{ACC}
+$$
+
+Theorem:
+
+$$E[\varepsilon^m]$$ is independent of the distribution of the input $$D_{ACC}$$ if and only if
+
+
+$$
+\frac{\partial^m}{\partial u^m}[\mathrm{sinc}(u) \cdot \mathcal{F}[p_{\nu}](u)] \bigg|_{u=k} = 0
+$$
+
+for all integer $$k$$ with exception of 0. Where
+
+$$
+\begin{align*}
+\mathrm{sinc}(u) &= \frac{\sin(\pi u)}{\pi u}\\
+\mathcal{F}[p_{\nu}](u) &= \int_{-\infty}^{\infty} p_{\nu}(x) e^{-j2\pi u x} dx
+\end{align*}
+$$
