@@ -15,5 +15,5 @@ The concept of this work is from [Micheal Peter Kennedy's Paper](https://ieeexpl
 This leads to the idea that, if we can modulate $$D_{DCW}$$ such that its probability density function (PDF) is time-invatiant, $$E[\tau_{DTC}](t)$$ becomes constant over time even after passing a nonlinear $$f_{DTC}(D_{DCW})$$, so the PSD of $$\tau_{DTC}$$ has no fractoinal spurs.
 
 
-> **For a random process $$Y$$, PSD of $$Y$$ shows no spurs $$\iff E[Y](t)$$ is constant over time.**
+> **For a random process $$Y$$, $$E[Y](t)$$ is constant over time $$\implies$$ PSD of $$Y$$ shows no spurs.**
 {: .prompt-tip }

@@ -42,6 +42,15 @@ $$
 \varepsilon = q(x+\nu) + \nu
 $$
 
+![Nonsubtractively dither](/assets/img/2022-10-31-paper-a-theory-of-dither/01.png)
+_Nonsubtractively dither_
+
+define total error
+
+$$
+\varepsilon \overset{\triangle}{=} output - input = D_{OUT} - D_{ACC}
+$$
+
 It has been shown by Schuchman that
 
 ## Nonsubtractive Dither Theory
@@ -79,14 +88,6 @@ p_{\varepsilon}(\varepsilon) &= \int_{-\infty}^{\infty} p_{\varepsilon|x}(\varep
 $$
 
 
-![Nonsubtractively dither](/assets/img/2022-10-31-paper-a-theory-of-dither/01.png)
-_Nonsubtractively dither_
-
-define total error
-
-$$
-\varepsilon \overset{\triangle}{=} output - input = D_{OUT} - D_{ACC}
-$$
 
 Theorem:
 
