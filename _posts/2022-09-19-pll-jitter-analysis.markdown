@@ -17,6 +17,8 @@ L_{VCO}(f_m) &= \frac{10^{FOM_{VCO}/10}}{P_{VCO}/1mW} \cdot \frac{f_{VCO}^2}{f_m
 \end{align}
 $$
 
+where $$L$$ is single sideband noise power to carrier power ratio.
+
 ## Loop Phase Noise and Benchmarking
 
 To calculate the output phase noise due to the reference, frequency divider, phase detector and the charge pump.
@@ -149,7 +151,7 @@ $$
 $$
 
 $$
-\sigma_{t,PLL} = \frac{1}{P_{PLL}} \cdot \bigg( 10^{\frac{FOM_{loop} + FOM_{VCO}}{20}} \cdot \frac{4}{\pi} \cdot \frac{1 mW}{1 Hz} \bigg) \cdot \square
+\sigma_{t,PLL}^2 = \frac{1}{P_{PLL}} \cdot \bigg( 10^{\frac{FOM_{loop} + FOM_{VCO}}{20}} \cdot \frac{4}{\pi} \cdot \frac{1 mW}{1 Hz} \bigg) \cdot \square
 $$
 
 $$
