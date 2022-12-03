@@ -14,6 +14,9 @@ In LaTex you can use inline code, e.g., `\tikz \draw (0pt,0pt) -- (20pt,6pt);` t
 
 ## Tutorial: A Picture for Karl's Students
 
+
+![034](/assets/img/2022-12-01-tikz-tutorial/034.png)
+
 ```latex
 \documentclass[tikz]{standalone}
 \begin{document}
@@ -406,3 +409,261 @@ To specify different colors, you can use options:
 ![025](/assets/img/2022-12-01-tikz-tutorial/025.png)
 
 ### Specifying Coordinates
+
+There are different ways of specifying coordinates.
+The easiest way is to say something like `(10pt,2cm)`.
+This means 10pt in $$x$$-direction and 2cm in $$y$$-directions.
+Alternatively, you can also leave out the units as in `(1,2)`, which means "one times the current $$x$$-vector pule twice the current $$y$$-vector".
+These vectors default to 1cm.
+
+- `(30:1cm)` means 1cm in direction 30 degree.
+- `+(0cm,1cm)` means "1cm upwards from the previous speficied position".
+- `++(2cm,0cm)` means "2cm to the right of the previous specified position, making this the new specified position".
+
+
+
+```latex
+\begin{tikzpicture}[scale=3]
+  \clip (-0.1,-0.2) rectangle (1.1,0.75);
+  \draw[step=.5cm,gray,very thin] (-1.4,-1.4) grid (1.4,1.4);
+  \draw (-1.5,0) -- (1.5,0);
+  \draw (0,-1.5) -- (0,1.5);
+  \draw (0,0) circle [radius=1cm];
+  \shadedraw[left color=gray,right color=green, draw=green!50!black]
+  (0,0) -- (3mm,0mm)
+    arc [start angle=0, end angle=30, radius=3mm] -- cycle;
+\end{tikzpicture}
+```
+
+![025](/assets/img/2022-12-01-tikz-tutorial/025.png)
+
+
+
+```latex
+\begin{tikzpicture}[scale=3]
+  \clip (-0.1,-0.2) rectangle (1.1,0.75);
+  \draw[step=.5cm,gray,very thin] (-1.4,-1.4) grid (1.4,1.4);
+  \draw (-1.5,0) -- (1.5,0);
+  \draw (0,-1.5) -- (0,1.5);
+  \draw (0,0) circle [radius=1cm];
+  \filldraw[fill=green!20,draw=green!50!black] (0,0) -- (3mm,0mm)
+    arc [start angle=0, end angle=30, radius=3mm] -- cycle;
+  \draw[red,very thick] (30:1cm) -- +(0,-0.5);
+\end{tikzpicture}
+```
+
+![026](/assets/img/2022-12-01-tikz-tutorial/026.png)
+
+- `(30:1cm |- 0,0)` means "the point straight down from `(30:1cm)` that lies on the $$x$$-axis".
+- `(<p> |- <q>)` means "the intersection of a vertical line through $$p$$ and a horizontal line through $$q$$".
+
+```latex
+\begin{tikzpicture}[scale=3]
+  \clip (-0.1,-0.2) rectangle (1.1,0.75);
+  \draw[step=.5cm,gray,very thin] (-1.4,-1.4) grid (1.4,1.4);
+  \draw (-1.5,0) -- (1.5,0);
+  \draw (0,-1.5) -- (0,1.5);
+  \draw (0,0) circle [radius=1cm];
+  \filldraw[fill=green!20,draw=green!50!black] (0,0) -- (3mm,0mm)
+    arc [start angle=0, end angle=30, radius=3mm] -- cycle;
+  \draw[red,very thick] (30:1cm) -- +(0,-0.5);
+  \draw[blue,very thick] (30:1cm) ++(0,-0.5) -- (0,0);
+\end{tikzpicture}
+```
+
+![027](/assets/img/2022-12-01-tikz-tutorial/027.png)
+
+To appreciate the difference between `+` and `++` consider the following example
+
+```latex
+% Example using ++
+\begin{tikzpicture}
+  \def\rectanglepath{-- ++(1cm,0cm) -- ++(0cm,1cm) -- ++(-1cm,0cm) -- cycle}
+  \draw (0,0) \rectanglepath;
+  \draw (1.5,0) \rectanglepath;
+\end{tikzpicture}
+
+% Example using +
+\begin{tikzpicture}
+  \def\rectanglepath{-- +(1cm,0cm) -- +(1cm,1cm) -- +(0cm,1cm) -- cycle}
+  \draw (0,0) \rectanglepath;
+  \draw (1.5,0) \rectanglepath;
+\end{tikzpicture}
+```
+
+all of this could have been written as
+
+```latex
+\draw (0,0) rectangle +(1,1) (1.5,0) rectangle +(1,1);
+```
+
+### Intersecting Paths
+
+- `(1,{tan(30)})`: TikZ's math engine knows how to compute things like `tan(30)`.
+Note the added braces since, otherwise, TikZ's parser would think that the first closing parenthesis ends the coordinate (in general, you need to add braces around components of coordinates when these components contain parentheses).
+
+- `\path` command without any options like `draw` or `fill` creates "invisible" path.
+
+```latex
+\path [name path=upward line] (1,0) -- (1,1);
+\path [name path=sloped line] (0,0) -- (30:1.5cm); % a bit longer, so that there is an intersection
+
+% (add `\usetikzlibrary{intersections}' after loading tikz in the preamble)
+\draw [name intersections={of=upward line and sloped line, by=x}]
+  [very thick,orange] (1,0) -- (x);
+```
+
+### Adding Arrow Tips
+
+- Adds the option `->` to the drawing commands.
+- `->` puts arrow tips at the end of the path.
+- `<-` puts arrow tips at the begining of the path.
+- `<->` puts arrow tips at both ends of the path.
+
+
+```latex
+\usetikzlibrary {intersections}
+\begin{tikzpicture}[scale=3]
+  \clip (-0.1,-0.2) rectangle (1.1,1.51);
+  \draw[step=.5cm,gray,very thin] (-1.4,-1.4) grid (1.4,1.4);
+  \draw[->] (-1.5,0) -- (1.5,0);
+  \draw[->] (0,-1.5) -- (0,1.5);
+  \draw (0,0) circle [radius=1cm];
+  \filldraw[fill=green!20,draw=green!50!black] (0,0) -- (3mm,0mm)
+    arc [start angle=0, end angle=30, radius=3mm] -- cycle;
+  \draw[red,very thick]
+  (30:1cm) -- +(0,-0.5);
+  \draw[blue,very thick]
+  (30:1cm) ++(0,-0.5) -- (0,0);
+  \path [name path=upward line] (1,0) -- (1,1);
+  \path [name path=sloped line] (0,0) -- (30:1.5cm);
+  \draw [name intersections={of=upward line and sloped line, by=x}]
+  [very thick,orange] (1,0) -- (x);
+\end{tikzpicture}
+```
+
+![028](/assets/img/2022-12-01-tikz-tutorial/028.png)
+
+- You canadd arrow tips only to a sinle open "line". For example, you cannot add tips to, say, a rectangle or circuit.
+However, you can add arrow tips to curved paths and to paths that have several segments.
+
+```latex
+\begin{tikzpicture}
+  \draw [<->] (0,0) arc [start angle=180, end angle=30, radius=10pt];
+  \draw [<->] (1,0) -- (1.5cm,10pt) -- (2cm,0pt) -- (2.5cm,10pt);
+\end{tikzpicture}
+```
+
+- There are different arrow styles. (see section 106.)
+
+
+```latex
+\usetikzlibrary {arrows.meta}
+\begin{tikzpicture}[>=Stealth]
+  \draw [->] (0,0) arc [start angle=180, end angle=30, radius=10pt];
+  \draw [<<-,very thick] (1,0) -- (1.5cm,10pt) -- (2cm,0pt) -- (2.5cm,10pt);
+\end{tikzpicture}
+```
+
+![029](/assets/img/2022-12-01-tikz-tutorial/029.png)
+
+### Scoping
+
+
+```latex
+\begin{tikzpicture}[ultra thick]
+  \draw (0,0) -- (0,1);
+  \begin{scope}[thin]
+    \draw (1,0) -- (1,1);
+    \draw (2,0) -- (2,1);
+  \end{scope}
+  \draw (3,0) -- (3,1);
+\end{tikzpicture}
+```
+
+![030](/assets/img/2022-12-01-tikz-tutorial/030.png)
+
+- Scoping has another interesing effect:
+Any changes to the clipping area are local to the scope.
+
+### Transformations
+
+- TikZ provides numerous options that allow you to transform coordinates.
+- For example, the `xshift` option allows you to shift all subsequent points by certain amount.
+
+
+```latex
+\draw (0,0) -- (0,0.5) [xshift=2pt] (0,0) -- (0,0.5);
+```
+
+![031](/assets/img/2022-12-01-tikz-tutorial/031.png)
+
+- You can change transformation "in the middle of a path"
+
+```latex
+\begin{tikzpicture}[even odd rule,rounded corners=2pt,x=10pt,y=10pt]
+  \filldraw[fill=yellow!80!black] (0,0) rectangle (1,1)
+          [xshift=5pt,yshift=5pt] (0,0) rectangle (1,1)
+                      [rotate=30] (-1,-1) rectangle (2,2);
+\end{tikzpicture}
+```
+
+![032](/assets/img/2022-12-01-tikz-tutorial/032.png)
+
+### Repeating Things: For-Loops
+
+```latex
+\foreach \x in {1,2,3} {$x=\x$,}
+```
+
+The general syntax is `\foreach` *\<variable\>* `in` `{` *\<list of values\>* `}` *\<commands\>*.
+If the *\<commands\>* do not start with a brace, everyhing up to the next semicolon is used as *\<commands\>*.
+
+```latex
+\begin{tikzpicture}[scale=3]
+  \clip (-0.1,-0.2) rectangle (1.1,1.51);
+  \draw[step=.5cm,gray,very thin] (-1.4,-1.4) grid (1.4,1.4);
+  \filldraw[fill=green!20,draw=green!50!black] (0,0) -- (3mm,0mm)
+  arc [start angle=0, end angle=30, radius=3mm] -- cycle;
+  \draw[->] (-1.5,0) -- (1.5,0);
+  \draw[->] (0,-1.5) -- (0,1.5);
+  \draw (0,0) circle [radius=1cm];
+  \foreach \x in {-1cm,-0.5cm,1cm}
+    \draw (\x,-1pt) -- (\x,1pt);
+  \foreach \y in {-1cm,-0.5cm,0.5cm,1cm}
+    \draw (-1pt,\y) -- (1pt,\y);
+\end{tikzpicture}
+```
+
+![033](/assets/img/2022-12-01-tikz-tutorial/033.png)
+
+```latex
+\foreach \x in {-1,-0.5,1}
+  \draw[xshift=\x cm] (0pt,-1pt) -- (0pt,1pt);
+```
+
+```latex
+\tikz \foreach \x in {1,...,10}
+  \draw (\x,0) circle (0.4cm);
+```
+
+```latex
+\tikz \foreach \x in {-1,-0.5,...,1}
+  \draw (\x cm,-1pt) -- (\x cm,1pt);
+```
+
+```latex
+\begin{tikzpicture}
+\foreach \x in {1,2,...,5,7,8,...,12}
+  \foreach \y in {1,...,5}
+  {
+    \draw (\x,\y) +(-.5,-.5) rectangle ++(.5,.5);
+    \draw (\x,\y) node{\x,\y};
+  }
+\end{tikzpicture}
+```
+
+### Adding Text
+
+
+![034](/assets/img/2022-12-01-tikz-tutorial/034.png)
