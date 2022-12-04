@@ -11,3 +11,24 @@ math: true
 
 ![pll-arche](/assets/img/2022-09-13-pll-01/pll-arche.png)
 _PLL Typical Architecture_
+
+### Type-I PLL
+
+![002](/assets/img/2022-09-13-pll-01/002.png)
+
+The PLL using XOR as PD is an example of type-I PLL, since there is only one integrator (the VCO) in the loop.
+
+XOR is called PD since phase detectos produce little information if thet sense unequal frequencies at their inputs.
+
+### Type-II PLL
+
+The PLL using PFD/CP is an example of type-II PLL, since there are two integrators in the loop.
+
+![003](/assets/img/2022-09-13-pll-01/003.png)
+
+$$
+\begin{align}
+K_d &= \dfrac{I_{cp}}{2\pi}\\
+F_{LF}(s) &= R + \dfrac{1}{sC}
+\end{align}
+$$
