@@ -32,3 +32,77 @@ K_d &= \dfrac{I_{cp}}{2\pi}\\
 F_{LF}(s) &= R + \dfrac{1}{sC}
 \end{align}
 $$
+
+The PLL open-loop transfer function is
+
+$$
+G(s) = \dfrac{K_d}{N} \cdot F_{LF}(s) \cdot \dfrac{K_{VCO}}{s}
+$$
+
+The VCO phase noise can be expressed by
+
+$$
+\begin{align}
+\mathcal{L}_{VCO}(f_m) &= \dfrac{10^{FOM_{VCO}/10}}{P_{VCO}/1mW} \cdot \dfrac{f_{VCO}^2}{f_m^2}
+\end{align}
+$$
+
+The noise transfer function from VCO to the PLL output is
+
+$$
+H_{VCO}(s) = \dfrac{1}{1+G(s)}
+$$
+
+Thus the PLL output noise caused VCO can be calculated as
+
+$$
+\begin{align}
+\sigma_{t,VCO}^2 &= \dfrac{1}{2\pi^2 f_{out}^2} \cdot \int_{0}^{\infty} \mathcal{L}_{VCO} (f_m) \cdot |H_{VCO}(j2\pi f_m)|^2 df_m
+\end{align}
+$$
+
+The CP current noise is
+
+$$
+\begin{align}
+S_{i,CP} &= 8 kT \gamma g_m \cdot (\tau_{PD}/T_{ref})\\
+&= 8kT \gamma \cdot (2 I_{CP}/V_{ov}) \cdot (\tau_{PD}/T_{ref})
+\end{align}
+$$
+
+The power of CP is
+
+$$
+P_{CP} = I_{CP} V_{dd} \cdot (\tau_{PD}/T_{ref}) = I_{CP}V_{dd}\tau_{PD} \cdot f_{ref}
+$$
+
+The in-band phase noise caused by CP is
+
+$$
+\begin{align}
+S_{\phi,in-band,CP} &\approx \dfrac{S_{i,CP}}{(K_d/N)^2}\\
+&= \dfrac{N^2 f_{ref}^2}{P_{CP}} \cdot \Bigg\{ \tau_{PD}^2 \cdot \dfrac{64\pi^2 kT \gamma V_{dd}}{V_{ov}} \Bigg\}
+\end{align}
+$$
+
+The CP phase noise can be expressed by
+
+$$
+\mathcal{L}_{CP} = \dfrac{10^{FOM_{CP}/10}}{P_{CP}/1mW} \cdot \bigg(\dfrac{f_{out}}{1 Hz}\bigg)^2
+$$
+
+The noise transfer function from CP to the PLL output is
+
+$$
+H_{CP}(s) = \dfrac{N}{K_d} \cdot \dfrac{G(s)}{1+G(s)}
+$$
+
+and the PLL output noise caused by CP can be calculated as
+
+$$
+\sigma_{t,CP}^2 = \dfrac{1}{2\pi^2 f_{out}^2} \cdot \int_{0}^{\infty} \mathcal{L}_{CP} \cdot |H_{CP}(j2\pi f_m)|^2 df_m
+$$
+
+#### Optimal Bandwidth
+
+Optimal bandwidth is where $$\sigma_{t,VCO}^2 = \sigma_{t,CP}^2$$
