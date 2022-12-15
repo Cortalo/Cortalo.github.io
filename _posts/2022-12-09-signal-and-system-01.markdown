@@ -159,7 +159,7 @@ $$
 
 If $$F(z)=G(z)$$ for $$z \in \mathrm{ROC}(f)\cap\mathrm{ROC}(g)$$, then $$f[k] = g[k]$$ for all $$k\in\mathbb{Z}$$
 
-- It implies, for an unkown signal $$f[.]$$, if we know its $$F(z)$$ expression and a non-empty subset of its $$\mathrm{ROC}(f)$$, then in principle we completely know the signal.
+- It implies, for an unkown signal $$f[.]$$, if we know its $$F(z)$$ expression and its $$\mathrm{ROC}(f)$$ is non empty, then in principle we completely know the signal.
 - So, we have a two directional table!
 
 #### Example 05

@@ -85,16 +85,16 @@ S_{\phi,in-band,CP} &\approx \dfrac{S_{i,CP}}{(K_d/N)^2}\\
 \end{align}
 $$
 
-The CP phase noise can be expressed by
+The output in-band phase noise caused by CP can be expressed by
 
 $$
-\mathcal{L}_{CP} = \dfrac{10^{FOM_{CP}/10}}{P_{CP}/1mW} \cdot \bigg(\dfrac{f_{out}}{1 Hz}\bigg)^2
+\mathcal{L}_{CP} = \dfrac{1}{2} \cdot S_{\phi,in-band,CP} = \dfrac{10^{FOM_{CP}/10}}{P_{CP}/1mW} \cdot \bigg(\dfrac{f_{out}}{1 Hz}\bigg)^2
 $$
 
 The noise transfer function from CP to the PLL output is
 
 $$
-H_{CP}(s) = \dfrac{N}{K_d} \cdot \dfrac{G(s)}{1+G(s)}
+H_{CP}(s) = \dfrac{G(s)}{1+G(s)}
 $$
 
 and the PLL output noise caused by CP can be calculated as
@@ -105,4 +105,74 @@ $$
 
 #### Optimal Bandwidth
 
-Optimal bandwidth is where $$\sigma_{t,VCO}^2 = \sigma_{t,CP}^2$$
+use
+
+$$
+\begin{align}
+\mathcal{L}_{\mathrm{VCO}} &= \dfrac{\mathcal{L}_{\mathrm{VCO}}(f_r) \cdot f_r^2}{f_m^2}\\
+\sigma_{t,\mathrm{VCO}}^2 &= \dfrac{1}{2\pi^2 f_{out}^2} \cdot \int_{0}^{\infty} \mathcal{L}_{\mathrm{VCO}} \cdot \Big| \dfrac{1}{1+G(j2\pi f_m)}  \Big|^2 df_m
+\end{align}
+$$
+
+Assuming a given open-loop transfer function $$G_0(s)$$ that results in a closed-loop transfer function with a 3-dB bandwidth of $$f_{c,0}$$, scaling the bandwidth to $$f_c$$ while keeping the same shape (thus the phase margin) results in a new
+
+$$
+G(s) = G_{0}(s \cdot \dfrac{f_{c,0}}{f_c})
+$$
+
+then
+
+$$
+\sigma_{t,\mathrm{VCO}}^2 = \dfrac{2 \mathcal{L}_{\mathrm{VCO}}(f_r)\cdot f_r^2}{f_{out}^2} \cdot \dfrac{f_{c,0}}{f_c} \cdot \int_{0}^{\infty} \Big| \dfrac{1}{s\cdot [1+G_0(s)]} \Big|^2 df
+$$
+
+Also, use
+
+$$
+\begin{align}
+\sigma_{t,\mathrm{Loop}}^2 &= \dfrac{1}{2\pi^2 f_{out}^2} \cdot \int_{0}^{\infty} \mathcal{L}_{\mathrm{Loop}} \cdot \Big| \dfrac{G(j2\pi f_m)}{1+G(j2\pi f_m)} \Big|^2 df_m\\
+&= \dfrac{\mathcal{L}_{\mathrm{Loop}}}{2\pi^2 f_{out}^2} \cdot \dfrac{f_c}{f_{c,0}} \cdot \int_{0}^{\infty} \Big| \dfrac{G_0(s)}{1+G_0(s)} \Big|^2 df
+\end{align}
+$$
+
+Thus
+
+$$
+f_{c,opt} = \sqrt{\dfrac{\mathcal{L}_{\mathrm{VCO}}(f_r)\cdot f_r^2}{\mathcal{L}_{Loop}}} \cdot 2\pi \cdot \sqrt{f_{c,0}^2 \cdot \dfrac{\int_{0}^{\infty}\big|\dfrac{1}{s\cdot[1+G_0(s)]}\big|^2 df}{\int_{0}^{\infty} \big|\dfrac{G_0(s)}{1+G_0(s)}\big|^2 df}}
+$$
+
+then
+
+$$
+\sigma_{t,\mathrm{PLL,min}}^2 = 2 \sqrt{\dfrac{2 \mathcal{L}_{\mathrm{VCO}}(f_r)\cdot f_r^2}{f_{out}^2} \cdot \dfrac{\mathcal{L}_{\mathrm{Loop}}}{2\pi^2 f_{out}^2} \cdot \int_{0}^{\infty} \big|\dfrac{G_0(s)}{1+G_0(s)}\big|^2 df \cdot \int_{0}^{\infty}\big|\dfrac{1}{s\cdot[1+G_0(s)]}\big|^2 df}
+$$
+
+use
+
+$$
+\begin{align}
+\dfrac{\mathcal{L}_{\mathrm{VCO}}(f_r) \cdot f_r^2}{f_{out}^2}  &= \dfrac{10^{\mathrm{FOM_{VCO}}/10}}{P_{\mathrm{VCO}}/1 \mathrm{mW}}\\
+\dfrac{\mathcal{L}_{\mathrm{Loop}}}{f_{out}^2} &= \dfrac{10^{\mathrm{FOM_{Loop}}/10}}{P_{\mathrm{Loop}}/1 \mathrm{mW}}
+\end{align}
+$$
+
+then
+
+$$
+\sigma_{t,\mathrm{PLL,min}}^2 =  \dfrac{1}{\sqrt{P_{\mathrm{Loop}}\cdot P_{\mathrm{VCO}}}} \cdot 10^{(\mathrm{FOM_{Loop}+FOM_{VCO}})/20} \cdot \sqrt{\int_{0}^{\infty} \big|\dfrac{G_0(s)}{1+G_0(s)}\big|^2 df \cdot \int_{0}^{\infty}\big|\dfrac{1}{s\cdot[1+G_0(s)]}\big|^2 df} \cdot \dfrac{2}{\pi} \cdot \dfrac{1mW}{1Hz}
+$$
+
+Then with a given power budget, the optimal is $$P_{Loop}=P_{VCO}$$
+
+<!-- Optimal bandwidth is where $$\sigma_{t,VCO}^2 = \sigma_{t,CP}^2$$ -->
+
+## SSPLL
+
+<img src="/assets/img/2022-09-13-pll-01/004.png" style="width:80%;height:80%;">
+
+$$
+\begin{align}
+G(s) &= K_d \cdot F_{LF}(s) \cdot \dfrac{K_{VCO}}{s}\\
+H_{\mathrm{VCO}}(s) &= \dfrac{1}{1+G(s)}
+\end{align}
+$$

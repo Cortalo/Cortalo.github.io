@@ -78,7 +78,7 @@ $$
 \begin{align}
 C_1 &= \dfrac{1}{L_1 \cdot (2\pi f_{max})^2}\\
 C_m &= \dfrac{1}{L_1 \cdot (2\pi f_{min})^2} - \dfrac{1}{L_1 \cdot (2\pi f_{max})^2}\\
-K_{\mathrm{VCO}} &\approx \dfrac{f_{max} - f_{min}}{V_{ch}-V_{cl}}
+K_{\mathrm{VCO}} &\approx \dfrac{2\pi (f_{max} - f_{min})}{V_{ch}-V_{cl}}
 \end{align}
 $$
 
