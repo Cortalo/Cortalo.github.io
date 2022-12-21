@@ -15,11 +15,33 @@ From [book_topics_in_the_theory_of_random_noise](https://archive.org/details/str
 The mean value of $$\xi$$ can be defined by
 
 $$
-\langle\xi\rangle_{\xi} = \lim_{n\to\infty} \dfrac{\xi_1 + \xi_2 + \dots + \xi_n}{n}
+\langle\xi\rangle_{\xi} = \lim_{n\to\infty} \dfrac{\xi_1 + \xi_2 + \dots + \xi_n}{n} = \lambda()
 $$
 
 $$
-\langle\xi^2\rangle_{\xi} = \lim_{n\to\infty} \dfrac{\xi_1^2 + \xi_2^2 + \dots + \xi_n^2}{n}
+\langle\xi^2\rangle_{\xi} = \lim_{n\to\infty} \dfrac{\xi_1^2 + \xi_2^2 + \dots + \xi_n^2}{n} = \lambda()
+$$
+
+$$
+\langle f(\xi)\rangle_{\xi} = \lim_{n\to\infty} \dfrac{f(\xi_1) + f(\xi_2) + \dots + f(\xi_n)}{n} = \lambda()
+$$
+
+$$
+\langle f(x,\xi)\rangle_{\xi} = \lim_{n\to\infty} \dfrac{f(x,\xi_1) + f(x,\xi_2) + \dots + f(x,\xi_n)}{n} = \lambda(x)
+$$
+
+- Derivitive
+
+$$
+\begin{align}
+& \dfrac{d}{dx} \langle f(x,\xi)\rangle_{\xi} = \lim_{\Delta x \to 0}\dfrac{\langle f(x + \Delta x,\xi)\rangle_{\xi} - \langle f(x,\xi)\rangle_{\xi}}{\Delta x}\\
+=& \lim_{\Delta x \to 0} \dfrac{\lim_{n\to\infty} \dfrac{f(x+\Delta x,\xi_1) + \dots + f(x+\Delta x, \xi_n)}{n} - \lim_{n\to\infty} \dfrac{f(x,\xi_1)+\dots+f(x,\xi_n)}{n}}{\Delta x}\\
+= & \lim_{\Delta x \to 0} \Big[ \lim_{n\to\infty}\dfrac{f(x+\Delta x,\xi_1)+\dots + f(x+\Delta x, \xi_n)}{n\Delta x} - \lim_{n\to\infty} \dfrac{f(x,\xi_1)+\dots + f(x,\xi_n)}{n\Delta x} \Big]\\
+= & \lim_{\Delta x \to 0} \lim_{n\to\infty} \dfrac{(f(x+\Delta x,\xi_1)-f(x,\xi_1)) + \dots + (f(x+\Delta x,\xi_n)-f(x,\xi_n))}{n\Delta x}\\
+\doteq & \lim_{n\to\infty}\lim_{\Delta x\to 0} \dfrac{(f(x+\Delta x,\xi_1)-f(x,\xi_1)) + \dots + (f(x+\Delta x,\xi_n)-f(x,\xi_n))}{n\Delta x}\\
+= & \lim_{n\to\infty} \dfrac{\dfrac{\partial}{\partial x}f(x,\xi_1)+\dots \dfrac{\partial}{\partial x}f(x,\xi_n)}{n}\\
+= & \langle \dfrac{\partial}{\partial x}f(x,\xi_1)\rangle_{\xi}
+\end{align}
 $$
 
 if we define function
@@ -36,14 +58,14 @@ $$
 Then we have *distribution function*
 
 $$
-P\{\xi < x\} = F_{\xi}(x) = \langle\theta(x-\xi)\rangle
+P\{\xi < x\} = F_{\xi}(x) = \langle\theta(x-\xi)\rangle_\xi
 $$
 
 and the probability density function
 
 $$
 \begin{align}
-w_\xi(x) &= \dfrac{d}{dx} F_\xi(x) = \dfrac{d}{dx}\langle\theta(x-\xi)\rangle = \langle\dfrac{d}{dx}\theta(x-\xi)\rangle = \langle\delta(x-\xi)\rangle
+w_\xi(x) &= \dfrac{d}{dx} F_\xi(x) = \dfrac{d}{dx}\langle\theta(x-\xi)\rangle_\xi = \langle\dfrac{d}{dx}\theta(x-\xi)\rangle_\xi = \langle\delta(x-\xi)\rangle_\xi
 \end{align}
 $$
 
