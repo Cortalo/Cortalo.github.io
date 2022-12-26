@@ -88,3 +88,14 @@ function psd = power_spectrum(signal, Fs)
     xlabel("f (Hz)");
 end
 ```
+
+## Fourier Transform Table
+
+### Non-Causal Signal
+
+| $$f(t)$$ with $$\, t \in R$$         | $$F(\omega)$$                                  | ROC? |
+|--------------------------------------|------------------------------------------------|------|
+| $$f(t)$$                             | $$\int_{-\infty}^{\infty} f(t)e^{-j\omega t}$$ |      |
+| $$e^{-a\vert t \vert}, \quad a > 0$$ | $$\dfrac{2a}{a^2+\omega^2}$$                   |      |
+| $$\delta(t)$$                        | $$1$$                                          |      |
+| $$1$$                                | $$2\pi \delta(\omega)$$                        |      |

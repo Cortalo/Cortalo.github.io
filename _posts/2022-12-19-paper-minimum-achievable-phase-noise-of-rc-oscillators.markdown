@@ -46,7 +46,7 @@ Then it can be used to calculate $$\overline{v_c^2(t)}$$ and also $$\overline{\D
 
 Once the period jitter is calculated, phase noise can easily be calculated.
 In most cases (including relaxation oscillators) the output of the switching oscillators can be approximated by a stochastic square wave signal with mutually independent, Gaussian-distribution period jitter.
-As presented in [book_topics_in_the_theory_of_random_noise](https://archive.org/details/stratonovich-topics-in-the-theory-of-random-noise-vol-1) and also [this paper](https://doi.org/10.1109/4.494195), the phase noise of such a signal has a nearly Lorentzian shape around each harmonic.
+As presented in [book_topics_in_the_theory_of_random_noise_vol_2 (page 160)](https://archive.org/details/stratonovich-topics-in-the-theory-of-random-noise-vol-2/page/160/mode/2up) and also [this paper](https://doi.org/10.1109/4.494195), the phase noise of such a signal has a nearly Lorentzian shape around each harmonic.
 The phase noise around the first harmonic at an offset frequency of $$\Delta f$$ is given by
 
 $$

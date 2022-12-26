@@ -59,22 +59,23 @@ $$
 Please note the term ROC doesn't literally match to "region of convergence", since we always neglect $$r_1$$, whether $$F(z)$$ really converge at $$r_1$$ or not.
 
 
-| Signal $$x[.]$$ | $$z$$-Transform                  | ROC                               |
-|-----------------|----------------------------------|-----------------------------------|
-| $$\delta[.]$$   | $$1$$                            | $$\vert z \vert > 0$$             |
-| $$u[n] = 1$$        | $$\dfrac{1}{1-z^{-1}}$$          | $$\vert z\vert>1$$                |
-| $$r[n] = n$$        | $$\dfrac{z^{-1}}{(1-z^{-1})^2}$$ | $$\vert z \vert > 1$$             |
-| $$x[n] = a^n$$  | $$\dfrac{z}{z-a}$$               | $$\vert z \vert > \vert a \vert$$ |
+| Signal $$x[.]\quad \mathbb{Z}_{\ge 0} \to \mathrm{R}$$ | $$z$$-Transform                  | ROC                                                             | Notes                                                  |
+|--------------------------------------------------------|----------------------------------|-----------------------------------------------------------------|--------------------------------------------------------|
+| $$\delta[.]$$                                          | $$1$$                            | $$\vert z \vert > 0$$                                           |                                                        |
+| $$u[n] = 1$$                                           | $$\dfrac{1}{1-z^{-1}}$$          | $$\vert z\vert>1$$                                              |                                                        |
+| $$r[n] = n$$                                           | $$\dfrac{z^{-1}}{(1-z^{-1})^2}$$ | $$\vert z \vert > 1$$                                           |                                                        |
+| $$x[n] = a^n$$                                         | $$\dfrac{z}{z-a}$$               | $$\vert z \vert > \vert a \vert$$                               |                                                        |
+| $$x[n] = f[n]+g[n]$$                                   | $$F(z)+G(z)$$                    | $$\mathrm{ROC} \supseteq \mathrm{ROC}(f) \cap \mathrm{ROC}(g)$$ | $$\mathrm{ROC}(f) \cap \mathrm{ROC}(g) \ne \emptyset$$ |
+| $$x[n] = af[n], \quad a \ne 0$$                        | $$aF(z)$$                        | $$\mathrm{ROC} = \mathrm{ROC}(f)$$                              | $$\mathrm{ROC}(f) \ne \emptyset $$                     |
+| $$x[n] = f_{delay,m}[n]$$                              | $$z^{-m}F(z)$$                   | $$\mathrm{ROC} = \mathrm{ROC}(f)$$                              | $$\mathrm{ROC}(f) \ne \emptyset$$                      |
+| $$x[n] = (f*g)[n]$$                                    | $$F(z)G(z)$$                     | $$\mathrm{ROC} \supseteq \mathrm{ROC}(f) \cap \mathrm{ROC}(g)$$ | $$\mathrm{ROC}(f) \cap \mathrm{ROC}(g) \ne \emptyset$$ |
+| $$x[n] = f[n] - f_{delay,1}[n]$$                       | $$(1-z^{-1})F(z)$$               | $$\mathrm{ROC} \supseteq \mathrm{ROC}(f)$$                      | Difference                                             |
+
 
 - Almost all the discrete-time signals in practice will have $$z$$-Transform with some $$\mathrm{ROC}\ne\emptyset$$. Although signals like $$x[n] = n^n$$ doesn't have $$z$$-Transform, perhaps they never appear in real practice.
 
-- Addition: if signal $$f[.]$$ has $$z$$-Transform $$F(z)$$ with $$\mathrm{ROC}(f)$$ and signal $$g[.]$$ has $$z$$-Transform $$G(z)$$ with $$\mathrm{ROC}(g)$$, and $$\mathrm{ROC}(f) \cap \mathrm{ROC}(g) \ne \emptyset$$.
-Then signal $$f[.] + g[.]$$ has $$z$$-Transform $$F(z)+G(z)$$ with $$\mathrm{ROC} \supseteq \mathrm{ROC}(f) \cap \mathrm{ROC}(g)$$.
 
-- Multiplication by a scalar: if signal $$f[.]$$ has $$z$$-Transform $$F(z)$$ (with $$\mathrm{ROC}(f)$$). Then for $$a \ne 0$$, signal $$a f[.]$$ has $$z$$-Transform $$aF(z)$$ with $$\mathrm{ROC} = \mathrm{ROC}(f)$$.
-
-- Time delayed by $$m$$ with initial rest: if signal $$f[.]$$ has $$z$$-Transform $$F(z)$$ with $$\mathrm{ROC}(f)$$.
-Then the time delayed by $$m$$ with initial rest signal is defined as $$f_{delay,m}[.]$$ with
+- Time delayed by $$m$$ with initial rest is defined as
 
 $$
 f_{delay,m}[n] = \begin{cases}
@@ -84,22 +85,18 @@ f[n-m], & \text{$n \ge m$}
 $$
 
 
-Then $$G(z) = z^{-m}F(z)$$ with $$\mathrm{ROC}(g) = \mathrm{ROC}(f)$$.
-
-- Convolution: if signal $$f[.]$$ has $$z$$-Transform $$F(z)$$ with $$\mathrm{ROC}(f)$$, and $$g[.]$$ has $$z$$-Transform with $$\mathrm{ROC}(g)$$, and $$\mathrm{ROC}(f)\cap\mathrm{ROC}(g)\ne\emptyset$$. Then signal
+- Convolution is defined as
 
 $$
-(f * g)[.] = \sum_{k=0}^{n} f[k]g[.-k] = \sum_{k=0}^{n}f[.-k]g[k]
+(f * g)[n] = \sum_{k=0}^{n} f[k]g[n-k] = \sum_{k=0}^{n}f[n-k]g[k]
 $$
 
-has $$z$$-Transform $$F(z)G(z)$$ with $$\mathrm{ROC} \supseteq \mathrm{ROC}(f)\cap\mathrm{ROC}(g)$$
 
 
 below is how to visualize the convolution for $$F(z) = 1 + z^{-1} + z^{-2}$$ and $$G(z) = 1 + z^{-1} + z^{-2} + z^{-3}$$.
 
 <img src="/assets/img/2022-12-09-signal-and-system-01/008.png" style="width:80%;height:80%;">
 
-- Difference with initial rest: $$f[.] - f_{delay,1}[.] \iff (1-z^{-1})F(z)$$ with $$\mathrm{ROC} \supseteq \mathrm{ROC}(f)$$
 
 
 
