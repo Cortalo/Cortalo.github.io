@@ -97,7 +97,15 @@ below is how to visualize the convolution for $$F(z) = 1 + z^{-1} + z^{-2}$$ and
 
 <img src="/assets/img/2022-12-09-signal-and-system-01/008.png" style="width:80%;height:80%;">
 
+### From Time-Domain to $$z$$-Domain
 
+### From $$z$$-Domain to Time-Domain
+
+## Discrete-Time Systems
+
+$$
+y[.] = a_0 x[.] + a_1 \cdot x_{delay,1}[.] + a_2 \cdot x_{delay,2}[.] + \dots + a_m \cdot x_{delay,m}[.] + b_1 \cdot y_{delay,1}[.] + b_2 \cdot y_{delay,2}[.] + \dots + b_r \cdot y_{delay,r}[.]
+$$
 
 
 #### Example 01
