@@ -8,4 +8,5 @@ math: true
 
 # Video
 
+
 {% include embed/youtube.html id='Balreaj8Yqs' %}
