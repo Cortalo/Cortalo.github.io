@@ -39,3 +39,11 @@ For example, $$\Omega = \{\dfrac{1}{2}, \dfrac{\sqrt{2}}{2}, \dfrac{\sqrt{3}}{2}
   - first, $$\sum_{q \in \mathbb{Q}, -1< q <1} (\Omega + q) \subseteq (-1,2)$$, then $$\lambda(\Omega) = 0$$.
 
   - second, $$(0,1) \subseteq \sum_{q\in \mathbb{Q}, -1<q<1} (\Omega + q)$$, then $$\lambda(\Omega) \ne 0$$.
+
+# Set Operations
+
+The following set operations are valid, or shown as identity equation
+
+- &nbsp; $$A \cup B = (A^c \cap B^c)^c$$
+
+- &nbsp; $$\cap_{\alpha \in I} A_{\alpha}$$, where $$I$$ is any index set (e.g., it can be uncountable)

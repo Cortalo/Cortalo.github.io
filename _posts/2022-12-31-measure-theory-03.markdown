@@ -48,7 +48,7 @@ $$
 \mu(E) \le \sum_{k=1}^{n}\mu(E_k)
 $$
 
-## Countable Monotone
+## Countable Monotone (subadditivity)
 
 A set function $$\mu: \mathscr{C} \to [0,\infty]$$ is said to be countable monotone provided that, whenever a set $$E \in \mathscr{C}$$ is covered by a countable collection $$\{E_k\}_{k=1}^{\infty}$$ of sets in $$\mathscr{C}$$
 
@@ -75,6 +75,8 @@ Given $$\mathscr{C} \subseteq \mathscr{P}(\Omega)$$, and $$\mu: \mathscr{C} \to 
 - $$\mu$$ is continuous from above at $$\emptyset$$ and $$\mu$$ is finite ($$\mu(\Omega) < \infty$$) $$\quad \implies \quad$$ $$\mu$$ is $$\sigma$$-additive.
 
 ## Measure Extantion
+
+There exists only one unique extantion from $$\mathscr{S}$$ to $$\mathscr{A}(\mathscr{S})$$.
 
 **Theorem 1:** $$\mathscr{S} \subseteq \mathscr{P}(\Omega)$$ is a semi-algebra, $$\mu: \mathscr{S} \to \mathbb{R}_+ \cup \{\infty\}$$ is additive. Then there exists $$\nu: \mathscr{A}(\mathscr{S}) \to \mathbb{R}_+ \cup \{\infty\}$$ is additive, and
 
