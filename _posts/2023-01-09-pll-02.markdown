@@ -1,0 +1,54 @@
+---
+title:  "PLL 02"
+date:   2023-01-09 07:00:00 +0200
+categories: analog-circuit
+tags: analog pll
+math: true
+---
+
+## [Paper Multirate Timestamp Modeling for Ultralow-Jitter Frequency Synthesis: A Tutorial](https://doi.org/10.1109/TCSII.2022.3171498)
+
+
+<img src="/assets/img/2023-01-09-pll-02/02.png" style="width:100%;height:100%;">
+
+- High-bandwidth PLL ($$\ge 30 \% f_{ref}$$).
+- ADPLL with TDC and digitial loop filter.
+- Injection locking or charge-sharing locking oscillator.
+
+![01](/assets/img/2023-01-09-pll-02/01.gif)
+_(a) Conceptual multirate timestamp model suitable for a high-bandwidth PLL. (b) Implementation details of the ADPLL blocks (ADC-based TDC and digital loop filter) that convert $$\Delta t_{err}[n]$$ into $$\Delta T_{corr}[n]$$._
+
+![03](/assets/img/2023-01-09-pll-02/03.gif)
+_Multirate timestamp model of CSL or IL oscillators._
+
+![04](/assets/img/2023-01-09-pll-02/04.png)
+
+## [Paper A Comprehensive Phase Noise Analysis of Bang-Bang Digital PLLs](https://doi.org/10.1109/TCSI.2021.3072344)
+
+- Bang-bang DPLL.
+
+![05](/assets/img/2023-01-09-pll-02/05.png)
+_Bang-bang DPLL multirate time-domain model._
+
+![06](/assets/img/2023-01-09-pll-02/06.png)
+_Linearized time-variant bang-bang DPLL model._
+
+![07](/assets/img/2023-01-09-pll-02/07.png)
+
+## [Paper A multiple-crystal interface PLL with VCO realignment to reduce phase noise](https://doi.org/10.1109/TCSI.2021.3072344)
+
+<img src="/assets/img/2023-01-09-pll-02/08.png" style="width:100%;height:100%;">
+
+- Phase realignment (injection) PLL.
+- MDLL
+- It exhibits quite a good agreement when the frequency ratio $$N$$ is large (e.g., $$N > 10$$) and the realigning factor (i.e., injection strength) $$\beta$$ is small (e.g., $$\beta < 0.2$$), but it cannot predict the phase noise folding.
+
+<img src="/assets/img/2023-01-09-pll-02/09.png" style="width:100%;height:100%;">
+
+<img src="/assets/img/2023-01-09-pll-02/10.png" style="width:100%;height:100%;">
+
+## [Paper A Charge-Sharing Locking Technique With a General Phase Noise Theory of Injection Locking](https://doi.org/10.1109/JSSC.2021.3106237)
+
+<img src="/assets/img/2023-01-09-pll-02/11.png" style="width:100%;height:100%;">
+
+<img src="/assets/img/2023-01-09-pll-02/12.png" style="width:100%;height:100%;">
