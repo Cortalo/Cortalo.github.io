@@ -8,6 +8,8 @@ math: true
 
 From [Robert Bogdan Staszewski Group's Paper](https://doi.org/10.1109/JSSC.2021.3106237)
 
+<img src="/assets/img/2023-01-10-paper-a-charge-sharing-locking-technique-with-a-general-phase-noise-theory/10.png" style="width:100%;height:100%;">
+
 ## Phase Noise of Charges-Sharing Locking
 
 ### Timestamps of Oscillator and Reference
@@ -145,6 +147,14 @@ Assuming $$\mathcal{L}_{osc} = 0$$
 <img src="/assets/img/2023-01-10-paper-a-charge-sharing-locking-technique-with-a-general-phase-noise-theory/07.png" style="width:50%;height:50%;">
 
 <img src="/assets/img/2023-01-10-paper-a-charge-sharing-locking-technique-with-a-general-phase-noise-theory/08.png" style="width:100%;height:100%;">
+
+Total output jitter
+
+$$
+\sigma_{out} = T_{sample} \sqrt{\dfrac{1}{2\pi^2} \int_{0}^{f_{sample}/2} \mathcal{L}_{out}(f) df}
+$$
+
+<img src="/assets/img/2023-01-10-paper-a-charge-sharing-locking-technique-with-a-general-phase-noise-theory/09.png" style="width:50%;height:50%;">
 
 ## Footnote
 
