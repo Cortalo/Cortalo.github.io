@@ -6,6 +6,332 @@ tags: fourier-analysis
 math: true
 ---
 
+# Signal and System
+
+book_xinhaoyuxianxingxitongfenxi
+
+## Intro
+
+## Signal
+
+### Continuous-Time Signal and Discrete-Time Signal
+
+### Periodic Signal and Non-Periodic Signal
+
+### Real Signal and Complex Signal
+
+- Deterministic signal, stochastic signal.
+- Continuous-time signal, discrete-time signal.
+- Periodic signal, non-periodic signal.
+- Energy signal, power signal.
+- Causal signal, anti-causal signal.
+
+The total energy and average power of a signal $$f(t)$$ is
+
+$$
+\begin{align}
+E &= \int_{-\infty}^{\infty} \vert f(t) \vert^2 dt\\
+P &= \lim_{T \to \infty} \dfrac{1}{T} \int_{-T/2}^{T/2} \vert f(t) \vert^2 dt
+\end{align}
+$$
+
+- Energy signal: $$E < \infty$$. Clearly it implies $$P = 0$$.
+- Power signal: $$0 < P < \infty$$. Clearly it implies $$E = \infty$$.
+- Causal signal: $$f(t) = 0 \quad \forall t < 0$$.
+- Anti-causal signal: $$f(t) = 0 \quad \forall t \ge 0$$.
+
+Step function
+
+$$
+u(t) = \begin{cases}
+0, &\quad t < 0\\
+1, &\quad t > 0
+\end{cases}
+$$
+
+the value at $$t = 0$$ is not important, as long as we define $$u(0) < \infty$$.
+Since in the theory of generalized function, it is always evaluated by integration.
+
+Impulse function is defined by using generalized function.
+For well behaved function $$\phi(t)$$, impulse function $$\delta(t)$$ is the function that satisfy
+
+$$
+\int_{-\infty}^{\infty} \delta(t)\phi(t) dt = \phi(0)
+$$
+
+e.g.,
+
+$$
+\begin{align}
+\delta(t) &= \lim_{b\to\infty} b e^{-\pi (bt)^2}\\
+\delta(t) &= \lim_{b\to\infty} \dfrac{\sin(bt)}{\pi t}
+\end{align}
+$$
+
+- The derivitive of $$\delta(t)$$
+
+using $$f(t) \delta'(t) = f(0) \delta'(t) - f'(0) \delta(t)$$, we have
+
+$$
+\int_{-\infty}^{\infty} f(t) \delta'(t) dt = -f'(0)
+$$
+
+and also
+
+$$
+\int_{-\infty}^{\infty} f(t) \delta^{(n)}(t) dt = (-1)^{n} f^{(n)}(0)
+$$
+
+another equation (can only be used in the integral)
+
+$$
+\begin{align}
+\delta(at) &= \dfrac{1}{|a|}\delta(t)\\
+\delta^{(n)}(at) &= \dfrac{1}{\vert a \vert} \dfrac{1}{a^n} \delta^{(n)}(t)
+\end{align}
+$$
+
+- In summary
+  - The definitions
+    - &nbsp; $$\int_{-\infty}^{\infty} f(t) \delta^{(n)}(t) dt = (-1)^{n} f^{(n)}(0)$$
+  - The formula can be used in anywhere (e.g., in the arguments for the derivitive definition)
+    - &nbsp; $$f(t)\delta^{(n)}(t) = f(0) \delta^{(n)}(t)$$
+  - The formula can only be used in the integral
+    - &nbsp; $$ \delta^{(n)}(at) = \dfrac{1}{\vert a \vert} \dfrac{1}{a^n} \delta^{(n)}(t)  $$
+    - &nbsp; $$f(t)\delta'(t) = f(0)\delta'(t) - f'(0)\delta(t)$$
+
+- Exercises
+
+$$
+\begin{align}
+\int_{-\infty}^{\infty} \dfrac{\sin(2t)}{t} \delta(t) dt &= \lim_{t \to 0} \dfrac{\sin(2t)}{t} = 2
+\end{align}
+$$
+
+$$
+\begin{align}
+\int_{-\infty}^{\infty} (t^3 - 3t^2 + 5t - 1) \delta'(t-1)dt &= -g'(1) = -2
+\end{align}
+$$
+
+$$
+\int_{-\infty}^{\infty} (t^3+5) \delta(\dfrac{t}{2})dt = 2 \int_{-\infty}^{\infty} (t^3+5) \delta(t)dt = 10
+$$
+
+$$
+\begin{align}
+\int_{-\infty}^{t}(2-x) \delta'(x)dx = \int_{-\infty}^{t} [2 \delta'(x) - (-1)\delta(t)]dt = 2\delta(t) + u(t)
+\end{align}
+$$
+
+- Discrete-time impulse and step function
+
+$$
+u[k] = \begin{cases}
+1, \quad k \ge 0\\
+0, \quad k < 0
+\end{cases}
+$$
+
+$$
+\sum_{k=-\infty}^{\infty} f[k] \delta[k] = f[0]
+$$
+
+Discrete-time difference
+
+$$
+\delta[k] = u[k] - u[k-1]
+$$
+
+Discrete-time summation
+
+$$
+u[k] = \sum_{i=-\infty}^{k} \delta[i]
+$$
+
+Decomposition
+
+$$
+u[k] = \sum_{j=0}^{\infty} \delta[k-j]
+$$
+
+- Signal reflect, move, and scale
+  - give the waveform $$f(t)$$, $$f(-t)$$ is reflect at 0. $$(t \times -1)$$
+  - give the waveform $$f(t+2)$$, $$f(-t+2)$$ is reflect at 0. $$(t \times -1)$$
+  - give the waveform $$f(t)$$, $$f(t-3)$$ is move right to 3 units. $$(t - 3)$$
+  - give the waveform $$f(t+2)$$, $$f(t-1)$$ is move right to 3 units. $$(t - 3)$$
+  - give the waveform $$f(t)$$, $$f(3t)$$ is shrink 3 times at 0. $$(t \times 3)$$
+  - give the waveform $$f(t+2)$$, $$f(3t+2)$$ is shrink 3 times at 0. $$(t \times 3)$$
+  - give the waveform $$f(t)$$, $$f(0.2 t)$$ is expand 5 times at 0. $$(t \times 0.2)$$
+  - give the waveform $$f(t+3)$$, $$f(0.2 t + 3)$$ is expand 5 times at 0. $$(t \times 0.2)$$
+- Usually first move, then scale, then reflect.
+
+- Do derivitive one the waveform, add the impulse function.
+
+## Introduction to System
+
+- Linear system
+
+$$
+T[a f_1(.) + b f_2 (.)] = a T[f_1(.)] + b T[f_2(.)]
+$$
+
+- Dynamic linear system
+  - &nbsp; $$y(t) = y_{zi}(t) + y_{zs}(t)$$
+  - The system are linear for the input and states respectively.
+
+$$
+y(.) = y_{zs}(.) + y_{zi}(.)
+$$
+
+$$
+T[\{af_1(t) + b f_2(t)\}, \{0\}] = a T[\{f_1(.)\}, \{0\}] + b T[\{f_2(.)\}, \{0\}]
+$$
+
+$$
+T[\{0\}, \{a x_1(0) + b x_2(0)\}] = a T[\{0\}, \{x_1(0)\}] + b T[\{0\}, \{x_2(0)\}]
+$$
+
+- Time varying or time invariant: only look zero state response.
+
+$$
+T[\{0\}, f(t-td)] = y_{zs}(t-t_d)
+$$
+
+- LTI system.
+  - if $$f(t) \to y_{zs}(t)$$, then $$f'(t) \to y_{zs}'(t)$$
+  - if $$f(t) \to y_{zs}(t)$$, then $$\int_{-\infty}^{t} f(x)dx \to \int_{-\infty}^{t} y_{zs}(x)dx$$
+  - TODO: how to prove?
+
+- Causal system and non-causal system.
+  - It is defined for $$y_{zs}(t)$$
+
+- Example:
+
+For a causal LTI causal system with initial state $$x(0\_)$$, if $$x(0\_) = 1$$ and with a causal input $$f_1(t)$$, the full response is
+
+$$
+y_1(t) = [e^{-t} + \cos(\pi t)] u(t)
+$$
+
+if $$x(0\_) = 2$$ and input $$3f_1(t)$$, the full response is
+
+$$
+y_2(t) = [-2 e^{-t} + 3\cos(\pi t)] u(t)
+$$
+
+then for input $$f'_1(t) + 2 f_1(t-1)$$, find the zero state response.
+
+- Solution: $$y_{zs}(t) = -3\delta(t) + [4e^{-t} - \pi \sin(\pi t)] u(t) + 2\{-4e^{-(t-1)} + \cos[\pi(t-1)]\} u(t-1)$$
+
+# Continuous-Time Time-Domain Analysis
+
+## Response of LTI System
+
+### Differential Equations
+
+The differential equation
+
+$$
+a_2 \dfrac{d^2 y(t)}{dt^2} + a_1 \dfrac{y(t)}{dt} + a_0 y(t) = f(t)
+$$
+
+with initial conditions
+$$
+y(0_+), \quad y'(0_+)
+$$
+
+we can determine the responses for the given $$f(t)$$ and initial conditions.
+
+### Block Diagram of Differential Equations
+
+Take the example of
+
+$$
+y''(t) + ay'(t) + by(t) = f(t)
+$$
+
+
+<img src="/assets/img/2022-12-09-signal-and-system-01/009.png" style="width:80%;height:80%;">
+
+Another example
+
+$$
+y''(t) + 3y'(t) + 2y(t) = 4f'(t) + f(t)
+$$
+
+<img src="/assets/img/2022-12-09-signal-and-system-01/010.png" style="width:80%;height:80%;">
+
+
+### Classic Solution of Differential Equations
+
+If $$f(t)$$ has finite derivative up to $$f^{(m)}(t)$$, for differential equations
+
+$$
+\begin{align}
+&y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dots + a_1 y^{(1)}(t) + a_0 y(t) \\
+&= b_m f^{(m)}(t) + b_{m-1} f^{(m-1)}(t) + \dots + b_1 f^{(1)}(t) + b_0 f(t)
+\end{align}
+$$
+
+and $$n$$ initial conditions
+
+$$
+y^{(n-1)}(0), y^{(n-2)}(0),\dots, y(0)
+$$
+
+The solution is composed of homogeneous solution and special solution
+
+$$
+y(t) = y_h(t) + y_p(t)
+$$
+
+where homogeneous solution is the complete solution of the homogeneous differential equation with all possible initial conditions
+
+$$
+y^{(n)}(t) + a_{n-1} y^{(n-1)}(t) + \dots + a_1 y^{(1)}(t) + a_0 y(t) = 0
+$$
+
+the corresponding eigen-function has $$n$$ roots
+
+$$
+F(\lambda) = \lambda^n + a_{n-1} \lambda^{n-1} + \dots + a_1 \lambda + a_0 = 0
+$$
+
+If the $$n$$ roots $$\lambda_1, \dots, \lambda_n$$ are not equal to each other
+
+$$
+y_h(t) = C_1 e^{\lambda_1 t} + C_2 e^{\lambda_2 t} + \dots + C_n e^{\lambda_n t}
+$$
+
+If there are $$e_i$$ same roots $$\lambda$$, the corresponding term is
+
+$$
+(C_0 + C_1 t + \dots + C_{e_i - 1} t^{e_i - 1}) e^{\lambda t}
+$$
+
+and the special solution is one arbitrary solution satisfy the original differential equation without worring about the initial condition.
+
+TODO: finish the table for special solution.
+
+Example:
+
+$$
+\begin{align}
+& y''(t) + 5y'(t) + 6y(t) = f(t)\\
+& f(t) = 2e^{-t}, t \ge 0\\
+& y'(0) = -1, y(0) = 2
+\end{align}
+$$
+
+### On Initial Conditions
+
+### Zero Input Response
+
+### Zero State Response
+
+# Deprecated
+
 ## Discrete-Time Signals
 
 The definition of discrete-time signal is a function from non-negative integer set to real number set.
