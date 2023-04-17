@@ -134,7 +134,74 @@ $$
 let $$T \to \infty$$
 
 $$
- \dfrac{1}{T} E \bigg\vert \int_{-\frac{T}{2}}^{\frac{T}{2}} X(t) \exp(-j \omega t) dt \bigg\vert^2 = \int_{-\infty}^{\infty} R(u) \exp(-j\omega u) du
+ \dfrac{1}{T} E \bigg\vert \int_{-\frac{T}{2}}^{\frac{T}{2}} X(t) \exp(-j \omega t) dt \bigg\vert^2 = \int_{-\infty}^{\infty} R(u) \exp(-j\omega u) du = S(\omega)
 $$
 
-1 hour
+This is called Wiener-Khinchine theorem.
+It is interesting to note here, if assume $$R(u)$$ is real function, since $$R(u)$$ is positive definite function (thus it is also symmetry), we know its Fourier transfer is real and symmetry, and positive for all $$\omega$$, meets the idea of power spectral density. Thus
+
+$$
+\begin{align}
+S(\omega) &= \int_{-\infty}^{\infty} R(t) \cos(\omega t) dt\\
+R(t) &= \dfrac{1}{2\pi} \int_{-\infty}^{\infty} S(\omega) \cos(\omega t) d\omega
+\end{align}
+$$
+
+## LTI Responses
+
+Assumes a W.S.S. process $$X(t)$$ with PSD $$S(\omega)$$ passing through a LTI system with impulse response $$h(t)$$, we know
+
+$$
+Y(t) = \int_{-\infty}^{\infty} h(t-\tau) X(\tau) d\tau
+$$
+
+then
+
+$$
+\begin{align}
+&R_{Y}(t,s) = E(Y(t) \overline{Y(s)}) = E \bigg(\int_{-\infty}^{\infty} h(t-\tau) X(\tau) d\tau \bigg) \overline{\bigg(\int_{-\infty}^{\infty} h(s-r)X(r)dr\bigg)}\\
+=& \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} R_{X}(\tau-r) h(t-\tau) \overline{h(s-r)} d\tau dr
+\end{align}
+$$
+
+to see if the integral is a convolutoin, the summation of all the variable in the function, has to cancel all the integral variable, and it gives the convolutoin at the value of the summation.
+
+We need to define
+
+$$
+\tilde{h}(t) = \overline{h(-t)}
+$$
+
+then
+
+$$
+\begin{align}
+R_{Y}(t,s) &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} R_{X}(\tau-r) h(t-\tau) \overline{h(s-r)} d\tau dr\\
+&= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} R_{X}(\tau-r) h(t-\tau) \tilde{h}(r-s) d\tau dr\\
+&= R_{X} * h * \tilde{h} (t-s)
+\end{align}
+$$
+
+thus it is clear $$Y(t)$$ is W.S.S., also
+
+$$
+S_Y(\omega) = S_X(\omega)\cdot H(\omega) \cdot \tilde{H}(\omega)
+$$
+
+and
+
+$$
+\begin{align}
+\tilde{H}(\omega) &= \int_{-\infty}^{\infty} \tilde{h}(t) \exp(-j\omega t) dt\\
+&= \int_{-\infty}^{\infty} \overline{h(-t)} \exp(-j\omega t) dt\\
+&= \overline{\int_{-\infty}^{\infty} h(-t) \exp(j\omega t) dt}\\
+&= \overline{\int_{-\infty}^{\infty} h(\tau) \exp(-j\omega \tau) d\tau}\\
+&= \overline{H(\omega)}
+\end{align}
+$$
+
+thus
+
+$$
+S_Y(\omega) = S_X(\omega) \cdot H(\omega) \cdot \overline{H(\omega)} = S_X(\omega) \vert H(\omega) \vert^2
+$$

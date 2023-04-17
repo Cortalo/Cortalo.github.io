@@ -36,6 +36,23 @@ x(t) &= \frac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega
 \end{align}
 $$
 
+- &nbsp; $$x(t) \text{ is real function } \quad \iff \quad X(\omega) = \overline{X(-\omega)}$$
+
+$$
+\begin{align}
+\overline{X(-\omega)} &= \overline{\int_{-\infty}^{\infty} x(t) e^{j\omega t} dt}\\
+&= \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt\\
+&= X(\omega)
+\end{align}
+$$
+
+- Since Fourier transform and inverse Fourier transform is dual, we also have
+
+$$
+X(\omega) \text{ is real function } \iff x(t) = \overline{x(-t)}
+$$
+
+- for example, if $$x(t)$$ is real and even function, then we know $$X(\omega)$$ is also real and even function.
 
 ### Parseval's Theorem
 
