@@ -10,6 +10,8 @@ From [Hao Zhang's 2023 Lecture 07](https://v.ucas.ac.cn/course/CourseIndex.do?me
 
 # Gaussian Processes
 
+## Definition
+
 If $$X(t)$$ is a Gaussian Processes, then $$\forall n, \forall t_1, \dots, t_n$$, the $$X = (X(t_1), \dots, X(t_n))^{\mathrm{T}}$$ follows Gaussian distribution. $$X \sim N(\mu, \Sigma)$$, where $$\mu = E(X), \Sigma = E(X-\mu)(X-\mu)^{\mathrm{T}}$$. It has pdf
 
 $$
@@ -101,4 +103,118 @@ $$
 \end{align}
 $$
 
-34:00
+## Characteristic Function
+
+$$
+\Phi_X(\omega) = E(\exp(j \omega^{\intercal} X)) = \exp\big(j \omega^\intercal \mu - \frac{1}{2} \omega^\intercal \Sigma \omega\big)
+$$
+
+$$
+\begin{align}
+\dfrac{1}{(2\pi)^{n/2}(\mathrm{det}\Sigma)^{1/2}} \int_{\mathbb{R}^n} \exp(j \omega^\intercal x) \exp\big( -\frac{1}{2}(x-\mu)^\intercal \Sigma^{-1} (x-\mu) \big) dx
+\end{align}
+$$
+
+a small trick to find how to complete the square, from
+
+$$
+-\frac{1}{2} (x-\mu)^\intercal \Sigma^{-1} (x-\mu) + j \omega^\intercal x
+$$
+
+we try to look
+
+$$
+\begin{align}
+&-\dfrac{1}{2\sigma^2} (x-\mu)^2 + j\omega x\\
+=& -\dfrac{1}{2\sigma^2} (x - \mu - j\sigma^2 \omega)^2 + j \omega \mu - \frac{1}{2}\sigma^2 \omega^2
+\end{align}
+$$
+
+then
+
+$$
+\begin{align}
+&-\frac{1}{2} (x-\mu)^\intercal \Sigma^{-1} (x-\mu) + j \omega^\intercal x\\
+= & - \frac{1}{2} (x - \mu - j \Sigma \omega)^{\intercal} \Sigma^{-1} (x - \mu - j \Sigma \omega ) + j \omega^\intercal \mu - \frac{1}{2}\omega^{\intercal} \Sigma \omega
+\end{align}
+$$
+
+thus
+
+$$
+\begin{align}
+&\int_{\mathbb{R}^n} \exp(j \omega^\intercal x) \exp\big( -\frac{1}{2}(x-\mu)^\intercal \Sigma^{-1} (x-\mu) \big) dx\\
+=& \exp\big(j\omega^\intercal \mu - \frac{1}{2} \omega^\intercal \Sigma \omega\big) \int_{\mathbb{R}^n} \exp\big(-\frac{1}{2} (x-\mu - j \Sigma \omega)^\intercal \Sigma^{-1} (x-\mu - j \Sigma \omega)\big) dx
+\end{align}
+$$
+
+The intergration inside just change the mean, thus
+
+$$
+\Phi_X(\omega) = E(\exp(j \omega^{\intercal} X)) = \exp\big(j \omega^\intercal \mu - \frac{1}{2} \omega^\intercal \Sigma \omega\big)
+$$
+
+## Linear Property
+
+&nbsp; $$X \in \mathbb{R}^n, X \sim N(\mu, \Sigma). A \in \mathbb{R}^{m \times n}, Y = A X \in \mathbb{R}^m$$, then
+
+$$
+Y \sim N(A \mu, A \Sigma A^\intercal)
+$$
+
+$$
+\begin{align}
+\Phi_{Y}(\omega) &= E(\exp(j \omega^\intercal Y))\\
+&= E(\exp(j \omega^\intercal A X))\\
+&= E(\exp(j (A^\intercal \omega)^\intercal X))\\
+&= \exp\big( j (A^\intercal \omega)^\intercal \mu - \frac{1}{2} (A^\intercal \omega)^\intercal \Sigma (A^{\intercal} \omega) \big)\\
+&= \exp\big( j \omega^\intercal A \mu - \frac{1}{2} \omega^\intercal A \Sigma A^\intercal \omega \big)
+\end{align}
+$$
+
+Then it is obvious, if joint-pdf is Gaussian, then all the $$n$$ individual random variables are boundary Gaussian.
+
+But even if all the $$n$$ individual random variables are boundary Gaussian, it may not be joint Gaussian.
+
+Actually, for $$X \in \mathbb{R}^n$$, we will need $$\forall \alpha \in \mathbb{R}^n, \alpha^\intercal X$$ is Gaussian to make sure $$X$$ is joint Gaussian.
+
+$$
+\begin{align}
+\Phi_X(\omega) &= E(\exp(j \omega^\intercal X)) = \Phi_{\omega^\intercal X}(1)\\
+&= \exp\big( j \mu_{\omega^\intercal X} - \frac{1}{2} \sigma_{\omega^\intercal X}^2 \big)
+\end{align}
+$$
+
+we know
+
+$$
+\mu_{\omega^\intercal X} = E(\omega^\intercal X) = \omega^{\intercal} \mu_X
+$$
+
+$$
+\begin{align}
+&\sigma_{\omega^\intercal X}^2 = E(\omega^\intercal X - \omega^\intercal \mu_X)^2\\
+=& E(\omega^\intercal (X - \mu_X) (X - \mu_X)^\intercal \omega)\\
+=& \omega^\intercal E((X - \mu_X)(X - \mu_X)^\intercal) \omega\\
+=& \omega^\intercal \Sigma_X \omega
+\end{align}
+$$
+
+thus
+
+$$
+\Phi_X(\omega) = \exp\big(j \omega^\intercal \mu_X - \frac{1}{2} \omega^\intercal \Sigma_X \omega\big)
+$$
+
+Another good thing about Gaussian: for $$X = (X_1, \dots, X_n)^\intercal \sim N$$, if $$\forall i, j, i \ne j, E(X_i X_j) = E(X_i) E(X_j)$$ (meaning they are uncorrelated), then we have $$\forall i, j, i \ne j$$, $$X_i, X_j$$ are independent.
+
+This is due to for $$i\ne j, \Sigma_{ij} = E(X_i - EX_i)(X_j - E X_j) = E(X_i X_j) - E(X_i)E(X_j) = 0$$.
+Thus $$\Sigma$$ is diagonal matrix, from its distribution we know they are independent (because joint-pdf equals the product of boundary pdfs).
+
+To generate any Gaussian, we only need to go from $$X \sim N(0, I)$$, then $$\tilde{X} = \Sigma^{1/2} (X + \Sigma^{-1/2} \mu) \sim N(\mu, \Sigma)$$
+
+## MidJourney Diffusion
+
+A small example, $$X_k = \sqrt{1-\alpha_k} \cdot X_{k-1} + \sqrt{\alpha_k} \cdot \epsilon_k$$, where $$\epsilon_k$$ i.i.d., $$N(0, I)$$.
+
+2 hour
