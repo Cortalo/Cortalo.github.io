@@ -6,18 +6,28 @@ tags: math
 math: true
 ---
 
+From [TCAS-2017: Design Methodology for Phase-Locked Loops Using Binary (Bang-Bang) Phase Detectors](https://ieeexplore.ieee.org/document/7885515)
+
 $$
- H(s) = \dfrac{1}{1 + \dfrac{s}{\omega_0 Q} + \dfrac{s^2}{\omega_0^2}}
+\begin{align}
+H_{LP}(s) &= H_0 \dfrac{1}{1 + \dfrac{s}{\omega_0 Q} + \dfrac{s^2}{\omega_0^2}}\\
+\mathrm{NBW}_{LP} &= \dfrac{\omega_0 Q}{4} (\mathrm{Hz})
+\end{align}
 $$
 
 $$
-H(j\omega) = \dfrac{1}{1 + \dfrac{j\omega}{\omega_0 Q} + \dfrac{(j\omega)^2}{\omega_0^2}}
+\begin{align}
+H_{BP}(s) &= H_{max} \dfrac{\dfrac{s}{\omega_0 Q}}{1 + \dfrac{s}{\omega_0 Q} + \dfrac{s^2}{\omega_0^2}}\\
+\mathrm{NBW}_{BP} &= \dfrac{\omega_0}{4Q} (\mathrm{Hz})
+\end{align}
 $$
 
-$$
-H(-j\omega) = \dfrac{1}{1 - \dfrac{j\omega}{\omega_0 Q} + \dfrac{(-jω)^2}{\omega_0^2}}
-$$
+# Proof
 
-$$
-\vert H(j\omega)\vert^2 = H(j\omega)H(-j\omega) = \dfrac{1}{(1 + \dfrac{jω}{\omega_0 Q} + \dfrac{(jω)^2}{\omega_0^2})(1 - \frac{jω}{\omega_0 Q} + \frac{(-jω)^2}{\omega_0^2})}
-$$
+Using the result from [book Theory of Servomechanisms](https://archive.org/details/theoryofservomec0000jame/page/369/)
+
+
+<img src="/assets/img/2023-03-20-noise-bandwidth/001.png" style="width:100%;height:100%;">
+
+
+<img src="/assets/img/2023-03-20-noise-bandwidth/002.png" style="width:100%;height:100%;">
