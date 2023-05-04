@@ -217,4 +217,21 @@ To generate any Gaussian, we only need to go from $$X \sim N(0, I)$$, then $$\ti
 
 A small example, $$X_k = \sqrt{1-\alpha_k} \cdot X_{k-1} + \sqrt{\alpha_k} \cdot \epsilon_k$$, where $$\epsilon_k$$ i.i.d., $$N(0, I)$$.
 
-2 hour
+Reparametric Trick
+
+$$
+\beta_k = 1 - \alpha_k
+$$
+
+$$
+\begin{align}
+X_k &= \sqrt{\beta_k} \cdot X_{k-1} + \sqrt{1-\beta_k} \cdot \epsilon_k\\
+&= \sqrt{\beta_k} (\sqrt{\beta_{k-1}} \cdot X_{k-1} + \sqrt{1 - \beta_{k-1}} \cdot \epsilon_{k-1}) + \sqrt{1-\beta_k} \cdot \epsilon_k\\
+&= \sqrt{\beta_k \beta_{k-1}} \cdot X_{k-2} + \sqrt{\beta_k} \sqrt{1 - \beta_{k-1}} \epsilon_{k-1} + \sqrt{1- \beta_k} \epsilon_k\\
+&= \sqrt{\beta_k \beta_{k-1}} \cdot X_{k-1} + N(0, \sqrt{1- \beta_{k} \beta_{k-1}} I)
+\end{align}
+$$
+
+$$
+X_{k} \sim N(0, \sqrt{1-\beta_k \beta_{k-1} \dots \beta_{1}} I)
+$$
