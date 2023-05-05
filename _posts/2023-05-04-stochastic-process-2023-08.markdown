@@ -286,7 +286,7 @@ $$
 E(Y^n) =
 \begin{cases}
 0, \quad n = 2k-1\\
-, \quad n = 2k
+(2k-1)!! \sigma^{2k}, \quad n = 2k
 \end{cases}
 $$
 

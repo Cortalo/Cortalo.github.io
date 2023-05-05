@@ -12,6 +12,22 @@ From [Hao Zhang's 2023 Lecture 07](https://v.ucas.ac.cn/course/CourseIndex.do?me
 
 ## Definition
 
+- &nbsp; $$n=1, \quad X \sim N(\mu, \sigma^2)$$
+
+$$
+f_X(x) = \dfrac{1}{\sqrt{2\pi} \sigma} \exp\Big( -\dfrac{(x-\mu)^2}{2\sigma^2} \Big)
+$$
+
+- &nbsp; $$n=2, \quad X \sim N(\mu_1, \mu_2, \sigma_1, \sigma_2, \rho)$$
+
+$$
+\rho = \dfrac{E((X_1-\mu_1)(X_2 - \mu_2))}{\sigma_1 \sigma_2}
+$$
+
+$$
+f_{X_1, X_2}(x_1, x_2) = \dfrac{1}{2\pi \sigma_1 \sigma_2 \sqrt{1-\rho^2}} \exp \bigg( -\dfrac{1}{2(1-\rho^2)} \Big(\big(\dfrac{x_1 -\mu_1}{\sigma_1}\big)^2 + \big(\dfrac{x_2 -\mu_2}{\sigma_2}\big)^2 - 2\rho \big( \dfrac{x_1 - \mu_1}{\sigma_1} \big) \big( \dfrac{x_2 - \mu_2}{\sigma_2} \big) \Big) \bigg)
+$$
+
 If $$X(t)$$ is a Gaussian Processes, then $$\forall n, \forall t_1, \dots, t_n$$, the $$X = (X(t_1), \dots, X(t_n))^{\mathrm{T}}$$ follows Gaussian distribution. $$X \sim N(\mu, \Sigma)$$, where $$\mu = E(X), \Sigma = E(X-\mu)(X-\mu)^{\mathrm{T}}$$. It has pdf
 
 $$
