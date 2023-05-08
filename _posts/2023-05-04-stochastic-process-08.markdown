@@ -258,4 +258,76 @@ $$
 \dfrac{\partial E}{\partial \rho} = \dfrac{2}{\pi} \dfrac{1}{\sqrt{1-\rho^2}}
 $$
 
-1hr 34min
+using
+
+$$
+\dfrac{d}{dx} \arcsin x = \dfrac{1}{\sqrt{1-x^2}}
+$$
+
+$$
+E(\rho) = \dfrac{2}{\pi} \arcsin(\rho) + C
+$$
+
+when $$\rho = 0, E(0) = 0, \arcsin(0) = 0$$
+
+$$
+E(\rho) = \dfrac{2}{\pi} \arcsin(\rho)
+$$
+
+### Price's Theorem for Square Device
+
+on the video
+
+### Proof of Price's Theorem
+
+$$
+\begin{align}
+& E(g(X_1, X_2)) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(X_1, X_2) f_{X_1, X_2}(x_1, x_2) d x_1 d x_2\\
+=& \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(X_1, X_2) \Bigg( \dfrac{1}{(2\pi)^2} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \Phi(\omega_1, \omega_2) \exp(-j(\omega_1 x_1 + \omega_2 x_2)) d \omega_1 d \omega_2 \Bigg)  d x_1 d x_2
+\end{align}
+$$
+
+$$
+\Phi(\omega_1, \omega_2) = \exp\Big( -\frac{1}{2} \omega^\intercal \Sigma \omega \Big)
+$$
+
+$$
+\Sigma =
+\begin{pmatrix}
+\sigma_1^2 & \rho \sigma_1 \sigma_2\\
+\rho \sigma_1 \sigma_2 & \sigma_2^2
+\end{pmatrix}
+$$
+
+
+$$
+\Phi(\omega_1, \omega_2) = \exp\Big( -\frac{1}{2} (\sigma_1^2 \omega_1^2 + \sigma_2^2 \omega_2^2 + 2 \rho \sigma_1 \sigma_2 \omega_1 \omega_2) \Big)
+$$
+
+$$
+\dfrac{\partial}{\partial \rho} \Phi(\omega_1, \omega_2) = - \sigma_1 \sigma_2 \omega_1 \omega_2 \Phi(\omega_1, \omega_2)
+$$
+
+$$
+\begin{align}
+&\dfrac{\partial}{\partial \rho} E(g(X_1, X_2)) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(X_1, X_2) \Bigg( \dfrac{1}{(2\pi)^2} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (-\sigma_1 \sigma_2 \omega_1 \omega_2) \Phi(\omega_1, \omega_2) \exp(-j(\omega_1 x_1 + \omega_2 x_2)) d \omega_1 d \omega_2 \Bigg)  d x_1 d x_2\\
+=& \sigma_1 \sigma_2 \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(X_1, X_2) \Bigg( \dfrac{1}{(2\pi)^2} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (-\omega_1 \omega_2) \Phi(\omega_1, \omega_2) \exp(-j(\omega_1 x_1 + \omega_2 x_2)) d \omega_1 d \omega_2 \Bigg)  d x_1 d x_2\\
+=& \sigma_1 \sigma_2 \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(X_1, X_2) \dfrac{\partial^2}{\partial X_1 \partial X_2} \Bigg( \dfrac{1}{(2\pi)^2} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \Phi(\omega_1, \omega_2) \exp(-j(\omega_1 x_1 + \omega_2 x_2)) d \omega_1 d \omega_2 \Bigg)  d x_1 d x_2\\
+=& \sigma_1 \sigma_2 \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(X_1, X_2) \dfrac{\partial^2}{\partial X_1 \partial X_2} f_{X_1, X_2} (x_1, x_2)  d x_1 d x_2
+\end{align}
+$$
+
+if $$g(X_1, X_2)$$ grows slower than $$\exp\big(-\frac{1}{2}(\sigma_1^2 x_1^2 + \sigma_2^2 x_2^2)\big)$$
+
+$$
+\begin{align}
+\dfrac{\partial}{\partial \rho} E(g(X_1, X_2)) &= \sigma_1 \sigma_2 \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}\dfrac{\partial^2}{\partial X_1 \partial X_2} g(X_1, X_2)  f_{X_1, X_2} (x_1, x_2)  d x_1 d x_2\\
+&= \sigma_1 \sigma_2 E \Big( \dfrac{\partial^2 g(X_1, X_2)}{\partial X1 \partial X_2} \Big)
+\end{align}
+$$
+
+## Example without Price's Theorem
+
+$$\cos(X)$$
+
+It doesn't have to use Price's theorem. We can directly apply trigeometry formulas, then use characteristic function to get the result.

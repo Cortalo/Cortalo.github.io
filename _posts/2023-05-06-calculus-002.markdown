@@ -1,0 +1,224 @@
+---
+title:  "Calculus 002"
+date:   2023-05-06 07:00:00 +0200
+categories: math
+tags: math
+math: true
+---
+
+From [Zhenyu Qi' Lecture 002](http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/104S115/2)
+
+## Upper and Lower Bound
+
+Def: Let $$S \subseteq \mathbb{R}$$ and $$r \in \mathbb{R}$$. We say that
+
+(1) $$r$$ is an upper (resp. lower) of $$S$$ if
+
+$$
+\forall s \in S [ r \ge (\text{ resp. } \le)  s]
+$$
+
+(2) $$r$$ is a greatest (resp. least) element of $$S$$ if:
+
+- &nbsp; 1. $$r$$ is a upper (resp. lower) bound of $$S$$.
+
+- &nbsp; 2. $$r \in S$$
+
+Notation: $$r = \max S$$ (resp. $$\min S$$)
+
+(3) $$r$$ is the least upper (greatest lower) bound of $$S$$, if
+
+$$
+r = \min \{u\in \mathbb{R} \vert u \text{ is a upper bound of } S\} = \sup S
+$$
+
+$$
+r = \max \{u\in \mathbb{R} \vert u \text{ is a lower bound of } S\} = \inf S
+$$
+
+We have
+
+- if $$r = \sup S$$, then any $$u < r$$, $$u$$ is not upper bound of $$S$$.
+
+- if $$r = \inf S$$, then any $$u > r$$, $$u$$ is not lower bound of $$S$$.
+
+Also, every $$r \in \mathbb{R}$$ is a upper and lower bound of $$\emptyset$$.
+
+Convention:
+
+- We write $$\sup S = \infty$$ (resp. $$\inf S = -\infty$$) if and only if $$S$$ has no upper (resp. lower) bound.
+If this is the case we say $$\sup S$$ (resp. $$\inf S$$) doesn't exist.
+
+- We way $$S$$ is bounded from above (resp. below) iff $$S$$ has a upper (lower) bound.
+
+## Dedekind Cut
+
+Def (Dedekind Cut): Let $$A, B \subseteq \mathbb{R}$$, we say that $$(A,B)$$ is a Dedekind cut (of $$\mathbb{R}$$) if
+
+- &nbsp; $$A \ne \emptyset \ne B$$
+
+- &nbsp; $$A \cup B = \mathbb{R}$$
+
+- &nbsp; $$\forall a \in A, b \in B, [a < b]$$
+
+We usually call $$A$$ (resp. $$B$$) the lower (resp. upper) part of $$(A,B)$$.
+
+From now on (until he say stop) we assume that $$\mathbb{R}$$ has the following property:
+
+(Dedekind's gapless property) If $$(A,B)$$ is a D-cut of $$\mathbb{R}$$, then exactly one of the following happens:
+
+- &nbsp; $$\max A$$ exists but $$\min B$$ doesn't.
+
+- &nbsp; $$\min B$$ exists but $$\max A$$ doesn't
+
+Ex 1: We may define Dedekind cuts of $$\mathbb{Q}$$ similarly.
+
+$$
+B = \{x \in \mathbb{Q} \vert x > 0 \land x^2 > 2\}, A = Q \backslash B
+$$
+
+We can verify it is D-cut.
+
+We can prove $$ \max A, \min B$$ doesn't exists.
+
+If $$\min B$$ exists, let $$\min B = p$$.
+
+$$
+\min B = p \implies p \in B \implies  p > 0 \land p^2 > 2
+$$
+
+Let $$q = p - \dfrac{p^2-2}{2p} \implies 0 < q < p$$
+
+$$
+q^2 = \Big( p - \dfrac{p^2-2}{2p}\Big)^2 = 2 + \Big(\dfrac{p^2-2}{2p}\Big)^2 > 2
+$$
+
+$$q > 0 \land q^2 > 2 \land q \in \mathbb{Q} \implies q \in B$$
+
+contradicts with $$ q < p = \min B$$
+
+If $$\max A$$ exists, let $$\max A = p$$
+
+$$
+\max A = p \implies p \in A \implies p^2 < 2
+$$
+
+$$
+1 \in A \implies p \ge 1 > 0
+$$
+
+Let $$ h = \min\Big( \dfrac{1}{2}, \dfrac{2-p^2}{2p+2}\Big)$$
+
+$$
+h \le \dfrac{1}{2} < 1
+$$
+
+$$
+h \le \dfrac{2-p^2}{2p+2} < \dfrac{2-p^2}{2p+1}
+$$
+
+$$
+(p+h)^2 = p^2 + (2p+h)h < p^2 + (2p+1)h < p^2 + (2-p^2) < 2
+$$
+
+$$
+p + h \in Q \land (p+h)^2 < 2 \implies p+h \in A
+$$
+
+contraditcs with $$p+h > p = \max A$$
+
+## Weierstrass
+
+Theorem (Weierstrass): Let $$\emptyset \ne S \subseteq \mathbb{R}$$. If $$S$$ has a upper bound, then $$\sup S$$ exists.
+
+Proof:
+
+Let $$B := \{b \in \mathbb{R} \vert b \text{ is a upper bound of } S\}, A:= \mathbb{R} \backslash B $$
+
+We need to show that $$\min B$$ exists.
+
+Step 1: $$(A,B)$$ is a D-cut of $$\mathbb{R}$$
+
+- &nbsp; $$A \ne \emptyset \ne B$$
+
+$$S \ne \emptyset \implies s \in S \implies s-1 \not\in B \implies s - 1 \in A \implies A \ne \emptyset$$
+
+$$ S \text{ has a upper bound } \implies B \ne \emptyset $$
+
+- &nbsp; $$A \cup B = \mathbb{R}$$
+
+- &nbsp; $$\forall a \in A, b \in B, [a < b]$$.
+
+Were this false, $$a \ge b$$
+
+$$
+b \in B \implies a \in B \implies a \in A \cap B \implies a \in \emptyset
+$$
+
+Step 2: We need to show that $$\max A$$ doesn't exists. Were this false.
+
+$$
+\max A = a_0 \implies a_0 \in A \implies a_0 \text{ is not an upper bound of} S \implies \exists s_0 \in S \text{ s.t. } s_0 > a_0
+$$
+
+Let $$h = \dfrac{a_0 + s_0}{2}, a_0 < h < s_0$$
+
+$$
+h < s_0 \implies h \text{ is not an upper bound of } S \implies h \in A
+$$
+
+contracts with $$ h > a_0 = \max A$$
+
+## The Archimedean Property
+
+Ex2: prove the following statement
+
+(The Archimedean property) $$\forall r \in \mathbb{R} [r > 0 \implies \exists n \in N [\frac{1}{n} < r]]$$
+
+Step 1: We need to show $$\mathbb{N}$$ doesn't have upper bound. Were this false, $$\mathbb{N}$$ has upper bound, then from Weierstrass $$\sup \mathbb{N}$$ exists, $$b = \sup \mathbb{N} = \min \{\text{ uppber bound of } \mathbb{N}\}$$.
+
+
+$$
+\forall n \in \mathbb{N}, [n+1 \in \mathbb{N}]
+$$
+
+$$
+n+1 \in \mathbb{N} \implies n + 1 \le b \implies n \le b - 1
+$$
+
+$$
+\forall n \in \mathbb{N}, [n \le b - 1]
+$$
+
+thus $$b - 1$$ is an uppber bound of $$\mathbb{N}$$, $$b - 1 \in \{ \text{ upper bound of } \mathbb{N}\}$$ contracdicts with
+
+$$b - 1 < b = \min \{ \text{ uppber bound of } \mathbb{N} \}$$
+
+Step 2: Were Archimedean property false
+
+$$
+\exists r \in \mathbb{R} \land r > 0 [\forall n \in \mathbb{N} [\frac{1}{n} \ge r]]
+$$
+
+thus
+
+$$
+\exists r \in \mathbb{R} \land r > 0 [\forall n \in \mathbb{N} [n \le \frac{1}{r}]]
+$$
+
+thus $$1/r$$ is an upper bound of $$\mathbb{N}$$
+
+## Limit of Sequence
+
+Def: Let $$a_n (n \in \mathbb{N})$$ be a sequence in $$\mathbb{R}$$, and $$L \in \mathbb{R}$$.
+We say that $$a_n$$ converges to $$L$$ (as $$n \to \infty$$) if
+
+$$
+\forall \varepsilon > 0 \quad \exists N \in \mathbb{N} \quad [n \ge N \implies \vert a_n - L \vert < \varepsilon]
+$$
+
+Terminology: If such $$L$$ exists (doesn't exists), we call it the limit of $$a_n$$ and we call $$a_n$$ a convergent (divergent) sequence.
+
+Notation: $$\lim_{n \to \infty} a_n = L$$
+
+50min

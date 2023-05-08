@@ -122,6 +122,15 @@ $$
 ## Characteristic Function
 
 $$
+\Phi(\omega_1, \dots, \omega_n) = E(\exp(j \omega^\intercal X)) = \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} \exp(j (\omega_1 x_1 + \dots \omega_n x_n)) f(x_1, \dots, x_n) d x_1 \dots d x_n
+$$
+
+$$
+f(x_1, \dots x_n) = \dfrac{1}{(2\pi)^n} \int_{-\infty}^{\infty} \dots \int_{-\infty}^{\infty} \Phi(\omega_1, \dots, \omega_n) \exp(-j(\omega_1 x_1 + \dots + \omega_n x_n)) d \omega_1 \dots d \omega_n
+$$
+
+
+$$
 \Phi_X(\omega) = E(\exp(j \omega^{\intercal} X)) = \exp\big(j \omega^\intercal \mu - \frac{1}{2} \omega^\intercal \Sigma \omega\big)
 $$
 
