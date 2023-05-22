@@ -221,4 +221,53 @@ Terminology: If such $$L$$ exists (doesn't exists), we call it the limit of $$a_
 
 Notation: $$\lim_{n \to \infty} a_n = L$$
 
-50min
+Some generalized notations: $$\lim_{n\to\infty} a_n = \infty \quad \iff \quad$$ $$\forall M \in \mathbb{R}\, \exists n \in \mathbb{N} \, [n \ge N \implies a_n \ge M]$$, similarly for $$-\infty$$.
+In this case we usually doesn't say the limit exists or converge.
+
+Ex3: (1) $$\lim_{n \to \infty} a_n = L, \lim_{n \to \infty} a_n = M \quad \implies \quad L = M$$
+
+wlog, assume $$M > L$$
+
+$$
+\exists N_1 \in \mathbb{N} \, [n \ge N_1 \implies L - \dfrac{M - L}{2} < a_n < L + \dfrac{M-L}{2}]
+$$
+
+$$
+\exists N_2 \in \mathbb{N} \, [n \ge N_2 \implies M - \dfrac{M - L}{2} < a_n < M + \dfrac{M-L}{2}]
+$$
+
+$$
+n \ge max(N_1, N_2) \implies \dfrac{M+L}{2} < a_n < \dfrac{M+L}{2}
+$$
+
+we have the contracdiction.
+
+(2) $$a_n (n \in \mathbb{N})$$ is convergent $$\implies \{a_n \vert n \in \mathbb{N}\} $$ is bounded.
+
+$$\exists N \in \mathbb{N}, [n \ge N \implies L - 1 < a_n < L + 1]$$
+
+let $$L_1 = \max \{a_n \vert n \in \mathbb{N}, n < N\}$$, then
+
+$$
+\forall n \in \mathbb{N} \, [a_n \le \max(L+1, L_1)]
+$$
+
+lower bound is similar.
+
+(3) If $$\forall n \in \mathbb{N} a_n \le b_n, \lim_{n\to\infty}a_n = L, \lim_{n\to\infty}b_n=M$$, then $$L \le M$$. What if $$\le$$ is replaced by $<$?
+
+Were this false, $$L > M$$. We can find $$N_a, N_b \in \mathbb{N}$$ such that $$a_n, b_n$$ all lies in the nonoverlaping region. Then we find $$n \ge \max(N_a, N_b) \implies a_n > b_n$$.
+
+If $$\le$$ is replaced by $$<$$, we still only have the conclusion $$L \le M$$. Assume the examlpe $$a_n = \dfrac{1}{n+1}$$, $$b_n = \dfrac{1}{n}$$. By Archimedean property, limit is $$L=M=0$$.
+
+Remark: changing or removing finitely many terms in $$a_n$$ doesn't affect the existance of limit or the value of the limit.
+
+## Elementary Arithmetic on Limit
+
+If $$\lim_{n\to\infty} a_n = L$$ and $$\lim_{n\to\infty} b_n = M$$, then
+
+(1) $$\lim_{n\to\infty} (a_n \pm b_n) = L \pm M$$
+
+(2) $$\lim_{n\to\infty} a_n b_n = L \cdot M$$
+
+(3) if $$M \ne 0$$, then $$b_n \ne 0$$ for all but finitely many $$n$$, and $$\lim_{n\to\infty} \dfrac{a_n}{b_n} = \dfrac{L}{M}$$

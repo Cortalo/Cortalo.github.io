@@ -1,0 +1,9 @@
+---
+title:  "逻辑学 005"
+date:   2023-05-21 08:00:00 +0200
+categories: math
+tags: math
+math: true
+---
+
+来自 [傅皓政 逻辑课程 005](http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/100S105/5)

@@ -1,0 +1,234 @@
+---
+title:  "Calculus 003"
+date:   2023-05-18 07:00:00 +0200
+categories: math
+tags: math
+math: true
+---
+
+From [Zhenyu Qi' Lecture 003](http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/104S115/3)
+
+Example: If $$a>1$$, then $$\lim_{n\to\infty} \dfrac{1}{a^n} = 0$$.
+
+$$
+\dfrac{1}{(1+(a-1))^n} = \dfrac{1}{(1+b)^n} \le \dfrac{1}{1 + nb}
+$$
+
+Ex1: $$\lim_{n\to\infty}a_n = \lim_{n\to\infty}b_n = L$$, and $$a_n \le c_n \le b_n$$, then $$\lim_{n\to\infty}c_n = L$$.
+
+$$\forall \varepsilon > 0, \exists N_a, N_b \in \mathbb{N} [n \ge \max(N_a, N_b) \implies L-\epsilon < a_n \le b_n < L + \epsilon]$$
+
+$$\forall \varepsilon > 0, \exists N_a, N_b \in \mathbb{N} [n \ge \max(N_a, N_b) \implies L-\epsilon < a_n \le c_n \le b_n < L + \epsilon]$$
+
+## Monotone
+
+(1) nondecreasingly monotone / increasing: $$\forall n \in N, a_n \le a_{n+1}$$
+
+nonincreasingly monotone / decreasing: $$\forall n \in N, a_n \ge a_{n+1}$$
+
+$$
+a_n \nearrow \quad a_n \searrow
+$$
+
+(2) strictly increasing (resp. strictly decreasing)
+
+$$
+a_n \nearrow\nearrow \quad a_n \searrow\searrow
+$$
+
+Theorem: (boundedness from above $$+ \nearrow \implies $$ convergence)
+
+Since it is boundedness from above, let $$L = \sup \{a_n\}$$.
+
+$$
+\forall \varepsilon> 0, L - \varepsilon \text{ is not upper bound}, \exists N \in \mathbb{N}, [n \ge N \implies a_n \ge a_{N} > L - \varepsilon]
+$$
+
+plus $$a_n \le L$$, we have $$\vert a_n - L \vert < \epsilon$$.
+
+## The Decimal Expression
+
+Examples: (1) A decimal expression gives a real number.
+
+$$0.d_1 d_2 d_3 \dots$$
+
+$$
+a_1 = 0.d_1, a_2 = 0.d_1 d_2, \dots
+$$
+
+$$
+\forall n \in \mathbb{N} \, [a_n \in \mathbb{Q}]
+$$
+
+$$
+a_n \nearrow, \text{ it has uppber bound } 1
+$$
+
+one real number may have different decimal expression, 1, 0.999999
+
+## The Natural Base
+
+(2) The natural base $$e$$
+
+$$
+e = \lim_{n\to\infty} (1 + \dfrac{1}{n})^n
+$$
+
+$$
+\begin{align}
+a_n &= \binom{n}{0} + \binom{n}{1}\dfrac{1}{n} + \binom{n}{2}\dfrac{1}{n^2} + \dots + \binom{n}{n}\dfrac{1}{n^2}\\
+&= \sum_{j=0}^n \binom{n}{j}\dfrac{1}{n^j}
+\end{align}
+$$
+
+$$
+\binom{n}{j} = \dfrac{n!}{j!(n-j)!}
+$$
+
+$$
+\begin{align}
+&\dfrac{n!}{j!(n-j)!} \dfrac{1}{n^j} = \dfrac{1}{j!} \dfrac{n (n-1) \dots (n-j+1)}{n^j}\\
+=& \dfrac{1}{j!} (1-\frac{1}{n})(1-\frac{2}{n})\dots (1 - \dfrac{j-1}{n})
+\end{align}
+$$
+
+$$
+a_n = 1 + 1 + \dfrac{1}{2!}(1-\frac{1}{n}) + \dfrac{1}{3!}(1-\frac{1}{n})(1-\frac{2}{n}) + \dots + \dfrac{1}{n!}(1-\frac{1}{n})\dots (1-\frac{n-1}{n})
+$$
+
+$$
+a_{n+1} = 1 + 1 + \dfrac{1}{2!}(1-\frac{1}{n+1}) + \dfrac{1}{3!}(1-\frac{1}{n+1})(1-\frac{2}{n+1}) + \dots + \dfrac{1}{n!}(1-\frac{1}{n+1})\dots (1-\frac{n-1}{n+1}) + \dfrac{1}{(n+1)!}(1-\frac{1}{n+1})\dots (1-\frac{n}{n+1})
+$$
+
+thus
+
+$$
+a_{n+1} > a_{n} \quad a_{n} \nearrow\nearrow
+$$
+
+and
+
+$$
+\begin{align}
+a_n &< 1 + 1 + \frac{1}{2!} + \dots + \frac{1}{n!}\\
+&< 1 + 1 + \frac{1}{2} + \frac{1}{2^2} + \dots \frac{1}{2^{n-1}}\\
+&= 1 + \dfrac{1-\frac{1}{2^n}}{1-\frac{1}{2}} < 3
+\end{align}
+$$
+
+in the near future we will see that
+
+$$
+e = \lim_{n\to\infty}(1 + 1 + \frac{1}{2!} + \dots + \frac{1}{n!})
+$$
+
+## Nested Intervals
+
+Definition: A sequence of intervals $$I_n (n \in \mathbb{N})$$ is nested if $$I_n \ne \emptyset$$ and $$I_{n+1} \subseteq I_n$$ for all $$n \in \mathbb{N}$$.
+
+Question: $$\bigcap\limits_{n\in\mathbb{N}} I_n \ne \emptyset$$?
+
+Sometimes it becomes emptyset.
+
+(1) $$I_n = (0, \frac{1}{n})$$
+
+(2) $$I_n = [n, \infty)$$
+
+Theorem (of nested intervals)
+
+If $$I_{n} (n \in \mathbb{N})$$ is a sequence of bounded closed nested intervals ($$[a_n, b_n]$$), then $$\bigcap\limits_{n\in\mathbb{N}}I_n \ne \emptyset$$.
+
+Proof:
+
+Write $$I_n = [a_n, b_n] (n \in \mathbb{N})$$, we know $$a_n \le b_n, \quad a_n \nearrow, \quad b_n \searrow$$.
+We know
+
+$$
+\forall n, m \in \mathbb{N}, a_n \le a_{\max{(n,m)}} \le b_{\max_{(n,m)}} \le b_{m}
+$$
+
+In other words, for every $$m \in \mathbb{N}$$, $$b_m$$ is a upper bound of $$\{a_n \vert n \in \mathbb{N}\}$$.
+Let $$c=\lim_{n\to\infty}a_n$$.
+Then $$c$$ is the least uppber bound, $$c \ge a_n$$ for all $$n$$.
+For all $$m$$, $$a_n \le b_m$$, take the limits $$\lim_{n\to\infty} a_n \le \lim_{n\to\infty} b_m$$, thus $$c \le b_m$$ for all $$m$$.
+
+Ex2: (1) What if $$I_n = (a_n, b_n)$$ nested, but $$a_n \nearrow\nearrow$$ and $$b_n \searrow\searrow$$?
+
+In this case the intersections are non-empty.
+
+$$
+\forall n, m \in \mathbb{N}, a_n < a_{\max(n,m)} < b_{\max(n,m)} < b_{m}
+$$
+
+Let $$c = \lim_{n\to\infty} a_n$$, then $$c$$ is the least uppber bound, $$c \ge a_{n+1} > a_{n}$$ for all $$n$$.
+Also $$c \le b_{m+1} < b_m$$
+
+(2) $$I_n = (a_n, \infty)$$, nested and $$\{a_n\}$$ bounded above.
+
+In this case the intersections are non-empty. Let $$c$$ be an upper bound. For all $$n$$, $$c \ge a_{n}$$, thus $$c + 1 \ge a_{n} + 1 > a_n$$
+
+## Equivalence
+
+gapless is equivalent to Weierstrass, to $$(\text{ mono } + \text{ Archimedean })$$ to $$(\text{ nexted interval } + \text{ Archimedean })$$.
+
+These expressions are used to determine if we can define something and it is a real number.
+For example, if we can find a bounded increasing sequence, then we know there is a real number to be its limit.
+
+## Cauchy Sequence
+
+A sequence $$a_n (n \in \mathbb{N})$$ in $$\mathbb{R}$$ is a Cauchy sequence if
+
+$$
+\forall \varepsilon > 0\, \exists N \in \mathbb{N} \, [n, m \ge N \implies \vert a_n - a_m \vert < \varepsilon]
+$$
+
+It is easy to see
+
+- convergent $$\implies$$ Cauchy
+
+- Cauchy $$\implies$$ bounded
+
+Theorem: Cauchy $$\iff$$ convergent
+
+Definition:
+
+For a bounded sequence $$a_n$$, let
+
+$$
+u_n = \sup \{a_m \vert m \ge n\}
+$$
+
+$$
+l_n = \inf \{a_m \vert m \ge n\}
+$$
+
+it is easy to see $$u_n \searrow, \, l_n \nearrow$$.
+Also, the sequence $$u_n$$, $$l_n$$ is bounded.
+
+$$
+\limsup_{n\to\infty} a_n := \lim_{n\to\infty} u_n
+$$
+
+$$
+\liminf_{n\to\infty} a_n := \lim_{n\to\infty} l_n
+$$
+
+Ex4: $$a_n$$ converges $$\iff$$ $$\limsup_{n\to\infty} a_n = \liminf_{n\to\infty} a_n$$, and if it is the case, $$\lim_{n\to\infty}a_n = \limsup_{n\to\infty} a_n = \limsup_{n\to\infty} a_n$$
+
+We have $$ l_n \le a_n \le u_n $$
+
+&nbsp; $$\Leftarrow$$ is from squeeze theorem.
+
+&nbsp; $$\implies$$, Let $$\lim_{n\to\infty}a_n$$ = A
+
+$$
+\forall \epsilon > 0\, \exists N \in\mathbb{N}\, [n \ge N \implies A - \varepsilon < a_n < A + \varepsilon ]
+$$
+
+thus $$A - \varepsilon$$ is a lower bound of $$\{a_m \vert m \ge N\}$$, and $$l_N$$ is the greatest lower bound of $$\{a_m \vert m \ge N\}$$, thus $$A - \varepsilon \le l_N \le l_n$$ for all $$n \ge N$$. Similarly
+
+$$
+\forall \epsilon > 0\, \exists N \in\mathbb{N}\, [n \ge N \implies A - \varepsilon \le l_n \le a_n \le u_n \le A + \varepsilon ]
+$$
+
+thus $$\limsup_{n\to\infty} a_n = \liminf_{n\to\infty} a_n = A$$

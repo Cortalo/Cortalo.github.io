@@ -1,0 +1,117 @@
+---
+title:  "逻辑学 004"
+date:   2023-05-21 07:00:00 +0200
+categories: math
+tags: math
+math: true
+---
+
+来自 [傅皓政 逻辑课程 004](http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/100S105/4)
+
+- 语句：由符号组成的序列
+- 命题：符号序列的意义或内容
+- 语词论证：S是M，所有的P都是M，所以S是P
+- 命题论证：如果P，则Q，P，所以Q
+
+## 命题逻辑语言
+
+- 命题逻辑的字符集包含下列几个部分：
+    - 语句（或命题）符号：$$P, Q, R, \dots$$
+    - 连接词：$$\lnot, \land, \lor, \to, \leftrightarrow$$
+    - 辅助符号：$$(,)$$
+
+- 命题逻辑语言中的句式都可以经由下列的形式规则构建之。（$$\varphi$$与$$\psi$$为句式的变量）
+    - 每个语句符号都是句式。
+    - 如果$$\varphi$$是一个句式，那么$$\lnot\varphi$$也是句式。
+    - 如果$$\varphi$$和$$\psi$$都是句式，那么$$\varphi\land\psi,\varphi\lor\psi,\varphi\to\psi,\varphi\leftrightarrow\psi$$也都是句式。
+    - 除了经由规则(1)-(3)所构建的称为句式外，没有其他句式。
+
+- 每个语句符号（如$$P,Q,R$$）成为原子句式。
+
+- 直接子句式（immediate subformulae）的定义：
+    - 语句符号没有直接子句式。
+    - 句式$$\lnot\varphi$$的直接子句式只有$$\varphi$$。
+    - 句式$$\varphi\land\psi, \varphi\lor\psi, \varphi\to\psi$$以及$$\varphi\leftrightarrow\psi$$的直接子句式为$$\varphi$$和$$\psi$$。
+
+- 主要连接词（main connective）的定义：
+
+- 连接词范围（scope）的定义：
+
+- 优先级：
+    - &nbsp; $$\lnot$$
+    - &nbsp; $$\lor, \land$$
+    - &nbsp; $$\to, \leftrightarrow$$
+
+## 语义值
+
+- 语句的语义值为真假值。
+- 语义学预设：
+    - 二值原则：命题具有真假值。但不能既真又假，也不能不真也不假。
+    - 真值函映原则：在古典逻辑中出现的语句连接词均为真值函映的关键词。
+    - 外延原则：复合语句的真假值是由原子语句的真假值决定，与语句本身的内容或意义无关。
+
+- 基本真值表
+
+| $$P$$ | $$\lnot P$$ |
+|-------|-------------|
+| T     | F           |
+| F     | T           |
+
+
+| $$P$$ | $$Q$$ | $$P \lor Q$$ |
+|-------|-------|--------------|
+| T     | T     | T            |
+| T     | F     | T            |
+| F     | T     | T            |
+| F     | F     | F            |
+
+| $$P$$ | $$Q$$ | $$P \land Q$$ |
+|-------|-------|---------------|
+| T     | T     | T             |
+| T     | F     | F             |
+| F     | T     | F             |
+| F     | F     | F             |
+
+| $$P$$ | $$Q$$ | $$P \to Q$$ |
+|-------|-------|-------------|
+| T     | T     | T           |
+| T     | F     | F           |
+| F     | T     | T           |
+| F     | F     | T           |
+
+| $$P$$ | $$Q$$ | $$P \leftrightarrow Q$$ |
+|-------|-------|-------------------------|
+| T     | T     | T                       |
+| T     | F     | F                       |
+| F     | T     | F                       |
+| F     | F     | T                       |
+
+- 恒真句（tautology）：考虑语句的所有可能情况，如果该语句在所有可能情况中均为真，若且唯若，该语句为恒真句。
+    - &nbsp; $$P\to P$$
+    - &nbsp; $$P \lor \lnot P$$
+    - &nbsp; $$P \to (Q \to P)$$
+
+- 矛盾句（contradiction）：
+    - &nbsp; $$P \land \lnot P$$
+    - &nbsp; $$\lnot(P\to(Q \to P))$$
+    - &nbsp; $$P \leftrightarrow \lnot P$$
+
+- 偶真句
+
+## 命题之间的关系
+
+- 蕴含关系（implication）：
+    - &nbsp; $$\varphi_1, \varphi_2, \dots, \varphi_n \models \psi$$ 若且唯若 $$(\varphi_1 \land \varphi_2 \land \dots \land \varphi_n) \to \psi$$ 为恒真句。
+    - &nbsp; $$\models \psi$$ 若且唯若 $$\psi$$为恒真句。
+    - &nbsp; $$\varphi_1, \varphi_2, \dots, \varphi_n \models$$ 若且唯若 $$\varphi_1 \land \varphi_2 \land \dots \land \varphi_n$$ 为矛盾句。
+
+- 等值关系（equivalence）:
+    - &nbsp; $$\models \varphi \leftrightarrow \psi$$
+    - &nbsp; $$\models (P \to Q) \leftrightarrow (\lnot P \lor Q)$$
+    - &nbsp; $$\models (P \lor Q) \leftrightarrow \lnot(\lnot P \land \lnot Q)$$
+
+- 不一致（inconsistency）
+    - 对句式集合$$\Gamma$$, $$\Gamma$$是不一致的，若且唯若，集合中所有句式的连言是矛盾句。记为$$\Gamma \models$$
+
+- 一致性：
+    - 集合中所有句式的连言不是矛盾句。记为$$\Gamma \not\models$$

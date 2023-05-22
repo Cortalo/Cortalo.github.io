@@ -1,0 +1,25 @@
+---
+title:  "Calculus 004"
+date:   2023-05-18 08:00:00 +0200
+categories: math
+tags: math
+math: true
+---
+
+From [Zhenyu Qi' Lecture 004](http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/104S115/4)
+
+Some comments on our usage of logic terms
+
+Standard logic terms
+
+$$
+\forall \varepsilon \in \mathbb{R} \, [\varepsilon > 0 \implies \exists N \in \mathbb{N} \, \forall n \in \mathbb{N} \, [ n \ge N \implies \vert a_n - L \vert < \varepsilon]]
+$$
+
+informal way
+
+$$
+\forall \varepsilon > 0 \, \exists N \in \mathbb{N} \, [n \ge N \implies \vert a_n - L \vert < \varepsilon]
+$$
+
+3min
