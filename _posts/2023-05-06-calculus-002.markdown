@@ -12,44 +12,37 @@ From [Zhenyu Qi' Lecture 002](http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/104S115/
 
 Def: Let $$S \subseteq \mathbb{R}$$ and $$r \in \mathbb{R}$$. We say that
 
-(1) $$r$$ is an upper (resp. lower) of $$S$$ if
+(1.1) $$r$$ is an upper bound of $$S$$ :  $$ \quad \forall s \in S \, [s \le r]$$
 
-$$
-\forall s \in S [ r \ge (\text{ resp. } \le)  s]
-$$
+(1.2) $$r$$ is an lower bound of $$S$$ :  $$ \quad \forall s \in S \, [s \ge r]$$
 
-(2) $$r$$ is a greatest (resp. least) element of $$S$$ if:
 
-- &nbsp; 1. $$r$$ is a upper (resp. lower) bound of $$S$$.
+(2) $$r$$ is the greatest element of $$S$$ (notation $$\max S$$):
+
+- &nbsp; 1. $$r$$ is an upper bound of $$S$$.
 
 - &nbsp; 2. $$r \in S$$
 
-Notation: $$r = \max S$$ (resp. $$\min S$$)
 
-(3) $$r$$ is the least upper (greatest lower) bound of $$S$$, if
+(3.1) $$r$$ is the least upper bound of $$S$$ (notation $$\sup S$$): $$ \quad r = \min \{\text{ upper bounds of } S\} $$
 
-$$
-r = \min \{u\in \mathbb{R} \vert u \text{ is a upper bound of } S\} = \sup S
-$$
+(3.2) $$r$$ is the greatest lower bound of $$S$$ (notation $$\inf S$$): $$ \quad r = \max \{\text{ lower bounds of } S\} $$
 
-$$
-r = \max \{u\in \mathbb{R} \vert u \text{ is a lower bound of } S\} = \inf S
-$$
 
 We have
 
-- if $$r = \sup S$$, then any $$u < r$$, $$u$$ is not upper bound of $$S$$.
+- Any $$u < \sup S$$, $$u$$ is not upper bound of $$S$$.
 
-- if $$r = \inf S$$, then any $$u > r$$, $$u$$ is not lower bound of $$S$$.
+- Any $$u > \inf S$$, $$u$$ is not lower bound of $$S$$.
 
 Also, every $$r \in \mathbb{R}$$ is a upper and lower bound of $$\emptyset$$.
 
 Convention:
 
-- We write $$\sup S = \infty$$ (resp. $$\inf S = -\infty$$) if and only if $$S$$ has no upper (resp. lower) bound.
-If this is the case we say $$\sup S$$ (resp. $$\inf S$$) doesn't exist.
+- We write $$\sup S = \infty$$ if and only if $$S$$ has no upper bound.
+If this is the case we say $$\sup S$$ doesn't exist.
 
-- We way $$S$$ is bounded from above (resp. below) iff $$S$$ has a upper (lower) bound.
+- We way $$S$$ is bounded from above iff $$S$$ has a upper bound.
 
 ## Dedekind Cut
 

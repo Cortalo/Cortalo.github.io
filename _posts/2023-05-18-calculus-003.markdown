@@ -14,7 +14,7 @@ $$
 \dfrac{1}{(1+(a-1))^n} = \dfrac{1}{(1+b)^n} \le \dfrac{1}{1 + nb}
 $$
 
-Ex1: $$\lim_{n\to\infty}a_n = \lim_{n\to\infty}b_n = L$$, and $$a_n \le c_n \le b_n$$, then $$\lim_{n\to\infty}c_n = L$$.
+Ex1 (squeeze theorem): $$\lim_{n\to\infty}a_n = \lim_{n\to\infty}b_n = L$$, and $$a_n \le c_n \le b_n$$, then $$\lim_{n\to\infty}c_n = L$$.
 
 $$\forall \varepsilon > 0, \exists N_a, N_b \in \mathbb{N} [n \ge \max(N_a, N_b) \implies L-\epsilon < a_n \le b_n < L + \epsilon]$$
 
@@ -203,7 +203,35 @@ l_n = \inf \{a_m \vert m \ge n\}
 $$
 
 it is easy to see $$u_n \searrow, \, l_n \nearrow$$.
-Also, the sequence $$u_n$$, $$l_n$$ is bounded.
+
+For example, to show $$u_n \searrow$$, we need to show $$\forall i \ge 1, u_{i+1} \le u_{i}$$.
+Were this false, $$\exists i \ge 1, u_{i} < u_{i+1}$$.
+
+$$
+u_{i} < u_{i+1} = \sup \{a_m \vert m \ge i + 1\}
+$$
+
+$$
+u_{i} \text{ is not upper bound of } \{a_m \vert m \ge i + 1\}
+$$
+
+$$
+u_{i} \text{ is upper bound of } \{a_m \vert m \ge i\} \implies u_{i} \text{ is upper bound of } \{a_m \vert m \ge i+1\}
+$$
+
+Also, the sequence $$\{u_n\}$$, $$\{l_n\}$$ is bounded.
+For example, to show $$\{u_n\}$$ is bounded, since $$u_n \searrow$$, we only need to show $$\{u_n\}$$ has lower bound.
+Let $$A$$ be a lower bound of $$\{a_n\}$$, we want to show $$A$$ is also a lower bound of $$\{u_n\}$$. Were this false, $$A$$ is not a lower bound of $$\{u_n\}$$
+
+$$
+\exists i, u_i < A
+$$
+
+$$
+\exists i, a_i \le \sup \{a_m \vert m \ge i\} = u_i < A
+$$
+
+Then we have $$a_i < A$$, this is impossible, since $$A$$ is lower bound of $$\{a_n\}$$.
 
 $$
 \limsup_{n\to\infty} a_n := \lim_{n\to\infty} u_n
@@ -213,7 +241,9 @@ $$
 \liminf_{n\to\infty} a_n := \lim_{n\to\infty} l_n
 $$
 
-Ex4: $$a_n$$ converges $$\iff$$ $$\limsup_{n\to\infty} a_n = \liminf_{n\to\infty} a_n$$, and if it is the case, $$\lim_{n\to\infty}a_n = \limsup_{n\to\infty} a_n = \limsup_{n\to\infty} a_n$$
+Ex4: $$a_n$$ converges $$\iff$$ $$\limsup_{n\to\infty} a_n = \liminf_{n\to\infty} a_n \ne \infty$$.
+
+And if it is the case, $$\lim_{n\to\infty}a_n = \limsup_{n\to\infty} a_n = \limsup_{n\to\infty} a_n$$
 
 We have $$ l_n \le a_n \le u_n $$
 
