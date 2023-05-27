@@ -22,4 +22,122 @@ $$
 \forall \varepsilon > 0 \, \exists N \in \mathbb{N} \, [n \ge N \implies \vert a_n - L \vert < \varepsilon]
 $$
 
-3min
+Ex. Let $$a_n, b_n (n \in \mathbb{N})$$ be two bounded sequence.
+Then
+
+$$\overline{\lim_{n\to\infty}} (a_n + b_n) \le \overline{\lim_{n\to\infty}} a_n + \overline{\lim_{n\to\infty}}b_n$$
+
+$$\underline{\lim}\limits_{n\to\infty} (a_n + b_n) \ge \underline{\lim}\limits_{n\to\infty} a_n + \underline{\lim}\limits_{n\to\infty} b_n$$
+
+Let $$u_n = \sup \{a_m \vert m \ge n\}, v_{n} = \sup \{b_m \vert m \ge n\}, y_{n} = \sup \{a_m + b_m \vert m \ge n\}$$.
+Since $$u_n$$ is a upper bound of $$\{a_m \vert m \ge n\}$$, $$v_n$$ is a upper bound of $$\{b_m \vert m \ge n\}$$.
+We have $$\forall m \ge n, u_n \ge a_m, v_n \ge b_m$$. Thus
+
+$$\forall m \ge n, u_n + v_n \ge a_m + b_m$$
+
+Thus $$u_n + v_n$$ is a upper bound of $$\{a_m + b_m \vert m \ge n\}$$.
+Since $$y_n$$ is the least upper bound
+
+$$y_n \le u_n + v_n$$
+
+$$
+\lim_{n\to\infty} y_n \le \lim_{n\to\infty} u_n + \lim_{n\to\infty} v_n
+$$
+
+Ex. What about $$\overline{\lim_{n\to\infty}} (a_n \times b_n)$$? $$\overline{\lim_{n\to\infty}} (a_n \div b_n)$$?
+If the sequences are all positive, we can have the same conclusion.
+
+
+## Cauchy Sequence Convergent
+
+Since Cauchy sequence is bounded, to prove a bounded sequence convergent, we only need to show $$\lim_{n\to\infty} u_n = \lim_{n\to\infty} l_n$$, thus we only need to show $$\lim_{n\to\infty} (u_n - l_n) = 0$$.
+For Cauchy sequence
+
+$$
+\forall \varepsilon > 0, \exists N \in \mathbb{N}, [n \ge N \implies a_N - \varepsilon < a_n < a_{N} + \varepsilon]
+$$
+
+$$
+\forall \varepsilon > 0, \exists N \in \mathbb{N}, [n \ge N \implies a_N - \varepsilon \le l_N \le l_n \le a_n \le u_n \le u_N \le a_{N} + \varepsilon]
+$$
+
+$$
+\forall \varepsilon > 0, \exists N \in \mathbb{N}, [n \ge N \implies \vert u_n - l_n - 0 \vert \le 2 \varepsilon]
+$$
+
+thus we finish the proof.
+
+Ex 1. Let $$S \subseteq \mathbb{R}$$. Prove that if $$\vert s - s' \vert \le 3$$ for all $$s, s'$$, then
+
+(1) $$S$$ is bounded.
+
+(2) $$\sup S - \inf S \le 3$$.
+
+What if $$\vert s - s' \vert < 3$$? We still only have $$\sup S - inf S \le 3$$.
+Consider the example of $$S = (0,3)$$.
+
+(1) is obvious. (2) Were this false, $$\sup S - \inf S = a > 3$$.
+thus $$\sup S = \inf S + a$$, thus let $$b = \inf S + a - (a-3)/2 < \sup S$$, $$c = \inf S + (a-3)/2 > \inf S $$.
+We know $$c < b$$ and $$b$$ is not upper bound of $$S$$, $$c$$ is not lower bound of $$S$$.
+
+$$
+\exists x, y \in S, [y < c < b < x]
+$$
+
+$$
+\vert x - y \vert > b - c = 3
+$$
+
+## Series
+
+Question: What does $$1 + \frac{1}{2} + \frac{1}{2^2} + \dots = 2$$ mean?
+
+Def: Let $$a_n (n \in \mathbb{N})$$ be a sequence of $$\mathbb{R}$$.
+We say that the series $$\sum_{n=1}^{\infty} a_n$$ converges to a real number $$S$$, if
+
+$$
+\lim_{n\to\infty} s_n = S, \text{ where } s_n := \sum_{j=1}^{n} a_j
+$$
+
+we usually call $$s_n$$ the $$n$$=th partial sum of the series.
+
+What if it is not easy to calculate the closed form of $$s_n$$?
+Take the examples
+
+$$
+1 + \frac{1}{2} + \frac{1}{3} + \dots
+$$
+
+$$
+1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \dots
+$$
+
+Notation: For a series $$\sum_{n} a_n$$ and $$l, m \in \mathbb{N}, l < m$$, we call
+
+$$
+s_{l,m} := \sum_{j=l}^{m} a_j
+$$
+
+the $$(l,m)$$-tail.
+
+- &nbsp; $$\sum_{n} a_n$$ converges $$\implies \lim_{n\to\infty} a_n = 0$$.
+
+We know $$s_n$$ is Cauchy sequence
+
+$$
+\forall \varepsilon > 0, \exists N \in \mathbb{N}, [m,n >= N \implies \vert s_m - s_n \vert < \varepsilon]
+$$
+
+$$
+\forall \varepsilon > 0, \exists N \in \mathbb{N}, [n \ge N \implies \vert  s_{n+1} - s_n \vert = \vert a_{n+1} \vert < \varepsilon]
+$$
+
+Or
+
+$$
+\lim_{n\to\infty} s_n = \lim_{n\to\infty} s_{n-1} = S
+$$
+
+$$
+\lim_{n\to\infty} (s_n - s_{n-1}) = \lim_{n\to\infty} a_n = 0
+$$

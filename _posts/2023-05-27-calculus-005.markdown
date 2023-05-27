@@ -1,0 +1,21 @@
+---
+title:  "Calculus 005"
+date:   2023-05-27 07:00:00 +0200
+categories: math
+tags: math
+math: true
+---
+
+From [Zhenyu Qi' Lecture 005](http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/104S115/5)
+
+## Series Convergent Criterion
+
+$$
+\sum_{n} a_n \text{ converges} \iff s_{n} (n \in \mathbb{N}) \text{ converges } \iff s_n (n \in \mathbb{N}) \text{ is Cauchy}
+$$
+
+$$
+\forall \varepsilon > 0, \exists N \in \mathbb{N}, [k > N, l \ge 0 \implies \vert a_k + \dots + a_{k+l} \vert < \varepsilon ]
+$$
+
+6 min

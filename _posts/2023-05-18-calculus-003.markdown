@@ -188,7 +188,11 @@ It is easy to see
 
 - Cauchy $$\implies$$ bounded
 
-Theorem: Cauchy $$\iff$$ convergent
+Theorem: Cauchy $$\iff$$ convergent.
+
+To prove the theorem, we need the definition of upper and lower sequence.
+
+## Upper And Lower Sequence
 
 Definition:
 
@@ -202,7 +206,10 @@ $$
 l_n = \inf \{a_m \vert m \ge n\}
 $$
 
-it is easy to see $$u_n \searrow, \, l_n \nearrow$$.
+we call $$u_n$$ the upper sequence of $$a_n$$, $$l_n$$ the lower sequence of $$a_n$$.
+We want to show for the bounded sequence $$a_n$$, the upper sequence and lower sequence converge: $$\lim_{n\to\infty} u_n, \lim_{n\to\infty} l_n$$ exists.
+It is easy to see $$u_n \searrow, \, l_n \nearrow$$.
+Also $$l_n \le a_n \le u_n$$.
 
 For example, to show $$u_n \searrow$$, we need to show $$\forall i \ge 1, u_{i+1} \le u_{i}$$.
 Were this false, $$\exists i \ge 1, u_{i} < u_{i+1}$$.
@@ -234,11 +241,11 @@ $$
 Then we have $$a_i < A$$, this is impossible, since $$A$$ is lower bound of $$\{a_n\}$$.
 
 $$
-\limsup_{n\to\infty} a_n := \lim_{n\to\infty} u_n
+\overline{\lim_{n\to\infty}} a_{n}=\limsup_{n\to\infty} a_n := \lim_{n\to\infty} u_n
 $$
 
 $$
-\liminf_{n\to\infty} a_n := \lim_{n\to\infty} l_n
+\underline{\lim}\limits_{n\to\infty} \liminf_{n\to\infty} a_n := \lim_{n\to\infty} l_n
 $$
 
 Ex4: $$a_n$$ converges $$\iff$$ $$\limsup_{n\to\infty} a_n = \liminf_{n\to\infty} a_n \ne \infty$$.
@@ -258,7 +265,7 @@ $$
 thus $$A - \varepsilon$$ is a lower bound of $$\{a_m \vert m \ge N\}$$, and $$l_N$$ is the greatest lower bound of $$\{a_m \vert m \ge N\}$$, thus $$A - \varepsilon \le l_N \le l_n$$ for all $$n \ge N$$. Similarly
 
 $$
-\forall \epsilon > 0\, \exists N \in\mathbb{N}\, [n \ge N \implies A - \varepsilon \le l_n \le a_n \le u_n \le A + \varepsilon ]
+\forall \epsilon > 0\, \exists N \in\mathbb{N}\, [n \ge N \implies A - \varepsilon \le l_{N} \le l_n \le a_n \le u_n \le u_N \le A + \varepsilon ]
 $$
 
-thus $$\limsup_{n\to\infty} a_n = \liminf_{n\to\infty} a_n = A$$
+thus $$\limsup_{n\to\infty} a_n = \liminf_{n\to\infty} a_n = A$$.
