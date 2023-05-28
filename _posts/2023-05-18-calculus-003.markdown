@@ -14,11 +14,27 @@ $$
 \dfrac{1}{(1+(a-1))^n} = \dfrac{1}{(1+b)^n} \le \dfrac{1}{1 + nb}
 $$
 
+
 Ex1 (squeeze theorem): $$\lim_{n\to\infty}a_n = \lim_{n\to\infty}b_n = L$$, and $$a_n \le c_n \le b_n$$, then $$\lim_{n\to\infty}c_n = L$$.
 
 $$\forall \varepsilon > 0, \exists N_a, N_b \in \mathbb{N} [n \ge \max(N_a, N_b) \implies L-\epsilon < a_n \le b_n < L + \epsilon]$$
 
 $$\forall \varepsilon > 0, \exists N_a, N_b \in \mathbb{N} [n \ge \max(N_a, N_b) \implies L-\epsilon < a_n \le c_n \le b_n < L + \epsilon]$$
+
+
+Ex: prove for any $$k \in \mathbb{N}$$, and real number $$a > 1$$, $$\lim_{n\to\infty} \dfrac{n^k}{a^n} = 0$$
+
+Let $$a = 1+b$$ where $$b > 0$$.
+
+$$
+\text{ for any } n > k+1, \quad a^n = (1+b)^n \ge \binom{n}{k+1}b^{k+1} \ge \dfrac{b^{k+1}}{(k+1)!} (n-k)^{k+1}
+$$
+
+$$
+0 \le \dfrac{n^k}{a^n} \le \dfrac{n^k}{(n-k)^k} \dfrac{1}{n-k} \dfrac{k!}{b^k}
+$$
+
+By squeeze theorem, we have $$\lim_{n\to\infty} \dfrac{n^k}{a^n} = 0$$.
 
 ## Monotone
 
@@ -76,7 +92,7 @@ $$
 
 $$
 \begin{align}
-a_n &= \binom{n}{0} + \binom{n}{1}\dfrac{1}{n} + \binom{n}{2}\dfrac{1}{n^2} + \dots + \binom{n}{n}\dfrac{1}{n^2}\\
+a_n &= \binom{n}{0} + \binom{n}{1}\dfrac{1}{n} + \binom{n}{2}\dfrac{1}{n^2} + \dots + \binom{n}{n}\dfrac{1}{n^n}\\
 &= \sum_{j=0}^n \binom{n}{j}\dfrac{1}{n^j}
 \end{align}
 $$

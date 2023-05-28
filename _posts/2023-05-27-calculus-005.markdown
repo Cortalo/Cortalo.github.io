@@ -18,4 +18,126 @@ $$
 \forall \varepsilon > 0, \exists N \in \mathbb{N}, [k > N, l \ge 0 \implies \vert a_k + \dots + a_{k+l} \vert < \varepsilon ]
 $$
 
-6 min
+since
+
+$$
+\vert a_{k} + \dots + a_{k+l} \vert \le \vert a_k \vert + \dots + \vert a_{k+l} \vert
+$$
+
+thus if we have $$ \sum_n \vert a_n \vert$$ convergent, we are sure $$\sum_{n} a_n$$ convergent.
+Since the partial sum of $$\sum_{n} \vert a_n \vert$$ monotone, it converges if and only if its partial sum has a upper bound.
+
+$$
+\exists M > 0 \forall n \in \mathbb{N} [\vert a_1 \vert + \dots \vert a_n \vert \le M]
+$$
+
+Notation: If $$a_n \ge 0 (n \in \mathbb{N})$$, then we write $$\sum_{n} a_n < \infty$$ to mean that $$\sum_n a_n$$ converges.
+We write $$\sum_{n} a_n = \infty$$ to mean that it diverges.
+
+Examples (1) $$\sum_{n=1}^{\infty} \frac{1}{n}$$
+
+$$
+S_1 = 1
+$$
+
+$$S_2 = 1 + \frac{1}{2}$$
+
+$$
+S_4 = 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} > 1 + \frac{1}{2} + \frac{1}{2}
+$$
+
+$$
+\begin{align}
+\forall m \in \mathbb{N}, S_{2^m} &= 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \dots + \frac{1}{2^{m-1}+1} + \dots + \frac{1}{2^{m-1}+2^{m-1}}\\
+& > 1 + \frac{m}{2}
+\end{align}
+$$
+
+(2) $$\sum_{n=1}^{\infty} \frac{1}{n^2}$$
+
+$$
+\frac{1}{n^2} < \frac{1}{n(n-1)} = \frac{1}{n-1} - \frac{1}{n}
+$$
+
+$$
+\begin{align}
+S_n &= 1 + \frac{1}{2^2} + \dots + \frac{1}{n^2} < 1 + (\frac{1}{1} - \frac{1}{2}) + (\frac{1}{2}-\frac{1}{3}) + \dots + (\frac{1}{n-1} - \frac{1}{n})\\
+& < 1 + 1 - \frac{1}{n} < 2
+\end{align}
+$$
+
+(3) $$\sum_{n=1}^{\infty} \dfrac{\sin(n)}{n^k}$$, for $$k \in \mathbb{N}, k \ge 2$$
+
+$$
+\vert \dfrac{\sin(1)}{1^k} \vert + \dots + \vert \dfrac{\sin(n)}{n^k} \vert < 1 + \dots + \frac{1}{n^2} < 2
+$$
+
+thus $$\sum_{n=1}^{\infty} \dfrac{\sin(n)}{n^k}$$ converges.
+
+Ex2. For $$a > 1$$ and $$k \in \mathbb{N}$$, show that $$\sum_{n=1}^{\infty} \frac{n^k}{a^n} < \infty$$
+
+It is obvious all terms are non-negative.
+Similar from the exercise in Calculus 003, for any $$n > 2k+ 4 > k+2$$
+
+$$a^n = (1+b)^n \ge \binom{n}{k+2} b^{k+2} \ge \dfrac{b^{k+2}}{(k+2)!}(n-k-1)^{k+2} \ge \dfrac{b^{k+2}}{2^{k+2}(k+2)!} n^{k+2}$$
+
+thus for any $$n > 2k + 4$$
+
+$$
+\dfrac{n^k}{a^n} \le \dfrac{2^{k+2}(k+2)!}{b^{k+2}} \dfrac{1}{n^2}
+$$
+
+thus the partial sum has upper bound.
+
+Def: Given a sequence $$a_n (n \in \mathbb{N})$$, we say that
+
+(1) $$\sum_{n} a_n$$ converges absolutely if $$\sum_{n} \vert a_n \vert < \infty$$.
+
+(2) $$\sum_{n} a_n$$ converges conditionally if $$\sum_{n} \vert a_n \vert = \infty$$ but $$\sum_{n=1}^{\infty} a_n$$ converges.
+
+## Comparison Test
+
+If $$a_n, b_n (n \in \mathbb{N}) \ge 0$$
+
+(1) If we have
+
+$$\exists C > 0 \text{ and } N \in \mathbb{N} [n \ge N \implies a_n \le C b_n]$$
+
+then
+
+$$
+\sum_n b_n < \infty \implies \sum_n a_n < \infty
+$$
+
+Proof:
+
+Since they are non-negative series, their convergence are equivalent to that the partial sum has upper bound.
+From the partial sum of $$b_n$$ has upper bound, it is obvious that the partial sum of $$a_n$$ has upper bound.
+
+(2) If we know
+
+$$
+\lim_{n\to\infty} \dfrac{a_n}{b_n} \text{ exists }
+$$
+
+then
+
+$$\exists C > 0 \text{ and } N \in \mathbb{N} [n \ge N \implies a_n \le C b_n]$$
+
+Proof:
+
+Let $$l = \lim_{n\to\infty} \dfrac{a_n}{b_n}$$ and $$\varepsilon=1$$
+
+$$
+\exists N \in \mathbb{N} [n \ge N \implies l-1 < \dfrac{a_n}{b_n} < l+1]
+$$
+
+$$
+\exists N \in \mathbb{N} [n \ge N \implies a_n < (l+1)b_n]
+$$
+
+where $$l+1$$ must be positive $$(C > 0)$$, since $$l \ge 0$$.
+
+If $$\lim_{n\to\infty} \dfrac{a_n}{b_n}$$ exists and not equal $$0$$, it is easy to see $$\sum_{n} a_n < \infty \iff \sum_{n} b_n < \infty$$, since $$a_n, b_n$$ can be bounded by each other.
+
+43min
