@@ -46,6 +46,9 @@ If this is the case we say $$\sup S$$ doesn't exist.
 
 ## Dedekind Cut
 
+If we split the set $$\mathbb{R}$$ to two non-empty set, lower part $$A$$ and upper part $$B$$.
+Then either $$\max A$$ exists or $$\min B$$ exists.
+
 Def (Dedekind Cut): Let $$A, B \subseteq \mathbb{R}$$, we say that $$(A,B)$$ is a Dedekind cut (of $$\mathbb{R}$$) if
 
 - &nbsp; $$A \ne \emptyset \ne B$$
@@ -125,6 +128,10 @@ contraditcs with $$p+h > p = \max A$$
 Theorem (Weierstrass): Let $$\emptyset \ne S \subseteq \mathbb{R}$$. If $$S$$ has a upper bound, then $$\sup S$$ exists.
 
 Proof:
+
+$$\sup S = \min \{\text{upper bounds of } S\}$$
+
+The idea is to do a Dedekind's cut $$( \mathbb{R} \backslash \{\text{ upper bounds of } S\} ,\{\text{upper bounds of } S \})$$, then we prove the other case is impossible.
 
 Let $$B := \{b \in \mathbb{R} \vert b \text{ is a upper bound of } S\}, A:= \mathbb{R} \backslash B $$
 
@@ -212,6 +219,10 @@ $$
 
 Terminology: If such $$L$$ exists (doesn't exists), we call it the limit of $$a_n$$ and we call $$a_n$$ a convergent (divergent) sequence.
 
+- the $$n \ge N$$ can be freely changed to $$n > N$$.
+
+- the $$\vert a_n - L \vert < \varepsilon$$ can be freely changed to $$\le$$ and $$K \varepsilon$$, where $$K \in \mathbb{R}$$ is a constant not depending on $$\varepsilon, N$$.
+
 Notation: $$\lim_{n \to \infty} a_n = L$$
 
 Some generalized notations: $$\lim_{n\to\infty} a_n = \infty \quad \iff \quad$$ $$\forall M \in \mathbb{R}\, \exists n \in \mathbb{N} \, [n \ge N \implies a_n \ge M]$$, similarly for $$-\infty$$.
@@ -230,7 +241,7 @@ $$
 $$
 
 $$
-n \ge max(N_1, N_2) \implies \dfrac{M+L}{2} < a_n < \dfrac{M+L}{2}
+n \ge \max(N_1, N_2) \implies \dfrac{M+L}{2} < a_n < \dfrac{M+L}{2}
 $$
 
 we have the contracdiction.

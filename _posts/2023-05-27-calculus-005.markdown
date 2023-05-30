@@ -140,4 +140,91 @@ where $$l+1$$ must be positive $$(C > 0)$$, since $$l \ge 0$$.
 
 If $$\lim_{n\to\infty} \dfrac{a_n}{b_n}$$ exists and not equal $$0$$, it is easy to see $$\sum_{n} a_n < \infty \iff \sum_{n} b_n < \infty$$, since $$a_n, b_n$$ can be bounded by each other.
 
-43min
+- Actually, $$\lim_{n\to\infty} \dfrac{a_n}{b_n}$$ exists can be replaced by $$\overline{\lim_{n\to\infty}} \dfrac{a_n}{b_n}$$ exists.
+
+Proof: Let $$u_n = \sup \{\dfrac{a_m}{b_m} \vert m \ge n\}$$, $$\lim_{n\to\infty}u_n = l$$.
+
+$$
+\exists N \in \mathbb{N} [u_N < l+1]
+$$
+
+$$
+\exists N \in \mathbb{N} [l+1 \text{ is an upper bound of } \{\dfrac{a_m}{b_m} \vert m \ge N\}]
+$$
+
+$$
+\exists N \in \mathbb{N} [n \ge N \implies \dfrac{a_n}{b_n} \le l + 1]
+$$
+
+## Ratio and Root Tests
+
+Exercise 3 (the ratio and the root tests):
+
+Let $$a_n (n \in \mathbb{N}) \ge 0$$. Then
+
+(1) If $$\lim_{n\to\infty} \dfrac{a_{n+1}}{a_n} < 1$$, then
+
+$$
+\exists N \in \mathbb{N} \text{ and } C < 1 [n \ge N \implies a_{n+1} \le C a_n]
+$$
+
+then, $$\sum_{n} a_n < \infty$$
+
+Proof: the idea is that
+
+$$
+\exists N \in \mathbb{N} \text{ and }0 < C < 1 [n \ge N \implies a_{n} \le C^{n-N} a_N]
+$$
+
+Since the series $${a_1, a_2, \dots, a_{N-1}, C^{0} a_{N}, C^{1} a_{N}, \dots}$$ converges, we know $$a_n (n\in\mathbb{N})$$ converges.
+
+Similarly, if $$\lim_{n\to\infty} \dfrac{a_{n+1}}{a_n} > 1$$, we have $$\sum_n a_n = \infty$$.
+
+If $$\lim_{n\to\infty} \dfrac{a_{n+1}}{a_n} = 1$$, it may converge or diverge.
+
+(2) If $$\lim_{n\to\infty} (a_n)^{1/n} < 1$$, then
+
+$$
+\exists N \in \mathbb{N} \text{ and } C < 1 [n \ge N \implies a_n \le C^n]
+$$
+
+thus $$\sum_{n} a_n < \infty$$.
+
+If $$\lim_{n\to\infty} (a_n)^{1/n} > 1$$, then $$\sum_{n} a_n = \infty$$.
+
+## Alternating Series
+
+Question: does $$\sum_{n=1}^{\infty} \dfrac{(-1)^{n-1}}{n}$$ converges (conditionally)?
+
+Def: A series $$\sum_n a_n$$ is an alternating series if
+
+$$
+\exists b_n > 0 (n \in \mathbb{N}) \text{ s.t. } a_n = (-1)^{n-1} b_n (n \in \mathbb{N})
+$$
+
+Confusion: $$b_n > 0$$ or $$b_n \ge 0$$?
+
+## Leibniz's Criterion
+
+If $$\sum_n a_n$$ is an alternating series, and $$b_n (=\vert a_n \vert) \searrow 0$$ as $$n \to \infty$$ (monotonically non-increasing, and converges to $$0$$), then $$\sum_{n} a_n$$ converges.
+
+Proof:
+
+We know $$b_n = (-1)^{n-1} a_n$$. Consider the tail
+
+$$
+\vert a_k + \dots + a_{k+l} \vert = \vert (-1)^{k-1} (b_k - b_{k+1} + \dots + (-1)^l b_{k+l}) \vert
+$$
+
+It is easy to see that $$b_k - b_{k+1} + \dots + (-1)^{l} b_{k+l} \ge 0$$, no matter $$l$$ is even or odd.
+
+$$
+\begin{align}
+&\vert a_k + \dots + a_{k+l} \vert = \vert (-1)^{k-1} (b_k - b_{k+1} + \dots + (-1)^l b_{k+l}) \vert\\
+=& b_k - b_{k+1} + \dots + (-1)^l b_{k+l} \le b_k
+\end{align}
+$$
+
+It is smaller than $$b_k$$ since you can calculate it as $$b_k - (b_{k+1}-b_{k+2}) - \dots$$, no matter $$l$$ is even or odd.
+
+Plus we know $$\lim_{n\to\infty} b_n = 0$$, the tail can be controlled, and the series $$\sum_{n} a_n$$ converges.

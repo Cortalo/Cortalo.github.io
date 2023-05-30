@@ -1,0 +1,138 @@
+---
+title:  "Calculus 006"
+date:   2023-05-29 07:00:00 +0200
+categories: math
+tags: math
+math: true
+---
+
+From [Zhenyu Qi' Lecture 006](http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/104S115/6)
+
+## Seperated Sequences
+
+Given a sequence $$a_n (n \in \mathbb{N})$$, we can seperate all terms into two sequences:
+
+$$
+a_{n_1}, a_{n_2}, \dots \text{ and } a_{n_1'}, a_{n_2'}, \dots
+$$
+
+with
+
+$$
+n_1 < n_2 < \dots \text{ and } n_1' < n_2' < \dots
+$$
+
+also
+
+$$
+\begin{align}
+\{n_1, n_2, \dots\} \cup \{n_1', n_2', \dots\} &= \mathbb{N}\\
+\{n_1, n_2, \dots\} \cap \{n_1', n_2', \dots\} &= \emptyset
+\end{align}
+$$
+
+s.t. $$a_{n_j} \ge 0 (j \in \mathbb{N})$$ and $$a_{n_k'} \le 0 (k \in \mathbb{N})$$
+
+Let $$p_j := a_{n_j} (j \in \mathbb{N})$$ and $$q_k := - a_{n_k'} (k \in \mathbb{N})$$, we know $$p_j \ge 0, q_k \ge 0$$.
+
+Exercise 3: Show that
+
+$$
+\sum_{n} \vert a_n \vert < \infty \iff \sum_{j} p_j < \infty \land \sum_{k} q_k < \infty
+$$
+
+Moreover, if and side holds, then
+
+$$
+\sum_{n} \vert a_n \vert = \sum_{j} p_j + \sum_k q_k $$
+
+$$ \sum_{n} a_n = \sum_{j} p_j - \sum_k q_k
+$$
+
+Proof:
+
+&nbsp; $$\implies$$: Let the partial sum of $$\sum_n \vert a_n \vert$$ has upper bound M.
+
+The partial sum of $$\sum_j p_j$$ is less or equal to the partial sum of $$\sum_n \vert a_n \vert$$
+
+$$
+\begin{align}
+&p_1 + \dots + p_k = a_{n_1} + \dots + a_{n_k}\\
+\le & \vert a_1 \vert + \vert a_2 \vert + \dots + \vert a_{n_k} \vert \le M
+\end{align}
+$$
+
+Thus the right side has upper bound, thus converges.
+
+&nbsp; $$\Longleftarrow$$: Let the partial sum of $$\sum_j p_j, \sum_k q_k$$ has uppber bound $$U, V$$ respectively. Consider the partial sum of $$\sum_n \vert a_n \vert$$
+
+$$
+\vert a_1 \vert + \dots + \vert a_k \vert \le p_1 + \dots + p_k + q_1 + \dots + q_k \le U + V
+$$
+
+To prove $$\sum_{n} \vert a_n \vert = \sum_{j} p_j + \sum_k q_k$$, let $$s_k = \vert a_1 \vert + \dots + \vert a_k \vert$$, $$u_k = p_1 + \dots + p_k$$, $$v_k = q_1 + \dots + q_k$$, and let
+
+$$
+\lim_{k\to \infty} u_k = L_p
+$$
+
+$$
+\lim_{k\to\infty} v_k = L_q
+$$
+
+We know
+
+$$
+s_k \le u_k + v_k \implies \lim_{k \to \infty} s_k \le L_p + L_q
+$$
+
+also
+
+$$
+u_k + v_k \le s_{\max(n_k, n'_k)}
+$$
+
+It is easy to see $$\lim_{k\to\infty} s_{\max(n_k,n'_k)} = \lim_{k\to\infty} s_k$$, thus
+
+$$
+\lim_{k\to\infty} s_k \ge L_p + L_q
+$$
+
+Thus $$\sum_{n} \vert a_n \vert = \sum_{j} p_j + \sum_k q_k$$.
+
+To prove $$\sum_{n} a_n = \sum_j p_j - \sum_k q_k$$, now let $$s_k = a_1 + \dots + a_k$$
+
+$$
+\forall \varepsilon > 0 \exists N \in \mathbb{N} [k \ge N \implies \vert u_k - L_p \vert < \varepsilon \land \vert v_k - L_q \vert < \varepsilon]
+$$
+
+$$
+k \ge \max(n_N, n_N') \implies s_{k} = u_{N_1} - v_{N_2}, \text{ where } N_1 \ge N, n_2 \ge N
+$$
+
+
+$$
+ k \ge \max(n_N, n_N') \implies \vert s_{k} - (L_p - L_q) \vert = \vert (u_{N_1} - L_p) + (v_{N_2} - L_q) \vert \le 2 \varepsilon
+$$
+
+Thus $$\sum_{n} a_n = \sum_j p_j - \sum_k q_k$$.
+
+## Two Convergent Series
+
+- &nbsp; $$\sum_n a_n$$ and $$\sum_n b_n$$ converge $$\implies \sum_{n} (a_n \pm b_n) = \sum_n a_n \pm \sum_n b_n$$
+
+$$
+A_n = a_1 + \dots + a_n, B_n = b_1 + \dots + b_n, S_n = a_1 + b_1 + \dots + a_n + b_n
+$$
+
+$$
+\forall \varepsilon > 0 \exists N \in \mathbb{N} [n \ge N \implies \vert A_n - A \vert < \varepsilon \land \vert B_n - B \vert < \varepsilon]
+$$
+
+$$
+\forall \varepsilon > 0 \exists N \in \mathbb{N} [n \ge N \implies \vert S_n - (A + B)\vert < 2 \varepsilon]
+$$
+
+- Inserting finite number of 0s into all the two neighbor terms, will not affect its convergence or divergence and its sum (if the sum exists).
+
+16min
