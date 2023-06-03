@@ -13,7 +13,8 @@ From [Junyao Wang' Lecture 001](https://ocw.nthu.edu.tw/ocw/index.php?page=chapt
 $$
 \begin{align}
 & \int x^n dx = \dfrac{x^{n+1}}{n+1} + C\\
-& \int \dfrac{1}{x} dx = \ln \vert x \vert + C
+& \int \dfrac{1}{x} dx = \ln \vert x \vert + C\\
+& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C
 \end{align}
 $$
 

@@ -66,4 +66,40 @@ $$
 \vert y \vert e^{2\sqrt{\frac{x}{y}}} = k
 $$
 
-2E
+Exercise 9:
+
+$$
+(3xy + y^2) + (x^2 + xy) \dfrac{dy}{dx} = 0
+$$
+
+$$
+(3 \dfrac{y}{x} + (\dfrac{y}{x})^2) dx + (1 + \dfrac{y}{x})dy = 0
+$$
+
+Let $$v=y/x \implies dy = xdv + vdx$$
+
+$$
+(3 v + v^2)dx + (1+v)(xdv + vdx) = 0
+$$
+
+$$
+\dfrac{dx}{x} + \dfrac{1+v}{2v(v+2)}dv = 0
+$$
+
+there is a trick to find $$\dfrac{A}{v} + \dfrac{B}{v+2}$$ quickly
+
+$$
+\dfrac{dx}{x} + \dfrac{dv}{4v} + \dfrac{dv}{4(v+2)} = 0
+$$
+
+$$
+\ln\vert x \vert + \dfrac{1}{4} \ln \vert v \vert + \dfrac{1}{4} \ln \vert v + 2 \vert = C
+$$
+
+$$
+\ln \vert x^4 v (v+2) \vert = C
+$$
+
+$$
+\vert x^2 y (y+2x) \vert = k
+$$
