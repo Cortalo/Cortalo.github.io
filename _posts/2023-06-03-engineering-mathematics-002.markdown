@@ -15,7 +15,8 @@ Exercise 7:
 ## Seperable After Chaning The Variables
 
 - First-order first-degree homogeneous ODE
-
+- &nbsp; $$ (a_1 x + b_1 y + c_1) dx + (a_2 x  +b_2 y + c_2) dy = 0 $$
+- &nbsp; $$y' = f(ax+by+c)$$
 ## First-Order First-Degree Homogeneous ODE
 
 $$

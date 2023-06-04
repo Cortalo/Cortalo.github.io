@@ -14,7 +14,9 @@ $$
 \begin{align}
 & \int x^n dx = \dfrac{x^{n+1}}{n+1} + C\\
 & \int \dfrac{1}{x} dx = \ln \vert x \vert + C\\
-& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C
+& \int \frac{1}{x+a} dx = \ln \vert x+a \vert + C\\
+& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C\\
+& \int \cos x dx = \sin x + C
 \end{align}
 $$
 
@@ -70,6 +72,7 @@ $$
 - Seperable Equation.
   - Direct seperable.
   - After chaning the variable
+- Exact differential equations
 
 ## Direct Integral
 
