@@ -16,8 +16,33 @@ $$
 & \int \dfrac{1}{x} dx = \ln \vert x \vert + C\\
 & \int \frac{1}{x+a} dx = \ln \vert x+a \vert + C\\
 & \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C\\
-& \int \cos x dx = \sin x + C
+& \int \cos x dx = \sin x + C\\
+& \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x)
 \end{align}
+$$
+
+## Integration by Parts
+
+$$
+\int u dv = uv - \int vdu
+$$
+
+Exercise:
+
+$$
+\int \exp(x) \sin x dx
+$$
+
+$$
+u = \exp(x), \quad dv = \sin x dx
+$$
+
+$$
+du = \exp(x) dx, \quad v = -\cos x
+$$
+
+$$
+\int \exp(x) \sin x dx = - \exp(x) \cos x - \int -\cos x \exp(x) dx
 $$
 
 ## Ordinary Differential Equation
