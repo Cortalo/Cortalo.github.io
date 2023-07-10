@@ -205,3 +205,75 @@ thus
 $$
 S_Y(\omega) = S_X(\omega) \cdot H(\omega) \cdot \overline{H(\omega)} = S_X(\omega) \vert H(\omega) \vert^2
 $$
+
+## Common PSDs And Their Autocorrelations
+
+$$
+\begin{align}
+S(\omega) &= \int_{-\infty}^{\infty} R(\tau) \exp(-j\omega\tau)d\tau\\
+R(\tau) &= \dfrac{1}{2\pi}\int_{-\infty}^{\infty} S(\omega) \exp(j\omega\tau) d\omega
+\end{align}
+$$
+
+or using frequency (Hz) instead of angular frequency
+
+$$
+\begin{align}
+S(f) &= \int_{-\infty}^{\infty}R(\tau)\exp(-j2\pi f \tau) d\tau\\
+R(\tau) &= \int_{-\infty}^{\infty} S(f) \exp(j2\pi f \tau) df
+\end{align}
+$$
+
+### White Noise
+
+For a white noise with two-sided PSD
+
+$$
+S(f) = N_0
+$$
+
+The autocorrelation is
+
+$$R(\tau) = N_0 \delta(\tau)$$
+
+We can verify it by
+
+$$
+\int_{-\infty}^{\infty} N_0 \delta(\tau) \exp(-j2\pi f\tau) d\tau = N_0
+$$
+
+Note that the directly apply of the inverse Fourier transform may seems difficult.
+
+### Lowpass Noise
+
+For a two-sided PSD
+
+$$
+S(f) = \dfrac{N_0}{1+\big(\dfrac{f}{f_b}\big)^2}
+$$
+
+or
+
+$$
+S(\omega) = \dfrac{N_0 \cdot \omega_b^2}{\omega_b^2+\omega^2}
+$$
+
+using the formula
+
+$$
+\int_{-\infty}^{\infty} \dfrac{1}{a^2+\omega^2} \cdot \exp(j\omega t)d \omega = \dfrac{\pi}{a} \cdot \exp(-a\vert t \vert), \quad a > 0
+$$
+
+$$
+\begin{align}
+R(\tau) &= \dfrac{1}{2\pi} \int_{-\infty}^{\infty} \dfrac{N_0 \cdot \omega_b^2}{\omega_b^2 + \omega^2} \cdot \exp(j\omega \tau) d\omega\\
+&= \dfrac{1}{2\pi} \cdot N_0 \cdot \omega_b^2 \cdot \dfrac{\pi}{\omega_b} \cdot \exp(-\omega_b \vert \tau \vert)\\
+&= \pi f_b \cdot N_0 \cdot \exp(-2\pi f_b \vert \tau \vert)
+\end{align}
+$$
+
+We can do a quick sanity check, since the effective power bandwidth is $$\pi f_b/2$$, we should have
+
+$$
+2N_0 \cdot \dfrac{\pi}{2} \cdot f_b = \pi f_b \cdot N_0
+$$

@@ -79,9 +79,9 @@ $$
 
 ## Solutions
 
-- General solution
-- Particular solution
-- Singular solution
+- General solution: solutions without specifying initial condition.
+- Particular solution: a solution with specifying initial condtion.
+- Singular solution: some other solutions cannot get from standard procedures, but they are indeed solutions of differential equation. Usually we are not focusing on such solutions.
 
 ## First-Order First-Degree Differential Equation
 
