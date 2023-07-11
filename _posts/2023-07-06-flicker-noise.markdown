@@ -1,7 +1,7 @@
 ---
 title:  "Flicker Noise"
 date:   2023-07-06 07:00:00 +0200
-categories: analog-citcuit
+categories: analog-circuit
 tags: analog
 math: true
 ---

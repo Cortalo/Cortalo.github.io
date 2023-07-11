@@ -1,7 +1,7 @@
 ---
 title:  "5T OTA Design"
 date:   2023-06-14 07:00:00 +0200
-categories: analog-citcuit
+categories: analog-circuit
 tags: analog amplifier
 math: true
 ---
