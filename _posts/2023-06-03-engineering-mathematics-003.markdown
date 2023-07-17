@@ -6,7 +6,7 @@ tags: math
 math: true
 ---
 
-From [Junyao Wang' Lecture 003](https://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=145&chid=1829)
+From [Dr. Chun-Yao Wang' Lecture 003](https://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=145&chid=1829)
 
 Exercise 10:
 

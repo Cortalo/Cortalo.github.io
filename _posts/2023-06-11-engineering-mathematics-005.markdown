@@ -6,7 +6,7 @@ tags: math
 math: true
 ---
 
-From [Junyao Wang' Lecture 005](https://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=145&chid=1851)
+From [Dr. Chun-Yao Wang' Lecture 005](https://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=145&chid=1851)
 
 ## Integrating Factors
 

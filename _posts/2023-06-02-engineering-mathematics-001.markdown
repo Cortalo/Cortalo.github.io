@@ -6,7 +6,7 @@ tags: math
 math: true
 ---
 
-From [Junyao Wang' Lecture 001](https://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=145&chid=1775)
+From [Dr. Chun-Yao Wang' Lecture 001](https://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=145&chid=1775)
 
 ## Integration Formulas
 
@@ -71,11 +71,15 @@ $$
 (y')^2 + y = e^x \quad \text{ (degree of 2) }
 $$
 
+The degree of an ODE is the degree of the highest order derivative.
+
 ## Linear Differential Equation
 
 $$
 a_n(x) y^{(n)} + a_{n-1}(x)y^{(n-1)} + \dots + a_1(x)y' + a_0(x)y = f(x)
 $$
+
+All the derivaties are degree of 1.
 
 ## Solutions
 

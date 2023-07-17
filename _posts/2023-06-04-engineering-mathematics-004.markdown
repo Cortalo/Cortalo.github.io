@@ -6,7 +6,7 @@ tags: math
 math: true
 ---
 
-From [Junyao Wang' Lecture 004](https://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=145&chid=1832)
+From [Dr. Chun-Yao Wang' Lecture 004](https://ocw.nthu.edu.tw/ocw/index.php?page=chapter&cid=145&chid=1832)
 
 $$
 y' = f(ax + by + c)
