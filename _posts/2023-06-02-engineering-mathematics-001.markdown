@@ -15,9 +15,9 @@ $$
 & \int x^n dx = \dfrac{x^{n+1}}{n+1} + C\\
 & \int \dfrac{1}{x} dx = \ln \vert x \vert + C\\
 & \int \frac{1}{x+a} dx = \ln \vert x+a \vert + C\\
-& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C\\
+& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C ?\\
 & \int \cos x dx = \sin x + C\\
-& \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x)
+& \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x) + C
 \end{align}
 $$
 
@@ -34,11 +34,11 @@ $$
 $$
 
 $$
-u = \exp(x), \quad dv = \sin x dx
+u = \exp(x), \quad v = -\cos x
 $$
 
 $$
-du = \exp(x) dx, \quad v = -\cos x
+du = \exp(x) dx, \quad dv = \sin x dx
 $$
 
 $$
@@ -61,6 +61,7 @@ $$
 
 ## Order
 
+
 $$
 ay'' + by' + cy = f(x) \quad \text{ (second-order)}
 $$
@@ -79,7 +80,7 @@ $$
 a_n(x) y^{(n)} + a_{n-1}(x)y^{(n-1)} + \dots + a_1(x)y' + a_0(x)y = f(x)
 $$
 
-All the derivaties are degree of 1.
+All the derivaties (including zero's derivative) are degree of 1.
 
 ## Solutions
 
@@ -93,15 +94,32 @@ $$
 y' = f(x,y)
 $$
 
+or
+
 $$
-M(x,y)dx + N(x,y)dy = 0 \implies y' = -\dfrac{M(x,y)}{N(x,y)}
+M(x,y)dx + N(x,y)dy = 0
 $$
 
 - Direct Integral.
+
+$$
+y'=f(x)
+$$
+
 - Seperable Equation.
   - Direct seperable.
-  - After chaning the variable
-- Exact differential equations
+
+$$
+y'=f_1(x)f_2(y)
+$$
+
+or
+
+
+
+
+  - After chaning the variable.
+- Exact differential equations.
 
 ## Direct Integral
 
