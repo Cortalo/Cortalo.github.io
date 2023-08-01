@@ -265,4 +265,72 @@ $$
 
 ### Linear Constant Coefficient ODE
 
-9A
+$$
+y'' + a_1 y' + a_0 y =R(x)
+$$
+
+### Homogeneous Solutions
+
+$$
+\lambda^2 + a_1 \lambda + a_0 = 0
+$$
+
+$$
+\lambda = \dfrac{-a_1 \pm \sqrt{a_1^2 - 4a_0}}{2}
+$$
+
+Case 1: $$a_1^2 - 4a_0 > 0$$
+
+$$
+\begin{align}
+\lambda_1 &= \dfrac{-a_1 + \sqrt{a_1^2 - 4a_0}}{2}\\
+\lambda_2 &= \dfrac{-a_1 - \sqrt{a_1^2 - 4a_0}}{2}
+\end{align}
+$$
+
+$$
+y_h(x) = C_1 \exp(\lambda_1 x) + C_2 \exp(\lambda_2 x)
+$$
+
+Case 2: $$a_1^2 - 4a_0 = 0$$
+
+$$
+\begin{align}
+\lambda &= \dfrac{-a_1}{2}
+\end{align}
+$$
+
+$$
+y_h(x) = C_1 \exp(\lambda x) + C_2 x\exp(\lambda x)
+$$
+
+Case 3: $$a_1^2 - 4a_0 < 0$$
+
+$$
+\lambda = \alpha \pm i\beta
+$$
+
+$$
+y_h(x) = C_1 \exp(\alpha x) \cos(\beta x) + C_2 \exp(\alpha x) \sin(\beta x)
+$$
+
+
+### Method of Undetermined Coefficient
+
+| $$R(x)$$                                           | $$y_p(x)$$                                                                      |
+|----------------------------------------------------|---------------------------------------------------------------------------------|
+| $$R_1(x)+R_2(x)$$                                  | $$y_{p1}(x)+y_{p2}(x)$$                                                         |
+| $$k$$                                              | $$A$$                                                                           |
+| $$e^{ax}$$                                         | $$Ae^{ax}$$                                                                     |
+| $$\cos ax$$                                        | $$A\cos ax + B\sin ax$$                                                         |
+| $$\sin ax$$                                        | $$A\cos ax + B\sin ax$$                                                         |
+| $$a_n x^n + \dots + a_1 x + a_0$$                  | $$A_n x^n + \dots + A_1 x + A_0$$                                               |
+| $$e^{ax}\cos bx \quad$$ or $$\quad e^{ax}\sin bx$$ | $$e^{ax}(A\cos bx + B\sin bx)$$                                                 |
+| $$e^{ax}(a_n x^n + \dots + a_1 x + a_0)$$          | $$e^{ax}(A_n x^n + \dots + A_1 x + A_0)$$                                       |
+| $$\cos bx (a_n x^n + \dots + a_1 x + a_0)$$        | $$(A_n x^n + \dots + A_0)\cos bx + (B_n x^n + \dots + B_0)\sin bx$$             |
+| $$e^{ax} \cos bx (a_n x^n + \dots + a_0)$$         | $$e^{ax}(A_n x^n + \dots + A_0)\cos bx + e^{ax}(B_n x^n + \dots + B_0)\sin bx$$ |
+
+Theorem: If the $$y_p(x)$$ in the table is in the homogeneous solution, we should use $$x^m y_p(x)$$, where $$m$$ is the minimum positive integer such that $$x^m y_p(x)$$ is not in the homogeneous solution.
+This claim can be proved by the method of variation of parameters.
+
+10G
