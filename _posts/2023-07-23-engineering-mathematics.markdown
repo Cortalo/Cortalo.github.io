@@ -29,7 +29,7 @@ $$
 $$
 
 
-## Ordinary, Partial, Order, Degree And More
+## Ordinary, Partial, Order and Degree
 
 Ordinary differential equation.
 
@@ -317,6 +317,11 @@ $$
 
 ### Method of Undetermined Coefficient
 
+
+$$
+y^{(n)} + a_{n-1} y^{(n-1)} + \dots + a_1 y^{(1)} + a_0 y =R(x)
+$$
+
 | $$R(x)$$                                           | $$y_p(x)$$                                                                      |
 |----------------------------------------------------|---------------------------------------------------------------------------------|
 | $$R_1(x)+R_2(x)$$                                  | $$y_{p1}(x)+y_{p2}(x)$$                                                         |
@@ -333,4 +338,227 @@ $$
 Theorem: If the $$y_p(x)$$ in the table is in the homogeneous solution, we should use $$x^m y_p(x)$$, where $$m$$ is the minimum positive integer such that $$x^m y_p(x)$$ is not in the homogeneous solution.
 This claim can be proved by the method of variation of parameters.
 
-10G
+### Method of Variation Parameter
+
+$$
+y'' + a_1(x)y' + a_0(x)y = R(x)
+$$
+
+$$
+y_h(x) = C_1 y_1(x) + C_2 y_2(x)
+$$
+
+$$
+y_p(x) = \phi_1(x)y_1(x) + \phi_2(x)y_2(x)
+$$
+
+$$
+\begin{bmatrix}
+y_1 & y_2\\
+y_1' & y_2'
+\end{bmatrix}
+\begin{bmatrix}
+\phi_1'\\
+\phi_2'
+\end{bmatrix}
+=\begin{bmatrix}
+0\\
+R(x)
+\end{bmatrix}
+$$
+
+$$
+\phi_1(x) = \int \dfrac{-R(x)y_2(x)}{W(y_1,y_2)}dx
+$$
+
+$$
+\phi_2(x) = \int \dfrac{R(x)y_1(x)}{W(y_1,y_2)}dx
+$$
+
+If third order
+
+$$
+\begin{bmatrix}
+y_1 & y_2 & y_3\\
+y_1' & y_2' & y_3'\\
+y_1'' & y_2'' & y_3''
+\end{bmatrix}
+\begin{bmatrix}
+\phi_1'\\
+\phi_2'\\
+\phi_3'
+\end{bmatrix}
+=\begin{bmatrix}
+0\\
+0\\
+R(x)
+\end{bmatrix}
+$$
+
+### Cauchy-Euler Equation
+
+$$
+a_n x^n y^{(n)} + \dots + a_1 x y^{(1)} + a_0 y = R(x)
+$$
+
+Let $$x = \exp(u)$$, $$u = \ln x$$ , $$D_u = \dfrac{d}{du}$$
+
+$$
+x^n \dfrac{d^n y}{dx^n} = x^n (D_x)^n y = D_u (D_u - 1) (D_u - 2) \dots (D_u - n + 1)y
+$$
+
+### Legendre ODE
+
+$$
+a_n (bx + c)^n y^{(n)} + \dots + a_1 (bx+c) y^{(1)} + a_0 y = R(x)
+$$
+
+Let $$z = bx + c$$
+
+$$
+\dfrac{d^n y}{dx^n} = b^{n} \dfrac{d^n y}{dz^n}
+$$
+
+### Reduction of Order (13A)
+
+$$
+y'' + P(x)y' + Q(x)y = R(x)
+$$
+
+if $$u(x)$$ is a homogenuous solution
+
+$$
+u'' + P(x)u' + Q(x)u = 0
+$$
+
+Let
+
+$$
+y(x) = u(x)v(x)
+$$
+
+## The Laplace Transform
+
+### The Laplace Transform
+
+$$
+F(s) = \int_{0}^{\infty} f(t)e^{-st}dt
+$$
+
+The Laplace transform table
+
+| $$f(t)$$      | $$F(s)$$                | Notes                 |
+|---------------|-------------------------|-----------------------|
+| $$t^{n}$$     | $$\dfrac{n!}{s^{n+1}}$$ | $$n = 0,1,2,3,\dots$$ |
+| $$e^{at}$$    | $$\dfrac{1}{s-a}$$      |                       |
+| $$\sin(at)$$  | $$\dfrac{a}{s^2+a^2}$$  |                       |
+| $$\cos(at)$$  | $$\dfrac{s}{s^2+a^2}$$  |                       |
+| $$\delta(t)$$ | $$1$$                   |                       |
+
+The inverse Laplace transform table
+
+| $$F(s)$$               | $$f(t)$$                 | Notes                 |
+|------------------------|--------------------------|-----------------------|
+| $$\dfrac{1}{s^{n+1}}$$ | $$\dfrac{t^n}{n!}$$      | $$n = 0,1,2,3,\dots$$ |
+| $$\dfrac{1}{s-a}$$     | $$e^{at}$$               |                       |
+| $$\dfrac{1}{s^2+a^2}$$ | $$\dfrac{1}{a}\sin(at)$$ |                       |
+| $$\dfrac{s}{s^2+a^2}$$ | $$\cos(at)$$             |                       |
+
+
+$$
+\mathscr{L}\{c_1 f(t) + c_2 g(t)\} = c_1 F(s) + c_2 G(s)
+$$
+
+
+$$
+\mathscr{L}\{f(t)e^{at}\} = F(s-a), \quad a \in \mathbb{R}
+$$
+
+$$
+\mathscr{L}\{f(t-a)u(t-a)\} = e^{-as}F(s), \quad a > 0
+$$
+
+
+$$
+\mathscr{L}\{f(at)\} = \dfrac{1}{a}F(\dfrac{s}{a}), \quad a > 0
+$$
+
+$$
+\mathscr{L}\{\int_0^t f(\tau)d\tau\} = \dfrac{1}{s}F(s)
+$$
+
+$$
+\mathscr{L}\{\dfrac{f(t)}{t}\} = \int_{s}^{\infty} F(u)du
+$$
+
+
+$$
+f(t)*g(t) = \int_0^t f(\tau)g(t-\tau) d\tau
+$$
+
+
+$$
+\mathscr{L}\{f(t)*g(t)\} = F(s)G(s)
+$$
+
+### Heaviside Expansion
+
+$$
+F(s) = \dfrac{P(s)}{Q(s)}
+$$
+
+Assume $$P(s), Q(s)$$ are real polynomials, they have no common factors, and the order of $$Q(s)$$ is higher than $$P(s)$$.
+
+Case 1: $$Q(s)=0$$ has $$n$$ distinct roots.
+
+$$
+\dfrac{P(s)}{Q(s)} = \dfrac{A_1}{s-a_1} + \dfrac{A_2}{s-a_2} + \dots + \dfrac{A_n}{s-a_n}
+$$
+
+$$
+A_k = \dfrac{P(s)}{Q(s)} \cdot (s-a_k)
+$$
+
+Case 2: $$Q(s)=0$$ has repeated roots, e.g., $$m$$-repeated $$a_k$$.
+
+$$
+\dfrac{P(s)}{Q(s)} = \dfrac{A_1}{s-a_1} + \dots + \dfrac{C_m}{(s-a_k)^m} + \dfrac{C_{m-1}}{(s-a_k)^{m-1}} + \dots \dfrac{C_1}{s-a_k} + \dots
+$$
+
+$$
+C_m = \lim_{s\to a_k} [\dfrac{P(s)}{Q(s)} (s-a_k)^m ]
+$$
+
+$$
+C_{m-1} = \lim_{s\to a_k} \{ \dfrac{d}{ds}[\dfrac{P(s)}{Q(s)} (s-a_k)^m]\}
+$$
+
+$$
+C_{m-1} = \dfrac{1}{2!} \lim_{s\to a_k} \{ \dfrac{d^2}{ds^2}[\dfrac{P(s)}{Q(s)} (s-a_k)^m]\}
+$$
+
+Case 3: complex conjugate roots
+
+$$
+\dfrac{As + B}{(s-a)^2+b^2}
+$$
+
+$$
+\lim_{s\to a+b j} \{\dfrac{P(s)}{Q(s)}[(s-a)^2+b^2]\} = A(a+bj) + B
+$$
+
+### Solution of Initial Value Problems
+
+$$
+\mathscr{L}\{f^{(n)}(t)\} = s^n F(s) - s^{n-1} f(0) - s^{n-2}f'(0) - \dots - f^{(n-1)}(0)
+$$
+
+### ODE with Polynomial Coefficients
+
+$$
+\mathscr{L}\{t^n f(t)\} = (-1)^n\dfrac{d^n F(s)}{ds^n}
+$$
+
+### Systems of Linear ODEs
+
+20E
