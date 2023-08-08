@@ -12,6 +12,96 @@ $$
 R \Vert \dfrac{1}{sC} = \dfrac{R}{1+sRC}
 $$
 
+# Impedance Transformation
+
+
+## Series-to-Parallel
+
+### Inductor
+
+$$
+Q = \dfrac{\omega L_s}{R_s}
+$$
+
+$$
+R_p = R_s(1+Q^2)
+$$
+
+$$
+L_p = L_s (1+\dfrac{1}{Q^2})
+$$
+
+### Capacitot
+
+$$
+Q = \dfrac{1}{\omega R_s C_s}
+$$
+
+$$
+R_p = R_s(1+Q^2)
+$$
+
+$$
+C_p = \dfrac{C_s}{1+\dfrac{1}{Q^2}}
+$$
+
+## Parallel-to-Series
+
+### Inductor
+
+$$
+Q = \dfrac{R_p}{\omega L_p}
+$$
+
+$$
+R_s = \dfrac{R_p}{1+Q^2}
+$$
+
+$$
+L_s = \dfrac{L_p}{1+\dfrac{1}{Q^2}}
+$$
+
+### Capacitor
+
+$$
+Q = \omega R_p C_p
+$$
+
+$$
+R_s = \dfrac{R_p}{1+Q^2}
+$$
+
+$$
+C_s = C_p (1+\dfrac{1}{Q^2})
+$$
+
+## High-Q System
+
+For inductor
+
+$$
+Q = \dfrac{\omega L_s}{R_s} = \dfrac{R_p}{\omega L_p}
+$$
+
+if $$Q$$ is large, $$L_s \approx L_p$$ (with error $$1 + \dfrac{1}{Q^2}$$)
+
+$$
+R_s R_p = (\omega L)^2
+$$
+
+For capacitor
+
+$$
+Q = \dfrac{1}{\omega R_s C_s} = \omega R_p C_p
+$$
+
+if $$Q$$ is large, $$C_s \approx C_p$$ (with error $$1 + \dfrac{1}{Q^2}$$)
+
+$$
+R_s R_p = \dfrac{1}{(\omega C)^2}
+$$
+
+
 # Oscillator
 
 From [Prof. Jri Lee's Lectures](https://space.bilibili.com/1629031600)
@@ -75,31 +165,6 @@ $$
 \dfrac{R_2}{2R_1} > 1
 $$
 
-## Impedance Transformation
-
-For inductor
-
-$$
-Q = \dfrac{\omega L_s}{R_s} = \dfrac{R_p}{\omega L_p}
-$$
-
-if $$Q$$ is large, $$L_s \approx L_p$$ (with error $$1 + \dfrac{1}{Q^2}$$)
-
-$$
-R_s R_p = (\omega L)^2
-$$
-
-For capacitor
-
-$$
-Q = \dfrac{1}{\omega R_s C_s} = \omega R_p C_p
-$$
-
-if $$Q$$ is large, $$C_s \approx C_p$$ (with error $$1 + \dfrac{1}{Q^2}$$)
-
-$$
-R_s R_p = \dfrac{1}{(\omega C)^2}
-$$
 
 ## Colpitts Oscillator
 

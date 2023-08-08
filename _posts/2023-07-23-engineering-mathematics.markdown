@@ -562,3 +562,13 @@ $$
 ### Systems of Linear ODEs
 
 20E
+
+## Series Solutions
+
+Definition 4.4 (Power Series):
+
+$$
+\sum_{n=0}^{\infty} a_n (x-x_0)^n
+$$
+
+21B
