@@ -565,10 +565,133 @@ $$
 
 ## Series Solutions
 
+### Power Series
+
 Definition 4.4 (Power Series):
 
 $$
 \sum_{n=0}^{\infty} a_n (x-x_0)^n
 $$
 
-21B
+It is obvious it converges at $$x = x_0$$.
+
+Theorem 4.5:
+
+If the power series converge at $$x_1$$, then it converges absolutely for all $$x$$ such that $$\vert x-x_0 \vert < \vert x_1 - x_0\vert$$.
+
+Theorem:
+
+There are three possibilities:
+
+- It converges only at $$x_0$$.
+- It converges in a finite interval, the endpoints may or may not converge. $$(x_0-r, x_0+r)$$ is called the open interval of the convergence.
+- It converges in $$\mathbb{R}$$.
+
+Theorem 4.6:
+
+For series $$\sum_{0}^{\infty} b_n$$, where $$b_n \ne 0$$ for all $$n$$. Then if $$\lim_{n\to\infty} \vert \dfrac{b_{n+1}}{b_n} \vert = L$$ exists,
+
+- if $$L < 1$$, then the series converges absolutely.
+- if $$L = 1$$, no conclusion.
+- if $$L > 1$$, the series diverges.
+
+Taylor Series:
+
+$$
+\sum_{n=0}^{\infty} \dfrac{1}{n!}f^{(n)}(x_0)(x-x_0)^n
+$$
+
+Definition 4.1 (Analytic Function):
+
+A function $$f$$ is analytic at $$x_0$$ if $$f(x)$$ has a power series representation
+
+$$
+f(x) = \sum_{n=0}^{\infty} a_n (x-x_0)^n
+$$
+
+in a non-zero interval $$(x_0-r, x_0+r)$$.
+
+### Solution of IVP (21E)
+
+Theorem 4.1:
+
+Let $$p$$ and $$q$$ be analytic at $$x_0$$. Then the initial value problem
+
+$$
+y' + p(x)y + q(x); \quad y(x_0) = y_0
+$$
+
+has a solution that is analytic at $$x_0$$.
+
+Theorem 4.2:
+
+Let $$p, q$$ and $$f$$ be analytic at $$x_0$$. Then the initial value problem
+
+$$
+y'' + p(x)y' + q(x)y = f(x); \quad y(x_0)=A, y'(x_0) = B
+$$
+
+has a unique solution that is also analytic at $$x_0$$.
+
+### Recurrence Relations (22B)
+
+match of terms
+
+### Singular Points (23A)
+
+- Ordinary point:
+
+$$x_0$$ is an ordinary point of equation
+
+$$
+P(x)y'' + Q(x)y' + R(x)y = F(x)
+$$
+
+if $$P(x_0) \ne 0$$ and $$Q(x)/P(x), R(x)/P(x)$$ and $$F(x)/P(x)$$ are analytic at $$x_0$$.
+
+- Singular point:
+
+If it is not ordinary point, it is singular point.
+
+- Regular singular point:
+
+$$x_0$$ is a regular singular point of equation
+
+$$
+P(x)y'' + Q(x)y' + R(x)y = 0
+$$
+
+if $$x_0$$ is a singular point, and $$(x-x_0)\dfrac{Q(x)}{P(x)}$$ and $$(x-x_0)^2\dfrac{R(x)}{P(x)}$$ are analytic at $$x_0$$.
+
+- Irregular singular point:
+
+A singular point that is not regular is said to be an irregular singular point.
+
+### Forbenius Series (23C)
+
+$$
+y(x) = \sum_{n=0}^{\infty} c_n(x-x_0)^{n+r}
+$$
+
+## Fourier Series
+
+### Fourier Series
+
+If function $$f(t)$$ has period $$T$$, then $$\omega = 2\pi/T$$
+
+$$
+f(t) \sim A_0 + \sum_{n=1}^{\infty} A_n \sin(n\omega t + \varphi_n)
+$$
+
+or
+
+$$
+\begin{align}
+f(t) &\sim \dfrac{a_0}{2} + \sum_{n=1}^{\infty} [a_n \cos(n\omega t) + b_n \sin(n\omega t)]\\
+a_0 &= 2A_0 = \dfrac{2}{T} \int_T f(t)dt\\
+a_n &= A_n \sin\varphi_n = \dfrac{2}{T} \int_T f(t)\cos(n\omega t)dt\\
+b_n &= A_n \cos\varphi_n = \dfrac{2}{T} \int_T f(t)\sin(n\omega t)dt
+\end{align}
+$$
+
+### Convergence (25C)
