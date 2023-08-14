@@ -8,7 +8,10 @@ math: true
 
 From [Dr. Chun-Yao Wang' Lecture](https://ocw.nthu.edu.tw/ocw/index.php?page=course&cid=145)
 
-## Integration Formulas
+
+## First-Order First-Degree ODE
+
+### Integration Formulas
 
 $$
 \begin{align}
@@ -29,7 +32,7 @@ $$
 $$
 
 
-## Ordinary, Partial, Order and Degree
+### Ordinary, Partial, Order and Degree
 
 Ordinary differential equation.
 
@@ -46,8 +49,6 @@ General solution.
 Particular solution.
 
 Singular solution.
-
-## First-Order First-Degree ODE
 
 $$
 y'=f(x,y)
@@ -695,3 +696,94 @@ b_n &= A_n \cos\varphi_n = \dfrac{2}{T} \int_T f(t)\sin(n\omega t)dt
 $$
 
 ### Convergence (25C)
+
+## Multi-Variable Functions
+
+
+From [Prof. Yen's Lecture](https://ocw.nthu.edu.tw/ocw/index.php?page=course&cid=127)
+
+### Partial Derivatives
+
+For function $$f(x,y)$$
+
+$$
+f_{xy} = \dfrac{\partial}{\partial y} \Big(\dfrac{\partial f}{\partial x}\Big) = \dfrac{\partial^2 f}{\partial y \partial x}
+$$
+
+**Theorem (Equalty of Derivatives):** if $$f_x, f_y, f_{xy}, f_{yx}$$ are all continuous in some neighborhood of $$(x_0,y_0)$$, then $$f_{xy}=f_{yx}$$.
+
+We say $$f$$ is $$C^n$$ if all of the partial derivatives of $$f$$, through $$n$$th order, are continuous.
+For example, $$f$$ is $$C^2$$ in $$\mathbb{R}$$ if $$f_x, f_y, f_{xx}, f_{xy}, f_{yy}$$ are continuous in $$\mathbb{R}$$.
+
+### Chain Rule
+
+For function $$f(x(t),y(t)) = R(t)$$
+
+$$
+\dfrac{d R}{dt} = \dfrac{\partial f}{\partial x} \dfrac{d x}{dt} + \dfrac{\partial f}{\partial y} \dfrac{d y}{dt}
+$$
+
+For function $$f(u,v) = f(u(x,y), v(x,y)) = F(x,y)$$
+
+$$
+\dfrac{\partial F}{\partial x} = \dfrac{\partial f}{\partial u} \dfrac{\partial u}{\partial x} + \dfrac{\partial f}{\partial v} \dfrac{\partial v}{\partial x}
+$$
+
+Comments: we have to use a different symbol (e.g., $$R$$ or $$F$$) for the composite function, otherwise it is very easy to make mistakes.
+
+### Taylor's Formula
+
+For single variable function
+
+$$
+\begin{align}
+f(x) &= f(a) + \dfrac{f'(a)}{1!}(x-a) + \dfrac{f''(a)}{2!}(x-a)^2 + \dots + \dfrac{f^{(n-1)}(a)}{(n-1)!}(x-a)^{n-1} + \dfrac{f^{(n)}(\xi)}{n!}(x-a)^n
+\end{align}
+$$
+
+For multi-variable function
+
+$$
+f(x_0,y_0) = f(a,b) + \dfrac{1}{1!}D f\vert_{a,b} + \dots + \dfrac{1}{(n-1)!} D^{n-1} f\vert_{a,b} + \dfrac{1}{n!}D^n f\vert_{\xi,\eta}
+$$
+
+$$
+D = (x_0-a)\dfrac{\partial}{\partial x} + (y_0-b)\dfrac{\partial}{\partial y}
+$$
+
+$$
+Df = (x_0-a)f_x + (y_0-b)f_y
+$$
+
+$$
+D^2 f = (x_0-a)^2f_{xx} + 2(x_0-a)(y_0-b)f_{xy} + (y_0-b)^2 f_{yy}
+$$
+
+
+### Mean Value Theorem
+
+For single variable function
+
+$$
+f(x) = f(a) + f'(\xi)(x-a)
+$$
+
+For multi-variable function
+
+$$
+f(x,y) = f(a,b) + (x-a)f_x(\xi,\eta) + (y-b)f_y(\xi,\eta)
+$$
+
+### Implicit Function
+
+For function $$y=y(x)$$, its implicit function counterpart is $$f(x,y)=0$$.
+
+**Theorem (Implicit Function Theorem):** Let $$f(x,y)=0$$ be satisfied by a pair of real numbers $$x_0, y_0$$ so that $$f(x_0,y_0)=0$$, and suppose that $$f(x,y)$$ is $$C^1$$ in some neighborhood of $$(x_0,y_0)$$ with
+
+$$
+\dfrac{\partial f}{\partial y}(x_0,y_0) \ne 0
+$$
+
+Then $$f(x,y)=0$$ uniquely implies a function $$y(x)$$ in some neighborhood $$N$$ of $$x_0$$ such that $$y(x_0)=y_0$$, where $$y(x)$$ is differentiable in $$N$$.
+
+Now 2B 10min
