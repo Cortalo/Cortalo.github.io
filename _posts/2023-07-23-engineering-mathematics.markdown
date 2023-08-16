@@ -759,6 +759,12 @@ $$
 D^2 f = (x_0-a)^2f_{xx} + 2(x_0-a)(y_0-b)f_{xy} + (y_0-b)^2 f_{yy}
 $$
 
+or if it doesn't cause confusion
+
+$$
+f(x,y)=f(x_0,y_0) + f_x(x-x_0) + f_y(y-y_0) + \dfrac{1}{2!}[f_{xx}(x-x_0)^2 + 2f_{xy}(x-x_0)(y-y_0) + f_{yy}(y-y_0)^2]
+$$
+
 
 ### Mean Value Theorem
 
@@ -776,7 +782,9 @@ $$
 
 ### Implicit Function
 
-For function $$y=y(x)$$, its implicit function counterpart is $$f(x,y)=0$$.
+For explicit function $$y=y(x)$$, its implicit function counterpart is $$f(x,y)=0$$.
+
+**Theorem:** For implicit function $$f(x,y)=0$$, if it has explicit function $$y=y(x)$$, then the corresponding $$y'=-f_x/f_y$$.
 
 **Theorem (Implicit Function Theorem):** Let $$f(x,y)=0$$ be satisfied by a pair of real numbers $$x_0, y_0$$ so that $$f(x_0,y_0)=0$$, and suppose that $$f(x,y)$$ is $$C^1$$ in some neighborhood of $$(x_0,y_0)$$ with
 
@@ -786,4 +794,178 @@ $$
 
 Then $$f(x,y)=0$$ uniquely implies a function $$y(x)$$ in some neighborhood $$N$$ of $$x_0$$ such that $$y(x_0)=y_0$$, where $$y(x)$$ is differentiable in $$N$$.
 
-Now 2B 10min
+**Define:** Jacobian
+
+$$
+\dfrac{\partial(f,g)}{\partial(u,v)}=
+\begin{vmatrix}
+f_u & f_v\\
+g_u & g_v
+\end{vmatrix}
+$$
+
+**Theorem:** For implicit function
+
+$$
+\begin{cases}
+f(x, y; u, v)=0\\
+g(x, y; u, v)=0
+\end{cases}
+$$
+
+the correspond explicit function
+
+$$
+\begin{cases}
+u=u(x,y)\\
+v=v(x,y)
+\end{cases}
+$$
+
+the derivatives $$u_x,u_y,v_x,v_y$$ can be found by
+
+$$
+\begin{bmatrix}
+f_u & f_v\\
+g_u & g_v
+\end{bmatrix}
+\begin{bmatrix}
+u_x\\
+v_x
+\end{bmatrix}
+=\begin{bmatrix}
+-f_x\\
+-g_x
+\end{bmatrix}
+$$
+
+$$
+\begin{bmatrix}
+f_u & f_v\\
+g_u & g_v
+\end{bmatrix}
+\begin{bmatrix}
+u_y\\
+v_y
+\end{bmatrix}
+=\begin{bmatrix}
+-f_y\\
+-g_y
+\end{bmatrix}
+$$
+
+$$
+u_x = \dfrac{\dfrac{\partial(f,g)}{\partial(-x,v)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
+u_y = \dfrac{\dfrac{\partial(f,g)}{\partial(-y,v)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
+v_x = \dfrac{\dfrac{\partial(f,g)}{\partial(u,-x)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
+v_y = \dfrac{\dfrac{\partial(f,g)}{\partial(u,-y)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}
+$$
+
+## 3D Vectors
+
+### Dot Product
+
+$$
+\vec{u}\cdot\vec{v} = \left\vert\vec{u}\right\vert \left\vert\vec{u}\right\vert \cos\theta, \quad 0 \le \theta \le \pi
+$$
+
+It is projection.
+
+$$
+\vec{u}\cdot\vec{v} = \vec{v}\cdot\vec{u}
+$$
+
+### Cross Product
+
+$$
+\vec{u}\times\vec{v} = \left\vert\vec{u}\right\vert \left\vert\vec{v}\right\vert \sin\theta \,\,\vec{e} , \quad 0 \le \theta \le \pi, \quad \text{right-hand rule}
+$$
+
+It is the area of parallelogram.
+
+$$
+\vec{u}\times\vec{v} = -\vec{v}\times\vec{u}
+$$
+
+### Cartesian Coordinates
+
+$$
+\vec{u}=u_i\, \hat{i} + u_j\,\hat{j} + u_k\,\hat{k}
+$$
+
+where $$\hat{i},\hat{j},\hat{k}$$ are orthonormal basis.
+
+$$
+\hat{i}\times\hat{j}=\hat{k}, \quad \hat{j}\times\hat{k}=\hat{i}, \quad \hat{k}\times\hat{i}=\hat{j}
+$$
+
+$$
+\vec{u}\times\vec{v}=
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k}\\
+u_i & u_j & u_k\\
+v_i & v_j & v_k
+\end{vmatrix}
+$$
+
+### Multuple Products
+
+$$
+\vec{u}\cdot\left(\vec{v}\times\vec{w}\right)=\vec{u}\cdot\vec{v}\times\vec{w}=
+\begin{vmatrix}
+u_1 & u_2 & u_3\\
+v_1 & v_2 & v_3\\
+w_1 & w_2 & w_3
+\end{vmatrix}=\vec{u}\times\vec{v}\cdot\vec{w}
+$$
+
+&nbsp; $$ \left\vert \vec{u}\cdot\vec{v}\times\vec{w}\right\vert $$ is the volume of the parallelepiped.
+
+$$
+\vec{u}\times\left(\vec{v}\times\vec{w}\right) = \left(\vec{u}\cdot\vec{w}\right)\vec{v} - \left(\vec{u}\cdot\vec{v}\right) \vec{w}
+$$
+
+### Differentiation
+
+$$
+\begin{align}
+\vec{R}(t) &= x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}, \quad \text{in cartesian coordinate}\\
+&= r(t)\hat{e_r} + \theta(t)\hat{e_{\theta}} + z(t)\hat{k}, \quad \text{in cylindrical coordinate}\\
+&= \rho(t)\hat{e_{\rho}} + \phi(t)\hat{e_\phi} + \theta(t)\hat{e_{\theta}, \quad \text{in spherical coordinate}}
+\end{align}
+$$
+
+$$
+\vec{R}'(t) = x'(t)\hat{i} + y'(t)\hat{j} + z'(t)\hat{k}
+$$
+
+&nbsp; $$\vec{R}'(t)$$ is at the tagent direction of the curve.
+
+$$
+\text{if } \vert R(t)\vert \text{ is constant}, \vec{R}(t) \cdot \vec{R}'(t) = 0
+$$
+
+### Polar Coordinates
+
+
+<img src="/assets/img/2023-07-23-engineering-mathematics/001.png" style="width:40%;height:40%;">
+
+$$
+\begin{cases}
+x = r\cos\theta\\
+y = r\sin\theta
+\end{cases}
+$$
+
+$$
+\begin{cases}
+r = \sqrt{x^2+y^2}\\
+\theta = \mathrm{atan2}(y,x)
+\end{cases}
+$$
+
+$$
+\mathrm{atan2}(y, x)= \begin{cases}\arctan \left(\frac{y}{x}\right) & \text { if } x>0 \\ \arctan \left(\frac{y}{x}\right)+\pi & \text { if } x<0 \text { and } y \geq 0 \\ \arctan \left(\frac{y}{x}\right)-\pi & \text { if } x<0 \text { and } y<0 \\ \frac{\pi}{2} & \text { if } x=0 \text { and } y>0 \\ -\frac{\pi}{2} & \text { if } x=0 \text { and } y<0 \\ \text { undefined } & \text { if } x=0 \text { and } y=0 .\end{cases}
+$$
+
+Now 3B

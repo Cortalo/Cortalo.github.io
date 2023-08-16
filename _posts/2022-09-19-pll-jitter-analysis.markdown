@@ -155,5 +155,13 @@ $$
 $$
 
 $$
-FOM_{PLL} = 10 \log \bigg( (\frac{\sigma_{t, PLL}}{1s})^2 \cdot \frac{P_{PLL}}{1mW}  \bigg)
+\mathrm{FOM}_{\mathrm{PLL}} = 10 \log \Big( \big(\frac{\sigma_{\mathrm{t,PLL}}}{1 \mathrm{ s}}\big)^2 \cdot \frac{P_{\mathrm{PLL}}}{1 \mathrm{ mW}}  \Big)
+$$
+
+$$
+\mathrm{FOM}_{\mathrm{PLL}} = 10 \log \Big( \big(\frac{\sigma_{\mathrm{t,PLL}}}{1 \mathrm{ s}}\big)^2 \cdot \frac{\color{red}P_{\mathrm{PLL}}}{1 \mathrm{ mW}}  \Big)
+$$
+
+$$
+\mathrm{FOM} = 10 \log \Big( \big(\frac{\sigma_{\mathrm{t,out}}}{1 \mathrm{ s}}\big)^2 \cdot \frac{P_{\mathrm{total}}}{1 \mathrm{ mW}}  \Big)
 $$
