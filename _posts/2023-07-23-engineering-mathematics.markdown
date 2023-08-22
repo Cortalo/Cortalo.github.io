@@ -960,7 +960,7 @@ $$
 $$
 \begin{cases}
 r = \sqrt{x^2+y^2}\\
-\theta = \mathrm{atan2}(y,x)
+\theta = \mathrm{atan2}(y,x) \in (-\pi, \pi]
 \end{cases}
 $$
 
@@ -968,4 +968,63 @@ $$
 \mathrm{atan2}(y, x)= \begin{cases}\arctan \left(\frac{y}{x}\right) & \text { if } x>0 \\ \arctan \left(\frac{y}{x}\right)+\pi & \text { if } x<0 \text { and } y \geq 0 \\ \arctan \left(\frac{y}{x}\right)-\pi & \text { if } x<0 \text { and } y<0 \\ \frac{\pi}{2} & \text { if } x=0 \text { and } y>0 \\ -\frac{\pi}{2} & \text { if } x=0 \text { and } y<0 \\ \text { undefined } & \text { if } x=0 \text { and } y=0 .\end{cases}
 $$
 
-Now 3B
+$$
+\dot{\hat{e_r}} = \dot{\theta} \hat{e_{\theta}}, \quad \dot{\hat{e_\theta}} = - \dot{\theta} \hat{e_r}
+$$
+
+$$
+\vec{R}(t) = r \hat{e_r}
+$$
+
+$$
+\vec{R}'(t) = \dot{r} \hat{e_r} + r \dot{\theta} \hat{e_\theta}
+$$
+
+$$
+\vec{R}''(t) = (\ddot{r} - r\dot{\theta}^2) \hat{e_r} + (2 \dot{r}\dot{\theta} + r\ddot{\theta}) \hat{e_\theta}
+$$
+
+$$
+\hat{e_r} = \cos\theta \hat{i} + \sin\theta \hat{j}
+$$
+
+$$
+\hat{e_\theta} = -\sin\theta \hat{i} + \cos\theta\hat{j}
+$$
+
+### Cylindrical Coordinates
+
+$$
+\vec{R}(t) = r \hat{e_r} + z \hat{e_z}
+$$
+
+$$
+\vec{R}'(t) = \dot{r} \hat{e_r} + r \dot{\theta} \hat{e_\theta} + \dot{z} \hat{e_z}
+$$
+
+$$
+\vec{R}''(t) = (\ddot{r} - r\dot{\theta}^2) \hat{e_r} + (2 \dot{r}\dot{\theta} + r\ddot{\theta}) \hat{e_\theta} + \ddot{z} \hat{e_z}
+$$
+
+### Spherical Coordinates
+
+
+<img src="/assets/img/2023-07-23-engineering-mathematics/002.png" style="width:40%;height:40%;">
+
+$$
+\begin{cases}
+x = \rho\sin\phi\cos\theta\\
+y = \rho\sin\phi\sin\theta\\
+z = \rho\cos\phi
+\end{cases}
+$$
+
+$$
+\hat{e_\rho} = \hat{e_\rho}(\phi,\theta), \quad \hat{e_\phi} = \hat{e_\phi}(\phi,\theta), \quad \hat{e_\theta} = \hat{e_\theta}(\theta)
+$$
+
+$$
+\partial \hat{e_\rho} / \partial \rho = 0, \quad \partial \hat{e_\rho} / \partial \phi
+$$
+
+Now 4A

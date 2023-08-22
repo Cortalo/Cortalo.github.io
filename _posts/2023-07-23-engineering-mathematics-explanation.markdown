@@ -6,6 +6,105 @@ tags: math
 math: true
 ---
 
+
+## First-Order First-Degree ODE
+
+### Integration Formulas
+
+$$
+\begin{align}
+& \int x^n dx = \dfrac{x^{n+1}}{n+1} + C\\
+& \int \dfrac{1}{x} dx = \ln \vert x \vert + C\\
+& \int \frac{1}{x+a} dx = \ln \vert x+a \vert + C\\
+?& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C\\
+& \int \cos x dx = \sin x + C\\
+& \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x) + C
+\end{align}
+$$
+
+
+### Integration by Parts
+
+$$
+\int u dv = uv - \int vdu
+$$
+
+Exercise:
+
+$$
+\int \exp(x) \sin x dx
+$$
+
+$$
+u = \exp(x), \quad v = -\cos x
+$$
+
+$$
+du = \exp(x) dx, \quad dv = \sin x dx
+$$
+
+$$
+\int \exp(x) \sin x dx = - \exp(x) \cos x - \int -\cos x \exp(x) dx
+$$
+
+
+### Ordinary, Partial, Order and Degree
+
+Ordinary differential equation (ODE)
+
+$$
+y' + 5y = 3x
+$$
+
+
+$$
+\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} = 0
+$$
+
+$$
+ay'' + by' + cy = f(x) \quad \text{ (second-order)}
+$$
+
+$$
+(y')^2 + y = e^x \quad \text{ (degree of 2) }
+$$
+
+The degree of an ODE is the degree of the highest order derivative.
+
+$$
+a_n(x) y^{(n)} + a_{n-1}(x)y^{(n-1)} + \dots + a_1(x)y' + a_0(x)y = f(x)
+$$
+
+Linear ODE has all the derivaties (including zero's derivative) are degree of 1.
+
+
+- General solution: solutions without specifying initial condition.
+- Particular solution: a solution with specifying initial condtion.
+- Singular solution: some other solutions cannot get from standard procedures, but they are indeed solutions of differential equation. Usually we are not focusing on such solutions.
+
+
+## Fourier Series
+
+### Fourier Series
+
+**Example (odd function square wave)**
+
+$$
+f(t) =
+\begin{cases}
+-1, \quad -T/2 < t < 0\\
+1, \quad 0 < t < T/2
+\end{cases}
+$$
+
+
+
+$$
+\begin{align}
+f(t) = \dfrac{4}{\pi} \sum_{n=1,3,5,\dots}^{\infty} \dfrac{1}{n} \sin\left(n\omega t\right)
+\end{align}
+$$
+
 ## Multi-Variable Functions
 
 ### Taylor's Formula
