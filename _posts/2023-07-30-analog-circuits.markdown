@@ -31,7 +31,7 @@ $$
 L_p = L_s (1+\dfrac{1}{Q^2})
 $$
 
-### Capacitot
+### Capacitor
 
 $$
 Q = \dfrac{1}{\omega R_s C_s}
@@ -108,19 +108,13 @@ From [Prof. Jri Lee's Lectures](https://space.bilibili.com/1629031600)
 
 ## Barkhausen Criteria
 
+When the oscillator just starts to oscillate, we can use small signal model.
 If the closed-loop transfer function is
 
 $$
 H(s) = \dfrac{A(s)}{1+A(s)\beta(s)}
 $$
 
-then for oscillator
-
-$$
-A(j\omega_o)\beta(j\omega_o) = -1
-$$
-
-When the oscillator just starts to oscillate, we can use small signal model.
 It must be unstable at the equilibrium point, thus from the concept of gain margin
 
 $$
@@ -171,3 +165,13 @@ $$
 <img src="/assets/img/2023-07-30-analog-circuits/003.png" style="width:50%;height:50%;">
 
 <img src="/assets/img/2023-07-30-analog-circuits/006.png" style="width:70%;height:70%;">
+
+# Flicker Noise
+
+$$
+A \cdot \dfrac{f_c}{f}
+$$
+
+$$
+1.38 A \cdot \dfrac{f_c}{f_{min}} \sum_{n=0}^{N_{max}} \dfrac{10^{-n}}{1+(\dfrac{f}{10^n f_{min}})^2}
+$$
