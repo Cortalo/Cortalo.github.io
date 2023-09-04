@@ -6,6 +6,8 @@ tags: math
 math: true
 ---
 
+
+
 From [Dr. Chun-Yao Wang' Lecture](https://ocw.nthu.edu.tw/ocw/index.php?page=course&cid=145)
 
 
@@ -438,7 +440,7 @@ $$
 y(x) = u(x)v(x)
 $$
 
-## The Laplace Transform
+## Laplace Transform
 
 ### The Laplace Transform
 
@@ -695,7 +697,84 @@ b_n &= A_n \cos\varphi_n = \dfrac{2}{T} \int_T f(t)\sin(n\omega t)dt
 \end{align}
 $$
 
+or
+
+$$
+f(t) \sim \sum_{n=-\infty}^{\infty} c_n e^{-j n \omega t}
+$$
+
+$$
+c_n = \dfrac{1}{T}\int_T f(t) e^{j n \omega t} dt
+$$
+
+### Examples
+
+- Impulse Train
+
+$$
+f(t) = \sum_{k=-\infty}^{\infty} \delta(t-kT)
+$$
+
+$$
+f(t) = \dfrac{1}{T} \sum_{n=-\infty}^{\infty} e^{-jn\omega t}
+$$
+
+- Odd function square wave
+
+$$
+f(t) =
+\begin{cases}
+-1, \quad -T/2 < t < 0\\
+1, \quad 0 < t < T/2
+\end{cases}
+$$
+
+
+
+$$
+\begin{align}
+f(t) = \dfrac{4}{\pi} \sum_{n=1,3,5,\dots}^{\infty} \dfrac{1}{n} \sin\left(n\omega t\right)
+\end{align}
+$$
+
+- Even function square wave
+
+$$
+f(t) =
+\begin{cases}
+-1, \quad -T/2 < t < -T/4 \quad \text{ or } \quad T/4 < t < T/2\\
+1, \quad -T/4 < t < T/4
+\end{cases}
+$$
+
+$$
+f(t) = \dfrac{4}{\pi} \left( \cos(\omega t) - \dfrac{1}{3} \cos(3\omega t) + \dfrac{1}{5} \cos(5\omega t) - \dfrac{1}{7} \cos(7\omega t) + \dots \right)
+$$
+
 ### Convergence (25C)
+
+
+## Fourier Transform
+
+$$
+F(\omega) = \int_{-\infty}^{\infty} f(t) \exp(-j\omega t) dt
+$$
+
+$$
+f(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} F(\omega) \exp(j\omega t) d\omega
+$$
+
+### Examples
+
+- finite unit step
+
+$$
+f(t) = u(t) - u(t-T)
+$$
+
+$$
+F(\omega) = T \cdot \exp(-j\omega T / 2) \cdot \dfrac{\sin (\omega T/2)}{\omega T/2}
+$$
 
 ## Multi-Variable Functions
 
@@ -931,7 +1010,7 @@ $$
 \begin{align}
 \vec{R}(t) &= x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}, \quad \text{in cartesian coordinate}\\
 &= r(t)\hat{e_r} + \theta(t)\hat{e_{\theta}} + z(t)\hat{k}, \quad \text{in cylindrical coordinate}\\
-&= \rho(t)\hat{e_{\rho}} + \phi(t)\hat{e_\phi} + \theta(t)\hat{e_{\theta}, \quad \text{in spherical coordinate}}
+&= \rho(t)\hat{e_{\rho}} + \phi(t)\hat{e_\phi} + \theta(t)\hat{e_{\theta}}, \quad \text{in spherical coordinate}
 \end{align}
 $$
 

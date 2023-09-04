@@ -6,6 +6,89 @@ tags: analog
 math: true
 ---
 
+# Basics
+
+[Prof. Jri Lee's Lecture](https://www.bilibili.com/video/BV1UV4y1k791/)
+
+## Differential Pair
+
+$$
+A_v = - g_m R_D
+$$
+
+### CMRR
+
+$$
+CMRR = \dfrac{\vert A_{DM} \vert}{\vert A_{CM-DM} \vert}
+$$
+
+$$
+\vert A_{CM-DM}\vert_1 = \left\vert \dfrac{\Delta R_c}{1/g_m + 2 R_{EE}} \right\vert
+$$
+
+$$
+\vert A_{CM-DM}\vert_1 = \left\vert \dfrac{\Delta g_m R_c}{1+2g_mR_{EE}} \right\vert
+$$
+
+$$
+\vert A_{CM-DM} \vert = \sqrt{\vert A_{CM-DM} \vert_1^2 + \vert A_{CM-DM}\vert_2^2}
+$$
+
+### Offset
+
+$$
+V_{os,1} = \dfrac{(V_{GS}-V_{TH})\Delta R_D}{2 R_D}
+$$
+
+$$
+V_{os,2} = \dfrac{(V_{GS}-V_{TH})\Delta\left(\dfrac{W}{L}\right)}{2\left(\dfrac{W}{L}\right)}
+$$
+
+$$
+V_{os,3} = \Delta V_{TH}
+$$
+
+$$
+V_{os} = \sqrt{V_{os,1}^2+V_{os,2}^2+V_{os,3}^2}
+$$
+
+### Current Mirror Load
+
+$$
+A_v = g_m (r_{on}\Vert r_{op})
+$$
+
+## Frequency Response (Lecture 6)
+
+$$
+H(s) = A_v \cdot \dfrac{(1+s/\omega_{z,1})\dots (1_s/\omega_{z,n})}{(1+s/\omega_{p,1}) \dots (1+s/\omega_{p,n})}
+$$
+
+### Coupling Capacitor and Bypass Capacitor
+
+The approximated method:
+
+- Each capacitor generates (exactly) one pole and one zero.
+- The zero may degenerate to zero or infinite frequency.
+- The pole frequency is found by RC time constant.
+- The zero frequency is found by finding the frequency when the output is zero (when all the other capacitors are working ideally small or large).
+
+### Miller Effect
+
+LHP zero is okay. RHP zero is dangerous.
+
+### Open Circuit Time Constant (Lecture 8)
+
+### Common Source
+
+### Common Gate (Lecture 9)
+
+### Common Drain (Lecture 10)
+
+### Differential Pair
+
+## Feedback (Lecture 13)
+
 # Impedance Formula
 
 $$
@@ -175,3 +258,49 @@ $$
 $$
 1.38 A \cdot \dfrac{f_c}{f_{min}} \sum_{n=0}^{N_{max}} \dfrac{10^{-n}}{1+(\dfrac{f}{10^n f_{min}})^2}
 $$
+
+# Phase Detector
+
+## Harmonic-Rejection Mixer
+
+[Original paper](https://ieeexplore.ieee.org/document/972151)
+
+[A circuit for all seasons](https://ieeexplore.ieee.org/document/8536535)
+
+A mixer can be used as a phase detector.
+
+$$
+\cos(\omega t) \cdot \cos(\omega t + \phi) = \dfrac{1}{2} \cdot \cos\left( 2\omega t + \phi\right) + \dfrac{1}{2} \cdot \cos\phi
+$$
+
+When mixing two sinosoidal signal, there is no higher harmonics.
+
+$$
+\cos(\omega_1 t) \cdot \cos(\omega_2 t) = \dfrac{1}{2} \cdot \cos\left( (\omega_1 + \omega_2) t\right) + \dfrac{1}{2} \cdot \cos\left( (\omega_1 - \omega_2) t\right)
+$$
+
+When mixing sinosoidal with square wave, there is higher harmonics.
+
+$$
+f_1(t) = \cos(\omega t) - \dfrac{1}{3} \cos(3\omega t) + \dfrac{1}{5} \cos(5\omega t) - \dfrac{1}{7} \cos(7\omega t) + \dots
+$$
+
+If we have available different phase ($$\pm 45^\circ$$) of $$f_1(t)$$
+
+$$
+\begin{align}
+f_2(t) &= f_1\left(t+\dfrac{T}{8}\right)\\
+&= \cos(\omega t + \pi/4) - \dfrac{1}{3}\cos(3\omega t + 3 \pi /4) + \dfrac{1}{5}\cos(5\omega t + 5\pi/4) + \dots\\
+&= \dfrac{1}{\sqrt{2}} \left( \left(\cos(\omega t)-\sin(\omega t)\right) +\dfrac{1}{3}\left(\cos(3\omega t) + \sin(3\omega t)\right) - \dfrac{1}{5}\left( \cos(5\omega t) - \sin(3\omega t) \right) \right)
+\end{align}
+$$
+
+$$
+\begin{align}
+f_3(t) &= f_1\left(t-\dfrac{T}{8}\right)\\
+&= \cos(\omega t - \pi/4) - \dfrac{1}{3}\cos(3\omega t - 3 \pi /4) + \dfrac{1}{5}\cos(5\omega t - 5\pi/4) + \dots\\
+&= \dfrac{1}{\sqrt{2}} \left( \left(\cos(\omega t)+\sin(\omega t)\right) +\dfrac{1}{3}\left(\cos(3\omega t) - \sin(3\omega t)\right) - \dfrac{1}{5}\left( \cos(5\omega t) + \sin(3\omega t) \right) \right)
+\end{align}
+$$
+
+thus using $$\sqrt{2}f_1(t) + f_2(t) + f_3(t)$$ can cancel third and fifth harmonics.
