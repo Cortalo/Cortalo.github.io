@@ -89,6 +89,29 @@ LHP zero is okay. RHP zero is dangerous.
 
 ## Feedback (Lecture 13)
 
+## Operational Amplifier
+
+### Two Stage Amplifier
+
+### Slew Rate
+
+### PSRR
+
+### Folded Opamp
+
+### Limiter
+
+## Digital Circuits
+
+### SR Latch
+
+### D-Flip Flop
+
+### C2MOS Latch
+
+### CML Latch
+
+
 # Impedance Formula
 
 $$
@@ -248,6 +271,24 @@ $$
 <img src="/assets/img/2023-07-30-analog-circuits/003.png" style="width:50%;height:50%;">
 
 <img src="/assets/img/2023-07-30-analog-circuits/006.png" style="width:70%;height:70%;">
+
+## Self-Charged XO
+
+[ISSCC 2012, JSSC 2016](https://ieeexplore.ieee.org/document/7370766)
+
+- The sine wave will first be converted to square wave, with the requirement that the output will trip exactly in the middle of the input voltage swing. A self-adaptive boby-biasing technique is used.
+
+[ISSCC 2014](https://ieeexplore.ieee.org/document/6757442)
+
+[Electronics Letters 2016](https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/el.2015.1703)
+
+[ASSCC 2017](https://ieeexplore.ieee.org/document/8240214)
+
+[JSSC 2019](https://ieeexplore.ieee.org/document/8816671)
+
+[VLSI-DAT 2020](https://ieeexplore.ieee.org/document/9196439)
+
+[JSSC 2022](https://ieeexplore.ieee.org/document/9477613)
 
 # Flicker Noise
 

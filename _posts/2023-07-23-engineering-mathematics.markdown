@@ -440,6 +440,21 @@ $$
 y(x) = u(x)v(x)
 $$
 
+### System of Linear ODEs
+
+A linear first-order system of $$n$$ equations in the $$n$$ unknowns $$x_1(t),\dots,x_n(t)$$ is of the form
+
+$$
+\begin{align}
+a_{11}(t) x_1' + \dots + a_{1n}(t)x_n' + b_{11}(t) x_1 + \dots + b_{1n}(t) x_n &= f_1(t)\\
+&\vdots\\
+a_{n1}(t) x_1' + \dots + a_{nn}(t)x_n' + b_{n1}(t) x_1 + \dots + b_{nn}(t) x_n &= f_n(t)\\
+\end{align}
+$$
+
+A linear second-order system will be similar.
+
+
 ## Laplace Transform
 
 ### The Laplace Transform
@@ -845,7 +860,7 @@ f(x,y)=f(x_0,y_0) + f_x(x-x_0) + f_y(y-y_0) + \dfrac{1}{2!}[f_{xx}(x-x_0)^2 + 2f
 $$
 
 
-### Mean Value Theorem
+#### Mean Value Theorem
 
 For single variable function
 
@@ -934,11 +949,182 @@ v_y
 $$
 
 $$
-u_x = \dfrac{\dfrac{\partial(f,g)}{\partial(-x,v)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
-u_y = \dfrac{\dfrac{\partial(f,g)}{\partial(-y,v)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
-v_x = \dfrac{\dfrac{\partial(f,g)}{\partial(u,-x)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
-v_y = \dfrac{\dfrac{\partial(f,g)}{\partial(u,-y)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}
+u_x = -\dfrac{\dfrac{\partial(f,g)}{\partial(x,v)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
+u_y = -\dfrac{\dfrac{\partial(f,g)}{\partial(y,v)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
+v_x = -\dfrac{\dfrac{\partial(f,g)}{\partial(u,x)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}, \quad
+v_y = -\dfrac{\dfrac{\partial(f,g)}{\partial(u,y)}}{\dfrac{\partial(f,g)}{\partial(u,v)}}
 $$
+
+For general implicit functions
+
+$$
+\begin{align}
+g_1(x_1,\dots,x_m;y_1,\dots,y_n)=0\\
+\vdots\\
+g_n(x_1,\dots,x_m;y_1,\dots,y_n)=0
+\end{align}
+$$
+
+the derivatives can be calculated as
+
+$$
+\dfrac{\partial y_j}{\partial x_k} = -\dfrac{J(y_1,\dots,y_{j-1},x_k,y_{j+1},\dots,y_n)}{J(y_1,\dots,y_n)}
+$$
+
+#### Jacobian Matrix
+
+**Theorem:** For functions
+
+$$
+\begin{align}
+u_1&=u_1(x_1,\dots,x_n)\\
+&\dots\\
+u_n&=u_n(x_1,\dots,x_n)
+\end{align}
+$$
+
+and its correspond implicit function
+
+$$
+\begin{align}
+x_1&=x_1(u_1,\dots,u_n)\\
+&\dots\\
+x_n&=x_n(u_1,\dots,u_n)
+\end{align}
+$$
+
+then the multiplication of two Jacobian matrix
+
+$$
+\dfrac{\partial(u_1,\dots,u_n)}{\partial(x_1,\dots,x_n)} \dfrac{\partial(x_1,\dots,x_n)}{\partial(u_1,\dots,u_n)} = I
+$$
+
+then their determinant has multiplication $$1$$.
+
+#### PDE Example
+
+$$
+\begin{align}
+x &= r\cos\theta\\
+y &= r\sin\theta
+\end{align}
+$$
+
+$$
+\dfrac{\partial r}{\partial x} = \cos\theta, \quad \dfrac{\partial r}{\partial y} = \sin\theta
+$$
+
+$$
+\dfrac{\partial \theta}{\partial x} = -\dfrac{\sin\theta}{r}, \quad \dfrac{\partial \theta}{\partial y} = \dfrac{\cos\theta}{r}
+$$
+
+$$
+T_{xx} + T_{yy} = 0
+$$
+
+in polar coordinates
+
+$$
+T(x(r,\theta),y(r,\theta)) = U(r,\theta)
+$$
+
+$$
+? \quad U_{rr} + \dfrac{1}{r}U_r + \dfrac{1}{r^2} U_{\theta \theta} = 0
+$$
+
+in spherical coordinates
+
+### Maximum And Minimum
+
+From the Taylor's formula, if all the first order partial derivatives are zero, and the second derivatives matrix is positive (or negative) definite, then the function is at maximum (or minimum).
+
+$$
+f(x_1,y_1)
+$$
+
+the necessary condition for it is at maximum or minimum
+
+$$
+f_{x_1} = f_{x_2} = 0
+$$
+
+if its second derivatives matrix is positive definite, it is at minimum point
+
+$$
+\begin{pmatrix}
+f_{x_1 x_1} & f_{x_1 x_2}\\
+f_{x_2 x_1} & f_{x_2 x_2}
+\end{pmatrix}
+$$
+
+#### Constrained Extrema
+
+We want to find extrema for
+
+$$
+f(x_1,x_2,\dots,x_n)
+$$
+
+under the conditions
+
+$$
+\begin{align}
+g_1(x_1,x_2,\dots,x_n) = 0\\
+\vdots\\
+g_k(x_1,x_2,\dots,x_n) = 0
+\end{align}
+$$
+
+Then we need to find the extrema for function
+
+$$
+F(x_1,\dots,x_{n-k}) = f\left(x_1,\dots,x_{n-k},x_{n-k+1}\left(x_1,\dots,x_{n-k}\right),\dots,x_n\left(x_1,\dots,x_{n-k}\right)\right)
+$$
+
+if the functions $$x_{n-k+1}(), \dots$$ are easy to calculate, this method is easy and straightforward.
+
+#### Lagrange Method
+
+$$
+f^{*} = f + \lambda_1 g_1 + \dots + \lambda_k g_k
+$$
+
+The necessary condition for extrema is
+
+$$
+\begin{align}
+f_{x_1} + \lambda_1 g_{1_{x_1}} + \dots + \lambda_k g_{k_{x_1}} = 0\\
+\vdots\\
+f_{x_n} + \lambda_1 g_{1_{x_n}} + \dots + \lambda_k g_{k_{x_n}} = 0
+\end{align}
+$$
+
+then we can solve
+
+$$
+\begin{align}
+x_1 = x_1(\lambda_1,\dots,\lambda_k)\\
+\vdots\\
+x_n = x_n(\lambda_1,\dots,\lambda_k)
+\end{align}
+$$
+
+then using the equations $$g_1,\dots,g_k$$, we can get the values of $$\lambda_1,\dots,\lambda_k$$.
+
+Famous examples including:
+
+- Fermat's principle of least time.
+
+### Leibniz Rule
+
+$$
+I(t) = \int_{a(t)}^{b(t)} f(x,t)dx
+$$
+
+$$
+I'(t) = \int_{a}^{b}\dfrac{\partial f}{\partial t}dx + b' f(b,t) - a'f(a,t)
+$$
+
 
 ## 3D Vectors
 
@@ -1007,6 +1193,12 @@ $$
 ### Differentiation
 
 $$
+\dfrac{d}{dt}\left( \vec{u} \cdot \vec{v} \right) = \dot{\vec{u}} \cdot \vec{v} + \vec{u} \cdot \dot{\vec{v}}
+$$
+
+### Coordinates
+
+$$
 \begin{align}
 \vec{R}(t) &= x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}, \quad \text{in cartesian coordinate}\\
 &= r(t)\hat{e_r} + \theta(t)\hat{e_{\theta}} + z(t)\hat{k}, \quad \text{in cylindrical coordinate}\\
@@ -1048,6 +1240,14 @@ $$
 $$
 
 $$
+\hat{e_r} = \cos\theta \hat{i} + \sin\theta \hat{j}
+$$
+
+$$
+\hat{e_\theta} = -\sin\theta \hat{i} + \cos\theta\hat{j}
+$$
+
+$$
 \dot{\hat{e_r}} = \dot{\theta} \hat{e_{\theta}}, \quad \dot{\hat{e_\theta}} = - \dot{\theta} \hat{e_r}
 $$
 
@@ -1063,13 +1263,6 @@ $$
 \vec{R}''(t) = (\ddot{r} - r\dot{\theta}^2) \hat{e_r} + (2 \dot{r}\dot{\theta} + r\ddot{\theta}) \hat{e_\theta}
 $$
 
-$$
-\hat{e_r} = \cos\theta \hat{i} + \sin\theta \hat{j}
-$$
-
-$$
-\hat{e_\theta} = -\sin\theta \hat{i} + \cos\theta\hat{j}
-$$
 
 ### Cylindrical Coordinates
 
@@ -1103,7 +1296,49 @@ $$
 $$
 
 $$
-\partial \hat{e_\rho} / \partial \rho = 0, \quad \partial \hat{e_\rho} / \partial \phi
+\partial \hat{e_\rho} / \partial \rho = 0, \quad \partial \hat{e_\rho} / \partial \phi = \hat{e_{\phi}}
 $$
 
-Now 4A
+$$
+...
+$$
+
+$$
+...
+$$
+
+$$
+R(t) = \rho(t) \hat{e_{\rho}}
+$$
+
+$$
+v(t) = \dot{\rho} \hat{e_{\rho}} + \rho\dot{\theta}\sin\theta \hat{e_{\theta}} + \rho\dot{\phi}\hat{e_{\phi}}
+$$
+
+### Omega Method (4B,TBD)
+
+
+## Curves, Surfaces, and Volumes
+
+### Line Integral
+
+A curve can be described by position vector
+
+$$
+\vec{R}(\tau) = x(\tau)\hat{i} + y(\tau)\hat{j} + z(\tau)\hat{k}
+$$
+
+**Terms**
+
+- Closed curve.
+- Simple curve.
+- Continuous.
+- Smooth.
+
+Length of a curve
+
+$$
+S = \int ds = \int_a^b \sqrt{\vec{R'}\cdot \vec{R'}} d\tau
+$$
+
+Now 7A
