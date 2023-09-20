@@ -1173,6 +1173,14 @@ v_i & v_j & v_k
 \end{vmatrix}
 $$
 
+$$
+\begin{align}
+&\vec{u}\times \vec{v} = \vert u \vert \vert v\vert \sin\theta\\
+=& \vert u\vert\vert v\vert \sqrt{1-\cos^2\theta}\\
+=& \sqrt{\vert u\vert^2 \vert v\vert^2 - (\vec{u}\cdot\vec{v})^2}
+\end{align}
+$$
+
 ### Multuple Products
 
 $$
@@ -1320,7 +1328,10 @@ $$
 
 ## Curves, Surfaces, and Volumes
 
+
 ### Line Integral
+
+#### Arc Length
 
 A curve can be described by position vector
 
@@ -1341,4 +1352,85 @@ $$
 S = \int ds = \int_a^b \sqrt{\vec{R'}\cdot \vec{R'}} d\tau
 $$
 
-Now 7A
+#### Line Integral
+
+$$
+\int_c f(x,y,z) ds = \int_c f(x(\tau),y(\tau),z(\tau)) \sqrt{\vec{R'}\cdot \vec{R'}} d\tau
+$$
+
+$$
+\int_c (\alpha f + \beta g) ds  = \alpha\int_c f ds + \beta\int_c g ds
+$$
+
+$$
+\oint
+$$
+
+### Surface Integral
+
+#### Double Integral
+
+If we are doing double integral in $$x,y$$ axis
+
+$$
+\int\int f(x,y) dA
+$$
+
+$$
+\int_{0}^{2} \int_{y/2}^1 xy^2 dxdy = \dfrac{8}{15}
+$$
+
+#### Surface Integral
+
+$$
+\vec{R}(u,v) = x(u,v)\hat{i} + y(u,v)\hat{j} + z(u,v)\hat{k}
+$$
+
+$$
+dA = (R_u \times R_v)du dv
+$$
+
+$$
+R_u = x_u \hat{i} + y_u \hat{j} + z_u \hat{k}
+$$
+
+
+$$
+R_v = x_v \hat{i} + y_v \hat{j} + z_v \hat{k}
+$$
+
+if $$z=\mathrm{const}$$
+
+$$
+dA = \left\vert \dfrac{\partial(x,y)}{\partial(u,v)} \right\vert du dv
+$$
+
+### Volumn Integral
+
+$$
+\begin{align}
+dV &= \left\vert \vec{R_u} \times \vec{R_v} \cdot \vec{R_\omega} \right\vert du dv d\omega\\
+&= \left\vert \dfrac{\partial(x,y,z)}{\partial(u,v,\omega)} \right\vert du dv d\omega
+\end{align}
+$$
+
+## Field Theory
+
+### Divergence
+
+
+$$
+\nabla \cdot \vec{V} = \lim_{\beta\to 0} \dfrac{\int_S \hat{n} \cdot \vec{v} dA}{V_\beta}
+$$
+
+$$
+\nabla \cdot \vec{V}  = \left( \dfrac{\partial V_x}{\partial x} + \dfrac{\partial V_y}{\partial y} + \dfrac{\partial V_z}{\partial z} \right)
+$$
+
+### Gradient
+
+$$
+\nabla u = \lim_{\beta\to 0} \dfrac{\int_S \hat{n} u dA}{V_\beta}
+$$
+
+Now 9B

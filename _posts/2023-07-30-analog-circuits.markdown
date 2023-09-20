@@ -345,3 +345,22 @@ f_3(t) &= f_1\left(t-\dfrac{T}{8}\right)\\
 $$
 
 thus using $$\sqrt{2}f_1(t) + f_2(t) + f_3(t)$$ can cancel third and fifth harmonics.
+
+# Crystal Oscillator
+
+We want to calculate the resonat frequency of a crystal, including $$C_0, R_m, L_m, C_m$$.
+We will first calculate the total impedance.
+Then by definition, resonat frequency is the frequency such that the total impedance is purely real.
+
+$$
+Z_0 = -\dfrac{j}{\omega C_0}
+$$
+
+$$
+Z_m = R_m + j\omega L_m - \dfrac{j}{\omega C_m}
+$$
+
+$$
+
+Z_p = \dfrac{Z_0 Z_m}{Z_0 + Z_m} = \dfrac{\dfrac{L_m}{C_0} - \dfrac{1}{\omega^2 C_0 C_m} - \dfrac{j R_m}{\omega C_0}}{R_m + j\left(\omega L_m - \dfrac{1}{\omega C_m} - \dfrac{1}{\omega C_0}\right)}
+$$

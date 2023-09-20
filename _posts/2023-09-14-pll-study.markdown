@@ -1,0 +1,77 @@
+---
+title:  "PLL Study"
+date:   2023-09-14 07:00:00 +0200
+categories: analog-circuit
+tags: analog
+math: true
+---
+
+# 1
+
+- [JSSC 2009](https://ieeexplore.ieee.org/document/5342373)
+
+## Circuit Design
+
+<img src="/assets/img/2023-09-14-pll-study/007.png" style="width:80%;height:80%;">
+
+# 2
+
+- [ISSCC 2018](https://ieeexplore.ieee.org/abstract/document/8310282)
+- [JSSC 2019](https://ieeexplore.ieee.org/document/8633361)
+
+## Circuit Design
+
+<!-- Sampler version 1 -->
+
+<!-- <img src="/assets/img/2023-09-14-pll-study/001.png" style="width:50%;height:50%;"> -->
+
+<!-- This will sample the reference at every VCO cycle. But we only want to sample one voltage near the reference crossover point. -->
+
+<!-- Sampler version 2 -->
+
+
+<!-- <img src="/assets/img/2023-09-14-pll-study/002.png" style="width:70%;height:70%;"> -->
+
+<!-- Now we are only sample one voltage. We have to make sure the `SampleEdge`'s falling edge comes when `CKvco` is 0. -->
+
+<!-- Generation of `SampleEdge`. -->
+
+The circuits is composed of a VCO, a sampler, one reference buffer and two VCO buffer.
+
+<img src="/assets/img/2023-09-14-pll-study/005.png" style="width:50%;height:50%;">
+
+**Sampler**
+
+<img src="/assets/img/2023-09-14-pll-study/003.png" style="width:70%;height:70%;">
+
+We have to make sure the `SampleEdge`'s falling edge comes when `CKvco-` is 0.
+There are two possibilities, one is `CKref` asserts when `CKvco+` is 0; another one is `CKref` asserts when `CKvco+` is 1.
+In either case, `SampleEdge`'s falling edge happens when `CKvco+` is 1, then `CKvco-` is 0.
+
+<img src="/assets/img/2023-09-14-pll-study/004.png" style="width:50%;height:50%;">
+
+The diagram shows single-ended sampling, but the real circuits adopts differential sampling.
+
+**Reference buffer**
+
+The reference buffer is calibrated per die such that `CKref` transit at the crossover of the reference signal.
+
+## Inband Phase Noise Analysis
+
+<img src="/assets/img/2023-09-14-pll-study/006.png" style="width:70%;height:70%;">
+
+$$
+S_{n,sample} = \dfrac{2kT}{C_{sample}} \cdot \dfrac{1}{F_{ref}/2} = \dfrac{4kT}{C_{sample} \cdot F_{ref}}
+$$
+
+$$
+\mathcal{L}_{n,sample} = \dfrac{1}{2} \cdot S_{n,sample} \cdot \left(\dfrac{N}{2A_{ref}}\right)^2 = \dfrac{2kT}{C_{sample}\cdot F_{ref}} \cdot \left(\dfrac{N}{2A_{ref}}\right)^2
+$$
+
+$$
+S_{n,vcobuf} = \dfrac{\overline{\Delta V^2}}{SL^2} \cdot (2\pi F_{ref})^2 \cdot \dfrac{1}{F_{ref}/2}
+$$
+
+$$
+\mathcal{L}_{n,vcobuf} = \dfrac{1}{2} \cdot N^2 \cdot S_{n,vcobuf}
+$$
