@@ -348,9 +348,10 @@ thus using $$\sqrt{2}f_1(t) + f_2(t) + f_3(t)$$ can cancel third and fifth harmo
 
 # Crystal Oscillator
 
-We want to calculate the resonat frequency of a crystal, including $$C_0, R_m, L_m, C_m$$.
-We will first calculate the total impedance.
-Then by definition, resonat frequency is the frequency such that the total impedance is purely real.
+## Resonant Frequency
+
+We want to calculate the resonant frequency of a crystal, including $$C_0, R_m, L_m, C_m$$.
+By definition, resonat frequency is the frequency such that the total impedance is purely real.
 
 $$
 Z_0 = -\dfrac{j}{\omega C_0}
@@ -363,4 +364,75 @@ $$
 $$
 
 Z_p = \dfrac{Z_0 Z_m}{Z_0 + Z_m} = \dfrac{\dfrac{L_m}{C_0} - \dfrac{1}{\omega^2 C_0 C_m} - \dfrac{j R_m}{\omega C_0}}{R_m + j\left(\omega L_m - \dfrac{1}{\omega C_m} - \dfrac{1}{\omega C_0}\right)}
+$$
+
+The condition for $$Z_p$$ to be purely real
+
+$$
+\dfrac{-\dfrac{R_m}{\omega C_0}}{\dfrac{L_m}{C_0}-\dfrac{1}{\omega^2 C_0 C_m}} = \dfrac{\omega L_m - \dfrac{1}{\omega C_m} - \dfrac{1}{\omega C_0}}{R_m}
+$$
+
+
+Solving the equatoin, we can find two resonant frequency
+
+
+$$
+\omega_s \approx \dfrac{1}{\sqrt{L_m C_m}}
+$$
+
+
+$$
+\begin{align}
+\omega_a \approx \dfrac{1}{\sqrt{L_m \left(C_m \Vert C_0\right)}} \approx \dfrac{1}{\sqrt{L_m C_m}} \left(1+\dfrac{C_m}{2C_0}\right)
+\end{align}
+$$
+
+
+If there are load capacitance, the load capacitance $$C_L$$ will be parallel with $$C_0$$, thus
+
+$$
+\omega_s \approx \dfrac{1}{\sqrt{L_m C_m}}
+$$
+
+$$
+\omega_a \approx \dfrac{1}{\sqrt{L_m \left(C_m \Vert \left(C_0+C_L\right)\right)}} \approx \dfrac{1}{\sqrt{L_m C_m}} \left(1+\dfrac{C_m}{2(C_0+C_L)}\right)
+$$
+
+Depending on how the oscillator is designed, the oscillation frequency will be betwenn the two value (this is stated by many books, I didn't know the real reason for this statement though).
+
+$$
+\omega_s \le \omega_{osc} \le \omega_a
+$$
+
+## Equivalent Resistance
+
+Let's denote $$jX = j\omega L_m - \dfrac{j}{\omega C_m}$$, and $$j X_{C0} = -\dfrac{j}{\omega C_0}$$.
+The total impedence of the crystal (note that the load $$C_L$$ is not included)
+
+$$
+\begin{align}
+Z &= \dfrac{\left(R_m + jX\right)\left(j X_{C0}\right)}{R_m + j(X+X_{C0})}\\
+&= \dfrac{R_m X_{C0}^2}{R_m^2 + \left(X+X_{C0}\right)^2} + \dfrac{jX_{C0}\left[R_m^2 + X\left(X+X_{C0}\right)\right]}{R_m^2 + \left(X+X_{C0}\right)^2}
+\end{align}
+$$
+
+The effective resistance is given by
+
+$$
+R_e = \dfrac{R_m X_{C0}^2}{R_m^2 + \left(X+X_{C0}\right)^2}
+$$
+
+consider when we sweep the frequency from $$\omega_s$$ to $$\omega_a$$, formally $$\dfrac{1}{\sqrt{L_m C_m}} \le \omega \le \dfrac{1}{\sqrt{L_m C_m}} \left(\dfrac{C_m}{2(C_0+C_L)}\right) $$.
+The effective resistance will increase from
+
+$$
+R_e\vert_{\omega=\omega_s} \approx R_m
+$$
+
+to
+
+$$
+\begin{align}
+R_e\vert_{\omega=\omega_a} &\approx R_m \left(\dfrac{C_L+C_0}{C_L}\right)^2
+\end{align}
 $$

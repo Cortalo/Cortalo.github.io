@@ -1236,23 +1236,20 @@ y = r\sin\theta
 \end{cases}
 $$
 
+
+
 $$
 \begin{cases}
-r = \sqrt{x^2+y^2}\\
-\theta = \mathrm{atan2}(y,x) \in (-\pi, \pi]
+\hat{e_r} = \cos\theta \hat{i} + \sin\theta \hat{j}\\
+\hat{e_\theta} = -\sin\theta \hat{i} + \cos\theta\hat{j}
 \end{cases}
 $$
 
 $$
-\mathrm{atan2}(y, x)= \begin{cases}\arctan \left(\frac{y}{x}\right) & \text { if } x>0 \\ \arctan \left(\frac{y}{x}\right)+\pi & \text { if } x<0 \text { and } y \geq 0 \\ \arctan \left(\frac{y}{x}\right)-\pi & \text { if } x<0 \text { and } y<0 \\ \frac{\pi}{2} & \text { if } x=0 \text { and } y>0 \\ -\frac{\pi}{2} & \text { if } x=0 \text { and } y<0 \\ \text { undefined } & \text { if } x=0 \text { and } y=0 .\end{cases}
-$$
-
-$$
-\hat{e_r} = \cos\theta \hat{i} + \sin\theta \hat{j}
-$$
-
-$$
-\hat{e_\theta} = -\sin\theta \hat{i} + \cos\theta\hat{j}
+\begin{cases}
+\hat{i} = \cos\theta \hat{e_r} - \sin\theta \hat{e_\theta}\\
+\hat{j} = \sin\theta \hat{e_r} + \cos\theta\hat{e_\theta}
+\end{cases}
 $$
 
 $$
@@ -1260,15 +1257,20 @@ $$
 $$
 
 $$
-\vec{R}(t) = r \hat{e_r}
-$$
-
-$$
-\vec{R}'(t) = \dot{r} \hat{e_r} + r \dot{\theta} \hat{e_\theta}
-$$
-
-$$
+\begin{cases}
+\vec{R}(t) = r \hat{e_r}\\
+\vec{R}'(t) = \dot{r} \hat{e_r} + r \dot{\theta} \hat{e_\theta}\\
 \vec{R}''(t) = (\ddot{r} - r\dot{\theta}^2) \hat{e_r} + (2 \dot{r}\dot{\theta} + r\ddot{\theta}) \hat{e_\theta}
+\end{cases}
+$$
+
+$$
+\begin{cases}
+\dfrac{\partial r}{\partial x} = -\dfrac{J(x,\theta)}{J(r,\theta)} = \cos\theta\\
+\dfrac{\partial r}{\partial y} = -\dfrac{J(y,\theta)}{J(r,\theta)} = \sin\theta\\
+\dfrac{\partial \theta}{\partial x} = -\dfrac{J(r,x)}{J(r,\theta)} = -\dfrac{\sin\theta}{r}\\
+\dfrac{\partial \theta}{\partial y} = -\dfrac{J(r,y)}{J(r,\theta)} = \dfrac{\cos\theta}{r}
+\end{cases}
 $$
 
 
@@ -1430,7 +1432,85 @@ $$
 ### Gradient
 
 $$
-\nabla u = \lim_{\beta\to 0} \dfrac{\int_S \hat{n} u dA}{V_\beta}
+\nabla u = \lim_{\beta\to 0} \dfrac{\int_S \hat{n} u dA}{V_\beta} \quad (\text{why?})
 $$
 
-Now 9B
+$$
+\nabla u = \dfrac{\partial u}{\partial x} \hat{i} + \dfrac{\partial u}{\partial y} \hat{j} + \dfrac{\partial u}{\partial z} \hat{k}
+$$
+
+
+### Curl
+
+$$
+\nabla \times \vec{V} = \lim_{\beta\to\infty} \dfrac{\int_s \hat{n}\times \hat{V} dA}{V} \quad (\text{why?})
+$$
+
+$$
+\nabla \times \vec{V} =
+\begin{vmatrix}
+\hat{i} & \hat{j} & \hat{k}\\
+\dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z}\\
+V_x & V_y & V_z
+\end{vmatrix}
+$$
+
+### Combination and Laplacian
+
+If $$\alpha,\beta$$ are scalars, then
+
+$$
+\nabla \cdot (\alpha \vec{u} + \beta \vec{v}) = \alpha \nabla \cdot \vec{u} + \beta \nabla \cdot \vec{v}
+$$
+
+$$
+\nabla (\alpha u + \beta v) = \alpha \nabla u + \beta \nabla v
+$$
+
+$$
+\nabla \times (\alpha \vec{u} + \beta\vec{v}) = \alpha \nabla \times \vec{u} + \beta \nabla \times \vec{v}
+$$
+
+Furthermore
+
+$$
+\nabla \cdot (u\vec{v}) = \nabla u \cdot \vec{v} + u \nabla \cdot \vec{v}
+$$
+
+$$
+\nabla \times (u\vec{v}) = \nabla u \times \vec{v} + u \nabla \times \vec{v}
+$$
+
+$$
+\nabla \cdot (\vec{u}\times \vec{v}) = \vec{v} \cdot \nabla \times \vec{u} - \vec{u}\cdot \nabla\times\vec{v}
+$$
+
+$$
+\nabla \times (\vec{u}\times \vec{v}) = \vec{u} \nabla \cdot \vec{v} - \vec{v} \nabla \cdot \vec{u} + (\vec{v} \cdot \nabla) \vec{u} - (\vec{u} \cdot \nabla) \vec{v}
+$$
+
+$$
+\nabla (\vec{u}\cdot\vec{v}) = (\vec{u}\cdot \nabla)\vec{v} + (\vec{v}\cdot \nabla)\vec{u} + \vec{u}\times (\nabla \times \vec{v}) + \vec{v} \times (\nabla \times \vec{u})
+$$
+
+#### Combination of Operators
+
+$$
+\nabla \cdot \nabla = \nabla^2 = \left( \dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2} \right) \quad \text{(it can be applied to either scalar or vector field)}
+$$
+
+$$
+\nabla \cdot \nabla \times \vec{v} = 0
+$$
+
+$$
+\nabla \times \nabla u = 0
+$$
+
+$$
+\nabla \times \nabla \times \vec{v} = \nabla(\nabla \cdot \vec{v}) - \nabla^2 \vec{v}
+$$
+
+### Non-Cartesian Coordinates
+
+Now 10B

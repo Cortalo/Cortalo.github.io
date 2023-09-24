@@ -32,19 +32,19 @@ $$
 Exercise:
 
 $$
-\int \exp(x) \sin x dx
+\int \exp(x)  x dx
 $$
 
 $$
-u = \exp(x), \quad v = -\cos x
+u = x, \quad v = \exp(x)
 $$
 
 $$
-du = \exp(x) dx, \quad dv = \sin x dx
+du = dx, \quad dv = \exp(x)dx
 $$
 
 $$
-\int \exp(x) \sin x dx = - \exp(x) \cos x - \int -\cos x \exp(x) dx
+\int \exp(x) x dx = x \exp(x) - \int \exp(x) dx = x \exp(x) - \exp(x) + C
 $$
 
 
@@ -992,5 +992,43 @@ $$
 \begin{align}
 y'' &= -\dfrac{(\dfrac{d}{dx} f_x)f_y - f_x (\dfrac{d}{dx}f_y)}{f_y^2}\\
 &= -\dfrac{(f_{xx}+f_{xy}y')f_y - f_x(f_{xy} + f_{yy}y')}{f_y^2}
+\end{align}
+$$
+
+## 3D Vectors
+
+### Polar Coordinates
+
+
+$$
+\begin{cases}
+r = \sqrt{x^2+y^2}\\
+\theta = \mathrm{atan2}(y,x) \in (-\pi, \pi]
+\end{cases}
+$$
+
+$$
+\mathrm{atan2}(y, x)= \begin{cases}\arctan \left(\frac{y}{x}\right) & \text { if } x>0 \\ \arctan \left(\frac{y}{x}\right)+\pi & \text { if } x<0 \text { and } y \geq 0 \\ \arctan \left(\frac{y}{x}\right)-\pi & \text { if } x<0 \text { and } y<0 \\ \frac{\pi}{2} & \text { if } x=0 \text { and } y>0 \\ -\frac{\pi}{2} & \text { if } x=0 \text { and } y<0 \\ \text { undefined } & \text { if } x=0 \text { and } y=0 .\end{cases}
+$$
+
+
+## Field Theory
+
+
+### Combination and Laplacian
+
+
+
+$$
+\nabla \cdot (u \vec{v}) = \nabla u \cdot \vec{v} + u \nabla \cdot \vec{v}
+$$
+
+*Proof:*
+
+$$
+\begin{align}
+&(\dfrac{\partial}{\partial x}\hat{i} + \dfrac{\partial}{\partial y}\hat{j} + \dfrac{\partial}{\partial z}\hat{k}) \cdot (u v_x \hat{i} + uv_y \hat{j} + uv_z \hat{k})\\
+=& \dfrac{\partial (u v_x)}{\partial x} + \dfrac{\partial (u v_y)}{\partial y} + \dfrac{\partial (u v_z)}{\partial z}\\
+=& \dfrac{\partial u}{\partial x} v_x + \dfrac{\partial u}{\partial y} v_y + \dfrac{\partial u}{\partial z} v_z + u \dfrac{\partial v_x}{\partial x} + u \dfrac{\partial v_y}{\partial y} + u \dfrac{\partial v_z}{\partial z}
 \end{align}
 $$
