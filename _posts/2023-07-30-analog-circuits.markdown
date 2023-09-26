@@ -101,7 +101,22 @@ LHP zero is okay. RHP zero is dangerous.
 
 ### Limiter
 
+### CMFB
+
+
+<img src="/assets/img/2023-07-30-analog-circuits/screenshot_001.png" style="width:70%;height:70%;">
+
+One of the CMFB is using triode devices.
+The M7 and M8 will be in deep triode region, such that the current sources M5 and M6 are degenarated.
+Assume the current sources M5 and M6 are bigger than M9 and M10, then the output common mode will be lower than nomimal output CM level.
+The gate voltage of M7 and M8 will decrease, and their resistance will increase, the current of M5 and M6 will decrease.
+
+<img src="/assets/img/2023-07-30-analog-circuits/007.png" style="width:100%;height:100%;">
+
+Another way of CMFB is using a differential pair to generate a current.
+
 ## Digital Circuits
+
 
 ### SR Latch
 

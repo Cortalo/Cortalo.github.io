@@ -1,0 +1,41 @@
+---
+title:  "ISSCC"
+date:   2023-09-26 07:00:00 +0200
+categories: analog-circuit
+tags: analog
+math: true
+---
+
+# ISSCC 2023
+
+## Session 32: Intelligent Biomedical Circuits and Systems
+
+### [32.1 A Behind-The-Ear Patch-Type Mental Healthcare Integrated Interface with 275-Fold Input Impedance Boosting and Adaptive Multimodal Compensation Capabilities](https://ieeexplore.ieee.org/document/10067723)
+
+- Battery
+- Behind-The-Ear
+- ExG,PPG,GSR,BIOZ,tVNS
+
+### [32.7 Fascicle-Selective Bidirectional Peripheral Nerve Interface IC with 173dB FOM Noise-Shaping SAR ADCs and 1.38pJ/b Frequency-Multiplying Current-Ripple Radio Transmitter](https://ieeexplore.ieee.org/document/10067626)
+
+- Ultrasound Power
+- Nerve Cuff Electrodes
+
+# ISSCC 2022
+
+## Session 12: Monolithic System for Robot and Bio Applications
+
+## Session 20: Body and Brain Interfaces
+
+### [20.5 A Miniaturized Wireless Neural Implant with Body-Coupled
+Data Transmission and Power Delivery for Freely Behaving
+Animals](https://ieeexplore.ieee.org/document/9731733)
+
+- Body-Coupled Communication
+- Body-Coupled Power Delivery
+
+# ISSCC 2020
+
+## Session 26: Biomedical Innovations
+
+### [26.7 A 280µW 108dB DR Readout IC with Wireless Capacitive Powering Using a Dual-Output Regulating Rectifier for Implantable PPG Recording](https://ieeexplore.ieee.org/document/9063116)
