@@ -208,6 +208,8 @@ $$
 
 ## Common PSDs And Their Autocorrelations
 
+Please note that the Fourier transform is not the same (or similar) as Laplace transform table, since the table we usually see is for single sided functions.
+
 $$
 \begin{align}
 S(\omega) &= \int_{-\infty}^{\infty} R(\tau) \exp(-j\omega\tau)d\tau\\

@@ -1032,3 +1032,17 @@ $$
 =& \dfrac{\partial u}{\partial x} v_x + \dfrac{\partial u}{\partial y} v_y + \dfrac{\partial u}{\partial z} v_z + u \dfrac{\partial v_x}{\partial x} + u \dfrac{\partial v_y}{\partial y} + u \dfrac{\partial v_z}{\partial z}
 \end{align}
 $$
+
+### Non-Cartesian Coordinates
+
+#### Cylindrical Coordinates
+
+$$
+\begin{align}
+\nabla &= \hat{i} \dfrac{\partial}{\partial x} + \hat{j} \dfrac{\partial}{\partial y} + \hat{k} \dfrac{\partial}{\partial z}\\
+&= (c \hat{e_r} - s\hat{e_\theta}) \left(\dfrac{\partial}{\partial r} \dfrac{\partial r}{\partial x} + \dfrac{\partial}{\partial\theta} \dfrac{\partial\theta}{\partial x} + \dfrac{\partial}{\partial z}\dfrac{\partial z}{\partial x}\right) + \dots
+\end{align}
+$$
+
+Note that from chain rule, it should really be written as $$\dfrac{\partial r}{\partial x} \dfrac{\partial}{\partial r}$$.
+The $$\dfrac{\partial r}{\partial x}$$ will not be derivated by $$\dfrac{\partial}{\partial r}$$.

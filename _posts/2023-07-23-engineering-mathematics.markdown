@@ -1237,6 +1237,15 @@ y = r\sin\theta
 $$
 
 
+$$
+\begin{cases}
+\dfrac{\partial r}{\partial x} = -\dfrac{J(x,\theta)}{J(r,\theta)} = \cos\theta\\
+\dfrac{\partial r}{\partial y} = -\dfrac{J(y,\theta)}{J(r,\theta)} = \sin\theta\\
+\dfrac{\partial \theta}{\partial x} = -\dfrac{J(r,x)}{J(r,\theta)} = -\dfrac{\sin\theta}{r}\\
+\dfrac{\partial \theta}{\partial y} = -\dfrac{J(r,y)}{J(r,\theta)} = \dfrac{\cos\theta}{r}
+\end{cases}
+$$
+
 
 $$
 \begin{cases}
@@ -1253,6 +1262,13 @@ $$
 $$
 
 $$
+\begin{cases}
+\dfrac{\partial \hat{e_r}}{\partial r} = 0, \quad \dfrac{\partial \hat{e_r}}{\partial \theta} = \hat{e_\theta}\\
+\dfrac{\partial \hat{e_\theta}}{\partial r} = 0, \quad \dfrac{\partial \hat{e_\theta}}{\partial \theta} = -\hat{e_r}
+\end{cases}
+$$
+
+$$
 \dot{\hat{e_r}} = \dot{\theta} \hat{e_{\theta}}, \quad \dot{\hat{e_\theta}} = - \dot{\theta} \hat{e_r}
 $$
 
@@ -1264,17 +1280,13 @@ $$
 \end{cases}
 $$
 
-$$
-\begin{cases}
-\dfrac{\partial r}{\partial x} = -\dfrac{J(x,\theta)}{J(r,\theta)} = \cos\theta\\
-\dfrac{\partial r}{\partial y} = -\dfrac{J(y,\theta)}{J(r,\theta)} = \sin\theta\\
-\dfrac{\partial \theta}{\partial x} = -\dfrac{J(r,x)}{J(r,\theta)} = -\dfrac{\sin\theta}{r}\\
-\dfrac{\partial \theta}{\partial y} = -\dfrac{J(r,y)}{J(r,\theta)} = \dfrac{\cos\theta}{r}
-\end{cases}
-$$
 
 
 ### Cylindrical Coordinates
+
+$$
+\hat{e_r} \times \hat{e_\theta} = \hat{e_z}
+$$
 
 $$
 \vec{R}(t) = r \hat{e_r} + z \hat{e_z}
@@ -1290,6 +1302,9 @@ $$
 
 ### Spherical Coordinates
 
+$$
+\hat{e_\rho} \times \hat{e_\phi} = \hat{e_\theta}
+$$
 
 <img src="/assets/img/2023-07-23-engineering-mathematics/002.png" style="width:40%;height:40%;">
 
@@ -1421,9 +1436,9 @@ $$
 ### Divergence
 
 
-$$
-\nabla \cdot \vec{V} = \lim_{\beta\to 0} \dfrac{\int_S \hat{n} \cdot \vec{v} dA}{V_\beta}
-$$
+<!-- $$ -->
+<!-- \nabla \cdot \vec{V} = \lim_{\beta\to 0} \dfrac{\int_S \hat{n} \cdot \vec{v} dA}{V_\beta} -->
+<!-- $$ -->
 
 $$
 \nabla \cdot \vec{V}  = \left( \dfrac{\partial V_x}{\partial x} + \dfrac{\partial V_y}{\partial y} + \dfrac{\partial V_z}{\partial z} \right)
@@ -1431,9 +1446,9 @@ $$
 
 ### Gradient
 
-$$
-\nabla u = \lim_{\beta\to 0} \dfrac{\int_S \hat{n} u dA}{V_\beta} \quad (\text{why?})
-$$
+<!-- $$ -->
+<!-- \nabla u = \lim_{\beta\to 0} \dfrac{\int_S \hat{n} u dA}{V_\beta} \quad (\text{why?}) -->
+<!-- $$ -->
 
 $$
 \nabla u = \dfrac{\partial u}{\partial x} \hat{i} + \dfrac{\partial u}{\partial y} \hat{j} + \dfrac{\partial u}{\partial z} \hat{k}
@@ -1442,9 +1457,9 @@ $$
 
 ### Curl
 
-$$
-\nabla \times \vec{V} = \lim_{\beta\to\infty} \dfrac{\int_s \hat{n}\times \hat{V} dA}{V} \quad (\text{why?})
-$$
+<!-- $$ -->
+<!-- \nabla \times \vec{V} = \lim_{\beta\to\infty} \dfrac{\int_s \hat{n}\times \hat{V} dA}{V} \quad (\text{why?}) -->
+<!-- $$ -->
 
 $$
 \nabla \times \vec{V} =
@@ -1513,4 +1528,81 @@ $$
 
 ### Non-Cartesian Coordinates
 
-Now 10B
+#### Cylindrical Coordinates
+
+$$
+\nabla = \hat{e_r} \dfrac{\partial}{\partial r} + \hat{e_\theta} \dfrac{1}{r} \dfrac{\partial}{\partial\theta} + \hat{e_z}\dfrac{\partial}{\partial z}
+$$
+
+$$
+\nabla u = \dfrac{\partial u}{\partial r} \hat{e_r} + \dfrac{1}{r}\dfrac{\partial u}{\partial \theta} \hat{e_\theta} + \dfrac{\partial u}{\partial z} \hat{k}
+$$
+
+$$
+\nabla \cdot \vec{v} = \left(\hat{e_r}\dfrac{\partial}{\partial r} + \hat{e_\theta} \dfrac{1}{r}\dfrac{\partial}{\partial \theta} + \hat{e_z} \dfrac{\partial}{\partial z}\right) \cdot \left(v_r \hat{e_r} + v_\theta \hat{e_\theta} + v_z \hat{e_z}\right)
+$$
+
+Carrying out the dot product on the right-hand side yields nine terms: the first term in $$\nabla$$ dotted with the first term in $$\vec{v}$$, the first with the second, the first with the third, the second with the first, and so on.
+As representative, consider the first term dotted with the first,
+
+$$
+\left(\hat{e_r}\dfrac{\partial}{\partial r}\right) \cdot \left(v_r \hat{e_r}\right)
+$$
+
+Notice carefully that the latter is ambiguous because there are two operations to carry out, a dot product and a derivative, and we are not told which to do first and which to do second (in the equation above we actually get the same result, but this is not generally true).
+We state, without proof, that the correct answer is always obtained if we do the differentation first and then the dot product (or cross product if we are computing the curl rather than the divergence).
+
+
+$$
+\left(\hat{e_r}\dfrac{\partial}{\partial r}\right) \cdot \left(v_r \hat{e_r}\right) = \hat{e_r} \cdot \dfrac{\partial}{\partial r} \left(v_r \hat{e_r}\right) = \hat{e_r} \cdot \left(\dfrac{\partial v_r}{\partial r} \hat{e_r} + v_r \dfrac{\partial \hat{e_r}}{\partial r}\right)
+$$
+
+In the lecture he states that, as long as we choose the right-handed orthogonal basis, we can use the determind to calculate the curl.
+Is it correct? No, it is wrong, as explained in the book page 789.
+
+#### Spherical Coordinates
+
+### Divergence Theorem
+
+$$
+\int_\nu \nabla \cdot \vec{v} \, dV = \int_S \hat{n} \cdot \vec{v} \, dA
+$$
+
+where $$\vec{n}$$ is the vector pointing outside of the surface.
+
+2D case of divergence theorem (11B).
+
+$$
+\int_S \nabla \cdot \vec{v} \, dA = \oint_c \hat{n} \cdot \vec{v} \, ds
+$$
+
+He states that
+
+$$
+\int_\nu \nabla \times \vec{v} \, dV = \int_s \hat{n} \times \vec{v} \, dA
+$$
+
+$$
+\int_\nu \nabla u \, dV = \int_s u \, dA
+$$
+
+Is these correct?
+
+### Stokes' Theorem
+
+$$
+\int_s \hat{n} \cdot \left(\nabla \times \vec{v}\right) \, dA = \oint_c \vec{v} \cdot \, d \vec{R}
+$$
+
+where $$\hat{n}$$ is determined by the right hand rule from closed curve $$c$$.
+
+### Irrotational Fields
+
+The four statements are equivalent:
+
+- There exists a $$c^2$$ (the second derivatives are continuous) scaler function in $$D$$, such that $$\nabla \phi = \vec{v}$$.
+- &nbsp; $$\nabla \times \vec{v} = 0$$.
+- &nbsp; $$\oint_c \vec{v}\cdot \, d\vec{R} = 0$$.
+- &nbsp; $$\int_c \vec{V} \cdot d\vec{R}$$ is independent with $$c$$.
+
+Now 12B
