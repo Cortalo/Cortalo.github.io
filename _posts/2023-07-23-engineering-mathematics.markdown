@@ -13,18 +13,18 @@ From [Dr. Chun-Yao Wang' Lecture](https://ocw.nthu.edu.tw/ocw/index.php?page=cou
 
 ## First-Order First-Degree ODE
 
-### Integration Formulas
+<!-- ### Integration Formulas -->
 
-$$
-\begin{align}
-& \int x^n dx = \dfrac{x^{n+1}}{n+1} + C\\
-& \int \dfrac{1}{x} dx = \ln \vert x \vert + C\\
-& \int \frac{1}{x+a} dx = \ln \vert x+a \vert + C\\
-?& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C\\
-& \int \cos x dx = \sin x + C\\
-& \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x) + C
-\end{align}
-$$
+<!-- $$ -->
+<!-- \begin{align} -->
+<!-- & \int x^n dx = \dfrac{x^{n+1}}{n+1} + C\\ -->
+<!-- & \int \dfrac{1}{x} dx = \ln \vert x \vert + C\\ -->
+<!-- & \int \frac{1}{x+a} dx = \ln \vert x+a \vert + C\\ -->
+<!-- ?& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C\\ -->
+<!-- & \int \cos x dx = \sin x + C\\ -->
+<!-- & \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x) + C -->
+<!-- \end{align} -->
+<!-- $$ -->
 
 
 ### Integration by Parts
@@ -715,11 +715,11 @@ $$
 or
 
 $$
-f(t) \sim \sum_{n=-\infty}^{\infty} c_n e^{-j n \omega t}
+f(t) \sim \sum_{n=-\infty}^{\infty} c_n e^{j n \omega t}
 $$
 
 $$
-c_n = \dfrac{1}{T}\int_T f(t) e^{j n \omega t} dt
+c_n = \dfrac{1}{T}\int_T f(t) e^{-j n \omega t} dt
 $$
 
 ### Examples
@@ -1605,4 +1605,131 @@ The four statements are equivalent:
 - &nbsp; $$\oint_c \vec{v}\cdot \, d\vec{R} = 0$$.
 - &nbsp; $$\int_c \vec{V} \cdot d\vec{R}$$ is independent with $$c$$.
 
-Now 12B
+If we know some field $$\vec{v}$$ is irrotational, then we can find $$\phi(x,y,z)$$ by partial integrals in terms of $$x,y$$ and $$z$$.
+
+## Fourier Method
+
+### Half and Quarter Range Expansions
+
+For a function defined from $$0$$ to $$L$$, you can extend it to half range sin or half range cos or quarter range sin or quarter range cos.
+
+### Sturm-Liouville Problem
+
+$$
+\begin{cases}
+\left[ p(x)y' \right]' + q(x) y + \lambda w(x) y = 0\\
+x \in [a,b]\\
+\alpha y(a) + \beta y'(a) = 0\\
+\gamma y(b) + \delta y'(b) = 0
+\end{cases}
+$$
+
+where $$p, p', q, w$$ are continuous, and $$p(x) > 0, w(x) > 0$$.
+
+For any $$\lambda$$ provides the corresponding solution $$\phi$$, we call $$\lambda$$ eigenvalue, $$\phi(x)$$ eigenfxn.
+The eigenvalue needs to be determined.
+
+#### Strum-Liouville Theorem
+
+- All $$\lambda$$'s are real.
+- The eigenvalues are simple. That is, to each eigenvalue there corresponds only one linearly independent eigenfunction. Further, there are an infinite number of eigenvalues, and they can be ordered so that $$\lambda_1 < \lambda_2 < \lambda_3 < \dots$$, where $$\lambda_n \to \infty$$ as $$n \to \infty$$.
+- If $$\lambda_i \ne \lambda_j$$, then $$\int_a^b \phi_j \phi_k w(x) \, dx = 0$$.
+
+These three properties are exactly the same as symmetry matrix.
+
+#### Non-nagative $$\lambda$$'s
+
+If $$q(x) \le 0$$ on $$[a,b]$$, and $$\left[p(x)\phi_n(x)\phi_n'(x) \right] \vert_a^b \le 0$$, then not only is $$\lambda_n$$ real, but also $$\lambda_n \ge 0$$.
+
+### Periodic and Singular SL Problems
+
+Periodic boundary conditions
+
+$$
+\begin{cases}
+y(a) = y(b)\\
+y'(a) = y'(b)
+\end{cases}
+$$
+
+Singular case: In this case $$p(x)$$ (and possibly $$w(x)$$) vanishes at one or both endpoints, so that $$p(x) > 0$$ and $$w(x)>0$$ holds on the open interval $$(a,b)$$ rather than on the closed interval $$[a,b]$$.
+Further, the boundary conditions are modified as follows,
+
+&nbsp; $$p(a) = 0$$ and $$p(b) \ne 0$$
+
+$$
+\begin{cases}
+y \text{ bounded at } a\\
+\gamma y(b) + \delta y'(b) = 0
+\end{cases}
+$$
+
+&nbsp; $$p(b) = 0$$ and $$p(a) \ne 0$$
+
+$$
+\begin{cases}
+\alpha y(a) + \beta y'(a) = 0\\
+y \text{ bounded at } b
+\end{cases}
+$$
+
+&nbsp; $$p(a)=p(b)=0$$
+
+$$
+\begin{cases}
+y \text{ bounded at } a\\
+y \text{ bounded at } b
+\end{cases}
+$$
+
+By $$y$$ being bounded at $$a$$, for example, we mean that $$\lim_{x\to a} y(x)$$ exists and is therefore finite.
+
+### Fourier Integral
+
+$$
+f(x) \sim \int_0^{\infty} \left[a(\omega) \cos\omega x  + b(\omega) \sin\omega x\right] \, d\omega
+$$
+
+where
+
+$$
+\begin{align}
+a(\omega) &= \dfrac{1}{\pi}\int_{-\infty}^{\infty}f(x)\cos\omega x\, dx\\
+b(\omega) &= \dfrac{1}{\pi}\int_{-\infty}^{\infty}f(x)\sin\omega x\, dx
+\end{align}
+$$
+
+### Fourier Transform
+
+> *横看成岭侧成峰*
+
+
+$$
+F(\omega) = \int_{-\infty}^{\infty} f(x)e^{-i\omega x} \, dx
+$$
+
+$$
+f(x) = \dfrac{1}{2\pi}\int_{-\infty}^{\infty} F(\omega) e^{i\omega x} \, d\omega
+$$
+
+- Linearity.
+- &nbsp; $$F\left\{f^{(n)}(x)\right\} = (i\omega)^n \hat{f}(\omega)$$.
+- Fourier convolution: $$(f*g)(x) = \int_{-\infty}^{\infty} f(x-\xi)g(\xi)\,d\xi$$.
+- &nbsp; $$F\{f*g\}=\hat{f}(\omega)\hat{g}(\omega)$$.
+- &nbsp; $$F\left\{f(x-a)\right\} = e^{-ia\omega} \hat{f}(\omega)$$.
+- &nbsp; $$F^{-1}\{\hat{f}(\omega-a)\} = e^{iax}f(x)$$.
+
+## Diffusion Equation
+
+### Introduction
+
+$$
+\alpha^2 \nabla^2 u = \dfrac{\partial u}{\partial t}
+$$
+
+- Seperation of variables.
+- Fourier transform.
+- Laplace transform.
+
+
+Now 17A

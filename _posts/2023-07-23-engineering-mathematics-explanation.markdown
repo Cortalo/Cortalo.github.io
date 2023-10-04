@@ -1046,3 +1046,90 @@ $$
 
 Note that from chain rule, it should really be written as $$\dfrac{\partial r}{\partial x} \dfrac{\partial}{\partial r}$$.
 The $$\dfrac{\partial r}{\partial x}$$ will not be derivated by $$\dfrac{\partial}{\partial r}$$.
+
+
+## Fourier Method
+
+### Sturm-Liouville Problem
+
+#### Example 1
+
+$$
+\begin{cases}
+y'' + \lambda y = 0\\
+x \in [0,L]\\
+y(0) = y(L) = 0
+\end{cases}
+$$
+
+$$
+y = e^{rx}
+$$
+
+$$
+r = \pm \sqrt{\lambda} i
+$$
+
+$$
+y(x) =
+\begin{cases}
+A\cos\sqrt{\lambda}x + B \sin\sqrt{\lambda}x, \quad \lambda \ne 0\\
+C + Dx, \quad \lambda = 0
+\end{cases}
+$$
+
+&nbsp; $$\lambda=0$$ is not an eigenvalue, since the corresponding solution $$y=0$$ is a trivial solution. The eigenvalue should corresponds to nontrivial solution.
+
+$$
+\begin{cases}
+0 = A \cdot 1 + B \cdot 0\\
+0 = A \cos\sqrt{\lambda}L + B\sin\sqrt{\lambda} L
+\end{cases}
+$$
+
+The condition for nontrivial solution
+
+$$
+\begin{vmatrix}
+1 & 0\\
+\cos\sqrt{\lambda} L & \sin\sqrt{\lambda} L
+\end{vmatrix}
+=0
+$$
+
+$$
+\begin{cases}
+\lambda_n = \dfrac{n^2 \pi^2}{L^2}\\
+\phi_n = \sin \dfrac{n\pi x}{L}\\
+n = 1,2,3,\dots
+\end{cases}
+$$
+
+#### Example 2
+
+$$
+\begin{cases}
+y'' - 2y' + \lambda y =0\\
+y(0)=0, \quad y(\pi)=0
+\end{cases}
+$$
+
+multiplying $$\sigma(x)$$
+
+$$
+\sigma y'' - 2\sigma y' + \lambda \sigma y = 0
+$$
+
+with
+
+$$
+\sigma' = -2\sigma
+$$
+
+Let's take $$\sigma(x) = e^{-2x}$$, then
+
+$$
+\left(e^{-2x}y'\right)' + \lambda e^{-2x}y = 0
+$$
+
+is a Sturm-Liouville problem.
