@@ -5,6 +5,7 @@ categories: EM
 tags: EM
 math: true
 ---
+
 # Introduction
 
 ## What Are High Frequency
@@ -75,6 +76,325 @@ X_L = -X_G
 \end{cases}
 $$
 
+
+
+
+# Maxwell's Equations
+
+$$
+\begin{cases}
+\nabla \cdot \vec{D} = \rho\\
+\nabla \cdot \vec{B} = 0\\
+\nabla \times \vec{E} = -\dfrac{\partial \vec{B}}{\partial t}\\
+\nabla \times \vec{H} = \dfrac{\partial \vec{D}}{\partial t} + \vec{J}\\
+\vec{D} = \epsilon \vec{E}\\
+\vec{H} = \vec{B}/\mu\\
+\nabla \cdot \vec{J} + \dfrac{\partial \rho}{\partial t} = 0\\
+\vec{J} = \rho \vec{u}
+\end{cases}
+$$
+
+In fact, the two divergence equation can be derived from the two curl equation (how?).
+
+## Lorentz's Force
+
+$$
+\vec{F} = q(\vec{E} + \vec{u}\times\vec{B})
+$$
+
+## Boundary Condition
+
+
+$$
+\begin{align}
+E_{1t} = E_{2t}\\
+\dots
+\end{align}
+$$
+
+## Wave Equation
+
+$$
+\dfrac{1}{\mu\epsilon}\nabla^2 \vec{E} = \dfrac{\partial^2 \vec{E}}{\partial t^2}
+$$
+
+$$
+\dfrac{1}{\mu\epsilon}\nabla^2 \vec{H} = \dfrac{\partial^2 \vec{H}}{\partial t^2}
+$$
+
+$$
+c^2 = \dfrac{1}{\mu\epsilon}
+$$
+
+### Example
+
+$$
+c^2 \dfrac{\partial^2 f}{\partial x^2} = \dfrac{\partial^2 f}{\partial t^2}
+$$
+
+From d'Alembert's solution, the general solution is given by
+
+$$
+f(x,t) = F(kx+\omega t) + G(kx-\omega t)
+$$
+
+where $$\omega/k = c$$
+
+## Time Harmonic Field
+
+> Steady State Solution
+
+$$
+\vec{E}(x,y,z;t) = \mathrm{Re}\left(\vec{E}_{0}(x,y,z) e^{j\omega t}\right)
+$$
+
+Similar to the phasor in AC analysis, assume each component of the vector field is a phasor (having the same time frequency).
+
+$$
+\begin{cases}
+\nabla \times \vec{E} = -j\omega \mu \vec{H}\\
+\nabla \times \vec{H} = \vec{J} + j\omega\epsilon \vec{E}\\
+\nabla \cdot \vec{E} = \dfrac{\rho}{\epsilon}\\
+\nabla \cdot \vec{H} = 0
+\end{cases}
+$$
+
+then for source free wave equation
+
+$$
+\nabla^2 \vec{E} + k^2 \vec{E} = 0
+$$
+
+where $$k^2 = \omega^2 \mu\epsilon$$
+
+In the case of wave in conductor, we can define the compex permittivity
+
+$$
+\epsilon_c = \epsilon - j \dfrac{\sigma}{\omega}
+$$
+
+where $$\vec{J} = \sigma \vec{E}$$ (Ohms law).
+
+# Plane Wave
+
+## In Lossless Media
+
+$$
+\nabla^2 \vec{E} + k^2 \vec{E} = 0
+$$
+
+$$
+\begin{cases}
+\left(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2} + k^2\right) E_x(x,y,z) = 0\\
+\left(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2} + k^2\right) E_y(x,y,z) = 0\\
+\left(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2} + k^2\right) E_z(x,y,z) = 0
+\end{cases}
+$$
+
+Assume $$E_x(x,y,z) = X(x)Y(y)Z(z)$$
+
+$$
+\left(\dfrac{\partial^2}{\partial x^2} + \dfrac{\partial^2}{\partial y^2} + \dfrac{\partial^2}{\partial z^2} + k^2\right) X(x)Y(y)Z(z) = 0
+$$
+
+$$
+\dfrac{X''}{X} + \dfrac{Y''}{Y} + \dfrac{Z''}{Z} + k^2 = 0
+$$
+
+$$
+k_x^2 + k_y^2 + k_z^2 = k^2
+$$
+
+$$
+E_x(x,y,z) = A e^{-j k_x x} B e^{-j k_y y} C e^{-j k_z z} = E_{x0} e^{-j \vec{k} \cdot \vec{R}}
+$$
+
+Assume for $$E_y, E_z$$ they have the same $$\vec{k}$$ as $$E_x$$.
+
+$$
+\vec{E}(x,y,z) = \vec{E_0} e^{-j \vec{k}\cdot\vec{R}}
+$$
+
+Does it allow different $$k_x,k_y,k_z$$ for different components?
+
+
+Assume source free space
+
+$$
+\nabla \cdot \vec{E} = 0
+$$
+
+$$
+\vec{E} = \vec{E_0} e^{-j \vec{k}\cdot\vec{R}}
+$$
+
+$$
+\vec{k} \cdot \vec{E} = 0
+$$
+
+The magnetic field can be calculated from
+
+$$
+\begin{align}
+\vec{H} &= -\dfrac{1}{j\omega \mu} \nabla \times \left( \vec{E_0} e^{-j \vec{k}\cdot \vec{R}} \right)\\
+&= \dfrac{1}{-j\omega\mu} \nabla\left(e^{-j \vec{k}\cdot\vec{R}}\right)\times \vec{E_0}\\
+&= \dfrac{-j\vec{k}}{-j\omega\mu}e^{-j\vec{k}\cdot\vec{R}} \times \vec{E_0}\\
+&= \dfrac{\vec{k} \times \vec{E}}{\omega\mu} = \dfrac{1}{\eta} \hat{a_n} \times \vec{E}
+\end{align}
+$$
+
+This is typical TEM wave, where the field is orthgonal to travel direction.
+
+### Polarization
+
+Assume
+
+$$
+\begin{align}
+\vec{E}(z) &= \left(\hat{a_x} E_x + \hat{a_y}E_y\right) e^{-jkz}\\
+&= \left(\hat{a_x} E_{x0} e^{-j\phi_{x0}} + \hat{a_y} E_{y0} e^{-j\phi_{y0}}\right) e^{-jkz}
+\end{align}
+$$
+
+Dependent on the values of $$\phi_{x0}, \phi_{y0}$$ and $$E_{x0}, E_{y0}$$, it will show different polarization.
+
+## In Lossy Media
+
+$$
+\nabla^2 \vec{E} + k_c^2 \vec{E} = 0
+$$
+
+$$
+k_c = \omega \sqrt{\mu \epsilon_c}
+$$
+
+$$
+\begin{align}
+\gamma &= jk_c = j\omega \sqrt{\mu\epsilon}\left(1+\dfrac{\sigma}{j\omega\epsilon}\right)^{1/2}\\
+&= \alpha + j\beta
+\end{align}
+$$
+
+$$
+\nabla^2 \vec{E} - \gamma^2 \vec{E} = 0
+$$
+
+$$
+\vec{E} = \hat{a_x} E_0 e^{-\gamma z} = \hat{a_x} E_0 e^{-\alpha z} e^{-j\beta z}
+$$
+
+### Low-Loss Dielectrics
+
+### Good Conductors
+
+## Group Velocity
+
+phase velocity
+
+$$
+u_p = \dfrac{\omega}{\beta}
+$$
+
+Dispersion: the situation when the phase velocity is different for different frequency.
+
+Assume two frequency $$\omega_0 \pm \Delta \omega$$ with the same amptitude.
+
+$$
+\begin{align}
+E(z,t) &= E_0 \cos\left[(\omega_0+\Delta\omega)t - (\beta_0+\Delta\beta)z\right] + E_0\cos\left[(\omega_0-\Delta\omega)t - (\beta_0-\Delta\beta)z\right]\\
+&= 2E_0\cos(\Delta \omega t - \Delta \beta z) \cos(\omega_0 t - \beta_0 z)
+\end{align}
+$$
+
+This is a carrier at frequency $$\omega_0$$ and an envelop at frequency $$\Delta\omega$$.
+The phase velocity of carrier is
+
+$$
+u = \dfrac{\omega_0}{\beta_0}
+$$
+
+The phase velocity of envelop is
+
+$$
+u = \dfrac{\Delta \omega}{\Delta \beta}
+$$
+
+We call it group velocity
+
+$$
+u_g = \dfrac{1}{d\beta/d\omega}
+$$
+
+$$
+u_g = \dfrac{u_p}{1-\dfrac{\omega}{u_p} \dfrac{du_p}{d\omega}}
+$$
+
+## Poynting Vector
+
+$$
+\begin{align}
+&\nabla \cdot (\vec{E} \times \vec{H}) = \vec{H} \cdot (\nabla \times \vec{E}) - \vec{E} \cdot (\nabla \times \vec{H})\\
+=& -\dfrac{\partial}{\partial t} \left(\dfrac{1}{2}\epsilon E^2 + \dfrac{1}{2}\mu H^2\right) - \sigma E^2
+\end{align}
+$$
+
+&nbsp; $$\vec{E}\times\vec{H}$$ (Poynting vector) is the total power flow.
+
+In the case of steady state sinosoidal analysis, the average power flow
+
+$$
+P_{\mathrm{av}} = \dfrac{1}{2}\mathrm{Re}(\vec{E}\times \vec{H}^*)
+$$
+
+## Normal Incidence At A Plane Conducting Boundary
+
+Assume the wave travel from $$\sigma=0$$ to $$\sigma=\infty$$.
+Incident wave
+
+$$
+\begin{cases}
+\vec{E_i}(z) = \hat{a_x} E_{i0} e^{-j\beta_{1}z}\\
+\vec{H_i}(z) = \hat{a_y} \dfrac{E_{i0}}{\eta_1} e^{-j\beta_1 z}
+\end{cases}
+$$
+
+Reflected wave
+
+$$
+\vec{E_r} = \hat{a_x} E_{r0} e^{+j\beta_1 z}
+$$
+
+Total $$\vec{E}$$ in medium 1
+
+$$
+\vec{E_i} + \vec{E_r} = \hat{a_x} E_{i0} e^{-j\beta_{1}z} + \hat{a_x} E_{r0} e^{+j\beta_1 z}
+$$
+
+using boundary condition for perfect conductor
+
+$$
+E_{r0} = - E_{i0}
+$$
+
+&nbsp; $$\vec{H_r}$$ can get from $$\vec{E_r}$$.
+
+## Oblique Incidence At A Plane Conducting Boundary
+
+### Perpendicular Polarization
+
+For the components that $$\vec{E_i}$$ is perpendicular to plane of incidence.
+
+We guess the reflected wave $$\vec{E_r}$$ is also perpendicular to the plane of incidence.
+
+$$
+\hat{a_{ni}} = \hat{a_x}\sin\theta_i + \hat{a_z} \cos\theta_i
+$$
+
+$$
+\vec{E_i} = \hat{a_y} E_{i0} e^{-j\beta_1 (x\sin\theta_i + z\cos\theta_i)}
+$$
+
+Now 8.7
 
 
 # LC Resonance and Matching Networks

@@ -58,3 +58,43 @@ $$
 $$
 \overline{P} = \dfrac{1}{T} \int_0^{T} VI\cos(\omega t) \cos(\omega t + \theta) dt =
 $$
+
+
+
+# Plane Wave
+
+## In Lossless Media
+
+### Example 1
+
+assume $$E_y = E_z = \dfrac{\partial E_x}{\partial x} = \dfrac{\partial E_x}{\partial y} = 0$$
+
+$$
+\dfrac{d^2 E_x(z)}{dz^2} + k^2 E_{x}(z) = 0
+$$
+
+$$
+E_x(z) = E_0^+ e^{-jkz} + E_0^{-} e^{jkz}
+$$
+
+Then the magnatic filed can be derived from Maxwell's equation, we don't have to solve the differential equation again
+
+$$
+\nabla \times \vec{E} = -j\omega\mu \vec{H}
+$$
+
+For example, if $$E_x(z) = E_0^+ e^{-jkz} = E_x^+$$
+
+$$
+\begin{cases}
+H_x^+ = 0\\
+H_y^+ = \dfrac{k}{\omega \mu}E_x^+ = \dfrac{1}{\eta} E_x^+\\
+H_z^+ = 0
+\end{cases}
+$$
+
+where
+
+$$
+\eta = \sqrt{\dfrac{\mu}{\eta}}
+$$

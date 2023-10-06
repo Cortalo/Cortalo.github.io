@@ -1727,9 +1727,151 @@ $$
 \alpha^2 \nabla^2 u = \dfrac{\partial u}{\partial t}
 $$
 
-- Seperation of variables.
-- Fourier transform.
-- Laplace transform.
+
+For linear homogeneous PDE (without considering the initial or boundary condition), if $$y_1, y_2$$ is solution, then $$A y_1 + B y_2$$ is also solution.
+However, when solve PDE, we usually are not trying to find general solution.
+Instead, we usually just find some solution sufficiently robusts to handle the BCs and ICs.
+
+### Separation of Variables
+
+$$
+\begin{cases}
+L[u] = a^2 u_{xx} - u_t = 0, \quad (0 < x < L, 0 < t < \infty)\\
+u(0,t) = u_1, \quad u(L,t) = u_2, \quad (0 < t < \infty)\\
+u(x,0) = f(x), \quad (0 < x < L)
+\end{cases}
+$$
+
+### Fourier Transform
+
+$$
+\begin{cases}
+\alpha^2 u_{xx} = u_{t}\\
+-\infty < x < \infty, 0 < t < \infty\\
+u(\pm \infty, t) = u_{x}(\pm \infty, t) = 0\\
+u(x,0) = f(x)
+\end{cases}
+$$
+
+$$
+u(x,t) = \int_{-\infty}^{\infty} f(\xi) K(x-\xi,t)\, d\xi
+$$
+
+$$
+K(\xi-x;t) = \dfrac{e^{-(x-\xi)^2/(4\alpha^2 t)}}{2\alpha \sqrt{\pi t}}
+$$
+
+We can do a sanity check. $$K(\xi-x,0) = \delta(\xi-x)$$, thus natually the integration when $$t=0$$ gives $$f(x)$$.
+
+If $$f(x) = \delta(x)$$, $$u(x,t) = K(x,t)$$.
+
+### Laplace Transform
 
 
-Now 17A
+$$
+\begin{cases}
+\alpha^2 u_{xx} = u_{t}\\
+0 \le x < \infty, \quad 0 \le t < \infty\\
+u(0,t) = g(t), \quad 0 \le t < \infty\\
+u(\infty, t) = 0, \quad 0 \le t < \infty\\
+u(x,0) = 0, \quad 0 \le x < \infty
+\end{cases}
+$$
+
+### Numerical Solution
+
+Finite difference time domain.
+
+## Wave Equation
+
+$$
+c^2 \nabla^2 u = u_{tt}
+$$
+
+### Separation of Variable
+
+$$
+\begin{cases}
+c^2 y_{xx} = y_{tt}\\
+0 \le x \le L, \quad 0 \le t < \infty\\
+y(0,t) = 0\\
+y(L,t) = 0\\
+y(x,0) = f(x)\\
+y_{t}(x,0) = g(x)
+\end{cases}
+$$
+
+#### Two Dimentional Case
+
+$$
+\begin{cases}
+c^2 (w_{xx} + w_{yy}) = w_{tt}\\
+0 \le x \le a\\
+0 \le y \le b\\
+0 \le t < \infty\\
+w(0,y,t) = w(a,y,t) = w(x,0,t) = w(x,b,t) = 0\\
+w(x,y,0) = f(x,y)\\
+w_t(x,y,0) = 0
+\end{cases}
+$$
+
+### d'Alembert's Solution
+
+$$
+c^2 y_{xx} = y_{tt}
+$$
+
+Let
+
+$$
+x-ct = \xi, \quad x + ct = \eta
+$$
+
+$$
+\dfrac{\partial}{\partial x} = \dfrac{\partial}{\partial \xi} \dfrac{\partial \xi}{\partial x} + \dfrac{\partial}{\partial \eta} \dfrac{\partial \eta}{\partial x} = \dfrac{\partial}{\partial \xi} + \dfrac{\partial}{\partial \eta}
+$$
+
+$$
+\dfrac{\partial}{\partial t} = -c \dfrac{\partial}{\partial \xi} + c \dfrac{\partial}{\partial \eta}
+$$
+
+$$
+c^2 \left( \dfrac{\partial}{\partial \xi} + \dfrac{\partial}{\partial \eta}\right) \left( \dfrac{\partial}{\partial \xi} + \dfrac{\partial}{\partial \eta}\right) y = \left( -c \dfrac{\partial}{\partial \xi} + c \dfrac{\partial}{\partial \eta}\right) \left( -c \dfrac{\partial}{\partial \xi} + c \dfrac{\partial}{\partial \eta}\right) y
+$$
+
+$$
+y_{\xi \eta} + y_{\eta \xi} = 0
+$$
+
+assume $$y_{\xi \eta} = y_{\eta\xi}$$
+
+$$
+y_{\xi \eta} = y_{\eta \xi} = 0
+$$
+
+$$
+y_{\xi} = A(\xi)
+$$
+
+$$
+\begin{align}
+y &= F(\xi) + G(\eta)\\
+&= F(x-ct) + G(x+ct)
+\end{align}
+$$
+
+once the initial condition is given
+
+$$
+\begin{cases}
+-\infty < x < \infty\\
+y(x,0) = f(x)\\
+y_t(x,0) = g(x)
+\end{cases}
+$$
+
+$$
+y(x,t) = \dfrac{f(x-ct) + f(x+ct)}{2} + \dfrac{1}{2c}\int_{x-ct}^{x+ct} g(\xi)\, d\xi
+$$
+
+Now 21A

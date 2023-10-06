@@ -1133,3 +1133,451 @@ $$
 $$
 
 is a Sturm-Liouville problem.
+
+## Diffusion Equation
+
+### Separation of Variables
+
+#### Example 1
+
+$$
+\begin{cases}
+L[u] = a^2 u_{xx} - u_t = 0, \quad (0 < x < L, 0 < t < \infty)\\
+u(0,t) = u_1, \quad u(L,t) = u_2, \quad (0 < t < \infty)\\
+u(x,0) = f(x), \quad (0 < x < L)
+\end{cases}
+$$
+
+$$
+u(x,t) = X(x)T(t)
+$$
+
+$$
+\dfrac{X''}{X} = \dfrac{1}{a^2} \dfrac{T'}{T} = -k^2
+$$
+
+$$
+X =
+\begin{cases}
+A\cos kx + B\sin kx, & \quad k \ne 0\\
+D + Ex, & \quad k = 0
+\end{cases}
+$$
+
+$$
+T =
+\begin{cases}
+F e^{-k^2a^2 t}, & \quad k \ne 0\\
+G, & \quad k = 0
+\end{cases}
+$$
+
+$$
+u = H + Ix + (J\cos kx + K \sin kx)e^{-k^2a^2 t}
+$$
+
+First apply boundary condition $$u(0,t) = u_1$$.
+
+$$
+H + Je^{-k^2 a^2 t} = u_1
+$$
+
+Since $$(1, e^{-a^2k^2 t})$$ are linear independent
+
+$$
+\begin{cases}
+H = u_1\\
+J = 0
+\end{cases}
+$$
+
+$$
+u = u_1 + Ix + (K\sin kx) e^{-k^2a^2 t}
+$$
+
+Now apply the boundary condition $$u(L,t)=u_2$$
+
+$$
+u_1 + I L + (K \sin k L) e^{-k^2 a^2 t} = u_2
+$$
+
+$$
+\begin{cases}
+u_1 + IL = u_2\\
+K \sin kL = 0
+\end{cases}
+$$
+
+To maintain the solution as robust as possible, set $$\sin kL = 0$$
+
+$$
+kL = n \pi, \quad (n = 1,2,3,\dots)
+$$
+
+$$
+k_n = \dfrac{n \pi}{L}, \quad (n = 1,2,3,\dots)
+$$
+
+&nbsp; $$n$$ doesn't need to be $$0$$, since that is included when $$K = 0$$.
+Also, $$n$$ doesn't need to be negative, since that is included by changing $$K$$.
+
+By superposition
+
+$$
+u(x,t) = u_1 + \left(\dfrac{u_2-u_1}{L}\right)x + \sum_{n=1}^{\infty} K_n \sin\dfrac{n\pi x}{L} e^{-(n\pi a/L)^2 t}
+$$
+
+now apply initial condition $$u(x,0) = f(x)$$
+
+$$
+u_1 + \left(\dfrac{u_2-u_1}{L}\right)x + \sum_{n=1}^{\infty} K_n \sin\dfrac{n\pi x}{L} = f(x)
+$$
+
+$$
+f(x) -\left[ u_1 + \left(\dfrac{u_2-u_1}{L}\right)x\right] = F(x) = \sum_{n=1}^{\infty} K_n \sin\dfrac{n\pi x}{L}
+$$
+
+This is half range sin expansion of $$F(x)$$.
+
+$$
+K_n = \dfrac{2}{L}\int_0^L F(x)\sin\dfrac{n\pi x}{L}\, dx
+$$
+
+note that if $$f(x)$$ is not continuous, we will not get the solution corresponding to $$f(x)$$.
+The value will be different at the discontinuous point.
+However, in engineering practice, we didn't care this much.
+
+### Fourier Transform
+
+$$
+\begin{cases}
+\alpha^2 u_{xx} = u_{t}\\
+-\infty < x < \infty, 0 < t < \infty\\
+u(\pm \infty, t) = u_{x}(\pm \infty, t) = 0\\
+u(x,0) = f(x)
+\end{cases}
+$$
+
+Let's do FT w.r.t. $$x$$.
+Note that when $$u(\pm \infty, t) = u_{x}(\pm \infty, t) = 0$$, $$F\left\{u_{xx}\right\} = (i\omega)^2 \hat{u}(\omega, t)$$
+
+$$
+\alpha^2 (i\omega)^2 \hat{u}(\omega, t) = \dfrac{\partial}{\partial t} \hat{u}(\omega,t)
+$$
+
+$$
+\dfrac{d \hat{u}}{d t} + \alpha^2 \omega^2 \hat{u} = 0
+$$
+
+$$
+\hat{u} = A \cdot e^{-\alpha^2 \omega^2 t}
+$$
+
+$$
+A = \hat{f}(\omega)
+$$
+
+$$
+\hat{u}(\omega,t) = \hat{f}(\omega) e^{-\alpha^2 \omega^2 t} = \hat{f}(\omega) \hat{g}(\omega)
+$$
+
+$$
+g(x) = \dfrac{1}{2\alpha \sqrt{\pi t}} e^{-x^2/(4\alpha^2 t)}
+$$
+
+$$
+u(x,t) = \dfrac{1}{2\alpha \sqrt{\pi t}} \int_{-\infty}^{\infty} f(\xi)e^{-(x-\xi)^2/(4\alpha^2 t)} \, d\xi
+$$
+
+### Laplace Transform
+
+$$
+\begin{cases}
+\alpha^2 u_{xx} = u_{t}\\
+0 \le x < \infty, \quad 0 \le t < \infty\\
+u(0,t) = g(t), \quad 0 \le t < \infty\\
+u(\infty, t) = 0, \quad 0 \le t < \infty\\
+u(x,0) = 0, \quad 0 \le x < \infty
+\end{cases}
+$$
+
+
+Let's do LT w.r.t. $$t$$.
+Since $$u(x,0) = 0$$.
+
+$$
+\alpha^2 \overline{u}_{xx} = s \overline{u}(x,s)
+$$
+
+$$
+\overline{u}(x,s) = A e^{\sqrt{s}x/\alpha} + B e^{-\sqrt{s}x/\alpha}
+$$
+
+apply $$u(\infty,t) = 0$$.
+
+$$
+\overline{u}(\infty, s) = 0
+$$
+
+$$
+\overline{u}(x,s) = B e^{-\sqrt{s}x/\alpha}
+$$
+
+apply $$u(0,t) = g(t)$$
+
+$$
+B = \overline{g}(s)
+$$
+
+$$
+\overline{u}(x,s) = \overline{g}(s) e^{-\sqrt{s}x/\alpha}
+$$
+
+$$
+\begin{align}
+u(x,t) &= g(t) * \dfrac{xe^{-x^2/(4\alpha^2 t)}}{2\alpha \sqrt{\pi} t^{3/2}}\\
+&= \dfrac{x}{2\alpha\sqrt{\pi}} \int_0^t g(t-\tau) \dfrac{e^{-x^2/(4\alpha^2 \tau)}}{\tau^{3/2}} \, d\tau
+\end{align}
+$$
+
+## Wave Equation
+
+$$
+c^2 \nabla^2 u = u_{tt}
+$$
+
+### Separation of Variable
+
+$$
+\begin{cases}
+c^2 y_{xx} = y_{tt}\\
+0 \le x \le L, \quad 0 \le t < \infty\\
+y(0,t) = 0\\
+y(L,t) = 0\\
+y(x,0) = f(x)\\
+y_{t}(x,0) = g(x)
+\end{cases}
+$$
+
+$$
+y(x,t) = X(x)T(t)
+$$
+
+$$
+c^2 X'' T = X T''
+$$
+
+$$
+\dfrac{X''}{X} = \dfrac{1}{c^2}\dfrac{T''}{T} = -k^2
+$$
+
+$$
+X =
+\begin{cases}
+A + Bx, \quad k = 0\\
+D\cos kx + E \sin kx, \quad k \ne 0
+\end{cases}
+$$
+
+$$
+T =
+\begin{cases}
+H + It, \quad k = 0\\
+J\cos kct + K \sin kct, \quad k \ne 0
+\end{cases}
+$$
+
+$$
+y(x,t) = (A+Bx)(H+It) + (D \cos kx + E\sin kx)(J \cos kct + K \sin kct)
+$$
+
+First apply boundary condition $$y(0,t) = 0$$
+
+$$
+A (H + It) + D (J \cos kct + K\sin kct) = 0
+$$
+
+We choose $$A = D = 0$$ so that the solution is as sobust as possible
+
+$$
+y(x,t) = x (P + Qt) + \sin kx (R \cos kct + S \sin kct)
+$$
+
+apply boundary condition $$y(L,t) = 0$$
+
+$$
+L(P+Qt) + \sin kL (R\cos kct + S\sin kct) = 0
+$$
+
+$$
+\begin{cases}
+P = Q = 0\\
+\sin kL = 0
+\end{cases}
+$$
+
+$$
+k_n = \dfrac{n\pi}{L}, \quad n = 1,2,3
+$$
+
+$$
+y(x,t) = \sum_{n=1}^{\infty} \sin \dfrac{n\pi x}{L} \left(R_n \cos\dfrac{n\pi ct}{L} + S_n \sin\dfrac{n\pi ct}{L}\right)
+$$
+
+now apply initial condition $$y(x,0) = f(x)$$ and $$y_t(x,0)=g(x)$$
+
+$$
+f(x) = \sum_{n=1}^{\infty} R_n \sin\dfrac{n\pi x}{L}
+$$
+
+$$
+g(x) = \sum_{n=1}^{\infty} \dfrac{n\pi c}{L} S_n \sin \dfrac{n\pi x}{L}
+$$
+
+they are half range sin expansion
+
+$$
+R_n = \dfrac{2}{L}\int_0^L f(x)\sin\dfrac{n\pi x}{L}\, dx
+$$
+
+$$
+S_n = \dfrac{2}{n\pi c}\int_{0}^{L} g(x)\sin \dfrac{n\pi x}{L}\, dx
+$$
+
+Let's look at
+
+$$
+\sin\dfrac{n\pi x}{L}\cos\dfrac{n\pi ct}{L} = \dfrac{1}{2}\left(\sin \dfrac{n\pi (x+ct)}{L} + \sin\dfrac{n\pi (x-ct)}{L}\right)
+$$
+
+That is two wave travel to right $$f(x-ct)$$ and left $$f(x+ct)$$, with speed $$c$$.
+
+$$
+\begin{cases}
+\omega = 2\pi / T\\
+k = 2\pi / \lambda\\
+c = \dfrac{\omega}{k} = \dfrac{\lambda}{T}
+\end{cases}
+$$
+
+
+#### Two Dimentional Case
+
+$$
+\begin{cases}
+c^2 (w_{xx} + w_{yy}) = w_{tt}\\
+0 \le x \le a\\
+0 \le y \le b\\
+0 \le t < \infty\\
+w(0,y,t) = w(a,y,t) = w(x,0,t) = w(x,b,t) = 0\\
+w(x,y,0) = f(x,y)\\
+w_t(x,y,0) = 0
+\end{cases}
+$$
+
+$$
+w(x,y,t) = X(x)Y(y)T(t)
+$$
+
+$$
+c^2(X''YT + XY''T) = XYT''
+$$
+
+$$
+\dfrac{X''}{X}+\dfrac{Y''}{Y} = \dfrac{1}{c^2}\dfrac{T''}{T} = -k^2
+$$
+
+$$
+\begin{cases}
+T'' + k^2 c^2 T = 0\\
+X'' + \alpha^2 X = 0\\
+Y'' + (k^2 - \alpha^2)Y = 0
+\end{cases}
+$$
+
+$$
+w(w,y;t) = (Ax+B)(Cy+D)(Et+G) + (H \cos\alpha x + I \sin \alpha x)(J \cos \sqrt{k^2-\alpha^2}y + K \sin\sqrt{k^2-\alpha^2}y)(L \sin kct + M \cos kct)
+$$
+
+apply $$w(0,y,t) = 0$$
+
+$$
+B(Cy+D)(Et+G) + H(J \cos \sqrt{k^2-\alpha^2}y + K \sin\sqrt{k^2-\alpha^2}y)(L \sin kct + M \cos kct) = 0
+$$
+
+$$
+B = H = 0
+$$
+
+
+$$
+w(w,y;t) = x(Cy+D)(Et+G) + \sin \alpha x(J \cos \sqrt{k^2-\alpha^2}y + K \sin\sqrt{k^2-\alpha^2}y)(L \sin kct + M \cos kct)
+$$
+
+apply $$w(x,0,t)=0$$
+
+$$
+Dx(Et+G) + J \sin \alpha x(L \sin kct + M \cos kct) = 0
+$$
+
+$$
+D = J = 0
+$$
+
+$$
+w(w,y;t) = xy(Et+G) + \sin \alpha x \sin\sqrt{k^2-\alpha^2}y(L \sin kct + M \cos kct)
+$$
+
+apply $$w(a,y,t)=0$$
+
+$$
+ay(Et+G) + \sin \alpha a \sin\sqrt{k^2-\alpha^2}y(L \sin kct + M \cos kct) = 0
+$$
+
+$$
+E = G = 0
+$$
+
+$$
+\alpha = \dfrac{m\pi}{a}, \quad m = 1,2,3
+$$
+
+apply $$w(x,b,t) = 0$$
+
+$$
+\sqrt{k^2-\alpha^2} = \dfrac{n \pi}{b}, \quad n = 1,2,3
+$$
+
+$$
+k = \pi\sqrt{\dfrac{m^2}{a^2} + \dfrac{n^2}{b^2}}
+$$
+
+$$
+w(x,y,t) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty} \sin \dfrac{m\pi x}{a} \sin\dfrac{n\pi y}{b} \left(G_{mn}\sin \omega_{mn} t + H_{mn} \cos \omega_{mn} t \right)
+$$
+
+$$
+\omega_{mn} = \pi c\sqrt{\dfrac{m^2}{a^2} + \dfrac{n^2}{b^2}}
+$$
+
+apply $$w_t(x,y,0) = 0$$
+
+$$
+G_{mn} = 0
+$$
+
+$$
+w(x,y,t) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty} H_{mn} \sin \dfrac{m\pi x}{a} \sin\dfrac{n\pi y}{b}  \cos \omega_{mn} t
+$$
+
+apply $$w(x,y,0) = f(x,y)$$
+
+$$
+f(x,y) = \sum_{n=1}^{\infty}\sum_{m=1}^{\infty} H_{mn} \sin \dfrac{m\pi x}{a} \sin\dfrac{n\pi y}{b}
+$$
+
+This is a double Fourier series.
+
+$$
+H_{mn} = \dfrac{4}{ab} \int_0^b \int_0^a f(x,y) \sin\dfrac{n\pi x}{a} \sin \dfrac{n\pi y}{b} \, dx dy
+$$
