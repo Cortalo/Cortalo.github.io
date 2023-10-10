@@ -112,6 +112,8 @@ E_{1t} = E_{2t}\\
 \end{align}
 $$
 
+For boundary condition between dielectric and conductor, $$\hat{a_n}$$ points fron conductor to dielectric.
+
 ## Wave Equation
 
 $$
@@ -394,7 +396,417 @@ $$
 \vec{E_i} = \hat{a_y} E_{i0} e^{-j\beta_1 (x\sin\theta_i + z\cos\theta_i)}
 $$
 
-Now 8.7
+## Incidence At A Plane Dielectric
+
+# Waveguides
+
+## Uniform Guiding Structure
+
+$$
+\vec{E}(x,y,z,t) = \mathrm{Re}\left\{ \vec{E_0}(x,y) e^{-\gamma z} e^{j\omega t}\right\}
+$$
+
+$$
+(\nabla^2 + k^2) \vec{E} = 0
+$$
+
+$$
+\nabla^2 = \nabla_{xy}^2 + \gamma^2 = \nabla_{t}^2 + \gamma^2
+$$
+
+$$
+\left(\nabla_{xy}^2 + \gamma^2 + k^2\right) \vec{E} = 0
+$$
+
+where $$t$$ means transverse (TE,TM,TEM), which means orthogonal to something.
+
+Note that the solution may not be plane wave, which means the $$\vec{E}, \vec{H}$$ may not be orthogonal to travelling direction.
+So we need to solve all the components $$E_x, E_y, E_z, H_x, H_y, H_z$$.
+
+Assuming source free in the waveguide (not on the surface)
+
+$$
+\begin{cases}
+\nabla \times \vec{E} = -j\omega\mu\vec{H}\\
+\nabla \times \vec{H} = -j\omega\epsilon \vec{E}
+\end{cases}
+$$
+
+Once we solved $$E_z, H_z$$, the other four components
+
+$$
+\begin{cases}
+H_x = -\dfrac{1}{h^2}\left(\gamma \dfrac{\partial H_z}{\partial x} - j\omega\epsilon \dfrac{\partial E_z}{\partial y}\right)\\
+\vdots
+\end{cases}
+$$
+
+<!-- Does these equation always validate? Then in TEM mode everything is zero? -->
+
+where $$h^2 = \gamma^2 + k^2$$
+
+- TEM waves: $$E_z=H_z=0$$.
+- TM waves: $$H_z=0$$.
+- TE waves: $$E_z=0$$.
+
+Is it possible $$E_z\ne 0, H_z\ne 0$$?
+
+## Parallel-Plate Waveguide
+
+Assume $$w \gg b$$.
+
+### TEM
+
+Assume TEM mode, and assume a plane wave
+
+$$
+\begin{cases}
+\vec{E} = \hat{a_y} E_0 e^{-\gamma z}\\
+\vec{H} = -\hat{a_x} \dfrac{E_0}{\eta} e^{-\gamma z}
+\end{cases}
+$$
+
+where
+
+$$
+\begin{cases}
+\gamma = j\beta = j\omega\sqrt{\mu\epsilon}\\
+\eta = \sqrt{\dfrac{\mu}{\epsilon}}
+\end{cases}
+$$
+
+Since we already know such wave satisfy Maxwell's equation,we need to further check the boundary condition $$y=0, y=b$$ for the plane wave.
+
+$$
+\begin{cases}
+E_t = 0\\
+H_n = 0
+\end{cases}
+$$
+
+and the boundary condition is satisfied.
+So we find a simple solution.
+The frequency $$\omega$$ can be any frequency.
+
+The parallel plate will have surface charge and surface current.
+
+$$
+\begin{cases}
+\rho = \hat{a_n} \cdot \vec{D}\\
+\vec{J} = \hat{a_n} \times \vec{H}
+\end{cases}
+$$
+
+for $$y=0$$, $$\hat{a_n} = +\hat{a_y}$$.
+
+$$
+\begin{cases}
+\rho = \epsilon E_0 e^{-j\beta z}\\
+\vec{J} = \hat{a_z} \dfrac{E_0}{\eta} e^{-j\beta z}
+\end{cases}
+$$
+
+### TM
+
+Assume $$E_z(x,y,z)$$ doesn't depends on $$x$$, since $$x$$ is wide enough.
+
+$$
+E_z(x,y,z) = E_z^0(y)e^{-\gamma z}
+$$
+
+$$
+\left(\nabla_{xy}^2 + h^2\right) \vec{E} = 0
+$$
+
+$$
+\dfrac{d^2}{dy^2} E_{z}^0 (y) + h^2 E_z^0 (y) = 0
+$$
+
+with boundary condition
+
+$$
+E_z^0(y) \vert_{y=0,y=b} = 0
+$$
+
+$$
+E_z^0(y) = A_n \sin \dfrac{n\pi y}{b}
+$$
+
+$$
+h = \dfrac{n\pi}{b}
+$$
+
+then all the other components can be calculated by the equations.
+
+$$
+\gamma = \sqrt{h^2-k^2} = \sqrt{\left(\dfrac{n\pi}{b}\right)^2 - \omega^2\mu\epsilon}
+$$
+
+## Dielectric Waveguide
+
+# Antennas
+
+For static field (static $$\rho, \vec{J}$$).
+
+$$
+\begin{cases}
+\nabla \times \vec{E} = 0 \quad \implies \quad \vec{E} = -\nabla V\\
+\nabla \cdot \vec{B} = 0 \quad \implies \quad \vec{B} = \nabla \times \vec{A}
+\end{cases}
+$$
+
+$$
+\begin{cases}
+V = \int \dfrac{1}{4\pi\epsilon} \dfrac{\rho dv}{R}\\
+\vec{A} = \int \dfrac{\mu}{4\pi} \dfrac{\vec{J} dv}{R}
+\end{cases}
+$$
+
+For time varying field
+
+$$
+\nabla \times \vec{E} = -\dfrac{\partial \vec{B}}{\partial t} = -\dfrac{\partial}{\partial t} \left(\nabla \times \vec{A}\right)
+$$
+
+$$
+\vec{E} = \dfrac{1}{j\omega\epsilon} \nabla \times \vec{H}
+$$
+
+$$
+\nabla \times \left(\vec{E} + \dfrac{\partial \vec{A}}{\partial t}\right) = 0
+$$
+
+$$
+\vec{E} + \dfrac{\partial \vec{A}}{\partial t} = -\nabla V
+$$
+
+$$
+\vec{E} = -\nabla V - \dfrac{\partial \vec{A}}{\partial t}
+$$
+
+$$
+\nabla \times \left(\dfrac{\nabla \times \vec{A}}{\mu}\right) = \vec{J} + \dfrac{\partial}{\partial t} \left[\epsilon \left(-\nabla V - \dfrac{\partial \vec{A}}{\partial t}\right)\right]
+$$
+
+$$
+\begin{align}
+\nabla \times \left(\nabla \times \vec{A}\right) &= \mu \vec{J} + \mu\epsilon \dfrac{\partial}{\partial t}(-\nabla V - \dfrac{\partial \vec{A}}{\partial t})\\
+&= \nabla \left(\nabla \cdot \vec{A}\right) - \nabla^2 \vec{A}
+\end{align}
+$$
+
+$$
+\nabla^2 \vec{A} - \mu\epsilon \dfrac{\partial^2 \vec{A}}{\partial t^2} = -\mu \vec{J} + \nabla\left(\nabla\cdot \vec{A} + \mu\epsilon\dfrac{\partial V}{\partial t}\right)
+$$
+
+Let's define
+
+$$
+\begin{cases}
+\nabla \times \vec{A} = \vec{B}\\
+\nabla \cdot \vec{A} + \mu\epsilon\dfrac{\partial V}{\partial t} = 0 \quad \text{(Lorentz condition)}
+\end{cases}
+$$
+
+$$
+\nabla^2 \vec{A} - \mu\epsilon\dfrac{\partial^2 \vec{A}}{\partial t^2} = -\mu \vec{J}
+$$
+
+$$
+\begin{align}
+- \nabla \cdot \left(\nabla V\right) &= \nabla \cdot \left(\vec{E}+\dfrac{\partial \vec{A}}{\partial t}\right)\\
+&= \dfrac{\rho}{\epsilon} + \dfrac{\partial}{\partial t} \left(\nabla \cdot \vec{A}\right)\\
+&= \dfrac{\rho}{\epsilon} + \dfrac{\partial}{\partial t} \left(-\mu\epsilon \dfrac{\partial V}{\partial t}\right)\\
+&= -\nabla^2 V
+\end{align}
+$$
+
+$$
+\nabla^2 V - \mu\epsilon \dfrac{\partial^2 V}{\partial t^2} = -\dfrac{\rho}{\epsilon}
+$$
+
+the solution is given by
+
+$$
+V(\vec{R},t) = \dfrac{1}{4\pi\epsilon} \int \dfrac{\rho \left(\vec{R'}, t-\dfrac{\vert \vec{R} - \vec{R}' \vert}{u}\right)}{\vert \vec{R}-\vec{R'} \vert} dv
+$$
+
+where $$u = \dfrac{1}{\sqrt{\mu\epsilon}}$$.
+
+For sinosoidal steady state
+
+$$
+\vec{A}(\vec{R}, t) = \dfrac{\mu}{4\pi} \int \dfrac{\mathrm{Re}\left\{\vec{J}(\vec{R'}) e^{j\omega(t-\Delta t)}\right\}}{\vert \vec{R'} - \vec{R} \vert} dv
+$$
+
+In phasor form
+
+$$
+\vec{A} = \dfrac{\mu}{4\pi}\int \dfrac{\vec{J} \cdot e^{-jkR}}{R} dv
+$$
+
+$$
+V = \dfrac{1}{4\pi\epsilon}\int \dfrac{\rho e^{-jkR}}{R} dv
+$$
+
+## Hertizen Dipoles
+
+$$
+i(t) = I\cos\omega t = \dfrac{d q(t)}{dt}
+$$
+
+$$
+I=j\omega Q
+$$
+
+$$
+\vec{P} = \hat{a_z} \cdot dl \cdot Q = \hat{a_z} \dfrac{I \cdot dl}{j\omega}
+$$
+
+$$
+\begin{align}
+\vec{A} &= \dfrac{\mu}{4\pi} \dfrac{\vec{J} e^{-jkR} dv}{R}\\
+&= \hat{a_z} \dfrac{\mu}{4\pi} \dfrac{I dl \cdot e^{-j\beta R}}{R}\\
+&= \hat{a_R} A_R + \hat{a_\theta} A_\theta
+\end{align}
+$$
+
+$$
+\vec{H} = \dfrac{1}{\mu} \nabla \times \vec{A}
+$$
+
+# Transmission Lines
+
+$$
+-\dfrac{\partial v(z,t)}{\partial z} = R i(z,t) + L \dfrac{\partial i(z,t)}{\partial t}
+$$
+
+$$
+-\dfrac{\partial i(z,t)}{\partial z} = G v(z,t) + C \dfrac{\partial v(z,t)}{\partial t}
+$$
+
+$$
+\begin{cases}
+-\dfrac{d V(z)}{dz} = (R+j\omega L) I(z)\\
+-\dfrac{d I(z)}{dz} = (G + j\omega C) V(z)
+\end{cases}
+$$
+
+$$
+\begin{cases}
+\dfrac{d^2 V(z)}{dz^2} = \gamma^2 V(z)\\
+\dfrac{d^2 I(z)}{dz^2} = \gamma^2 V(z)
+\end{cases}
+$$
+
+$$
+\gamma = \alpha + j\beta = \sqrt{(R+j\omega L)(G+j\omega C)}
+$$
+
+$$
+Z_0 = \dfrac{R+j\omega L}{\gamma} = \dfrac{\gamma}{G+j\omega C} = \sqrt{\dfrac{R+j\omega L}{G+j\omega C}}
+$$
+
+## Finite Transmission Lines
+
+$$
+\begin{cases}
+V(z) = V_0^+ e^{-\gamma z} + V_0^- e^{+\gamma z}\\
+I(z) = I_0^+ e^{-\gamma z} + I_0^- e^{+\gamma z}
+\end{cases}
+$$
+
+$$
+\dfrac{V_0^+}{I_0^+} = - \dfrac{V_0^-}{I_0^-} = Z_0
+$$
+
+Boundary condition at $$z = l$$
+
+$$
+\dfrac{V(l)}{I(l)} = \dfrac{V_L}{I_L} = Z_L
+$$
+
+we can imagine if $$Z_L = Z_0$$, then with only $$V_0^+$$, it can satisfy the boundary condition, such that there is no refection wave.
+
+$$
+\begin{cases}
+V(l) = V_L = V_0^+ e^{-\gamma l} + V_0^- e^{+\gamma l}\\
+I(l) = I_L = \dfrac{V_0^+}{Z_0} e^{-\gamma l} - \dfrac{V_0^-}{Z_0} e^{+\gamma l}
+\end{cases}
+$$
+
+$$
+\begin{cases}
+V(z) = \dfrac{I_L}{2} \left[(Z_L+Z_0)e^{\gamma (l-z)} + (Z_L-Z_0)e^{-\gamma(l-z)}\right]\\
+I(z) = \dfrac{I_L}{2Z_0} \left[(Z_L+Z_0)e^{\gamma (l-z)} - (Z_L-Z_0)e^{-\gamma(l-z)}\right]
+\end{cases}
+$$
+
+$$
+\begin{cases}
+V(z') = I_L (Z_L \cosh \gamma z' + Z_0 \sinh \gamma z')\\
+I(z') = \dfrac{I_L}{Z_0} (Z_L \sinh \gamma z' + Z_0 \cosh \gamma z')
+\end{cases}
+$$
+
+$$
+Z_i = Z_0 \dfrac{Z_L + Z_0 \tanh \gamma l}{Z_0 + Z_L \tanh \gamma l}
+$$
+
+### Transmission Line As Circuit Elements
+
+For lossless transmission line
+
+$$
+Z_i = Z_0 \dfrac{Z_L + j Z_0 \tan\beta l}{Z_0 + j Z_L \tan\beta l}
+$$
+
+If $$Z_L \to \infty$$
+
+$$
+Z_i = -j Z_0 \cot \beta l
+$$
+
+If $$Z_L = 0$$
+
+$$
+Z_i = j Z_0 \tan\beta l
+$$
+
+Quarter-wave section: $$l = \lambda/4, \beta l = \pi/2$$.
+
+$$
+Z_i = \dfrac{Z_0^2}{Z_L}
+$$
+
+also called quarter wave transformer.
+
+Half-wave section: $$l = \lambda/2, \beta l = \pi$$.
+
+$$
+Z_i = Z_L
+$$
+
+### Lines With Resistive Termination
+
+<!-- Still assume lossless transmission line, and assume resistive termination. -->
+
+<!-- $$ -->
+<!-- Z_i = R_0 \dfrac{R_L + j R_0 \tan\beta l}{R_0 + j R_L \tan\beta l} -->
+<!-- $$ -->
+
+$$
+\begin{align}
+V(z') &= \dfrac{I_L}{2} (Z_L + Z_0) e^{\gamma z'} \left[1 + \dfrac{Z_L - Z_0}{Z_L + Z_0}e^{-2\gamma z'}\right]\\
+&= \dfrac{I_L}{2}(Z_L + Z_0) e^{\gamma z'} [1 + \Gamma e^{-2\gamma z'}]
+\end{align}
+$$
+
+$$
+\Gamma = \dfrac{Z_L - Z_0}{Z_L + Z_0}
+$$
+
+Now 9.4.2
 
 
 # LC Resonance and Matching Networks
