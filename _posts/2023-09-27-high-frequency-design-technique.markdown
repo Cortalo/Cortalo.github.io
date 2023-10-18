@@ -806,7 +806,27 @@ $$
 \Gamma = \dfrac{Z_L - Z_0}{Z_L + Z_0}
 $$
 
-Now 9.4.2
+### Transmission Line Circuits
+
+$$
+V(z') = \dfrac{Z_0 V_g}{Z_0 + Z_g} e^{-\gamma z} \left(\dfrac{1+\Gamma e^{-2\gamma z'}}{1-\Gamma_g \Gamma e^{-2\gamma l}}\right)
+$$
+
+### The Smith Chart
+
+#### Lossless Transmission Line.
+
+$$
+\Gamma = \dfrac{z_L - 1}{z_L + 1}
+$$
+
+$$
+z_L = \dfrac{1+\Gamma}{1-\Gamma}
+$$
+
+plot $$\Gamma$$ on the complex plane.
+
+Now 9.6(1/2)
 
 
 # LC Resonance and Matching Networks

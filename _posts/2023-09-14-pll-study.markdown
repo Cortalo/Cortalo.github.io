@@ -6,6 +6,133 @@ tags: analog
 math: true
 ---
 
+# BBPLL Theory
+
+Multirate time-domain model
+
+<img src="/assets/img/2023-09-14-pll-study/008.png" style="width:100%;height:100%;">
+
+Convert to single-rate model
+
+<img src="/assets/img/2023-09-14-pll-study/009.png" style="width:100%;height:100%;">
+
+Equivalent linear model
+
+<img src="/assets/img/2023-09-14-pll-study/010.png" style="width:100%;height:100%;">
+
+Under some assumption, approximately
+
+$$
+K_{BPD} = \sqrt{\dfrac{2}{\pi}} \cdot \dfrac{1}{\sigma_{\Delta t}}
+$$
+
+$$
+\sigma_q^2 = 1 - K_{BPD}^2 \cdot \sigma_{\Delta t}^2 = 1 - \dfrac{2}{\pi}
+$$
+
+Given $$\sigma_{ref}, \sigma_{DCO}, K_P, K_I, N, K_T$$, we want to find the value of $$K_{BPD}$$.
+For simplicity, we assume $$K_I$$ is very small ($$K_I \ll K_P$$) such that we can ignore it.
+And we denote $$\chi = N K_{BPD} K_P K_T$$.
+
+<img src="/assets/img/2023-09-14-pll-study/011.png" style="width:50%;height:50%;">
+
+$$
+\begin{align}
+Y_1[k+1] &= Y_1[k] + \chi \left(\sigma_{ref}[k] - Y_1[k]\right)\\
+&= (1-\chi) Y_1[k] + \chi \sigma_{ref}[k]
+\end{align}
+$$
+
+since $$Y_1[k]$$ and $$\sigma_{ref}[k]$$ are independent
+
+$$
+\sigma_{Y_1}^2 = (1-\chi)^2 \sigma_{Y_1}^2 + \chi^2 \sigma_{ref}^2
+$$
+
+$$
+\sigma_{Y_1}^2 = \dfrac{\chi}{2-\chi} \sigma_{ref}^2
+$$
+
+$$
+\sigma_{\Delta t_1}^2 = \sigma_{ref}^2 + \sigma_{Y_1}^2 = \dfrac{2}{2-\chi} \sigma_{ref}^2
+$$
+
+
+<img src="/assets/img/2023-09-14-pll-study/012.png" style="width:50%;height:50%;">
+
+$$
+\begin{align}
+Y_2[k+1] &= Y_2[k] + \dfrac{\chi}{K_{BPD}}\left(\sigma_q[k] - K_{BPD} Y_2[k]\right)\\
+&= \left(1 - \chi\right) Y_2[k] + \dfrac{\chi}{K_{BPD}} \sigma_q[k]
+\end{align}
+$$
+
+$$
+\sigma_{\Delta t_2}^2 = \sigma_{Y_2}^2 =  \dfrac{\chi}{2-\chi} \dfrac{\sigma_{q}^2}{K_{BPD}^2}
+$$
+
+<img src="/assets/img/2023-09-14-pll-study/013.png" style="width:50%;height:50%;">
+
+$$
+\begin{align}
+Y_3[k+1] &= Y_3[k] + (\sqrt{N} \sigma_{DCO}[k] - \chi Y_3[k])\\
+&= (1-\chi) Y_3[k] + \sqrt{N} \sigma_{DCO}[k]
+\end{align}
+$$
+
+
+$$
+\sigma_{\Delta t_3}^2 = \sigma_{Y_3}^2 = \dfrac{N}{\chi(2-\chi)} \sigma_{DCO}^2
+$$
+
+$$
+\begin{align}
+\sigma_{\Delta t}^2 &= \sigma_{\Delta t_1}^2 + \sigma_{\Delta t_2}^2 + \sigma_{\Delta t_3}^2\\
+&= \dfrac{2}{2-\chi} \sigma_{ref}^2 + \dfrac{\chi}{2-\chi} \dfrac{\sigma_q^2}{K_{BPD}^2} + \dfrac{N}{\chi(2-\chi)}\sigma_{DCO}^2
+\end{align}
+$$
+
+combine with
+
+$$
+K_{BPD} = \sqrt{\dfrac{2}{\pi}} \cdot \dfrac{1}{\sigma_{\Delta t}}
+$$
+
+$$
+\sigma_q^2 = 1 - \dfrac{2}{\pi}
+$$
+
+After some algebra (please provide)
+
+$$
+\sigma_{\Delta t} = \dfrac{\eta}{2} + \sqrt{\left(\dfrac{\eta}{2}\right)^2 + \sigma_{ref}^2}
+$$
+
+$$
+\eta = \sqrt{\dfrac{\pi}{2}} \cdot \left(\dfrac{\sigma_{DCO}^2}{2 K_P K_T} + \dfrac{N K_P K_T}{2}\right)
+$$
+
+$$
+K_{P,opt} = \dfrac{\sigma_{DCO}}{K_T \sqrt{N}}
+$$
+
+$$
+\eta_{opt} = \sqrt{\dfrac{N \pi}{2}} \sigma_{DCO}
+$$
+
+$$
+\Delta t[k] = \sigma_{ref}[k] - \sigma_{out}[k]
+$$
+
+$$
+\sigma_{\Delta t}^2 = \sigma_{ref}^2 + \sigma_{out}^2
+$$
+
+$$
+\sigma_{out}^2 = \sigma_{\Delta t}^2 - \sigma_{ref}^2
+$$
+
+
 # 1
 
 - [JSSC 2009](https://ieeexplore.ieee.org/document/5342373)

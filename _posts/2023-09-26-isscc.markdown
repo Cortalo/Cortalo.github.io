@@ -27,9 +27,7 @@ math: true
 
 ## Session 20: Body and Brain Interfaces
 
-### [20.5 A Miniaturized Wireless Neural Implant with Body-Coupled
-Data Transmission and Power Delivery for Freely Behaving
-Animals](https://ieeexplore.ieee.org/document/9731733)
+### [20.5 A Miniaturized Wireless Neural Implant with Body-Coupled Data Transmission and Power Delivery for Freely Behaving Animals](https://ieeexplore.ieee.org/document/9731733)
 
 - Body-Coupled Communication
 - Body-Coupled Power Delivery
