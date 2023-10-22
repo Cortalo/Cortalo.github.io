@@ -685,11 +685,16 @@ if $$x_0$$ is a singular point, and $$(x-x_0)\dfrac{Q(x)}{P(x)}$$ and $$(x-x_0)^
 
 A singular point that is not regular is said to be an irregular singular point.
 
-### Forbenius Series (23C)
+### Frobenius Series (23C)
 
 $$
 y(x) = \sum_{n=0}^{\infty} c_n(x-x_0)^{n+r}
 $$
+
+The book [Ordinary Differential Equations, Chapter 36](https://www.taylorfrancis.com/books/mono/10.1201/9780429347429/ordinary-differential-equations-kenneth-howell) well explains why the formula takes the absolute value.
+It is just meant to maintain the function to be real value when $$x<x_0$$.
+If we only consider $$x>x_0$$, the absolute value is useless.
+Also, if $$r$$ is a integer number, the absolute value is not necessary.
 
 ## Fourier Series
 
