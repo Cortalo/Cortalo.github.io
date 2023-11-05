@@ -688,13 +688,71 @@ A singular point that is not regular is said to be an irregular singular point.
 ### Frobenius Series (23C)
 
 $$
-y(x) = \sum_{n=0}^{\infty} c_n(x-x_0)^{n+r}
+y'' + \dfrac{p(x)}{x}y' + \dfrac{q(x)}{x^2} y = 0
+$$
+
+$$
+F(r) = r(r-1) + p_0 r + q_0 = 0
+$$
+
+$$
+\begin{align}
+F(r+m) c_m &= \left[(m+r)(m+r-1) + (m+r)p_0 + q_0\right] c_m\\
+&= -\sum_{k=0}^{m-1} \left[(k+r)p_{m-k} + q_{m-k}\right] c_k, \quad m \ge 1
+\end{align}
+$$
+
+- If $$r_1 - r_2$$ is not an (positive or negative or zero) integer.
+
+$$
+\begin{align}
+y_1(x) &= \vert x \vert^{r_1} \sum_{m=0}^{\infty} c_{1,m} x^m\\
+y_2(x) &= \vert x \vert^{r_2} \sum_{m=0}^{\infty} c_{2,m} x^m
+\end{align}
+$$
+
+- If $$r_1 - r_2 = 0$$
+
+$$
+\begin{align}
+y_1(x) &= \vert x \vert^{r} \sum_{m=0}^{\infty} c_m x^m\\
+y_2(x) &= y_1(x) \ln \vert x \vert + \vert x \vert ^{r} \sum_{m=1}^{\infty} d_m x^m
+\end{align}
+$$
+
+where
+
+$$
+d_m = \left( \dfrac{\partial c_m}{\partial r}\right)_{r=r_1}, \quad m \ge 1
 $$
 
 The book [Ordinary Differential Equations, Chapter 36](https://www.taylorfrancis.com/books/mono/10.1201/9780429347429/ordinary-differential-equations-kenneth-howell) well explains why the formula takes the absolute value.
 It is just meant to maintain the function to be real value when $$x<x_0$$.
 If we only consider $$x>x_0$$, the absolute value is useless.
 Also, if $$r$$ is a integer number, the absolute value is not necessary.
+
+### Special Function
+
+$$
+y(x) = \sum_{m=0}^{\infty} C_m x^m
+$$
+
+#### Hermite Polynomials
+
+$$
+y'' - 2x y' + 2ny = 0
+$$
+
+$$
+C_m = \dfrac{2(m-2-n)}{m(m-1)}C_{m-2}, \quad m\ge 2
+$$
+
+$$
+y(x) = A_1 y_1(x) + A_2 y_2(x)
+$$
+
+if $$n$$ is some nonnegative integer ($$n \ge 0$$), then one of the solution is a polynomial (with finite terms).
+
 
 ## Fourier Series
 
