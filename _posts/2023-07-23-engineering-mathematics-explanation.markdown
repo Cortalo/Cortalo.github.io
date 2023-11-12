@@ -18,7 +18,8 @@ $$
 & \int \frac{1}{x+a} dx = \ln \vert x+a \vert + C\\
 ?& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C\\
 & \int \cos x dx = \sin x + C\\
-& \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x) + C
+& \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x) + C\\
+& \int_{-\infty}^{\infty} e^{-a x^2} dx = \sqrt{\dfrac{\pi}{a}}, \quad a > 0
 \end{align}
 $$
 
