@@ -1,9 +1,30 @@
 ---
-title:  "Fresh Install"
+title:  "IT Tips"
 date:   2022-09-14 12:40:00 +0200
 categories: cs
 tags: shell
 ---
+
+## Install Program Locally without sudo Permission
+
+You need to compile these from source. It should just be a matter of
+
+```
+apt-get source PACKAGE # Or download the sourcecode release from github
+./configure --prefix=$HOME
+make
+make install
+```
+
+## PDFGREP
+
+```
+pdfgrep -in "pattern" *.pdf
+# -i, --ignore-case
+# -n, --page-number
+```
+
+The binary would then be located in `~/bin`.
 
 ## WSL Install Problem
 

@@ -9,7 +9,9 @@ math: true
 
 ## First-Order First-Degree ODE
 
-### Integration Formulas
+### Useful Formulas
+
+#### Integrations
 
 $$
 \begin{align}
@@ -19,7 +21,20 @@ $$
 ?& \int \dfrac{dx}{\sqrt{x^2+a^2}} = \ln \vert x + \sqrt{x^2 + a^2} \vert + C\\
 & \int \cos x dx = \sin x + C\\
 & \int \exp(x)\sin x = \dfrac{1}{2}\exp(x)(\sin x - \cos x) + C\\
-& \int_{-\infty}^{\infty} e^{-a x^2} dx = \sqrt{\dfrac{\pi}{a}}, \quad a > 0
+& \int \dfrac{1}{1+x^2}dx = \tan^{-1}x + C\\
+& \int_{-\infty}^{\infty} e^{-a x^2} dx = \sqrt{\dfrac{\pi}{a}}, \quad a > 0\\
+& \int_0^\infty \dfrac{\sin x}{x} dx = \dfrac{\pi}{2}\\
+& \int_{-\infty}^\infty \dfrac{\sin x}{x} dx = \pi\\
+& \int_{-\infty}^{\infty} \exp(j\omega t) d\omega = 2\pi \delta(t)
+\end{align}
+$$
+
+#### Others
+
+$$
+\begin{align}
+& \lim_{A\to\infty} \dfrac{\sin(Ax)}{\pi x} = \delta(x)\\
+& \delta(ax + b) = \dfrac{1}{\vert a \vert} \delta\left(x + \dfrac{b}{a}\right)
 \end{align}
 $$
 

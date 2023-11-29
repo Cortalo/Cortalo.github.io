@@ -844,6 +844,30 @@ $$
 
 ### Examples
 
+- Convolution theorem
+
+$$
+f(t)*g(t) \leftrightarrow F(\omega)G(\omega)
+$$
+
+- FT of multiplication
+
+$$
+f(t)g(t) \leftrightarrow \dfrac{1}{2\pi} F(\omega)*G(\omega)
+$$
+
+- Time scaling
+
+$$
+f(at) \leftrightarrow \dfrac{1}{\vert a \vert} F\left(\dfrac{\omega}{a}\right)
+$$
+
+- Frequency scaling
+
+$$
+F(a\omega) \leftrightarrow \dfrac{1}{\vert a \vert} f\left(\dfrac{t}{a}\right)
+$$
+
 - finite unit step
 
 $$
@@ -852,6 +876,40 @@ $$
 
 $$
 F(\omega) = T \cdot \exp(-j\omega T / 2) \cdot \dfrac{\sin (\omega T/2)}{\omega T/2}
+$$
+
+- comb function (impulse train)
+
+$$
+\mathrm{comb}(t) = \sum_{n=-\infty}^{\infty} \delta(t-n)
+$$
+
+$$
+\mathrm{comb}(t) \leftrightarrow \mathrm{comb}\left(\dfrac{\omega}{2\pi}\right)
+$$
+
+- Ideal low pass
+
+$$
+\mathrm{RECT}(\omega) =
+\begin{cases}
+1 & \vert \omega \vert < \dfrac{1}{2}\\
+0 & \vert \omega \vert > \dfrac{1}{2}
+\end{cases}
+$$
+
+$$
+f(t) = \dfrac{\sin \left(\dfrac{t}{2}\right)}{\pi t} = \dfrac{1}{2\pi} \mathrm{sinc}\left(\dfrac{t}{2\pi}\right)
+$$
+
+$$
+\mathrm{sinc}(x) = \dfrac{\sin(\pi x)}{\pi x}
+$$
+
+If the bandwidth is $$\omega_b$$, $$\mathrm{RECT}\left(\dfrac{\omega}{2\omega_b}\right)$$
+
+$$
+f(t) = \dfrac{\omega_b}{\pi} \mathrm{sinc}\left(\dfrac{\omega_b t}{\pi}\right)
 $$
 
 ## Multi-Variable Functions
