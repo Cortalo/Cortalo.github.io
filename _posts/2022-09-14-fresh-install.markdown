@@ -5,6 +5,13 @@ categories: cs
 tags: shell
 ---
 
+## Spacemacs
+
+```
+SPC w F # make-frame
+SPC w o # other-frame
+```
+
 ## Install Program Locally without sudo Permission
 
 You need to compile these from source. It should just be a matter of
@@ -14,6 +21,13 @@ apt-get source PACKAGE # Or download the sourcecode release from github
 ./configure --prefix=$HOME
 make
 make install
+```
+
+## Conda
+
+```
+conda create -n envname python=3.9.7 ipython
+conda acitvate envname
 ```
 
 ## PDFGREP

@@ -571,6 +571,22 @@ $$
 \mathscr{L}\{f^{(n)}(t)\} = s^n F(s) - s^{n-1} f(0) - s^{n-2}f'(0) - \dots - f^{(n-1)}(0)
 $$
 
+If all initial value are zero, then the Laplace transform of the impulse response can be easily calculated as $$H(s)$$.
+Also, the value $$H(j\omega)$$ is very meanful. First
+
+$$
+H(j\omega) = \int_{-\infty}^{\infty} h(t)e^{-j\omega t} dt, \quad \text{(because h(t) = 0 when t is less than 0)}
+$$
+
+which is the Fourier transform of the impulse response.
+Secondly, if the input is $$e^{j\omega t}$$ (for $$t > 0$$), and all inital condition is still zero.
+
+$$
+y(t) = \int_{0}^{t} h(\tau) e^{j\omega (t-\tau)} d\tau = e^{j\omega t} \int_{0}^{t} h(\tau) e^{-j\omega \tau} d\tau
+$$
+
+Thus, the response will approach to $$H(j\omega) e^{j\omega t}$$ when $$t \to \infty$$.
+
 ### ODE with Polynomial Coefficients
 
 $$
