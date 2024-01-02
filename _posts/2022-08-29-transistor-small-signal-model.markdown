@@ -32,7 +32,8 @@ $$
 $$
 \begin{align*}
     g_m &= \frac{d I_{DS}}{d V_{GS}} = \mu_n C_{ox}\frac{W}{L}(V_{GS} - V_{TH}) = \frac{2 I_{DS}}{V_{GS} - V_{TH}} = \sqrt{2\mu_n C_{ox}\frac{W}{L}I_{DS}}\\
-    g_{ds} &= \lambda I_{DS} \quad \quad r_o = \frac{1}{\lambda I_{DS}} = \frac{L}{I_D} (\frac{d x_d}{d V_{DS}})^{-1}
+    g_{ds} &= \lambda I_{DS} \quad \quad r_o = \frac{1}{\lambda I_{DS}} = \dfrac{L}{L_{typ}} \cdot \dfrac{1}{\lambda_{typ} I_{DS}}\\
+    g_{mb} &= g_m \dfrac{\gamma}{2\sqrt{2\phi_F + V_{SB}}}
 \end{align*}
 $$
 
@@ -60,3 +61,8 @@ r_{\pi} &= \beta r_m\\
 \beta &= \frac{\alpha}{1-\alpha}
 \end{align}
 $$
+
+## Transfer Function
+
+- For a pole at frequency $$\omega_0$$, at $$\omega_0 / \sqrt{3}$$, the phase drops $$30^\circ$$. At $$\omega_0$$, the phase drops $$45^\circ$$.
+- For a first-order transfer function $$H(s) = \dfrac{a + b s}{1 + s \tau}$$, the DC gain is $$a$$, the prop path is $$\dfrac{b}{\tau}$$, with time constant $$\tau$$.

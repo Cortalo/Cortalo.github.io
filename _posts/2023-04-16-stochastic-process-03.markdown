@@ -279,3 +279,38 @@ We can do a quick sanity check, since the effective power bandwidth is $$\pi f_b
 $$
 2N_0 \cdot \dfrac{\pi}{2} \cdot f_b = \pi f_b \cdot N_0
 $$
+
+## LTV Responses
+
+Without the assumption of W.S.S. process, we need to derive the PSD again by
+
+$$
+\begin{align}
+& \dfrac{1}{T} E \left\vert \int_{-T/2}^{T/2} X(t)\exp(-j\omega t) dt \right\vert^2\\
+= & \dfrac{1}{T} E\left(\int_{-T/2}^{T/2} X(t)\exp(-j\omega t) dt\right) \left( \int_{-T/2}^{T/2} \overline{X(s)}\exp(j\omega s)\right)\\
+= & \dfrac{1}{T} \int_{-T/2}^{T/2} \int_{-T/2}^{T/2} E(X(t)\overline{X(s)}) \exp(-j\omega(t-s)) dt ds\\
+= & \dfrac{1}{T} \int_{-T/2}^{T/2} \int_{-T/2}^{T/2} R(t,s) \exp(-j\omega(t-s)) dt ds
+\end{align}
+$$
+
+For a LTV system
+
+$$
+Y(t) = \int_{-\infty}^{\infty} X(\tau) h(t;\tau) d\tau
+$$
+
+where $$h(t;\tau)$$ is the impulse response at time $$t$$ when the impulse is at time $$\tau$$. The reason is
+
+$$
+X(t) = \int_{-\infty}^{\infty} X(\tau) \delta(t-\tau) d\tau
+$$
+
+and the response for $$\delta(t-\tau)$$ is $$h(t;\tau)$$. Thus by superposition, the response for $$\int_{-\infty}^{\infty} X(\tau) \delta(t-\tau)$$ is
+
+$$
+Y(t) = \int_{-\infty}^{\infty} X(\tau) h(t;\tau) d\tau
+$$
+
+$$
+R_Y(t,s) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} R_X(\tau,r) h(t;\tau) \overline{h(s;r)} d\tau dr
+$$
