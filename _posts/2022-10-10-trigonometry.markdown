@@ -6,6 +6,20 @@ tags: basics
 math: true
 ---
 
+# Remember
+
+$$
+
+\begin{align*}
+    \sin(\alpha + \beta) &= \sin\alpha\cos\beta + \cos\alpha\sin\beta\\
+    \sin(\alpha - \beta) &= \sin\alpha \cos\beta - \cos\alpha \sin \beta\\
+    \cos(\alpha + \beta) &= \cos\alpha \cos\beta - \sin\alpha \sin\beta\\
+    \cos(\alpha - \beta) &= \cos\alpha\cos\beta + \sin\alpha \sin\beta\\
+\end{align*}
+$$
+
+# TODO
+
 $$
 
 \begin{align*}

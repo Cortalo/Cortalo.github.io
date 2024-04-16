@@ -29,7 +29,7 @@ $$
 $$
 
   $$
-\dfrac{1}{1-z^{-1}}
+\dfrac{1}{1-z^{-1}} \approx \dfrac{F_s}{s}
 $$
 
 $$

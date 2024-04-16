@@ -10,6 +10,11 @@ math: true
 
 [slides_an_introduction_to_digital_delta_sigma_modulators](https://site.ieee.org/scv-cas/files/2014/07/2014Kennedy.pdf)
 
+[paper a multiple modulator fractional divider](https://ieeexplore.ieee.org/document/87022)
+
+[paper A Calibration-Free Fractional-N Analog PLL With Negligible DSM Quantization Noise](https://ieeexplore.ieee.org/document/10093857)
+
+
 ## 1st Order Error Feedback Modulator (EFM1)
 
 

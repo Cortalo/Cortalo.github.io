@@ -6,6 +6,39 @@ tags: analog
 math: true
 ---
 
+# Phase Noise
+
+References:
+
+[A Charge-Sharing Locking Technique With a General Phase Noise Theory of Injection Locking](https://ieeexplore.ieee.org/document/9530245)
+
+Reference phase noise
+
+$$
+\begin{align}
+\mathcal{L}_{ref}(f) &= \dfrac{1}{2} S_{\phi} = \dfrac{1}{2} S_{t} (2\pi F_{ref})^2\\
+&= \dfrac{1}{2} \cdot \dfrac{\sigma_{t}^2}{F_{ref}/2} \cdot (2\pi F_{ref})^2\\
+&= 4\pi^2 F_{ref} \cdot \sigma_{t}^2
+\end{align}
+$$
+
+For example, $$\sigma_t = 112.5 \,\mathrm{ fs}$$ with $$F_{ref} = 200\,\mathrm{ MHz}$$, $$\mathcal{L}_{ref} = -160 \,\mathrm{ dBc/Hz}$$.
+
+However, this is the reference phase noise in the reference frequency domain.
+To the output it will be multiplied by $$N^2$$ and low-passed by the loop filter.
+
+VCO phase noise
+
+$$
+\begin{align}
+\mathcal{L}_{osc}(f) &= \dfrac{1}{2} S_{\phi} = \dfrac{1}{2}S_t (2\pi F_{osc})^2\\
+&= \dfrac{1}{2} \cdot \dfrac{\sigma_t^2}{F_{osc}/2} \cdot \left(\dfrac{F_{osc}}{2\pi f}\right)^2 \cdot (2\pi F_{osc})^2\\
+&= \sigma_t^2 \cdot \dfrac{F_{osc}^3}{f^2}
+\end{align}
+$$
+
+For example, $$\sigma_t = 1 \,\mathrm{fs}, F_{osc} = 10\,\mathrm{GHz}, f = 10\,\mathrm{MHz}$$, $$\mathcal{L}_{osc}(f) = -140\,\mathrm{dBc/Hz}$$.
+
 # BBPLL Theory
 
 Multirate time-domain model
@@ -132,6 +165,8 @@ $$
 \sigma_{out}^2 = \sigma_{\Delta t}^2 - \sigma_{ref}^2
 $$
 
+
+[]BBPLL locking time, Frequency Synthesizers Based on Fast-Locking Bang-Bang PLL for Cellular Applications](https://link.springer.com/chapter/10.1007/978-3-030-62476-7_3)
 
 # 1
 
