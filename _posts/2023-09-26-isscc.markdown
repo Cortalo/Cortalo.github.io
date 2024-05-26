@@ -6,6 +6,10 @@ tags: analog
 math: true
 ---
 
+# Coupling Effects
+
+- [Digital circuit capacitance and switching analysis for ground bounce in ICs with a high-ohmic substrate](https://ieeexplore.ieee.org/document/1308586)
+
 # ISSCC 2023
 
 ## Session 32: Intelligent Biomedical Circuits and Systems

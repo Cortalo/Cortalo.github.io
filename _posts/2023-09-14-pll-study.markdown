@@ -39,6 +39,10 @@ $$
 
 For example, $$\sigma_t = 1 \,\mathrm{fs}, F_{osc} = 10\,\mathrm{GHz}, f = 10\,\mathrm{MHz}$$, $$\mathcal{L}_{osc}(f) = -140\,\mathrm{dBc/Hz}$$.
 
+Fractional-N PLL quantization noise:
+
+<img src="/assets/img/2023-09-14-pll-study/014.png" style="width:100%;height:100%;">
+
 # BBPLL Theory
 
 Multirate time-domain model
@@ -166,7 +170,7 @@ $$
 $$
 
 
-[]BBPLL locking time, Frequency Synthesizers Based on Fast-Locking Bang-Bang PLL for Cellular Applications](https://link.springer.com/chapter/10.1007/978-3-030-62476-7_3)
+[BBPLL locking time, Frequency Synthesizers Based on Fast-Locking Bang-Bang PLL for Cellular Applications](https://link.springer.com/chapter/10.1007/978-3-030-62476-7_3)
 
 # 1
 
