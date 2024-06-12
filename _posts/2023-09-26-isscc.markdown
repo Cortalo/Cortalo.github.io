@@ -10,6 +10,28 @@ math: true
 
 - [Digital circuit capacitance and switching analysis for ground bounce in ICs with a high-ohmic substrate](https://ieeexplore.ieee.org/document/1308586)
 
+# ISSCC 2024
+
+## Session 10: Frequency Synthesis
+
+### [10.1 An 8.75GHz Fractional-N Digital PLL with a Reverse-Concavity Variable-Slope DTC Achieving 57.3fsrms Integrated Jitter and −252.4dB FoM](https://ieeexplore.ieee.org/document/10454388)
+
+- [conventional variable slope dtc](https://ieeexplore.ieee.org/document/7108057) its linearity is limited by the slope-dependent propagation delay of the output buffer (comparator).
+- in practice, variable slope dtc can be implemented as [rc delay](https://ieeexplore.ieee.org/document/8666017), the delay is defined by the rc constant, thus it is linear with respect to either r or c. The slope dependent comparator delay can be mitigated by adding a fixed capacitance to reduce the slope variation. However, as discussed in the slides, adding fixed capacitance increases power and jitter.
+- In this paper, by adding a tail resistor to intentionally introduce an upward concavity nonlinear, the overall nonlinear can be reduced by combining the two different concavity.
+
+### [10.2 A 5.5μs-Calibration-Time, Low-Jitter, and Compact-Area Fractional-N Digital PLL Using the Recursive-Least-Squares (RLS) Algorithm](https://ieeexplore.ieee.org/document/10454495)
+
+### [10.3 A 7GHz Digital PLL with Cascaded Fractional Divider and Pseudo-Differential DTC Achieving -62.1dBc Fractional Spur and 143.7fs Integrated Jitter](https://ieeexplore.ieee.org/document/10454284)
+- The proposed cascaded fractional divider, isn't it the same as [fcw subtractive dithering](https://ieeexplore.ieee.org/abstract/document/10067719)?
+- It doesn't compare fractional spur with [fcw subtractive dithering](https://ieeexplore.ieee.org/abstract/document/10067719).
+- use differential dtc (why it is called "pseudo differential")? Isn't differential dtc has been implemented?
+
+### [10.4 A 45.5fs-Integrated-Random-Jitter and -75dBc-Integer-Boundary-Spur BiCMOS Fractional-N PLL with Suppression of Fractional, Horn, and Wandering Spurs](https://ieeexplore.ieee.org/document/10454462)
+
+### [10.5 A 76 fsrms- Jitter and -65dBc- Fractional-Spur Fractional-N Sampling PLL Using a Nonlinearity-Replication Technique](https://ieeexplore.ieee.org/document/10454557)
+- [constant-slope dtc](https://ieeexplore.ieee.org/document/7108057) or [inverse constant-slope dtc](https://ieeexplore.ieee.org/document/10067719) increases thermal noise.
+
 # ISSCC 2023
 
 ## Session 32: Intelligent Biomedical Circuits and Systems

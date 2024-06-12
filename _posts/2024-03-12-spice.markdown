@@ -62,3 +62,19 @@ plot v(1)
 ngspice
 source 1.ckt
 ```
+
+# TED
+
+```
+# run a specific test
+pytest -s -vv some_file.py::test1
+
+# run all tests in a file
+pytest -s -vv some_file.py
+
+# run all tests inside a directory
+pytest -s -vv some_dir
+
+# run in parallel
+pytest -n 5 -s -vv some_dir
+```

@@ -6,6 +6,35 @@ tags: spectre
 math: true
 ---
 
+# Theory
+
+## AC analysis
+
+For example, $$v_{out} = v_{in}^2$$, then
+
+$$
+\begin{align}
+v_{out} &= (v_{in,DC} + \Delta v_{in})^2 \\
+ &\approx v_{in,DC}^2 + 2 \cdot v_{in,DC} \cdot  \Delta v_{in}
+\end{align}
+$$
+
+Then
+
+$$
+\Delta v_{out} \approx 2 \cdot v_{in,DC} \cdot \Delta v_{in}
+$$
+
+## PAC analysis
+
+$$
+\begin{align}
+\left(a \cos(\omega_0 t) + \Delta v_{in}\right)^2 = \left(\dfrac{a}{2} e^{j \omega_0 t} + \dfrac{a}{2} e^{-j\omega_0 t} + \Delta v_{in}\right)^2
+\end{align}
+$$
+
+# Old
+
 From resources: book introduction to rf simulatoin and its application.
 
 ## Characteristics of RF Circuits
