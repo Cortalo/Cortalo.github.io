@@ -103,4 +103,98 @@ $$
 P(B) = P(B|A_1)P(A_1) + \dots + P(B|A_n)P(A_n)
 $$
 
-p1 2 hours
+example: n person n hats, the first one will randomly pick one hat, then start from the second person, if his hat is still there, he will pick his own hat; otherwise he randomly pick one hat. For the last person, what is the probability that he pick his own hat?
+
+Let the event $$A_n$$ be person $$n$$ pick his own hat, when there is in total $$n$$ person,let the events $$B_1, B_2, \dots, B_n$$ be the first person pick hat $$1, 2,\dots, n$$.
+Using total probability formula
+
+$$
+P(A_n) = P(A_n \vert B_1)P(B_1) + \dots + P(A_n \vert B_n) P(B_n)
+$$
+
+$$
+P(A_n \vert B_1) P(B_1) = 1 \cdot \dfrac{1}{n}
+$$
+
+$$
+P(A_n \vert B_n) P(B_n) = 0 \cdot \dfrac{1}{n}
+$$
+
+for $$P(A_n \vert B_k)$$, we know that person $$2, \dots, k-1$$ pick their own hat, then person $$k$$ need to pick randomly from the remainly $$n-k+1$$ hats.
+We can imagin hat $$1$$ is person $$k$$'s original hat, then
+
+$$
+P(A_n \vert B_k) = P(A_{n-k+1})
+$$
+
+$$
+P(A_n) = 1 \cdot \dfrac{1}{n} + \left(\sum_{k=2}^{n-1} \dfrac{1}{n} P(A_{n-k+1})\right) + 0 \cdot \dfrac{1}{n}
+$$
+
+$$
+P(A_1) = 1
+$$
+
+$$
+P(A_2) = \dfrac{1}{2}
+$$
+
+$$
+P(A_3) = \dfrac{1}{3} + \dfrac{1}{3} P(A_2) = \dfrac{1}{2}
+$$
+
+assumes $$P(A_2) = P(A_3) = \dots = P(A_{n-1}) = 1/2$$
+
+$$
+P(A_n) = \dfrac{1}{n} + \dfrac{n-2}{n} \cdot \dfrac{1}{2} = \dfrac{1}{2}
+$$
+
+**Bayesian**
+
+$$
+P(B \vert A) = \dfrac{P(A \vert B) P(B)}{P(A)} = \dfrac{P(A \vert B)P(B)}{\sum_{k} P(A \vert C_k) P(C_k)}
+$$
+
+example
+
+The first bag has 4 black and 3 white balls, the second bag has 5 black and 2 white ball.
+Now randomly choose 2 balls from first bag to second bag, then pick one ball from second bag, we found it is white ball.
+Based on this condition what is the probability that the choosed 2 balls have same color?
+
+Let event $$B$$ be the 2 balls have same color, let event $$A$$ be we found it is white.
+Let event $$C_1, C_2, C_3$$ be the 2 balls are all white, all black and one white one black.
+
+$$
+P(B\vert A) = \dfrac{P(AB)}{P(A)} = \dfrac{P(AB\vert C_1) P(C_1) + P(AB \vert C_2) P(C_2) + P(AB \vert C_3) P(C_3)}{P(A\vert C_1)P(C_1) + P(A\vert C_2)P(C_2) + P(A \vert C_3) P(C_3)}
+$$
+
+**random variables** is a determinstic function $$X: \Omega \to \mathbb{R}$$.
+
+**probability density function** and **culmilitive density function**
+
+**Bernoulli distribution**
+
+**Binomial distribution** $$P(x=k) = \binom{n}{k}p^k (1-p)^{n-k}$$
+
+**Possion distribution** $$P(x=k) = \dfrac{\lambda^k}{k!}\exp(-\lambda)$$
+
+possion distribution can be derived from binomial distribution, let $$n \to \infty, p \to 0$$ while $$np=\lambda$$
+
+$$
+\begin{align}
+P(x=k) &= \dfrac{n!}{k!(n-k)!} \dfrac{\lambda^k}{n^k} \left(1 - \dfrac{\lambda}{n}\right)^{n-k}\\
+&=\dfrac{\lambda^k}{k!} \cdot \dfrac{n!}{(n-k)! \cdot n^k} \cdot  \left(1 - \dfrac{\lambda}{n}\right)^n \cdot \left(1- \dfrac{\lambda}{n}\right)^{-k}\\
+&= \dfrac{\lambda^k}{k!} \cdot \dfrac{n \cdot (n-1) \dots (n-k+1)}{n^k} \cdot \left(1 - \dfrac{\lambda}{n}\right)^n \cdot \left(1- \dfrac{\lambda}{n}\right)^{-k}\\
+&= \dfrac{\lambda^k}{k!}\exp(-\lambda)
+\end{align}
+$$
+
+here I use $$\lim_{n\to\infty} \left(1 + \dfrac{a}{n}\right)^n = \exp(a)$$
+
+**uniform distribution**: $$f(x) = \dfrac{1}{b-a}I_{[a,b]}(x)$$
+
+**exponetional distribution**: $$f(x) = \lambda \exp(-\lambda x)I_{[0,\infty)}(x)$$
+
+**Gaussian distribution**: $$f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}} \exp(-\dfrac{(x-\mu)^2}{2\sigma^2})$$
+
+P2
