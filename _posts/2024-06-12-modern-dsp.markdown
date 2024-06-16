@@ -6,6 +6,8 @@ tags: math
 math: true
 ---
 
+**P1**
+
 [video lectures](https://www.bilibili.com/video/BV1ga4y157L5/)
 
 Textbook:
@@ -197,4 +199,76 @@ here I use $$\lim_{n\to\infty} \left(1 + \dfrac{a}{n}\right)^n = \exp(a)$$
 
 **Gaussian distribution**: $$f(x) = \dfrac{1}{\sqrt{2\pi\sigma^2}} \exp(-\dfrac{(x-\mu)^2}{2\sigma^2})$$
 
-P2
+**P2**
+
+**expectation (mean)**
+
+$$
+E(X) = \int_{-\infty}^{\infty} x f(x) dx
+$$
+
+**expectation is linear**
+
+$$
+E\left(\sum_{k=1}^{n} X_k\right) = \sum_{k=1}^{n} E(X_k)
+$$
+
+example
+
+still $$N$$ person randomly choose $$N$$ hats, what is the expection number of the person pick their own hat?
+
+$$
+E(X_1 + \dots X_N) = N \cdot \dfrac{1}{N} = 1
+$$
+
+**variance**
+
+$$
+Var(X) = E(X-EX)^2
+$$
+
+**convex function**: convex function is like a bowl, for example $$g(x) = x^2$$
+
+$$
+g(\alpha x + (1-\alpha)y) \le \alpha g(x) + (1-\alpha)g(y)
+$$
+
+$$
+g\left(\sum_{k=1}^{n} \alpha_k x_k\right) \le \sum_{k=1}^{n} \alpha_k g(x_k)\quad \text{ where } \quad \left(\alpha_k \ge 0, \sum_{k=1}^{n} \alpha_k = 1\right)
+$$
+
+then
+
+$$
+E\left(g(X)\right) \ge g\left(E(X)\right)
+$$
+
+to feel the correctness for the  equation above, note that convex function has another property, such that it has a supporting plane at any point of the function (P2, 0:43:00)
+
+$$
+g(x) \ge g(a) + L_a (x-a)
+$$
+
+then
+
+$$
+g(X) \ge g(a) + L_a (X-a)
+$$
+
+$$
+E(g(X)) \ge g(a) + L_a \left(E\left(X\right)-a\right)
+$$
+
+since $$a$$ can be arbitary, let $$a = E(X)$$
+
+$$
+E(g(X)) \ge g(E(X))
+$$
+
+for example, $$E(X^2) \ge (E(X))^2$$, then it is easy to show, if we let $$g(X) = X^2$$
+
+$$
+Var(X) = E(X - EX)^2 = E(X^2) - (E(X))^2 \ge 0
+$$
+
+P2, 0:50:00

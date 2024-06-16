@@ -6,6 +6,55 @@ tags: analog
 math: true
 ---
 
+# Inductor Simulation
+
+using `sp` or `psp` simulation to simulate inductor, we calculate the Z parameter
+
+$$
+\begin{bmatrix}
+V_1\\
+V_2
+\end{bmatrix}=
+\begin{bmatrix}
+Z_{11} & Z_{12} \\
+Z_{21} & Z_{22}
+\end{bmatrix}
+\begin{bmatrix}
+i_1\\
+-i_1
+\end{bmatrix}
+$$
+
+$$
+Z_{diff} = \dfrac{V_1-V_2}{i_1} = Z_{11} + Z_{22} - Z_{12} - Z_{21}
+$$
+
+$$
+L_s = \dfrac{\text{Im}(Z_{diff})}{2\pi f}
+$$
+
+$$
+R_s = \text{Re}(Z_{diff})
+$$
+
+$$
+Q = \dfrac{\text{Im}(Z_{diff})}{\text{Re}(Z_{diff})}
+$$
+
+$$
+R_p = (1+Q^2)R_s
+$$
+
+In virtuoso
+
+```
+Imagz = imag(zpm('psp 1 1)) + imag(zpm('psp 2 2)) - imag(zpm('psp 1 2)) - imag(zpm('psp 2 1))
+Ls = Imagz / 2 / 3.14 / xval(Imagz)
+Rs = real(zpm('psp 1 1)) + real(zpm('psp 2 2)) - real(zpm('psp 1 2)) - real(zpm('psp 2 1))
+Q = Imagz / Rs
+Rp = (1+Q*Q)*Rs
+```
+
 # Phase Noise
 
 References:
