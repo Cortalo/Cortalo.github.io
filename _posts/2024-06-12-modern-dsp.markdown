@@ -271,4 +271,70 @@ $$
 Var(X) = E(X - EX)^2 = E(X^2) - (E(X))^2 \ge 0
 $$
 
-P2, 0:50:00
+**approximation**
+
+we define mean square distance between two random variable
+
+$$
+\left(E(X-Y)^2\right)^{1/2} = d(X,Y)
+$$
+
+if we want to find the best approximation in terms of a constant
+
+$$
+\min\limits_{a} E(X-a)^2
+$$
+
+$$
+\dfrac{d}{da} E(X-a)^2 = 0
+$$
+
+$$
+-2E(X-a) = 0
+$$
+
+$$
+a=EX
+$$
+
+now can understand mean is the best approximation using an constant, and variance is the square distance.
+
+$$
+\min\limits_{g} E(X-g(Y))^2
+$$
+
+to find the result above, we need **conditional expection**
+
+$$
+E(X \vert Y)
+$$
+
+conditional expection has several important properties.
+
+1. &nbsp; $$E(X \vert Y)$$ is a random variable.
+2. &nbsp; $$E\left(\sum\limits_{k=1}^{n} X_k \vert Y\right) = \sum\limits_{k=1}^{n} E(X_k \vert Y)$$
+3. &nbsp; $$E(E(X\vert Y)) = E(X)$$
+4. &nbsp; $$E(X h(Y) \vert Y) = h(Y) E(X \vert Y)$$
+
+now we can find $$ \min\limits_{g} E(X-g(Y))^2 $$ intuitively
+
+$$
+E(X-g(Y))^2 = E(E((X-g(Y))^2 \vert Y))
+$$
+
+we know
+
+$$
+E((X-g(Y))^2 \vert Y) \ge E((X - E(X \vert Y))^2 \vert Y)
+$$
+
+thus
+
+$$
+E(X-g(Y))^2 = E(E((X-g(Y))^2 \vert Y)) \ge E( E((X - E(X \vert Y))^2 \vert Y) ) = E( (X - E(X \vert Y))^2)
+$$
+
+thus the optimal $$g(Y) = E(X \vert Y)$$.
+
+notes until P2, 1:29:00
+watch until P2, 1:50:00
