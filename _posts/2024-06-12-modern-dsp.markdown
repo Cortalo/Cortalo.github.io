@@ -224,7 +224,7 @@ $$
 **variance**
 
 $$
-Var(X) = E(X-EX)^2
+Var(X) = E(X-EX)^2 = E(X^2) - (E(X))^2
 $$
 
 **convex function**: convex function is like a bowl, for example $$g(x) = x^2$$
@@ -336,5 +336,149 @@ $$
 
 thus the optimal $$g(Y) = E(X \vert Y)$$.
 
-notes until P2, 1:29:00
-watch until P2, 1:50:00
+The above is an intuitive understanding, now we give the formal prove
+
+$$
+\begin{align}
+ & E(X-g(Y))^2 = E(X - E(X \vert Y) + E(X \vert Y) - g(Y))^2\\
+= & E(X-E(X \vert Y))^2 + E(E(X \vert Y) - g(Y))^2 + 2 E((X - E(X \vert Y))(E(X \vert Y) - g(Y)))
+\end{align}
+$$
+
+we only need to show the last term equals zero.
+
+$$
+\begin{align}
+& E((X - E(X \vert Y))(E(X \vert Y) - g(Y)))\\
+= & E( E(  (X - E(X \vert Y))(E(X \vert Y) - g(Y))\vert Y) ) = 0
+\end{align}
+$$
+
+we typicaly want to do **parametric** or **non-parametric** model, an example for **parametric** can be we know the data follows guassian distribution, and we want to find its mean and variance;
+an example for non-parametric model is clustering.
+
+We first look at parametric model.
+We want to find a function $$\hat{\theta}(X_1, \dots, X_n)$$, such a function we may call it estimator, statistic or feature.
+
+For such estimator, there are two school of thoughts: **frequencist** and **bayesian**.
+We first look at frequencist.
+It assume the actual $$\theta$$ is an unknown constant (not random).
+
+$$
+\min\limits_{\hat{\theta}} E(\hat{\theta}(X_1, \dots, X_n) - \theta)^2
+$$
+
+$$
+\hat{\theta}_{opt} = E(\theta \vert X_1, \dots, X_n) = \theta
+$$
+
+$$
+\begin{align}
+& E(\hat{\theta} - \theta)^2 = E(\hat{theta} - E(\hat{\theta}) + E(\hat{\theta}) - \theta)^2\\
+= & E(\hat{\theta} - E(\hat{\theta}))^2 + E(E(\hat{\theta}) - \theta)^2 + 2E((\hat{\theta} - E(\hat{\theta}))(E(\hat{\theta})-\theta))\\
+= & E(\hat{\theta} - E(\hat{\theta}))^2 + E(E(\hat{\theta}) - \theta)^2
+\end{align}
+$$
+
+The first term is variance, the second term is bias.
+
+for example, a typical estimator for mean is
+
+$$
+\hat{\theta}(X_1, \dots, X_n) = \dfrac{1}{n} \sum_{k=1}^{n} X_k
+$$
+
+assume all $$E(X_k) = \theta$$
+
+$$
+E(\hat{\theta}) = \theta
+$$
+
+$$
+\begin{align}
+& Var(\hat{\theta}) = E(\dfrac{1}{n} \sum_{k=1}^{n} X_k - \theta)^2\\
+= & \dfrac{1}{n^2} E(\sum_{k=1}^{n} (X_k - \theta))^2\\
+= & \dfrac{1}{n^2} \left( \sum_{k=1}^{n} E(X_k - \theta)^2  \right) + \dfrac{1}{n^2} \sum_{i \ne j} E (X_i - \theta)(X_j - \theta)
+\end{align}
+$$
+
+assume $$E (X_i - \theta)(X_j - \theta) = 0$$ when $$i \ne j$$
+
+$$
+Var(\hat{\theta}) = \dfrac{\sigma^2}{n}
+$$
+
+a typical estimator for variance is
+
+$$
+\hat{\theta} = \dfrac{1}{n-1} \sum_{k=1}^n (X_k - \overline{X})^2
+$$
+
+where
+
+$$
+\overline{X} = \dfrac{1}{n} \sum_{k=1}^{n} X_k
+$$
+
+we can check $$E(\hat{\theta})$$
+
+$$
+\begin{align}
+& (n-1) E(\hat{\theta}) = E(\sum_{k=1}^{n} (X_k - \overline{X})^2)\\
+= & \sum_{k=1}^n E(X_k^2 - 2 X_k \overline{X} + \overline{X}^2)\\
+= & \sum_{k=1}^n E(X_k^2) - 2 E\left((\sum_{k=1}^n X_k) \overline{X}\right) + n E(\overline{X}^2)\\
+= & \sum_{k=1}^n E(X_k^2) - 2n E(\overline{X}^2) + n E(\overline{X}^2)\\
+= & \sum_{k=1}^n E(X_k^2) - n E(\overline{X}^2)
+\end{align}
+$$
+
+$$
+E(X_k^2) = \sigma^2 + \mu^2
+$$
+
+$$
+E(\overline{X}^2) = \dfrac{\sigma^2}{n} + \mu^2
+$$
+
+$$
+(n-1)E(\hat{\theta}) = n (\sigma^2 + \mu^2) - n (\dfrac{\sigma^2}{n} + \mu^2) = (n-1) \sigma^2
+$$
+
+**conditional variance**
+
+$$
+Var(X \vert Y) = E\left( \left( X - E(X \vert Y) \right)^2 \vert Y \right)
+$$
+
+we can show
+
+$$
+Var(X) = Var( E (X \vert Y)) + E( Var(X \vert Y))
+$$
+
+$$
+\begin{align}
+& E(X - EX)^2 = E(X - E(X \vert Y) + E(X \vert Y) - EX)^2\\
+= & E(X - E(X \vert Y))^2 + E(E(X \vert Y) - EX)^2 + 2 E \left( (X-E(X \vert Y))(E(X \vert Y) - EX) \right)
+\end{align}
+$$
+
+we can show the last term is zero
+
+$$
+E \left( (X-E(X \vert Y))(E(X \vert Y) - EX) \right) = E\left( E \left( (X-E(X \vert Y))(E(X \vert Y) - EX) \vert Y \right) \right) = 0
+$$
+
+the first term
+
+$$
+E(X - E(X \vert Y))^2 = E\left( E\left( (X - E(X \vert Y))^2 \vert Y \right) \right) = E(Var(X \vert Y))
+$$
+
+the second term
+
+$$
+E(E(X \vert Y) - EX)^2 = E( (E(X \vert Y) - E(E(X \vert Y)) )^2 ) = Var(E(X \vert Y))
+$$
+
+P3
