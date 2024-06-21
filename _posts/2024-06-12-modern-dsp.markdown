@@ -482,3 +482,198 @@ E(E(X \vert Y) - EX)^2 = E( (E(X \vert Y) - E(E(X \vert Y)) )^2 ) = Var(E(X \ver
 $$
 
 P3
+
+**Mean Square Error (MSE)**
+
+$$
+MSE(\hat{\theta}) = E(\hat{\theta} - \theta)^2
+$$
+
+**unbias estimator**
+
+$$
+E(\hat{\theta}) = \theta
+$$
+
+then
+
+$$
+MSE(\hat{\theta}) = Var(\hat{\theta})
+$$
+
+**sufficiency**
+
+$$
+f(x,\theta \vert s = t) \text{ is independent of } \theta
+$$
+
+for example, $$X_1, \dots X_n$$ iid ber(p), each $$X$$ is either 0 or 1.
+
+$$
+f(x_1, \dots, x_n) = p^{\sum_{k=1}^n x_k} (1-p)^{n - \sum_{k=1}^n x_k}
+$$
+
+let $$s = \sum_{k=1}^n x_k$$
+
+$$
+\begin{align}
+& P(x_1, \dots, x_n \vert s = t)\\
+= & P(x_1, \dots, x_n, s = t) / P(s=t)\\
+= & p^t (1-p)^{n-t} / \binom{n}{t} p^t (1-p)^{n-t}\\
+= & 1 / \binom{n}{t}
+\end{align}
+$$
+
+**Naymen Facterization (without proof)**
+
+$$
+s \text{ is sufficient} \quad \iff \quad f(x,\theta) = g(s(x),\theta)h(x)
+$$
+
+**poisson**
+
+$$
+f(x_1, \dots, x_n, \lambda) = \lambda^{\sum_{k=1}^{n} x_k} \exp(-\lambda) \prod_{k=1}^{n} \dfrac{1}{(x_k)!}
+$$
+
+$$
+s = \sum_{k=1}^{n} x_k
+$$
+
+**gaussian**
+
+assume $$\sigma^2$$ is known, but $$\mu$$ is unknown
+
+$$
+f(x_1, \dots, x_n, \mu) =
+$$
+
+**Rao Blackwell Procedure**
+
+assume $$\hat{\theta}$$ is unbias estimator, then if $$s$$ is sufficient
+
+$$
+E(\hat{\theta} \vert s)
+$$
+
+is also an estimator, it is also unbias, and its MSE is smaller than $$MSE(\hat{\theta})$$, to prove it, first it is an estimator,
+we didn't prove it here, but $$s$$ is sufficient will make sure $$E(\hat{\theta} \vert s)$$ is not a function of $$\theta$$ (without proof).
+
+Then it is unbias
+
+$$
+E(E(\hat{\theta} \vert s )) = E(\hat{\theta}) = \theta
+$$
+
+then MSE is smaller
+
+$$
+Var(\hat{\theta}) = Var(E(\hat{\theta} \vert s)) + E(Var(\hat{\theta} \vert s))
+$$
+
+for example, $$X_1, \dots, X_n$$ iid $$N(\mu, \sigma^2)$$, $$\sigma^2$$ is known, $$s = \sum_{k=1}^{n} X_k$$, assume $$\hat{\theta} = X_1$$
+
+$$
+E(X_1 \vert \sum_{k=1}^{n} X_k) \text{ is the new estimator}
+$$
+
+from symmetry
+
+$$
+E(X_j \vert \sum_{k=1}^{n} X_k) = E(X_i \vert \sum_{k=1}^{n} X_k)
+$$
+
+$$
+n \cdot E(X_1 \vert \sum_{k=1}^{n} X_k) = E( \sum_{k=1}^{n} X_k \vert \sum_{k=1}^{n} X_k ) = \sum_{k=1}^{n} X_k
+$$
+
+$$
+E(X_j \vert \sum_{k=1}^{n} X_k) = \dfrac{\sum_{k=1}^{n} X_k}{n}
+$$
+
+it is clear the MSE get smaller.
+
+**completeness**
+
+Say $$T$$ is a statistic, it is said to be complete, meaning for every function $$g$$, if $$E(g(T)) = 0$$ then $$g(T) = 0$$.
+
+**Lehmam Scheffe theorem**
+
+if $$T$$ is sufficient and complete, and $$E(h(T)) = \theta$$, then $$h(T)$$ is minimum variance unbias estimator
+
+for any unbias estimator $$\hat{\theta}$$, we know $$E(\hat{\theta} \vert T)$$ has smaller or equal MSE.
+
+$$
+E(h(T) - E(\hat{\theta} \vert T)) = \theta - \theta = 0
+$$
+
+so $$h(T) = E(\hat{\theta} \vert T)$$, so $$h(T)$$ is better or equal to any unbias estimator.
+
+**Craner Rao Lower Bound**
+
+for any unbias estimaor $$\hat{\theta}$$
+
+$$
+\theta = \int_{-\infty}^{\infty} \hat{\theta(x)} f(x, \theta) dx
+$$
+
+$$
+\begin{align}
+1 &= \dfrac{\partial}{\partial \theta} \int_{-\infty}^{\infty} \hat{\theta}(x) f(x,\theta) dx\\
+&= \int_{-\infty}^{\infty} \hat{\theta}(x) \dfrac{\partial}{\partial \theta} f(x,\theta) dx
+\end{align}
+$$
+
+$$
+1 = \int_{-\infty}^{\infty} f(x,\theta) dx
+$$
+
+$$
+0 = \int_{-\infty}^{\infty} \dfrac{\partial}{\partial \theta} f(x,\theta) dx
+$$
+
+$$
+0 = \int_{-\infty}^{\infty} \theta \dfrac{\partial}{\partial \theta} f(x,\theta) dx
+$$
+
+$$
+\begin{align}
+1 &= \int_{-\infty}^{\infty} (\hat{\theta}(x) - \theta) \dfrac{\partial}{\partial \theta} f(x,\theta) dx\\
+&= \int_{-\infty}^{\infty} (\hat{\theta}(x) - \theta) \left(\dfrac{\partial}{\partial \theta} \ln f(x,\theta)\right) f(x,\theta) dx
+\end{align}
+$$
+
+we want to use Cauchy-Schwarz inequality
+
+$$
+\left( \int f(x) g(x) dx \right)^2 \le \int f(x)^2 dx \int g(x)^2 dx
+$$
+
+
+$$
+\begin{align}
+1^2 &= \left(\int_{-\infty}^{\infty} (\hat{\theta}(x) - \theta) \sqrt{f(x,\theta)} \left(\dfrac{\partial}{\partial \theta} \ln f(x,\theta)\right)  \sqrt{f(x,\theta)} dx\right)^2\\
+& \le \int_{-\infty}^{\infty} (\hat{\theta}(x) - \theta)^2 f(x,\theta) dx \int_{-\infty}^{\infty} \left(\dfrac{\partial}{\partial \theta} \ln f(x,\theta)\right)^2 f(x,\theta) dx\\
+&= E(\hat{\theta}(x) - \theta)^2 \cdot E \left(\dfrac{\partial}{\partial \theta} \ln f(x,\theta)\right)^2
+\end{align}
+$$
+
+$$
+E(\hat{\theta}(x) - \theta)^2 \ge 1 / E \left(\dfrac{\partial}{\partial \theta} \ln f(x,\theta)\right)^2
+$$
+
+where $$ E \left(\dfrac{\partial}{\partial \theta} \ln f(x,\theta)\right)^2 $$ is called Fisher information.
+
+It can be proved that (P3, 1:57:00)
+
+$$
+E \left(\dfrac{\partial}{\partial \theta} \ln f(x,\theta)\right)^2 = -E\left( \dfrac{\partial^2}{\partial \theta^2} \ln f(x,\theta) \right)
+$$
+
+the cauchy is equal if and only if
+
+$$
+\dfrac{\partial}{\partial \theta} \ln f(x,\theta) = k(\theta)(\hat{\theta}(x)-\theta)
+$$
+
+P4 0:32:00
