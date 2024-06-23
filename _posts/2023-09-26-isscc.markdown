@@ -22,6 +22,9 @@ math: true
 
 ### [10.2 A 5.5μs-Calibration-Time, Low-Jitter, and Compact-Area Fractional-N Digital PLL Using the Recursive-Least-Squares (RLS) Algorithm](https://ieeexplore.ieee.org/document/10454495)
 
+- for multi-variable lms calibration, the steps for different control should be much larger or smaller to avoid racing. As a result, the smallest step will suffer slow convergence.
+- proposed recursive-least-square, with dichotomous coordinate descent-based recursive-least-square, achieve fast convergence with small hardware complexity.
+
 ### [10.3 A 7GHz Digital PLL with Cascaded Fractional Divider and Pseudo-Differential DTC Achieving -62.1dBc Fractional Spur and 143.7fs Integrated Jitter](https://ieeexplore.ieee.org/document/10454284)
 - The proposed cascaded fractional divider, isn't it the same as [fcw subtractive dithering](https://ieeexplore.ieee.org/abstract/document/10067719)?
 - It doesn't compare fractional spur with [fcw subtractive dithering](https://ieeexplore.ieee.org/abstract/document/10067719).
