@@ -31,9 +31,11 @@ math: true
 - use differential dtc (why it is called "pseudo differential")? Isn't differential dtc has been implemented?
 
 ### [10.4 A 45.5fs-Integrated-Random-Jitter and -75dBc-Integer-Boundary-Spur BiCMOS Fractional-N PLL with Suppression of Fractional, Horn, and Wandering Spurs](https://ieeexplore.ieee.org/document/10454462)
+- prior art: successive requantizer, probability mass redistributor, time-invariant probability modulator, probability density shaping, enhanced nonlinear-induced noise performance.
+- another technique to mitigate fractional spur.
 
 ### [10.5 A 76 fsrms- Jitter and -65dBc- Fractional-Spur Fractional-N Sampling PLL Using a Nonlinearity-Replication Technique](https://ieeexplore.ieee.org/document/10454557)
-- [constant-slope dtc](https://ieeexplore.ieee.org/document/7108057) or [inverse constant-slope dtc](https://ieeexplore.ieee.org/document/10067719) increases thermal noise.
+- [constant-slope dtc](https://ieeexplore.ieee.org/document/7108057) or [inverse constant-slope dtc](https://ieeexplore.ieee.org/document/10067719) increases thermal noise due to long pre-charge time (limited voltage slope).
 
 # ISSCC 2023
 

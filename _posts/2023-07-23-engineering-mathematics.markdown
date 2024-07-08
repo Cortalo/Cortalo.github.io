@@ -10,6 +10,12 @@ math: true
 
 From [Dr. Chun-Yao Wang' Lecture](https://ocw.nthu.edu.tw/ocw/index.php?page=course&cid=145)
 
+## Interesting Formula
+
+$$
+\dfrac{1-x^N}{1-x} = 1 + x + x^2 + \dots + x^{N-1}
+$$
+
 
 ## First-Order First-Degree ODE
 

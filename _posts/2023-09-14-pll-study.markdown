@@ -55,6 +55,16 @@ Q = Imagz / Rs
 Rp = (1+Q*Q)*Rs
 ```
 
+# Capacitor Simulation
+
+$$
+C_s = -\dfrac{1}{2\pi f} \cdot \dfrac{1}{Im(Z_{diff})}
+$$
+
+$$
+R_s = Re(Z_{diff})
+$$
+
 # Phase Noise
 
 References:
