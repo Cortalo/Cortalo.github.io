@@ -16,6 +16,12 @@ $$
 \dfrac{1-x^N}{1-x} = 1 + x + x^2 + \dots + x^{N-1}
 $$
 
+gong bi ci fang jian yi, chu yi gong bi jian yi
+
+$$
+\sum_{n=0}^{N-1} e^{jk(2\pi/N)n} = 0, \text{ when } k \ne 0, \pm N, \pm 2N, \dots
+$$
+
 
 ## First-Order First-Degree ODE
 
