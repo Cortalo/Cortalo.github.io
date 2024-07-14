@@ -214,3 +214,19 @@ $$
 **convergence of fourier series**
 
 book_signals_and_systems, section 3.4
+
+## Fourier Transform
+
+**Fourier Transform**
+
+$$
+x(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} X(j\omega) e^{j\omega t} d\omega
+$$
+
+$$
+X(j\omega) = \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt
+$$
+
+$$
+X(j\omega) = \sum_{k=-\infty}^{\infty} 2\pi a_k \delta(\omega - k\omega_0)
+$$

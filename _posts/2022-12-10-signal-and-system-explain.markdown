@@ -63,6 +63,24 @@ $$
 \end{align}
 $$
 
+
+## Fourier Transform
+
+**Fourier Transform: proof**
+
+$$
+\begin{align}
+x(t) &= \sum_{k=-\infty}^{\infty} \left( \int_{T} x(\tau) e^{-jk\omega_0 \tau} d\tau \right) e^{jk\omega_0 t} \dfrac{1}{T} \\
+&= \dfrac{1}{2\pi}\sum_{k=-\infty}^{\infty} \left( \int_{T} x(\tau) e^{-jk\omega_0 \tau} d\tau \right) e^{jk\omega_0 t} \dfrac{2\pi}{T} \\
+&= \dfrac{1}{2\pi}\sum_{k=-\infty}^{\infty} \left( \int_{T} x(\tau) e^{-jk\omega_0 \tau} d\tau \right) e^{jk\omega_0 t} \omega_0 \\
+&= \dfrac{1}{2\pi} \int_{-\infty}^{\infty} X(j\omega) e^{j\omega t} d\omega
+\end{align}\\
+$$
+
+$$
+X(j\omega) = \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt
+$$
+
 book_xinhaoyuxianxingxitongfenxi
 
 ## Intro
