@@ -117,6 +117,12 @@ $$
 a_k = \dfrac{1}{N} \sum_{n=0}^{N-1} x[n] e^{-jk\omega_0 n}
 $$
 
+although it is not obvious if or not Fourier series is unique, as an engineer we assume it is unique, meaning there is only one set of $$a_k$$ such that
+
+$$
+x(t) = \sum_{k=-\infty}^{\infty} a_k e^{jk\omega_0 t}
+$$
+
 **Fourier Series: Time Shifting**
 
 $$
@@ -220,13 +226,46 @@ book_signals_and_systems, section 3.4
 **Fourier Transform**
 
 $$
-x(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} X(j\omega) e^{j\omega t} d\omega
+x(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega
 $$
 
 $$
-X(j\omega) = \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt
+X(\omega) = \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt
 $$
 
 $$
-X(j\omega) = \sum_{k=-\infty}^{\infty} 2\pi a_k \delta(\omega - k\omega_0)
+X(\omega) = \sum_{k=-\infty}^{\infty} 2\pi a_k \delta(\omega - k\omega_0)
+$$
+
+We assume Fourier transform is unique, e.g., there is at most one $$X(\omega)$$ such that
+
+$$
+x(t) = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} X(\omega) e^{j\omega t} d\omega
+$$
+
+**Fourier Transform: Differentiation and Integration**
+
+$$
+\dfrac{d x(t)}{dt} \overset{FT}{\longleftrightarrow} j\omega X(\omega)
+$$
+
+$$
+\int_{-\infty}^{t} x(\tau) d\tau \overset{FT}{\longleftrightarrow} \dfrac{1}{j\omega} X(\omega) + \pi X(0)\delta(\omega)
+$$
+
+
+**Fourier Transform: Duality**
+
+$$
+g(t) \overset{FT}{\longleftrightarrow} f(\omega)
+$$
+
+$$
+f(t) \overset{FT}{\longleftrightarrow} 2\pi g(-\omega)
+$$
+
+**Fourier Transform: Parseval's Relation**
+
+$$
+\int_{-\infty}^{\infty} \vert x(t) \vert^2 dt = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} \vert X(\omega) \vert^2 d\omega
 $$

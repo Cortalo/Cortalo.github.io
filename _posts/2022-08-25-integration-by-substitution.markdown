@@ -23,3 +23,36 @@ $$
 &= -j\int_{C}\frac{dz}{a^2-z^2}
 \end{aligned}
 $$
+
+### Example 03
+
+$$
+X(\omega) = \int_{-\infty}^{\infty} x(t) e^{-j\omega t} dt
+$$
+
+$$
+X(t) = \int_{-\infty}^{\infty} x(u)e^{-jut} du
+$$
+
+$$
+\omega = -u
+$$
+
+san jian shi:
+- bei ji han shu
+- ji fen bian liang
+- shang xia xian
+
+$$
+X(t) = \int_{\dots}^{\dots} x(-\omega) e^{j\omega t} d(-\omega)
+$$
+
+
+$$
+X(t) = \int_{\dots}^{\dots} x(-\omega) e^{j\omega t} (-1) d\omega
+$$
+
+
+$$
+X(t) = \int_{\infty}^{-\infty} x(-\omega) e^{j\omega t} (-1) d\omega
+$$
