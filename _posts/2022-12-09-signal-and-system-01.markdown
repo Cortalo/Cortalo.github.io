@@ -269,3 +269,29 @@ $$
 $$
 \int_{-\infty}^{\infty} \vert x(t) \vert^2 dt = \dfrac{1}{2\pi} \int_{-\infty}^{\infty} \vert X(\omega) \vert^2 d\omega
 $$
+
+**Fourier Transform: conlvlution property**
+
+$$
+h(t)*x(t) \overset{FT}{\longleftrightarrow} H(\omega)X(\omega)
+$$
+
+**Fourier Transform: modulation property**
+
+$$
+s(t)p(t) \overset{FT}{\longleftrightarrow} \dfrac{1}{2\pi} [S(\omega)*P(\omega)]
+$$
+
+**DTFT**
+
+$$
+x[n] = \dfrac{1}{2\pi}\int_{0}^{2\pi} X(\Omega) e^{j\Omega n} d\Omega
+$$
+
+$$
+X(\Omega) = \sum_{n=-\infty}^{\infty} x[n] e^{-j\Omega n}
+$$
+
+$$
+X(\Omega) = \sum_{k=-\infty}^{\infty} 2\pi a_k \delta(\Omega - k\omega_0)
+$$
