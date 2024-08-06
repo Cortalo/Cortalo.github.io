@@ -6,11 +6,50 @@ tags: analog
 math: true
 ---
 
+# Papers
+
+[A high-swing, high-impedance MOS cascode circuit](https://ieeexplore.ieee.org/document/50316)
+
+- regulated cascode (or RGC) achieves higher output impedance than simple cascode.
+- RGC has larger output voltage range than optimally biased simple cascode.
+
+[The active-input regulated-cascode current mirror](https://ieeexplore.ieee.org/document/295247)
+
+[Ultra high-compliance CMOS current mirrors for low voltage charge pumps and references](https://ieeexplore.ieee.org/document/1356659)
+
+[Relationship between frequency response and settling time of operational amplifiers](https://ieeexplore.ieee.org/document/1050527)
+
+[An Integrated Linear Regulator With Fast Output Voltage Transition for Dual-Supply SRAMs in DVFS Systems](https://ieeexplore.ieee.org/document/5607216)
+
+
 From [Analog Design Essentials](https://link.springer.com/book/10.1007/b135984)
+
+# Amplifiers, source followers and cascodes
+
+**024: Single-transistor amplifier**
+
+$$
+A_v = g_m r_{DS} = \dfrac{2 I_{DS}}{V_{ov}} \cdot \dfrac{V_E L}{I_{DS}} = \dfrac{2 V_E L}{V_{ov}}
+$$
+
+- high gain needs large $$L$$ and high $$g_m/i_d$$
+
+**0213: Miller capacitance feedback effects**
+
+- the $$C_{gd}$$ miller capacitor gives a positive zero:
+  - the gain magnitude becomes constant at high frequency, since the transistor is diode connected with impedance $$1/g_m$$
+  - the phase becomes in-phase at high frequency instead of completely-out-of-phase at low frequency
+  - such a phenomenon can only be explained by a positve zero after the negative pole
+  - full small-signal analysis reveals that $$f_z = \dfrac{g_m}{2\pi C_F}$$
+
+**0250: Cascode with resistive load**
+
+- cascode convert current to voltage, the gain will be larger if the load resistance is larger.
+- however, in reality the gain cannot increase to infinity, to see the limit we have to include the $$R_B$$ and $$r_{DS}$$.
 
 # Stability of Operational amplifiers
 
-**What makes an opamp an opamp?**
+**0515: What makes an opamp an opamp?**
 
 An opamp is really a single-pole system.
 As a result, it allows exchange of gain with bandwidth, within a specific GBW.
@@ -25,7 +64,7 @@ They consist of more stages, each of them having a pole.
 They are normally compensated at one particular setting of the gain.
 They are not meant to exchange gain for bandwidth.
 
-**Relation PM, damping and $$f_2/\text{GBW}$$**
+**0526: Relation PM, damping and $$f_2/\text{GBW}$$**
 
 | $$\dfrac{f_2}{\text{GBW}}$$ | PM ($$^\circ$$) | $$\zeta = \dfrac{1}{2}\sqrt{\dfrac{f_2}{GBW}}$$ | $$P_f$$ (dB) | $$P_t$$ (dB) |
 |-----------------------------|-----------------|-------------------------------------------------|--------------|--------------|
@@ -42,7 +81,7 @@ Eventually $$63^\circ$$ PM is good enough to not have peaking in the frequency d
 Another reason for $$63^\circ \sim 72^\circ$$ PM is that it is a good compromise between peaking and bandwidth;
 Larger PM reduces the bandwidth too much.
 
-**Generic 2-stage opamp**
+**0530: Generic 2-stage opamp**
 
 <img src="/assets/img/2023-07-30-analog-circuits/screenshot_002.png" style="width:40%;height:40%;">
 
@@ -50,6 +89,9 @@ Larger PM reduces the bandwidth too much.
 
 &nbsp; $$f_{nd} = \dfrac{g_{m2}}{2\pi C_L}$$, since at high frequency $$C_c$$ is shorted, the non-domiant pole is calculated by the impedance at node 1.
 
+&nbsp; $$f_z = \dfrac{g_{m2}}{2\pi C_c}$$, this is a positive zero.
+
+# Systematic Design of Operational Amplifiers
 
 # Basics
 
